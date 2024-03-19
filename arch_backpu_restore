@@ -1,16 +1,8 @@
 #!/bin/bash
 shopt -s dotglob
 
-get_first_dir() {
-  local path=$1
-  local first_dir=$(echo $path | cut -d'/' -f1)
-  echo $first_dir
-}
-
 exclude_dir() {
   path="$1"
-  first_dir=$(get_first_dir $path)
-  mv $first_dir delete
   mkdir -p "$path"
   mv delete/"$path"/* "$path"
 }
@@ -23,6 +15,14 @@ exclude_dirs() {
       exclude_dir "$line"
     fi
   done < "$path"
+}
+
+delete_and_move() {
+  local exclude_path=$1
+  mkdir delete
+  mv * delete
+  exclude_dirs $exclude_path
+  rm -rf delete
 }
 
 # Backup destination
@@ -61,10 +61,8 @@ backupfile_exist=$?
 if [ $backupfile_exist -eq 1 ] && [ $executeback = "y" ]; then
   cd /
   echo "This job takes a lot of time. please wait for finish."
-  mkdir delete
-  exclude_dirs $exclude_file
-  rm -rf delete
-  bsdtar --acls --xattrs -xpzf "$backupfile"
+  delete_and_move $exclude_file
+  pv "$backupfile" | pbzip2 -dc | bsdtar --acls --xattrs -xpzf -
   echo -e "Job finished. \u25A0"
 else
   echo -e "The backupfile doesn't exist. \u25A1"

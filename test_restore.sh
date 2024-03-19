@@ -9,8 +9,6 @@ get_first_dir() {
 
 exclude_dir() {
   path="$1"
-  first_dir=$(get_first_dir $path)
-  mv $first_dir delete
   mkdir -p "$path"
   mv delete/"$path"/* "$path"
 }

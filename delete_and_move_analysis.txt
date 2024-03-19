@@ -1,0 +1,52 @@
+
+# errors
+# mv: cannot move 'delete' to a subdirectory of itself, 'delete/delete'
+# mv: cannot stat 'etc': No such file or directory
+# mv: cannot stat 'tmp': No such file or directory
+# mv: cannot stat 'home': No such file or directory
+
+cd /mnt/home/bae/Downloads/test_root3
+
+test_root3: 
+.test1  .test3  etc  home  test2  test4  tmp
+
+delete_and_move $exc_file
+  local exclude_path=$1
+  mkdir delete
+
+test_root3: 
+.test1  .test3  delete  etc  home  test2  test4  tmp
+
+delete_and_move $exc_file {
+  pwd: /mnt/home/bae/Downloads/test_root3 
+  test_root3: 
+  .test1  .test3  delete  etc  home  test2  test4  tmp
+  mv * delete
+  # mv: cannot move 'delete' to a subdirectory of itself, 'delete/delete' 
+  test_root3: delete
+
+  exclude_dirs $exclude_path {
+    exclude_dir etc/pacman.d/gnupg {
+      path="$1"=etc/pacman.d/gnupg
+      first_dir=$(get_first_dir $path)=etc
+      
+      # Error occult here!!
+      mv $first_dir delete = mv etc delete
+
+      pwd: /mnt/home/bae/Downloads/test_root3  
+      test_root3: delete 
+      # mv: cannot stat 'etc': No such file or directory 
+
+      mkdir -p "$path"=etc/pacman.d/gnupg
+      test_root3: delete etc/.. 
+
+      mv delete/"$path"/* "$path" 
+      test_root3: delete etc/..->filed  
+    }
+    exclude_dir tmp {...}
+    # mv: cannot stat 'tmp': No such file or directory
+    exclude_dir home {...} 
+    # mv: cannot stat 'home': No such file or directory 
+  }
+  rm -rf delete 
+}

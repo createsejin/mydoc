@@ -1,16 +1,8 @@
 #!/bin/bash
 shopt -s dotglob
 
-get_first_dir() {
-  local path=$1
-  local first_dir=$(echo $path | cut -d'/' -f1)
-  echo $first_dir
-}
-
 exclude_dir() {
   path="$1"
-  first_dir=$(get_first_dir $path)
-  mv $first_dir delete
   mkdir -p "$path"
   mv delete/"$path"/* "$path"
 }
