@@ -6,11 +6,18 @@ total 4106608
 -rw-r--r-- 1 root root         81 Mar 19 15:50 lists.txt
 input backup version name: 2024-03-19-005
 This job takes a lot of time. please wait for finish.
+
 mkdir: cannot create directory ‘delete’: File exists
+
 mv: cannot move 'delete' to a subdirectory of itself, 'delete/delete'
+
 ./arch_backpu_restore: line 10: /mnt/home/bae/Documents/_exc.txt: No such file or directory
+
 pv: failed to read file: /mnt/opt/sysback/arch-full-2024-03-19-005.tar.gz: No such file or 
 directory
+
 pbzip2: producer_decompress: *ERROR: when reading bzip2 input stream
+
 Terminator thread: premature exit requested - quitting...
+
 Job finished. ■

@@ -17,35 +17,30 @@ exclude_dirs() {
   done < "$path"
 }
 
-delete_and_move() {
+move_to_delete() {
   local exclude_path=$1
   mkdir delete
   mv * delete
   exclude_dirs $exclude_path
-  rm -rf delete
 }
 
 # Backup destination
-backdest=/opt/sysback
+backdest=/mnt/opt/sysback
 
 # Labels for backup name
 distro=arch
 type=full
 
-# Check if chrooted prompt.
-echo -n "First chroot from a LiveCD.  Are you ready to restore? (y/n): "
-read executeback
-
 # Check file name
-ls -l /opt/sysback
+ls -l /mnt/opt/sysback
 echo -n "input backup version name: "
 read version
 
 backupfile="$backdest/$distro-$type-$version.tar.gz"
 
 # Exclude file location
-excdir="/home/bae/Documents"
-exclude_file="$excdir/${prog}_exc.txt"
+excdir="/mnt/home/bae/Documents"
+exclude_file="$excdir/arch_backup_exc.txt"
 
 check_file_exist() {
   if [ -f "$1" ]; then
@@ -58,11 +53,12 @@ check_file_exist() {
 check_file_exist "$backupfile"
 backupfile_exist=$?
 
-if [ $backupfile_exist -eq 1 ] && [ $executeback = "y" ]; then
-  cd /
+if [ $backupfile_exist -eq 1 ]; then
+  cd /mnt
   echo "This job takes a lot of time. please wait for finish."
-  delete_and_move $exclude_file
+  move_to_delete $exclude_file
   pv "$backupfile" | pbzip2 -dc | bsdtar --acls --xattrs -xpzf -
+  rm -rf delete
   echo -e "Job finished. \u25A0"
 else
   echo -e "The backupfile doesn't exist. \u25A1"
