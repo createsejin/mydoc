@@ -38,7 +38,7 @@ if [ "$1" = "restore2" ]; then
   cp -r test_root2/home test_root3
   cp -r test_root2/etc test_root3
   cp -r test_root2/tmp test_root3
-fi
+fi #rest1
 if [ "$1" = "restore3" ]; then
   cd /mnt/home/bae/Downloads 
   cp -r test_root3_ba/* test_root3
