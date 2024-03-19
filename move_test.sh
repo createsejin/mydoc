@@ -35,9 +35,20 @@ delete_and_move() {
 exc_file="/mnt/home/bae/Documents/test_delete_exc.txt"
 
 if [ "$1" = "test01" ]; then
-  cd /mnt/home/bae/Downloads/test_root2
-   
+  cd /mnt/home/bae/Downloads/test_root3
+  delete_and_move $exc_file
 fi
 if [ "$1" = "restore" ]; then
   /mnt/home/bae/Documents/test_delete2.sh restore_test11
 fi
+if [ "$1" = "restore2" ]; then
+  cd /mnt/home/bae/Downloads
+  cp -r test_root2/home test_root3
+  cp -r test_root2/etc test_root3
+  cp -r test_root2/tmp test_root3
+fi
+if [ "$1" = "restore3" ]; then
+  cd /mnt/home/bae/Downloads 
+  cp -r test_root3_ba/* test_root3
+fi
+
