@@ -1,0 +1,3 @@
+#!/bin/bash
+cd /home/test
+bsdtar --acls --xattrs -cpaf /home/backup/test001.tar.gz .

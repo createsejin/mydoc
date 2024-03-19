@@ -1,0 +1,72 @@
+#!/bin/bash
+# full system backup
+
+shopt -s dotglob
+
+check_file_exist() {
+  if [ -f "$1" ]; then
+    return 1
+  else
+    return 0
+  fi
+}
+
+# Backup destination
+backdest=/opt/sysback
+
+# Labels for backup name
+#PC=${HOSTNAME}
+#pc=pavilion
+distro="arch"
+type="full"
+date=$(date "+%F")
+
+# Exclude file location
+prog=${0##*/} # Program name from filename
+excdir="/home/bae/Documents"
+exclude_file="$excdir/${prog}_exc.txt"
+
+# Check if chrooted prompt.
+echo -n "First chroot from a LiveCD.  Are you ready to backup? (y/n): "
+read executeback
+
+# Check if exclude file exists
+if [ ! -f $exclude_file ]; then
+  echo -n "No exclude file exists, continue? (y/n): "
+  read continue
+  if [ $continue == "n" ]; then exit; fi
+fi
+
+if [ $executeback = "y" ]; then
+  while true; do
+    echo "file number?"
+    read filenum
+
+    if [[ $filenum =~ ^[0-9]+$ ]]; then
+      break
+    else
+      echo "Invaild input. Please input a number."
+    fi
+  done    
+fi
+
+formatted_filenum=$(printf "%03d" $filenum)
+backupfile="$backdest/$distro-$type-$date-$formatted_filenum.tar.gz"
+check_file_exist "$backupfile"
+backupfile_exist=$?
+if [ $backupfile_exist -eq 1 ]; then
+  echo "$backupfile already exist."
+  echo "Backup process canceled."
+else
+  # -p, --acls and --xattrs store all permissions, ACLs and extended attributes.
+  # Without both of these, many programs will stop working!
+  # It is safe to remove the verbose (-v) flag. If you are using a
+  # slow terminal, this can greatly speed up the backup process.
+  # Use bsdtar because GNU tar will not preserve extended attributes.
+  echo "This job takes a lot of time. please wait for finish."
+  cd /
+  bsdtar --exclude-from="$exclude_file" \
+    --acls --xattrs -cpaf - . | pv -s $(du -sb . | awk '{print $1}') \
+    | pbzip2 > "$backupfile"
+  echo -e "Job finished. \u25A0"
+fi

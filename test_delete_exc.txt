@@ -1,0 +1,5 @@
+etc/pacman.d/gnupg
+tmp
+
+# home contents
+home/bae/Documents

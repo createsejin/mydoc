@@ -1,0 +1,24 @@
+# Not gnupg
+etc/pacman.d/gnupg
+# Not backups files
+opt/sysback
+
+# Not temporary files
+tmp
+proc
+sys
+dev
+
+# Not the cache for pacman
+var/cache/pacman/pkg
+
+# home contents
+home/bae/Desktop
+home/bae/Downloads
+home/bae/Documents
+home/bae/Music
+home/bae/Pictures
+home/bae/Videos
+home/bae/Projects
+home/bae/Public
+home/bae/Templates

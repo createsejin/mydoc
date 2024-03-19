@@ -1,0 +1,6 @@
+: etc/pacman.d/gnupg/S.gpg-agent.ssh: pax format cannot archive sockets
+: etc/pacman.d/gnupg/S.keyboxd: pax format cannot archive sockets
+: etc/pacman.d/gnupg/S.gpg-agent.extra: pax format cannot archive sockets
+: etc/pacman.d/gnupg/S.dirmngr: pax format cannot archive sockets
+: etc/pacman.d/gnupg/S.gpg-agent: pax format cannot archive sockets
+: etc/pacman.d/gnupg/S.gpg-agent.browser: pax format cannot archive sockets

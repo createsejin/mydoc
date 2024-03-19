@@ -1,0 +1,32 @@
+#!/bin/bash
+#mount /dev/Files/root /mnt
+
+setfont ter-u18b.psf.gz -m 8859-2
+echo "console font set."
+
+ln -s /mnt/home/bae/.bashrc /root/.bashrc
+source /root/.bashrc
+echo ".bashrc linked and set."
+
+mkdir -p /root/.config/nvim
+ln -s /mnt/home/bae/.config/nvim/init.vim /root/.config/nvim/init.vim
+echo "init.vim linked."
+
+iwctl station wlan0 scan
+iwctl station wlan0 get-networks
+iwctl station wlan0 connect SK_WiFiGIGAD61C_5G
+echo -e "wifi connected. \u25A0"
+
+timedatectl set-ntp true
+timedatectl set-timezone Asia/Seoul
+echo "timezone set."
+
+echo "Finding fastest mirror server lists."
+echo "This job take a lot of time. Wait for finish."
+reflector -c "South Korea" -a 12 --sort rate \
+--save /etc/pacman.d/mirrorlist
+echo -e "Job finished. \u25A0"
+
+pacman -Sy neovim pbzip2
+echo -e "neovim, pbzip2 installed. \u25A0"
+echo "All jobs done."

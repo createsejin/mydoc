@@ -1,0 +1,21 @@
+--absolute path -> not good for safe
+bsdtar --acls --xattrs -cpaf /home/bae/Documents/test006.tar.gz -P /home/bae/Downloads
+bsdtar --acls --xattrs -xpzf /home/bae/Documents/test006.tar.gz -C / 
+
+--relative path -> better method than upon for safe
+bsdtar --acls --xattrs -cpaf /home/bae/Documents/test004.tar.gz bae/Downloads
+bsdtar --acls --xattrs -xpzf /home/bae/Documents/test004.tar.gz bae/Downloads
+
+--current directory
+bsdtar --acls --xattrs -cpaf /home/bae/Documents/test005.tar.gz .
+bsdtar --acls --xattrs -xpzf /home/bae/Documents/test006.tar.gz 
+
+--using pbzip2 for parallel compress
+
+bsdtar --exclude-from="/home/bae/Documents/test_exc.txt" \
+--acls --xattrs --use-compress-prog=pbzip2 \
+-cpavf /home/bae/Documents/test007.tar.gz etc
+
+bsdtar --acls --xattrs -xpzf /home/bae/Documents/test006.tar.gz 
+
+bsdtar --use-compress-prog=pbzip2 -cf /home/bae/Documents/test007_etc.tar.gz etc
