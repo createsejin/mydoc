@@ -21,7 +21,9 @@ move_to_delete() {
   local exclude_path=$1
   mkdir delete
   mv * delete
-  exclude_dirs $exclude_path
+  cp delete/$exclude_path .
+  exc_file=$(basename $exclude_path)
+  exclude_dirs $exc_file
 }
 
 # Backup destination
