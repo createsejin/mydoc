@@ -19,6 +19,7 @@ exclude_dirs() {
 
 move_to_delete() {
   local exclude_path=$1
+  # It's so so so dangerous command!! dont do it !
   mkdir delete
   mv * delete
   cp delete/$exclude_path .
