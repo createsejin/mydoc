@@ -17,15 +17,15 @@ exclude_dirs() {
   done < "$path"
 }
 
-move_to_delete() {
-  local exclude_path=$1
-  # It's so so so dangerous command!! dont do it !
-  mkdir delete
-  mv * delete
-  cp delete/$exclude_path .
-  exc_file=$(basename $exclude_path)
-  exclude_dirs $exc_file
-}
+#move_to_delete() {
+#  local exclude_path=$1
+#  # It's so so so dangerous command!! dont do it !
+#  mkdir delete
+#  mv * delete
+#  cp delete/$exclude_path .
+#  exc_file=$(basename $exclude_path)
+#  exclude_dirs $exc_file
+#}
 
 # Backup destination
 backdest=/mnt/opt/sysback
