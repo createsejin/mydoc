@@ -5,6 +5,8 @@ lsblk | grep "n1p6" -A 12
 sudo lvdisplay | grep "Files/snap" -A 20
 # check Free space in Volume Group
 sudo vgs
+# resize snapshot
+sudo lvresize -L 1.5G --resizefs Files/snap_2024-03-21-003
 
 # create snapshot
 sudo lvcreate --size 5.3G --snapshot --name snap_2024-03-21-003 /dev/Files/root
