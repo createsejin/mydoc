@@ -1,8 +1,10 @@
-# check LVM
+# check LVM snapshot
 lsblk | grep "n1p6" -A 12
 # frequently check capacity of snapshot 
 # because snapshot will fill origin files when they have been changed.
 sudo lvdisplay | grep "Files/snap" -A 20
+# check Free space in Volume Group
+sudo vgs
 
 # create snapshot
 sudo lvcreate --size 5.3G --snapshot --name snap_2024-03-21-003 /dev/Files/root
