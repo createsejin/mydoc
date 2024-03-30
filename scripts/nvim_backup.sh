@@ -1,11 +1,5 @@
 #!/bin/bash
 shopt -s dotglob
-if [ "$1" = "restore2" ]; then
-  cd /home/bae/.config/nvim.test2
-  rm -rf *
-  cd ..
-  cp -r nvim.test/* nvim.test2
-fi
 if [ "$1" = "copy" ]; then
   # delete previous files
   cd /home/bae/.config/nvim.bak
@@ -21,6 +15,12 @@ if [ "$1" = "copy" ]; then
   mv .git .gitignore my_old_init ../
   cd ..
   rm -rf delete
+fi
+if [ "$1" = "restore2" ]; then
+  cd /home/bae/.config/nvim.test2
+  rm -rf *
+  cd ..
+  cp -r nvim.test/* nvim.test2
 fi
 if [ "$1" = "zip" ]; then
   cd /home/bae/.config/nvim.test2
