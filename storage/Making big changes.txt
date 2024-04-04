@@ -4,8 +4,7 @@ line 33
 line 11		
 line 22		
 line 44		
-last line	
-
+last line	dddf
 Fri Mar 29 10:29:18 PM KST 2024
 
 Professor Smith criticized Professor Johnson today.
@@ -40,4 +39,11 @@ OcamelCase
 short
 Any other new text
 I'm very happy guy. Because of you. my daling.
+2,
+dfdfdf()
 
+#ifdef USE_POPEN 
+    fd = popen("ls", "r") 
+#else 
+    fd = fopen("tmp", "w") 
+#endif 
