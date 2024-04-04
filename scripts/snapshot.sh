@@ -7,7 +7,7 @@ sudo lvdisplay | grep "Files/snap" -A 20
 # check Free space in Volume Group
 sudo vgs
 # resize snapshot
-sudo lvresize -L +1.5G --resizefs Files/snap_2024-03-21-003
+sudo lvresize -L +2.8G --resizefs Files/snap_2024-04-01-001
 
 # create snapshot
 sudo lvcreate --size 16.5G --snapshot --name snap_2024-04-01-001 /dev/Files/root
