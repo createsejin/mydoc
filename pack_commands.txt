@@ -1,0 +1,22 @@
+# Pack009
+sudo veracrypt -t -m ro -k "" --pim=0 --protect-hidden=no /media/bae/D2D0C394D0C37D6B/Packs/Pack009_2023-04-13_001.hc /mnt/pack009
+sudo veracrypt -t -m ro -k "" --pim=0 --protect-hidden=no /mnt/gdrive/1.창고/정보/Packs/Pack009_2024-01-02_001.hc /mnt/pack009
+sudo veracrypt -d /media/bae/D2D0C394D0C37D6B/Packs/Pack009_2023-04-13_001.hc
+
+# Pack010
+sudo veracrypt -t -m ro -k /mnt/pack009/Keyfiles/Pack010 --pim=0 --protect-hidden=no /media/bae/D2D0C394D0C37D6B/Packs/Pack010_2023-04-14_001.hc /mnt/pack010
+sudo veracrypt -t -k /mnt/pack009/Keyfiles/Pack010 --pim=0 --protect-hidden=no /media/bae/D2D0C394D0C37D6B/Packs/Pack010_2023-04-14_001.hc /mnt/pack010
+sudo veracrypt -d /media/bae/D2D0C394D0C37D6B/Packs/Pack010_2023-04-14_001.hc
+
+# Pack005
+sudo veracrypt -t -k /mnt/pack009/Keyfiles/Pack005 --pim=0 --protect-hidden=no /media/bae/D2D0C394D0C37D6B/Packs/Pack005_2023-03-30_000.hc /mnt/pack005
+sudo veracrypt -d /media/bae/D2D0C394D0C37D6B/Packs/Pack005_2023-03-30_000.hc
+
+# HDD
+sudo veracrypt -t -k /mnt/pack009/Keyfiles/diskS --pim=0 --protect-hidden=no /dev/sde2 /media/S
+sudo veracrypt -t -k /mnt/pack009/Keyfiles/diskF --pim=0 --protect-hidden=no /dev/sdc2 /media/F
+sudo veracrypt -t -k /mnt/pack009/Keyfiles/diskP02 --pim=0 --protect-hidden=no /dev/sdd2 /media/P
+
+# 모든 마운트 해제. 
+sudo veracrypt -d
+
