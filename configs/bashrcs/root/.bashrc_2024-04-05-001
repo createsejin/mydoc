@@ -11,11 +11,14 @@ alias du='du -h -a -d 1'
 alias poweroff='systemctl poweroff'
 alias rm='rm -rf'
 alias cp='cp -r'
+alias rp='realpath'
+
 alias vim=nvim
 alias vimt='nvim -u /home/bae/.config/nvim/my_old_init/init.vim'
 
 shopt -s dotglob
 
+export GPG_TTY=$(tty)
 export MANPAGER='nvim -u /home/bae/.config/nvim/my_old_init/init.vim +Man!'
 
 ##########################################################
