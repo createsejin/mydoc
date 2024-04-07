@@ -10,10 +10,10 @@ sudo vgs
 sudo lvresize -L +2.8G --resizefs Files/snap_2024-04-01-001
 
 # create snapshot
-sudo lvcreate --size 16.5G --snapshot --name snap_2024-04-01-001 /dev/Files/root
+sudo lvcreate --size 21.5G --snapshot --name snap_2024-04-06-001 /dev/Files/root
 
 # delete snapshot
-sudo lvremove Files/snap_2024-03-21-003
+sudo lvremove Files/snap_2024-04-01-001
 
 # revert system from snapshot
 sudo lvconvert --merge Files/snap_2024-03-21-003
