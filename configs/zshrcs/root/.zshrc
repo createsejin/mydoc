@@ -28,9 +28,8 @@ export GPG_TTY=$(tty)
 export GCM_CREDENTIAL_STORE="gpg"
 
 export QT_QPA_PLATFORM="wayland;xcb"
-export GLOB_PATTERN="**/*@(.sh|.inc|.bash|.command|.zsh|zshrc|zsh_*)"
 
-. "$HOME/.cargo/env"
+. "/home/bae/.cargo/env"
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
