@@ -1,0 +1,7 @@
+arg002
+/home/bae/.zshrc
+/home/bae/.config/hypr/hyprland.conf
+/home/bae/Downloads/hyprland-starter/install.sh
+/home/bae/Documents/scripts/snapshot.sh
+suda:///etc/pacman.d/hooks/95-bootbackup_pre.hook
+suda:///etc/pacman.d/hooks/95-bootbackup_post.hook  
