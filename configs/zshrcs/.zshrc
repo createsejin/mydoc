@@ -21,6 +21,7 @@ alias rp='realpath'
 
 alias vim=nvim
 alias vimt='nvim -u /home/bae/.config/nvim/my_old_init/init.vim'
+alias tx='tmux'
 
 export MANPAGER='nvim -u /home/bae/.config/nvim/my_old_init/init.vim +Man!'
 
@@ -35,3 +36,25 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# command completion
+autoload -Uz compinit
+compinit
+
+zstyle ':completion:*' menu select
+zstyle ':completion::complete:*' gain-privileges 1
+
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
+[[ -n "${key[Up]}"   ]] && bindkey -- "${key[Up]}"   up-line-or-beginning-search
+[[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-beginning-search
+
+bindkey  "^[[H"   beginning-of-line
+bindkey  "^[[1~"   beginning-of-line
+bindkey  "^[[F"   end-of-line
+bindkey  "^[[4~"   end-of-line
+bindkey  "^[[3~"  delete-char
+
+export TMUX_TMPDIR="/home/bae/.tmux"

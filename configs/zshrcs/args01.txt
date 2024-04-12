@@ -1,0 +1,4 @@
+/home/bae/.zshrc
+suda:///root/.zshrc
+/home/bae/.zprofile
+suda:///root/.zprofile
