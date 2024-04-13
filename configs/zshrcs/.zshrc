@@ -26,10 +26,11 @@ alias tx='tmux'
 export MANPAGER='nvim -u /home/bae/.config/nvim/my_old_init/init.vim +Man!'
 
 export GPG_TTY=$(tty)
-export GCM_CREDENTIAL_STORE="gpg"
 
 export QT_QPA_PLATFORM="wayland;xcb"
 export GLOB_PATTERN="**/*@(.sh|.inc|.bash|.command|.zsh|zshrc|zsh_*)"
+
+export XDG_CONFIG_HOME="$HOME/.config"
 
 . "$HOME/.cargo/env"
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
@@ -56,5 +57,3 @@ bindkey  "^[[1~"   beginning-of-line
 bindkey  "^[[F"   end-of-line
 bindkey  "^[[4~"   end-of-line
 bindkey  "^[[3~"  delete-char
-
-export TMUX_TMPDIR="/home/bae/.tmux"

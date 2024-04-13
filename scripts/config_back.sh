@@ -8,7 +8,7 @@ if [ -z "$1" ]; then
   cp .zshrc .zprofile .p10k.zsh \
     $configs/zshrcs
   cp .bashrc $configs/bashrcs/bae
-  sudo cp -r .tmux $configs
+  sudo cp -r .tmux .xinitrc $configs
   cp .config/rustfmt/rustfmt.toml $configs/rustfmt
 fi
 
