@@ -36,11 +36,11 @@ twm &
 xclock -geometry 50x50-1+1 &
 xterm -geometry 80x50+494+51 &
 xterm -geometry 80x20+494-0 &
-export GTK_IM_MODULE='uim'
-export QT_IM_MODULE='uim'
-uim-xim &
-export XMODIFIERS='@im=uim'
-uim-toolbar-gtk3-systray &
+export GTK_IM_MODULE='fcitx'
+export QT_IM_MODULE='fcitx'
+export XMODIFIERS='@im=fcitx'
+# uim-xim &
+# uim-toolbar-gtk3-systray &
 
 exec xterm -geometry 80x66+0+0 -name login
 # exec leftwm
