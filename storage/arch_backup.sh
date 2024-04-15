@@ -11,8 +11,12 @@ check_file_exist() {
   fi
 }
 
+# mount sys_back
+echo "mount Files/sys_back partition"
+mount --mkdir /dev/Files/sys_back /mnt/sys_back
+
 # Backup destination
-backdest="/mnt/opt/sysback"
+backdest="/mnt/sys_back"
 
 # Labels for backup name
 distro="arch"
@@ -20,7 +24,7 @@ type="full"
 date=$(date "+%F")
 
 # Exclude file location
-excdir="/mnt/home/bae/Documents"
+excdir="/mnt/sys_back"
 exclude_file="$excdir/arch_backup_exc.txt"
 
 # Check if exclude file exists

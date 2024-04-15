@@ -10,7 +10,7 @@ sudo vgs
 sudo lvresize -L +2.8G --resizefs Files/snap_2024-04-01-001
 
 # create snapshot
-sudo lvcreate --size 20G --snapshot --name snap_2024-04-14-003 /dev/Files/root
+sudo lvcreate --size 4.5G --snapshot --name snap_2024-04-15-001_minimal /dev/Files/root
 
 # delete snapshot
 sudo lvremove Files/snap_2024-04-01-001

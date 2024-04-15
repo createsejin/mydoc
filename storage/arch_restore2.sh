@@ -19,7 +19,7 @@ exclude_dirs() {
 
 move_to_delete() {
   local exclude_path=$1
-  # It's so so so dangerous command!! dont do it !
+  # It's very very dangerous command!! be careful!!
   mkdir delete
   mv * delete
   cp delete/$exclude_path .
@@ -27,8 +27,13 @@ move_to_delete() {
   exclude_dirs $exc_file
 }
 
-# Backup destination
-backdest=/mnt/opt/sysback
+
+# Backup source
+backdest="/mnt/sys_back"
+
+# Exclude file location
+excdir="/mnt/sys_back"
+exclude_file="$excdir/arch_backup_exc.txt"
 
 # Labels for backup name
 distro=arch
@@ -40,10 +45,6 @@ echo -n "input backup version name: "
 read version
 
 backupfile="$backdest/$distro-$type-$version.tar.gz"
-
-# Exclude file location
-excdir="/mnt/sys_back"
-exclude_file="$excdir/arch_backup_exc.txt"
 
 check_file_exist() {
   if [ -f "$1" ]; then
@@ -58,11 +59,7 @@ backupfile_exist=$?
 
 if [ $backupfile_exist -eq 1 ]; then
   cd /mnt
-  echo "This job takes a lot of time. please wait for finish."
   move_to_delete $exclude_file
-  pv "$backupfile" | pbzip2 -dc | bsdtar --acls --xattrs -xpzf -
-  rm -rf delete
-  echo -e "Job finished. \u25A0"
-else
-  echo -e "The backupfile doesn't exist. \u25A1"
+  echo "This job takes a lot of time. please wait for finish."
+  pv "$backupfile" | pbzip2 -dc | bsdtar --acls --xattrs -xpzf - 
 fi
