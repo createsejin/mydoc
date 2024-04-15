@@ -9,6 +9,12 @@ iwctl station wlan0 get-networks
 iwctl station wlan0 connect SK_WiFiGIGAD61C_5G
 echo "wifi connected."
 
+echo "Finding fastest mirror server lists."
+echo "This job take a lot of time. Wait for finish."
+reflector -c "South Korea" -a 12 --sort rate \
+--save /etc/pacman.d/mirrorlist
+echo "Job finished."
+
 pacman -Sy neovim pbzip2 git curl
 echo "neovim, pbzip2, git, curl installed."
 
@@ -24,11 +30,5 @@ echo "nvimt git cloned."
 timedatectl set-ntp true
 timedatectl set-timezone Asia/Seoul
 echo "timezone set."
-
-echo "Finding fastest mirror server lists."
-echo "This job take a lot of time. Wait for finish."
-reflector -c "South Korea" -a 12 --sort rate \
---save /etc/pacman.d/mirrorlist
-echo "Job finished."
 
 echo -e "All jobs done. \u25A0"
