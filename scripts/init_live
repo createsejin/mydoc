@@ -1,11 +1,9 @@
 #!/bin/bash
-#mount /dev/Files/root /mnt
+#mount /dev/Files/root /mnt/root
 
 setfont ter-u18b.psf.gz -m 8859-2
 echo "console font set."
 
-iwctl station wlan0 scan
-iwctl station wlan0 get-networks
 iwctl station wlan0 connect SK_WiFiGIGAD61C_5G
 echo "wifi connected."
 
@@ -15,27 +13,44 @@ reflector -c "South Korea" -a 12 --sort rate \
 --save /etc/pacman.d/mirrorlist
 echo "Job finished."
 
-pacman -Sy neovim pbzip2 git curl tmux
-echo "neovim, pbzip2, git, curl, tmux installed."
+pacman -Sy neovim pbzip2 git curl tmux zsh
+echo "neovim, pbzip2, git, curl, tmux zsh installed."
 
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 echo "vim-plug installed."
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+echo "oh-my-zsh installed."
+
 cd
 mkdir -p .config/nvim
 cd .config/nvim
 git clone https://github.com/createsejin/nvimt .
 echo "nvimt git cloned."
 
-mkdir ~/.config/tmux
-cp tmux.conf ~/.config/tmux/
-echo "tmux.conf file copyed."
+cd
+ln -s -r .config/nvim/.zshrc .zshrc
+source .zshrc
+echo ".zshrc sourced."
 
+cd
+mkdir -p .config/tmux
+cd .config/tmux
+ln -s ~/.config/nvim/tmux.conf tmux.conf 
+echo "tmux.conf file linked."
+
+cd
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 echo "tpm installed"
+
+tmux source-file ~/.config/tmux/tmux.conf
+echo "tmux.conf sourced."
 
 timedatectl set-ntp true
 timedatectl set-timezone Asia/Seoul
 echo "timezone set."
 
 echo -e "All jobs done. \u25A0"
+
+echo -e "\nYou should install tmux plugins by attaching the tmux session and press '<prefix>I'"
