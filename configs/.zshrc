@@ -106,13 +106,14 @@ source $ZSH/oh-my-zsh.sh
 # setopt dotglob
 setopt GLOB_DOTS
 
-alias ls='ls -A --color=auto'
+alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias du='du -h -a -d 1'
 alias poweroff='systemctl poweroff'
 alias rm='rm -rf'
 alias cp='cp -r'
 alias rp='realpath'
+alias rpr='realpath --relative-to=$(pwd)'
 
 alias vim=nvim
 alias vimt='nvim -u /home/bae/.config/nvim/my_old_init/init.vim'

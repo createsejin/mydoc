@@ -60,7 +60,7 @@ ENABLE_CORRECTION="true"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-HIST_STAMPS="yyyy-mm-dd"
+# HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -119,10 +119,11 @@ alias vimt='nvim -u /home/bae/.config/nvim/my_old_init/init.vim'
 alias tx='tmux'
 
 export MANPAGER='nvim -u /home/bae/.config/nvim/my_old_init/init.vim +Man!'
-
 export QT_QPA_PLATFORM="wayland;xcb"
+export GLOB_PATTERN="**/*@(.sh|.inc|.bash|.command|.zsh|zshrc|zsh_*)"
+export XDG_CONFIG_HOME="$HOME/.config"
 
-. "/home/bae/.cargo/env"
+. "$HOME/.cargo/env"
 
 autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
 zle -N up-line-or-beginning-search
