@@ -1,1 +1,0 @@
-ln -s -r Documents/configs/.zshrc .zshrc
