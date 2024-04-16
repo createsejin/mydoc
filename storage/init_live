@@ -15,8 +15,8 @@ reflector -c "South Korea" -a 12 --sort rate \
 --save /etc/pacman.d/mirrorlist
 echo "Job finished."
 
-pacman -Sy neovim pbzip2 git curl
-echo "neovim, pbzip2, git, curl installed."
+pacman -Sy neovim pbzip2 git curl tmux
+echo "neovim, pbzip2, git, curl, tmux installed."
 
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -26,6 +26,10 @@ mkdir -p .config/nvim
 cd .config/nvim
 git clone https://github.com/createsejin/nvimt .
 echo "nvimt git cloned."
+
+mkdir ~/.config/tmux
+cp tmux.conf ~/.config/tmux
+echo "tmux.conf file copyed."
 
 timedatectl set-ntp true
 timedatectl set-timezone Asia/Seoul
