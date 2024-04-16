@@ -28,7 +28,7 @@ git clone https://github.com/createsejin/nvimt .
 echo "nvimt git cloned."
 
 mkdir ~/.config/tmux
-cp tmux.conf ~/.config/tmux
+cp tmux.conf ~/.config/tmux/
 echo "tmux.conf file copyed."
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
