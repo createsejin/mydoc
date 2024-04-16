@@ -1,1 +1,1 @@
-ln -r Documents/configs/.zshrc .zshrc
+ln -s -r Documents/configs/.zshrc .zshrc
