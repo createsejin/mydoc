@@ -31,6 +31,9 @@ mkdir ~/.config/tmux
 cp tmux.conf ~/.config/tmux
 echo "tmux.conf file copyed."
 
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+echo "tpm installed"
+
 timedatectl set-ntp true
 timedatectl set-timezone Asia/Seoul
 echo "timezone set."
