@@ -14,26 +14,30 @@ else
   set shortmess=aoO
 endif
 badd +1 ~/git.txt
-badd +1 configs/.zshrc
-badd +1 ~/.config/tmux/tmux.conf
+badd +142 configs/.zshrc
+badd +58 ~/.config/tmux/tmux.conf
 badd +16 ~/.config/nvim/init_live
 badd +17 ~/.config/nvim/init.vim
-badd +1 ~/Documents/configs/.oh-my-zsh/themes/xiong-chiamiov-plus.zsh-theme
+badd +1 configs/.oh-my-zsh/themes/xiong-chiamiov-plus.zsh-theme
 badd +1 suda:///home/bae/Documents/root_configs/.oh-my-zsh/themes/xiong-chiamiov-plus.zsh-theme
-badd +1 ~/Documents/root_configs/copy.sh
+badd +2 root_configs/copy.sh
 badd +5 arg-nvim_config
-badd +51 ~/Documents/scripts/init_live
+badd +56 scripts/init_live
 badd +4 term://~/Documents//2713:/usr/bin/zsh
+badd +140 root_configs/.zshrc
+badd +5 scripts/du.sh
+badd +0 scripts/.scripts/du.sh
 argglobal
 %argdel
 $argadd ~/git.txt
 $argadd configs/.zshrc
+$argadd root_configs/.zshrc
 $argadd ~/.config/tmux/tmux.conf
-$argadd ~/Documents/scripts/init_live
-$argadd ~/.config/nvim/init.vim
-$argadd ~/Documents/configs/.oh-my-zsh/themes/xiong-chiamiov-plus.zsh-theme
-$argadd suda:///home/bae/Documents/root_configs/.oh-my-zsh/themes/xiong-chiamiov-plus.zsh-theme
-edit ~/.config/tmux/tmux.conf
+$argadd scripts/init_live
+$argadd root_configs/copy.sh
+$argadd scripts/du.sh
+$argadd scripts/.scripts/du.sh
+edit ~/git.txt
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -50,34 +54,10 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 95 + 96) / 192)
-exe 'vert 2resize ' . ((&columns * 96 + 96) / 192)
+exe 'vert 1resize ' . ((&columns * 96 + 96) / 192)
+exe 'vert 2resize ' . ((&columns * 95 + 96) / 192)
 argglobal
-if bufexists(fnamemodify("~/.config/tmux/tmux.conf", ":p")) | buffer ~/.config/tmux/tmux.conf | else | edit ~/.config/tmux/tmux.conf | endif
-if &buftype ==# 'terminal'
-  silent file ~/.config/tmux/tmux.conf
-endif
-balt ~/git.txt
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 8 - ((7 * winheight(0) + 28) / 57)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 8
-normal! 0
-wincmd w
-argglobal
-4argu
-balt ~/.config/nvim/init.vim
+balt root_configs/copy.sh
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -94,10 +74,32 @@ keepjumps exe s:l
 normal! zt
 keepjumps 1
 normal! 0
+lcd ~/Documents
+wincmd w
+argglobal
+8argu
+balt ~/Documents/scripts/du.sh
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 1 - ((0 * winheight(0) + 28) / 57)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 1
+normal! 0
+lcd ~/Documents
 wincmd w
 2wincmd w
-exe 'vert 1resize ' . ((&columns * 95 + 96) / 192)
-exe 'vert 2resize ' . ((&columns * 96 + 96) / 192)
+exe 'vert 1resize ' . ((&columns * 96 + 96) / 192)
+exe 'vert 2resize ' . ((&columns * 95 + 96) / 192)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -113,6 +115,7 @@ if filereadable(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
+nohlsearch
 let g:this_session = v:this_session
 let g:this_obsession = v:this_session
 doautoall SessionLoadPost

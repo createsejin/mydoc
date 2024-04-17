@@ -116,10 +116,10 @@ alias rp='realpath'
 alias rpr='realpath --relative-to=$(pwd)'
 
 alias vim=nvim
-alias vimt='nvim -u /home/bae/.config/nvim/my_old_init/init.vim'
+alias vimt='nvim -u /home/bae/.config/nvimt/init.vim'
 alias tx='tmux'
 
-export MANPAGER='nvim -u /home/bae/.config/nvim/my_old_init/init.vim +Man!'
+export MANPAGER='nvim -u /home/bae/.config/nvimt/init.vim +Man!'
 export QT_QPA_PLATFORM="wayland;xcb"
 export GLOB_PATTERN="**/*@(.sh|.inc|.bash|.command|.zsh|zshrc|zsh_*)"
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -138,3 +138,5 @@ bindkey  "^[[1~"   beginning-of-line
 bindkey  "^[[F"   end-of-line
 bindkey  "^[[4~"   end-of-line
 bindkey  "^[[3~"  delete-char
+
+export PATH="/home/bae/Documents/scripts/.scripts:$PATH"
