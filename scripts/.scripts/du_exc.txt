@@ -1,0 +1,8 @@
+/home
+/proc
+/run
+/mnt
+/tmp
+/sys
+/dev
+/swapfile

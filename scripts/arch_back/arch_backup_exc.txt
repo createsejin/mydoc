@@ -1,0 +1,17 @@
+# Not gnupg
+etc/pacman.d/gnupg
+
+# Not mnt
+mnt
+
+# Not temporary files
+tmp
+proc
+sys
+dev
+
+# Not the cache for pacman
+var/cache/pacman/pkg
+
+# home contents
+home

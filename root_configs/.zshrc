@@ -113,6 +113,7 @@ alias poweroff='systemctl poweroff'
 alias rm='rm -rf'
 alias cp='cp -r'
 alias rp='realpath'
+alias cds='cd /home/bae/Documents/scripts/.scripts'
 
 alias vim=nvim
 alias vimt='nvim -u /root/.config/nvimt/init.vim'

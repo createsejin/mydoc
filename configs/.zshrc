@@ -114,6 +114,7 @@ alias rm='rm -rf'
 alias cp='cp -r'
 alias rp='realpath'
 alias rpr='realpath --relative-to=$(pwd)'
+alias cds='cd /home/bae/Documents/scripts/.scripts'
 
 alias vim=nvim
 alias vimt='nvim -u /home/bae/.config/nvimt/init.vim'
