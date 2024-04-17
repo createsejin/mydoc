@@ -9,4 +9,5 @@ fi
 if [ "$1" = "arch_back" ]; then
   echo "arch_back scripts copy"
 fi
+# TODO: copy to nvimt, tmux conf files
 
