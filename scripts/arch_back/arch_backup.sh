@@ -58,7 +58,7 @@ else
   # slow terminal, this can greatly speed up the backup process.
   # Use bsdtar because GNU tar will not preserve extended attributes.
   echo "This job takes a lot of time. please wait for finish."
-  cd /mnt
+  cd /mnt/root
   bsdtar --exclude-from="$exclude_file" \
     --acls --xattrs -cpaf - . | pv -s $(du -sb . | awk '{print $1}') \
     | pbzip2 > "$backupfile"

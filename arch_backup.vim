@@ -122,7 +122,7 @@ normal! zt
 keepjumps 1
 normal! 0
 lcd ~/Documents
-tabnext 1
+tabnext 2
 set stal=1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -137,8 +137,6 @@ endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
 nohlsearch
-let g:this_session = v:this_session
-let g:this_obsession = v:this_session
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :
