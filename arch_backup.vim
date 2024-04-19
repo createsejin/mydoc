@@ -14,24 +14,23 @@ else
   set shortmess=aoO
 endif
 badd +1 ~/.config/tmux/tmux.conf
-badd +94 ~/.config/nvim/init.vim
-badd +1 scripts/init_live
+badd +30 ~/.config/nvim/init.vim
+badd +4 scripts/init_live
 badd +5 scripts/.scripts/du.sh
-badd +7 scripts/.scripts/copy_config.sh
+badd +13 scripts/.scripts/copy_config.sh
 badd +1 ~/git.txt
-badd +102 configs/.zshrc
+badd +104 configs/.zshrc
 badd +1 root_configs/.zshrc
-badd +1 test
-badd +1 test2
-badd +1 test3
 badd +17 ~/.config/nvimt/init.vim
 badd +6 ~/.gitconfig
-badd +17 suda:///root/.config/nvimt/init.vim
 badd +1 test1
-badd +10 scripts/arch_back/arch_backup.sh
+badd +30 scripts/arch_back/arch_backup.sh
 badd +1 scripts/arch_back/arch_restore.sh
-badd +1 scripts/arch_back/arch_backup_exc.txt
-badd +1 test6
+badd +17 scripts/arch_back/arch_backup_exc.txt
+badd +7 scripts/arch_back/find_test.sh
+badd +2 scripts/arch_back/test_exc.txt
+badd +1 ~/.config/nvimt/tmux.conf
+badd +1 test2
 argglobal
 %argdel
 $argadd ~/git.txt
@@ -46,11 +45,8 @@ tabnew +setlocal\ bufhidden=wipe
 tabrewind
 edit ~/.config/nvim/init.vim
 argglobal
-if bufexists(fnamemodify("~/.config/nvim/init.vim", ":p")) | buffer ~/.config/nvim/init.vim | else | edit ~/.config/nvim/init.vim | endif
-if &buftype ==# 'terminal'
-  silent file ~/.config/nvim/init.vim
-endif
-balt ~/git.txt
+5argu
+balt ~/.config/tmux/tmux.conf
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -60,15 +56,13 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-35,46fold
-49,85fold
 let &fdl = &fdl
-let s:l = 94 - ((76 * winheight(0) + 28) / 56)
+let s:l = 68 - ((35 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 94
-normal! 03|
+keepjumps 68
+normal! 015|
 lcd ~/Documents
 tabnext
 edit ~/Documents/scripts/init_live
@@ -98,8 +92,11 @@ $argadd ~/Documents/scripts/arch_back/arch_backup.sh
 $argadd ~/Documents/scripts/arch_back/arch_restore.sh
 $argadd ~/Documents/scripts/arch_back/arch_backup_exc.txt
 $argadd ~/Documents/scripts/.scripts/du.sh
+$argadd ~/Documents/scripts/.scripts/copy_config.sh
+$argadd ~/Documents/scripts/arch_back/find_test.sh
+$argadd ~/Documents/scripts/arch_back/test_exc.txt
 2argu
-balt ~/git.txt
+balt ~/Documents/scripts/.scripts/copy_config.sh
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -110,12 +107,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 23 - ((22 * winheight(0) + 28) / 56)
+let s:l = 36 - ((8 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 23
-normal! 0
+keepjumps 36
+normal! 04|
 lcd ~/Documents
 wincmd w
 arglocal
@@ -126,8 +123,11 @@ $argadd ~/Documents/scripts/arch_back/arch_backup.sh
 $argadd ~/Documents/scripts/arch_back/arch_restore.sh
 $argadd ~/Documents/scripts/arch_back/arch_backup_exc.txt
 $argadd ~/Documents/scripts/.scripts/du.sh
+$argadd ~/Documents/scripts/.scripts/copy_config.sh
+$argadd ~/Documents/scripts/arch_back/find_test.sh
+$argadd ~/Documents/scripts/arch_back/test_exc.txt
 2argu
-balt ~/git.txt
+balt ~/Documents/scripts/.scripts/copy_config.sh
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -138,11 +138,11 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 23 - ((22 * winheight(0) + 28) / 56)
+let s:l = 69 - ((23 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 23
+keepjumps 69
 normal! 0
 lcd ~/Documents
 wincmd w
@@ -169,7 +169,7 @@ normal! zt
 keepjumps 1
 normal! 0
 lcd ~/Documents
-tabnext 1
+tabnext 2
 set stal=1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -184,8 +184,6 @@ endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
 nohlsearch
-let g:this_session = v:this_session
-let g:this_obsession = v:this_session
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :
