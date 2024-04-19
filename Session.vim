@@ -82,8 +82,8 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 96 + 96) / 192)
-exe 'vert 2resize ' . ((&columns * 95 + 96) / 192)
+exe 'vert 1resize ' . ((&columns * 47 + 96) / 192)
+exe 'vert 2resize ' . ((&columns * 144 + 96) / 192)
 arglocal
 %argdel
 $argadd ~/git.txt
@@ -146,8 +146,8 @@ keepjumps 69
 normal! 0
 lcd ~/Documents
 wincmd w
-exe 'vert 1resize ' . ((&columns * 96 + 96) / 192)
-exe 'vert 2resize ' . ((&columns * 95 + 96) / 192)
+exe 'vert 1resize ' . ((&columns * 47 + 96) / 192)
+exe 'vert 2resize ' . ((&columns * 144 + 96) / 192)
 tabnext
 edit ~/git.txt
 argglobal
