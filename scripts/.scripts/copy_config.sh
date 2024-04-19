@@ -7,6 +7,9 @@ if [ "$1" = "root" ]; then
   sudo cp /home/bae/.config/nvimt/init.vim /root/.config/nvimt/
   sudo cp /home/bae/.config/nvim/init.vim /root/.config/nvim/
 fi
+if [ "$1" = "tmux" ]; then
+  cp /home/bae/Documents/configs/.config/tmux/tmux.conf /home/bae/.config/nvim/
+fi
 if [ "$1" = "init" ]; then
   sudo cp /home/bae/Documents/scripts/init_live /
 fi
