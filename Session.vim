@@ -15,7 +15,7 @@ else
 endif
 badd +1 ~/.config/tmux/tmux.conf
 badd +30 ~/.config/nvim/init.vim
-badd +4 scripts/init_live
+badd +1 scripts/init_live
 badd +5 scripts/.scripts/du.sh
 badd +13 scripts/.scripts/copy_config.sh
 badd +1 ~/git.txt
@@ -69,10 +69,6 @@ edit ~/Documents/scripts/init_live
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
-wincmd _ | wincmd |
-vsplit
-1wincmd h
-wincmd w
 let &splitbelow = s:save_splitbelow
 let &splitright = s:save_splitright
 wincmd t
@@ -82,8 +78,6 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 47 + 96) / 192)
-exe 'vert 2resize ' . ((&columns * 144 + 96) / 192)
 arglocal
 %argdel
 $argadd ~/git.txt
@@ -107,47 +101,13 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 36 - ((8 * winheight(0) + 28) / 56)
+let s:l = 1 - ((-27 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 36
-normal! 04|
-lcd ~/Documents
-wincmd w
-arglocal
-%argdel
-$argadd ~/git.txt
-$argadd ~/Documents/scripts/init_live
-$argadd ~/Documents/scripts/arch_back/arch_backup.sh
-$argadd ~/Documents/scripts/arch_back/arch_restore.sh
-$argadd ~/Documents/scripts/arch_back/arch_backup_exc.txt
-$argadd ~/Documents/scripts/.scripts/du.sh
-$argadd ~/Documents/scripts/.scripts/copy_config.sh
-$argadd ~/Documents/scripts/arch_back/find_test.sh
-$argadd ~/Documents/scripts/arch_back/test_exc.txt
-2argu
-balt ~/Documents/scripts/.scripts/copy_config.sh
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 69 - ((23 * winheight(0) + 28) / 56)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 69
+keepjumps 1
 normal! 0
 lcd ~/Documents
-wincmd w
-exe 'vert 1resize ' . ((&columns * 47 + 96) / 192)
-exe 'vert 2resize ' . ((&columns * 144 + 96) / 192)
 tabnext
 edit ~/git.txt
 argglobal
@@ -169,7 +129,7 @@ normal! zt
 keepjumps 1
 normal! 0
 lcd ~/Documents
-tabnext 2
+tabnext 1
 set stal=1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

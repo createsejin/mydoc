@@ -24,6 +24,9 @@ if [ "$1" = "test002" ]; then
   cd .test5
   mv !(Projects) ../move/.test5
 fi
+if [ "$1" = "test003" ]; then
+  echo -e "\033[32mtesttest\033[0mtesttest"
+fi
 if [ "$1" = "restore002" ]; then
   cd ~/Downloads
   rm -rf --interactive=never move_test/*

@@ -15,7 +15,7 @@ else
 endif
 badd +1 ~/.config/tmux/tmux.conf
 badd +30 ~/.config/nvim/init.vim
-badd +4 scripts/init_live
+badd +69 scripts/init_live
 badd +5 scripts/.scripts/du.sh
 badd +13 scripts/.scripts/copy_config.sh
 badd +1 ~/git.txt
@@ -31,6 +31,7 @@ badd +7 scripts/arch_back/find_test.sh
 badd +2 scripts/arch_back/test_exc.txt
 badd +1 ~/.config/nvimt/tmux.conf
 badd +1 test2
+badd +1 test3
 argglobal
 %argdel
 $argadd ~/git.txt
@@ -38,13 +39,19 @@ $argadd configs/.zshrc
 $argadd root_configs/.zshrc
 $argadd ~/.config/tmux/tmux.conf
 $argadd ~/.config/nvim/init.vim
-$argadd test2
+$argadd test3
 set stal=2
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabrewind
 edit ~/.config/nvim/init.vim
-argglobal
+arglocal
+%argdel
+$argadd ~/git.txt
+$argadd ~/Documents/configs/.zshrc
+$argadd ~/Documents/root_configs/.zshrc
+$argadd ~/.config/tmux/tmux.conf
+$argadd ~/.config/nvim/init.vim
 5argu
 balt ~/.config/tmux/tmux.conf
 setlocal fdm=manual
@@ -57,15 +64,15 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 68 - ((35 * winheight(0) + 28) / 56)
+let s:l = 70 - ((37 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 68
-normal! 015|
+keepjumps 70
+normal! 0
 lcd ~/Documents
 tabnext
-edit ~/Documents/scripts/init_live
+edit ~/Documents/scripts/arch_back/find_test.sh
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -82,8 +89,8 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 96 + 96) / 192)
-exe 'vert 2resize ' . ((&columns * 95 + 96) / 192)
+exe 'vert 1resize ' . ((&columns * 93 + 96) / 192)
+exe 'vert 2resize ' . ((&columns * 98 + 96) / 192)
 arglocal
 %argdel
 $argadd ~/git.txt
@@ -95,8 +102,8 @@ $argadd ~/Documents/scripts/.scripts/du.sh
 $argadd ~/Documents/scripts/.scripts/copy_config.sh
 $argadd ~/Documents/scripts/arch_back/find_test.sh
 $argadd ~/Documents/scripts/arch_back/test_exc.txt
-2argu
-balt ~/Documents/scripts/.scripts/copy_config.sh
+8argu
+balt ~/Documents/scripts/init_live
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -107,12 +114,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 36 - ((8 * winheight(0) + 28) / 56)
+let s:l = 28 - ((27 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 36
-normal! 04|
+keepjumps 28
+normal! 028|
 lcd ~/Documents
 wincmd w
 arglocal
@@ -138,16 +145,17 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 69 - ((23 * winheight(0) + 28) / 56)
+let s:l = 77 - ((35 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 69
-normal! 0
+keepjumps 77
+normal! 040|
 lcd ~/Documents
 wincmd w
-exe 'vert 1resize ' . ((&columns * 96 + 96) / 192)
-exe 'vert 2resize ' . ((&columns * 95 + 96) / 192)
+2wincmd w
+exe 'vert 1resize ' . ((&columns * 93 + 96) / 192)
+exe 'vert 2resize ' . ((&columns * 98 + 96) / 192)
 tabnext
 edit ~/git.txt
 argglobal
@@ -184,6 +192,8 @@ endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
 nohlsearch
+let g:this_session = v:this_session
+let g:this_obsession = v:this_session
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :

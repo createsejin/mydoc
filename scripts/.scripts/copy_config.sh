@@ -15,7 +15,7 @@ if [ "$1" = "init" ]; then
 fi
 
 # Exclude file location
-excdir="/mnt/sys_back"
+excdir="/mnt/sys_back/scripts"
 exclude_file="$excdir/arch_backup_exc.txt"
 
 check_file_exist() {
@@ -37,6 +37,7 @@ if [ "$1" = "arch_back" ]; then
   else
     cd /home/bae/Documents/scripts/arch_back
     sudo cp arch_backup_exc.txt arch_backup.sh arch_restore.sh /mnt/sys_back/scripts
+    echo "backup scripts copyed to /mnt/sysback/scripts"
   fi
 fi
 if [ "$1" = "-m" ]; then
