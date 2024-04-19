@@ -12,7 +12,7 @@ check_file_exist() {
 }
 
 # Backup destination
-backdest="/mnt/sys_back"
+backdest="/mnt/sys_back/backup"
 
 # Labels for backup name
 distro="arch"
@@ -20,7 +20,7 @@ type="full"
 date=$(date "+%F")
 
 # Exclude file location
-excdir="/mnt/sys_back"
+excdir="/mnt/sys_back/scripts"
 exclude_file="$excdir/arch_backup_exc.txt"
 
 # Check if exclude file exists

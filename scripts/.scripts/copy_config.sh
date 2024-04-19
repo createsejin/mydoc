@@ -7,6 +7,9 @@ if [ "$1" = "root" ]; then
   sudo cp /home/bae/.config/nvimt/init.vim /root/.config/nvimt/
   sudo cp /home/bae/.config/nvim/init.vim /root/.config/nvim/
 fi
+if [ "$1" = "init" ]; then
+  sudo cp /home/bae/Documents/scripts/init_live /
+fi
 
 # Exclude file location
 excdir="/mnt/sys_back"
@@ -30,7 +33,7 @@ if [ "$1" = "arch_back" ]; then
     echo "use 'copy_config.sh -m'"
   else
     cd /home/bae/Documents/scripts/arch_back
-    sudo cp arch_backup_exc.txt arch_backup.sh arch_restore.sh /mnt/sys_back
+    sudo cp arch_backup_exc.txt arch_backup.sh arch_restore.sh /mnt/sys_back/scripts
   fi
 fi
 if [ "$1" = "-m" ]; then

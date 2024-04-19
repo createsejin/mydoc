@@ -29,10 +29,10 @@ move_to_delete() {
 
 
 # Backup source
-backdest="/mnt/sys_back"
+backdest="/mnt/sys_back/backup"
 
 # Exclude file location
-excdir="/mnt/sys_back"
+excdir="/mnt/sys_back/scripts"
 exclude_file="$excdir/arch_backup_exc.txt"
 
 # Labels for backup name
@@ -40,7 +40,7 @@ distro=arch
 type=full
 
 # Check file name
-ls -l /mnt/opt/sysback
+ls -l /mnt/sys_back
 echo -n "input backup version name: "
 read version
 
@@ -58,7 +58,7 @@ check_file_exist "$backupfile"
 backupfile_exist=$?
 
 if [ $backupfile_exist -eq 1 ]; then
-  cd /mnt
+  cd /mnt/root
   move_to_delete $exclude_file
   echo "This job takes a lot of time. please wait for finish."
   pv "$backupfile" | pbzip2 -dc | bsdtar --acls --xattrs -xpzf - 

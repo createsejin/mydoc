@@ -14,10 +14,10 @@ else
   set shortmess=aoO
 endif
 badd +1 ~/.config/tmux/tmux.conf
-badd +69 ~/.config/nvim/init.vim
+badd +30 ~/.config/nvim/init.vim
 badd +15 scripts/init_live
 badd +5 scripts/.scripts/du.sh
-badd +9 scripts/.scripts/copy_config.sh
+badd +11 scripts/.scripts/copy_config.sh
 badd +1 ~/git.txt
 badd +102 configs/.zshrc
 badd +1 root_configs/.zshrc
@@ -25,8 +25,10 @@ badd +17 ~/.config/nvimt/init.vim
 badd +6 ~/.gitconfig
 badd +1 test1
 badd +16 scripts/arch_back/arch_backup.sh
-badd +1 scripts/arch_back/arch_restore.sh
-badd +1 scripts/arch_back/arch_backup_exc.txt
+badd +24 scripts/arch_back/arch_restore.sh
+badd +17 scripts/arch_back/arch_backup_exc.txt
+badd +14 scripts/arch_back/find_test.sh
+badd +2 scripts/arch_back/test_exc.txt
 argglobal
 %argdel
 $argadd ~/git.txt
@@ -39,10 +41,10 @@ set stal=2
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabrewind
-edit ~/.config/nvim/init.vim
+edit configs/.zshrc
 argglobal
-5argu
-balt scripts/.scripts/copy_config.sh
+2argu
+balt ~/.config/nvim/init.vim
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -52,36 +54,16 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-35,46fold
-49,85fold
 let &fdl = &fdl
-let s:l = 30 - ((13 * winheight(0) + 28) / 56)
+let s:l = 106 - ((31 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 30
-normal! 0
+keepjumps 106
+normal! 016|
 lcd ~/Documents
 tabnext
-edit ~/Documents/scripts/arch_back/arch_backup.sh
-let s:save_splitbelow = &splitbelow
-let s:save_splitright = &splitright
-set splitbelow splitright
-wincmd _ | wincmd |
-vsplit
-1wincmd h
-wincmd w
-let &splitbelow = s:save_splitbelow
-let &splitright = s:save_splitright
-wincmd t
-let s:save_winminheight = &winminheight
-let s:save_winminwidth = &winminwidth
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
-exe 'vert 1resize ' . ((&columns * 96 + 96) / 192)
-exe 'vert 2resize ' . ((&columns * 95 + 96) / 192)
+edit ~/Documents/scripts/arch_back/find_test.sh
 arglocal
 %argdel
 $argadd ~/git.txt
@@ -91,8 +73,10 @@ $argadd ~/Documents/scripts/arch_back/arch_restore.sh
 $argadd ~/Documents/scripts/arch_back/arch_backup_exc.txt
 $argadd ~/Documents/scripts/.scripts/du.sh
 $argadd ~/Documents/scripts/.scripts/copy_config.sh
-3argu
-balt ~/Documents/scripts/init_live
+$argadd ~/Documents/scripts/arch_back/find_test.sh
+$argadd ~/Documents/scripts/arch_back/test_exc.txt
+8argu
+balt ~/Documents/scripts/.scripts/copy_config.sh
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -103,46 +87,13 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 28 - ((21 * winheight(0) + 28) / 56)
+let s:l = 14 - ((13 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 28
-normal! 0
+keepjumps 14
+normal! 02|
 lcd ~/Documents
-wincmd w
-arglocal
-%argdel
-$argadd ~/git.txt
-$argadd ~/Documents/scripts/init_live
-$argadd ~/Documents/scripts/arch_back/arch_backup.sh
-$argadd ~/Documents/scripts/arch_back/arch_restore.sh
-$argadd ~/Documents/scripts/arch_back/arch_backup_exc.txt
-$argadd ~/Documents/scripts/.scripts/du.sh
-$argadd ~/Documents/scripts/.scripts/copy_config.sh
-7argu
-balt ~/Documents/scripts/init_live
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 12 - ((11 * winheight(0) + 28) / 56)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 12
-normal! 0
-lcd ~/Documents
-wincmd w
-2wincmd w
-exe 'vert 1resize ' . ((&columns * 96 + 96) / 192)
-exe 'vert 2resize ' . ((&columns * 95 + 96) / 192)
 tabnext
 edit ~/git.txt
 argglobal

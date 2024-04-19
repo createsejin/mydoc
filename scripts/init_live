@@ -7,6 +7,9 @@
 echo "mount Files/sys_back partition"
 mount --mkdir /dev/Files/sys_back /mnt/sys_back
 
+echo "mount home partition"
+mount /dev/Files/home /mnt/root/home
+
 setfont ter-u18b.psf.gz -m 8859-2
 echo "console font set."
 

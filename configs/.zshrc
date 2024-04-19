@@ -105,6 +105,7 @@ source $ZSH/oh-my-zsh.sh
 
 # setopt dotglob
 setopt GLOB_DOTS
+setopt EXTENDED_GLOB
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
