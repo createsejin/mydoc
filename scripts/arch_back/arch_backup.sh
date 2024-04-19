@@ -11,10 +11,6 @@ check_file_exist() {
   fi
 }
 
-# mount sys_back
-echo "mount Files/sys_back partition"
-mount --mkdir /dev/Files/sys_back /mnt/sys_back
-
 # Backup destination
 backdest="/mnt/sys_back"
 

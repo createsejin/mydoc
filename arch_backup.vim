@@ -14,8 +14,8 @@ else
   set shortmess=aoO
 endif
 badd +1 ~/.config/tmux/tmux.conf
-badd +79 ~/.config/nvim/init.vim
-badd +18 scripts/init_live
+badd +94 ~/.config/nvim/init.vim
+badd +1 scripts/init_live
 badd +5 scripts/.scripts/du.sh
 badd +7 scripts/.scripts/copy_config.sh
 badd +1 ~/git.txt
@@ -28,9 +28,10 @@ badd +17 ~/.config/nvimt/init.vim
 badd +6 ~/.gitconfig
 badd +17 suda:///root/.config/nvimt/init.vim
 badd +1 test1
-badd +1 scripts/arch_back/arch_backup.sh
+badd +10 scripts/arch_back/arch_backup.sh
 badd +1 scripts/arch_back/arch_restore.sh
 badd +1 scripts/arch_back/arch_backup_exc.txt
+badd +1 test6
 argglobal
 %argdel
 $argadd ~/git.txt
@@ -44,17 +45,12 @@ tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabrewind
 edit ~/.config/nvim/init.vim
-arglocal
-%argdel
-$argadd ~/git.txt
-$argadd ~/Documents/configs/.zshrc
-$argadd ~/Documents/root_configs/.zshrc
-$argadd ~/.config/tmux/tmux.conf
-$argadd ~/.config/nvim/init.vim
-$argadd ~/Documents/scripts/.scripts/copy_config.sh
-$argadd ~/Documents/test3
-5argu
-balt scripts/.scripts/copy_config.sh
+argglobal
+if bufexists(fnamemodify("~/.config/nvim/init.vim", ":p")) | buffer ~/.config/nvim/init.vim | else | edit ~/.config/nvim/init.vim | endif
+if &buftype ==# 'terminal'
+  silent file ~/.config/nvim/init.vim
+endif
+balt ~/git.txt
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -64,16 +60,36 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
+35,46fold
+49,85fold
 let &fdl = &fdl
-let s:l = 68 - ((16 * winheight(0) + 28) / 56)
+let s:l = 94 - ((76 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 68
-normal! 0
+keepjumps 94
+normal! 03|
 lcd ~/Documents
 tabnext
 edit ~/Documents/scripts/init_live
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe 'vert 1resize ' . ((&columns * 96 + 96) / 192)
+exe 'vert 2resize ' . ((&columns * 95 + 96) / 192)
 arglocal
 %argdel
 $argadd ~/git.txt
@@ -83,7 +99,7 @@ $argadd ~/Documents/scripts/arch_back/arch_restore.sh
 $argadd ~/Documents/scripts/arch_back/arch_backup_exc.txt
 $argadd ~/Documents/scripts/.scripts/du.sh
 2argu
-balt ~/Documents/scripts/arch_back/arch_backup.sh
+balt ~/git.txt
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -94,13 +110,44 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 19 - ((18 * winheight(0) + 28) / 56)
+let s:l = 23 - ((22 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 19
+keepjumps 23
 normal! 0
 lcd ~/Documents
+wincmd w
+arglocal
+%argdel
+$argadd ~/git.txt
+$argadd ~/Documents/scripts/init_live
+$argadd ~/Documents/scripts/arch_back/arch_backup.sh
+$argadd ~/Documents/scripts/arch_back/arch_restore.sh
+$argadd ~/Documents/scripts/arch_back/arch_backup_exc.txt
+$argadd ~/Documents/scripts/.scripts/du.sh
+2argu
+balt ~/git.txt
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 23 - ((22 * winheight(0) + 28) / 56)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 23
+normal! 0
+lcd ~/Documents
+wincmd w
+exe 'vert 1resize ' . ((&columns * 96 + 96) / 192)
+exe 'vert 2resize ' . ((&columns * 95 + 96) / 192)
 tabnext
 edit ~/git.txt
 argglobal
@@ -122,7 +169,7 @@ normal! zt
 keepjumps 1
 normal! 0
 lcd ~/Documents
-tabnext 2
+tabnext 1
 set stal=1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -137,6 +184,8 @@ endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
 nohlsearch
+let g:this_session = v:this_session
+let g:this_obsession = v:this_session
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :
