@@ -1,22 +1,4 @@
 #!/bin/bash
-if [ "$1" = "root" ]; then
-  sudo cp /home/bae/Documents/root_configs/.zshrc /root/ 
-  sudo cp /home/bae/Documents/root_configs/.oh-my-zsh/themes/xiong-chiamiov-plus.zsh-theme \
-    /root/.oh-my-zsh/themes
-  sudo cp /home/bae/Documents/configs/.config/tmux/tmux.conf /root/.config/tmux/
-  sudo cp /home/bae/.config/nvimt/init.vim /root/.config/nvimt/
-  sudo cp /home/bae/.config/nvim/init.vim /root/.config/nvim/
-fi
-if [ "$1" = "tmux" ]; then
-  cp /home/bae/Documents/configs/.config/tmux/tmux.conf /home/bae/.config/nvim/
-fi
-if [ "$1" = "init" ]; then
-  sudo cp /home/bae/Documents/scripts/init_live /
-fi
-
-# Exclude file location
-excdir="/mnt/sys_back/scripts"
-exclude_file="$excdir/arch_backup_exc.txt"
 
 check_file_exist() {
   if [ -f "$1" ]; then
@@ -25,6 +7,37 @@ check_file_exist() {
     return 0
   fi
 }
+main_com_zsh="/home/bae/Documents/configs/.zshrc"
+check_file_exist "$main_com_zsh"
+check_main=$?
+if [ "$check_main" -eq 1 ]; then
+  home="/home/bae"
+  echo "It's main_com system."
+  echo "home=$home"
+else
+  home="/mnt/root/home/bae"
+  echo "It's live_cd system."
+  echo "home=$home"
+fi
+
+if [ "$1" = "root" ]; then
+  sudo cp $home/Documents/root_configs/.zshrc /root/ 
+  sudo cp $home/Documents/root_configs/.oh-my-zsh/themes/xiong-chiamiov-plus.zsh-theme \
+    /root/.oh-my-zsh/themes
+  sudo cp $home/Documents/configs/.config/tmux/tmux.conf /root/.config/tmux/
+  sudo cp $home/.config/nvimt/init.vim /root/.config/nvimt/
+  sudo cp $home/.config/nvim/init.vim /root/.config/nvim/
+fi
+if [ "$1" = "tmux" ]; then
+  cp $home/Documents/configs/.config/tmux/tmux.conf $home/.config/nvim/
+fi
+if [ "$1" = "init" ]; then
+  sudo cp $home/Documents/scripts/init_live /
+fi
+
+# Exclude file location
+excdir="/mnt/sys_back/scripts"
+exclude_file="$excdir/arch_backup_exc.txt"
 
 if [ "$1" = "arch_back" ]; then
   check_file_exist "$exclude_file"
@@ -35,7 +48,7 @@ if [ "$1" = "arch_back" ]; then
     echo "you can mount using this scripts."
     echo "use 'copy_config.sh -m'"
   else
-    cd /home/bae/Documents/scripts/arch_back
+    cd $home/Documents/scripts/arch_back
     sudo cp arch_backup_exc.txt arch_backup.sh arch_restore.sh /mnt/sys_back/scripts
     echo "backup scripts copyed to /mnt/sysback/scripts"
   fi

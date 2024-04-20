@@ -9,6 +9,8 @@ if [ "$1" = "1" ]; then
   # mount sys_back
   echo -e "\033[32m[init_live]\033[0m mount Files/sys_back partition"
   mount --mkdir /dev/Files/sys_back /mnt/sys_back
+  echo -e "\033[32m[init_live]\033[0m mount Files/test_root partition"
+  mount --mkdir /dev/Files/test_root /mnt/test_root
 
   echo -e "\033[32m[init_live]\033[0m mount home partition"
   mount /dev/Files/home /mnt/root/home
@@ -31,8 +33,9 @@ if [ "$1" = "1" ]; then
 
   pacman-key --init
   pacman-key --populate archlinux
-  pacman -Sy neovim git zsh-syntax-highlighting zsh-autosuggestions
-  echo -e "\033[32m[init_live]\033[0m neovim, git, zsh-syntax-highlighting, zsh-autosuggestions installed."
+  pacman -Sy neovim git zsh-syntax-highlighting zsh-autosuggestions bat xsel tree
+  echo -e "\033[32m[init_live]\033[0m neovim, git, zsh-syntax-highlighting,
+  echo -e "zsh-autosuggestions, bat, xsel tree installed."
 fi
 if [ "$1" = "2" ]; then
   cd
