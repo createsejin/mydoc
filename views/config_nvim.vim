@@ -3,12 +3,13 @@ arglocal
 %argdel
 $argadd ~/git.txt
 $argadd ~/Documents/configs/.zshrc
+$argadd ~/.config/nvim/.zshrc
 $argadd ~/Documents/root_configs/.zshrc
 $argadd ~/.config/tmux/tmux.conf
 $argadd ~/.config/nvim/init.vim
-if bufexists(fnamemodify("~/Documents/root_configs/.zshrc", ":p")) | buffer ~/Documents/root_configs/.zshrc | else | edit ~/Documents/root_configs/.zshrc | endif
+if bufexists(fnamemodify("~/Documents/configs/.zshrc", ":p")) | buffer ~/Documents/configs/.zshrc | else | edit ~/Documents/configs/.zshrc | endif
 if &buftype ==# 'terminal'
-  silent file ~/Documents/root_configs/.zshrc
+  silent file ~/Documents/configs/.zshrc
 endif
 setlocal fdm=manual
 setlocal fde=0
@@ -19,17 +20,15 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-1,102fold
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 28) / 56)
+let s:l = 118 - ((29 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1
+keepjumps 118
 normal! 0
 lcd ~/Documents
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
-nohlsearch
 doautoall SessionLoadPost
 " vim: set ft=vim :
