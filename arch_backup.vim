@@ -14,29 +14,25 @@ else
   set shortmess=aoO
 endif
 badd +1 ~/.config/tmux/tmux.conf
-badd +1 ~/.config/nvim/init.vim
-badd +65 scripts/init_live
+badd +30 ~/.config/nvim/init.vim
+badd +1 scripts/init_live
 badd +5 scripts/.scripts/du.sh
 badd +13 scripts/.scripts/copy_config.sh
 badd +1 ~/git.txt
-badd +1 configs/.zshrc
-badd +105 root_configs/.zshrc
+badd +104 configs/.zshrc
+badd +1 root_configs/.zshrc
 badd +17 ~/.config/nvimt/init.vim
 badd +6 ~/.gitconfig
+badd +1 test1
 badd +30 scripts/arch_back/arch_backup.sh
 badd +1 scripts/arch_back/arch_restore.sh
 badd +17 scripts/arch_back/arch_backup_exc.txt
-badd +12 scripts/arch_back/find_test.sh
+badd +28 scripts/arch_back/find_test.sh
 badd +2 scripts/arch_back/test_exc.txt
 badd +1 ~/.config/nvimt/tmux.conf
-badd +1 test4
+badd +1 test2
 badd +1 test3
-badd +1 test1
-badd +5 scripts/.scripts/du_exc.txt
-badd +115 ~/.config/nvim/.zshrc
-badd +1 global
-badd +0 local
-badd +0 localarg
+badd +0 test4
 argglobal
 %argdel
 $argadd ~/git.txt
@@ -44,12 +40,12 @@ $argadd configs/.zshrc
 $argadd root_configs/.zshrc
 $argadd ~/.config/tmux/tmux.conf
 $argadd ~/.config/nvim/init.vim
-$argadd global
+$argadd test3
 set stal=2
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabrewind
-edit root_configs/.zshrc
+edit ~/.config/tmux/tmux.conf
 arglocal
 %argdel
 $argadd ~/git.txt
@@ -57,11 +53,9 @@ $argadd ~/Documents/configs/.zshrc
 $argadd ~/Documents/root_configs/.zshrc
 $argadd ~/.config/tmux/tmux.conf
 $argadd ~/.config/nvim/init.vim
-if bufexists(fnamemodify("root_configs/.zshrc", ":p")) | buffer root_configs/.zshrc | else | edit root_configs/.zshrc | endif
-if &buftype ==# 'terminal'
-  silent file root_configs/.zshrc
-endif
-balt configs/.zshrc
+$argadd ~/Documents/test1
+4argu
+balt ~/.config/nvim/init.vim
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -71,26 +65,29 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-1,102fold
 let &fdl = &fdl
-let s:l = 103 - ((102 * winheight(0) + 28) / 56)
+let s:l = 2 - ((1 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 103
+keepjumps 2
 normal! 0
 lcd ~/Documents
 tabnext
-edit ~/.config/nvim/init.vim
+edit ~/Documents/scripts/init_live
 arglocal
 %argdel
 $argadd ~/git.txt
-$argadd ~/Documents/configs/.zshrc
-$argadd ~/Documents/root_configs/.zshrc
-$argadd ~/.config/tmux/tmux.conf
-$argadd ~/.config/nvim/init.vim
-5argu
-balt ~/.config/tmux/tmux.conf
+$argadd ~/Documents/scripts/init_live
+$argadd ~/Documents/scripts/arch_back/arch_backup.sh
+$argadd ~/Documents/scripts/arch_back/arch_restore.sh
+$argadd ~/Documents/scripts/arch_back/arch_backup_exc.txt
+$argadd ~/Documents/scripts/.scripts/du.sh
+$argadd ~/Documents/scripts/.scripts/copy_config.sh
+$argadd ~/Documents/scripts/arch_back/find_test.sh
+$argadd ~/Documents/scripts/arch_back/test_exc.txt
+2argu
+balt ~/Documents/scripts/arch_back/arch_restore.sh
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -101,22 +98,17 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 99 - ((30 * winheight(0) + 28) / 56)
+let s:l = 61 - ((35 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 99
+keepjumps 61
 normal! 0
 lcd ~/Documents
 tabnext
 edit ~/git.txt
 argglobal
-3argu
-if bufexists(fnamemodify("~/git.txt", ":p")) | buffer ~/git.txt | else | edit ~/git.txt | endif
-if &buftype ==# 'terminal'
-  silent file ~/git.txt
-endif
-balt ~/.config/tmux/tmux.conf
+1argu
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -134,7 +126,7 @@ normal! zt
 keepjumps 1
 normal! 0
 lcd ~/Documents
-tabnext 1
+tabnext 2
 set stal=1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -149,8 +141,6 @@ endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
 nohlsearch
-let g:this_session = v:this_session
-let g:this_obsession = v:this_session
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :

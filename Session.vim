@@ -32,6 +32,7 @@ badd +2 scripts/arch_back/test_exc.txt
 badd +1 ~/.config/nvimt/tmux.conf
 badd +1 test2
 badd +1 test3
+badd +0 test4
 argglobal
 %argdel
 $argadd ~/git.txt
@@ -65,33 +66,15 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 28) / 56)
+let s:l = 2 - ((1 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1
+keepjumps 2
 normal! 0
 lcd ~/Documents
 tabnext
 edit ~/Documents/scripts/init_live
-let s:save_splitbelow = &splitbelow
-let s:save_splitright = &splitright
-set splitbelow splitright
-wincmd _ | wincmd |
-vsplit
-1wincmd h
-wincmd w
-let &splitbelow = s:save_splitbelow
-let &splitright = s:save_splitright
-wincmd t
-let s:save_winminheight = &winminheight
-let s:save_winminwidth = &winminwidth
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
-exe 'vert 1resize ' . ((&columns * 71 + 96) / 192)
-exe 'vert 2resize ' . ((&columns * 23 + 96) / 192)
 arglocal
 %argdel
 $argadd ~/git.txt
@@ -122,47 +105,10 @@ normal! zt
 keepjumps 61
 normal! 0
 lcd ~/Documents
-wincmd w
-arglocal
-%argdel
-$argadd ~/git.txt
-$argadd ~/Documents/scripts/init_live
-$argadd ~/Documents/scripts/arch_back/arch_backup.sh
-$argadd ~/Documents/scripts/arch_back/arch_restore.sh
-$argadd ~/Documents/scripts/arch_back/arch_backup_exc.txt
-$argadd ~/Documents/scripts/.scripts/du.sh
-$argadd ~/Documents/scripts/.scripts/copy_config.sh
-$argadd ~/Documents/scripts/arch_back/find_test.sh
-$argadd ~/Documents/scripts/arch_back/test_exc.txt
-1argu
-if bufexists(fnamemodify("~/Documents/scripts/arch_back/arch_restore.sh", ":p")) | buffer ~/Documents/scripts/arch_back/arch_restore.sh | else | edit ~/Documents/scripts/arch_back/arch_restore.sh | endif
-if &buftype ==# 'terminal'
-  silent file ~/Documents/scripts/arch_back/arch_restore.sh
-endif
-balt ~/Documents/scripts/arch_back/arch_backup.sh
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 28) / 56)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 1
-normal! 0
-lcd ~/Documents
-wincmd w
-exe 'vert 1resize ' . ((&columns * 71 + 96) / 192)
-exe 'vert 2resize ' . ((&columns * 23 + 96) / 192)
 tabnext
 edit ~/git.txt
 argglobal
+1argu
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -180,7 +126,7 @@ normal! zt
 keepjumps 1
 normal! 0
 lcd ~/Documents
-tabnext 1
+tabnext 2
 set stal=1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
