@@ -111,17 +111,18 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias du='du -h -a -d 1'
 alias poweroff='systemctl poweroff'
+alias reboot='systemctl reboot'
 alias rm='rm -rf'
 alias cp='cp -r'
 alias rp='realpath'
 alias rpr='realpath --relative-to=$(pwd)'
-alias cds='cd /home/bae/Documents/scripts/.scripts'
+alias cds='cd ~/Documents/scripts/.scripts'
 
 alias vim=nvim
-alias vimt='nvim -u /home/bae/.config/nvimt/init.vim'
-alias tx='tmux'
+alias vimt='nvim -u ~/.config/nvimt/init.vim'
+alias tx=tmux
 
-export MANPAGER='nvim -u /home/bae/.config/nvimt/init.vim +Man!'
+export MANPAGER='nvim -u ~/.config/nvimt/init.vim +Man!'
 export QT_QPA_PLATFORM="wayland;xcb"
 export GLOB_PATTERN="**/*@(.sh|.inc|.bash|.command|.zsh|zshrc|zsh_*)"
 export XDG_CONFIG_HOME="$HOME/.config"

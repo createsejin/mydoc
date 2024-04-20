@@ -1,4 +1,6 @@
-/home
+/home/Documents
+/home/Downloads
+/home/Projects
 /proc
 /run
 /mnt

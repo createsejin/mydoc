@@ -14,24 +14,27 @@ else
   set shortmess=aoO
 endif
 badd +1 ~/.config/tmux/tmux.conf
-badd +30 ~/.config/nvim/init.vim
-badd +64 scripts/init_live
-badd +5 scripts/.scripts/du.sh
-badd +13 scripts/.scripts/copy_config.sh
+badd +34 ~/.config/nvim/init.vim
+badd +1 scripts/init_live
+badd +4 scripts/.scripts/du.sh
+badd +14 scripts/.scripts/copy_config.sh
 badd +1 ~/git.txt
-badd +104 configs/.zshrc
-badd +1 root_configs/.zshrc
+badd +121 configs/.zshrc
+badd +105 root_configs/.zshrc
 badd +17 ~/.config/nvimt/init.vim
 badd +6 ~/.gitconfig
-badd +30 scripts/arch_back/arch_backup.sh
+badd +28 scripts/arch_back/arch_backup.sh
 badd +1 scripts/arch_back/arch_restore.sh
-badd +17 scripts/arch_back/arch_backup_exc.txt
+badd +10 scripts/arch_back/arch_backup_exc.txt
 badd +12 scripts/arch_back/find_test.sh
 badd +2 scripts/arch_back/test_exc.txt
 badd +1 ~/.config/nvimt/tmux.conf
 badd +1 test4
 badd +1 test3
 badd +1 test1
+badd +5 scripts/.scripts/du_exc.txt
+badd +99 ~/.config/nvim/.zshrc
+badd +0 global
 argglobal
 %argdel
 $argadd ~/git.txt
@@ -39,10 +42,12 @@ $argadd configs/.zshrc
 $argadd root_configs/.zshrc
 $argadd ~/.config/tmux/tmux.conf
 $argadd ~/.config/nvim/init.vim
+$argadd global
 set stal=2
 tabnew +setlocal\ bufhidden=wipe
+tabnew +setlocal\ bufhidden=wipe
 tabrewind
-edit ~/.config/nvim/init.vim
+edit configs/.zshrc
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -65,12 +70,13 @@ arglocal
 %argdel
 $argadd ~/git.txt
 $argadd ~/Documents/configs/.zshrc
+$argadd ~/.config/nvim/.zshrc
 $argadd ~/Documents/root_configs/.zshrc
 $argadd ~/.config/tmux/tmux.conf
 $argadd ~/.config/nvim/init.vim
-5argu
-balt ~/.config/tmux/tmux.conf
-setlocal fdm=manual
+2argu
+balt ~/.config/nvim/.zshrc
+setlocal fdm=diff
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
@@ -78,40 +84,44 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 103 - ((34 * winheight(0) + 28) / 56)
+137
+normal! zo
+let s:l = 115 - ((114 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 103
-normal! 022|
-lcd ~/Documents
-wincmd w
-argglobal
-5argu
-balt ~/.config/tmux/tmux.conf
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-35,46fold
-49,85fold
-let &fdl = &fdl
-let s:l = 48 - ((31 * winheight(0) + 28) / 56)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 48
+keepjumps 115
 normal! 0
 lcd ~/Documents
 wincmd w
-2wincmd w
+arglocal
+%argdel
+$argadd ~/git.txt
+$argadd ~/Documents/configs/.zshrc
+$argadd ~/.config/nvim/.zshrc
+$argadd ~/Documents/root_configs/.zshrc
+$argadd ~/.config/tmux/tmux.conf
+$argadd ~/.config/nvim/init.vim
+3argu
+balt ~/Documents/configs/.zshrc
+setlocal fdm=diff
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+132
+normal! zo
+let s:l = 115 - ((114 * winheight(0) + 28) / 56)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 115
+normal! 0
+lcd ~/Documents
+wincmd w
 exe 'vert 1resize ' . ((&columns * 96 + 96) / 192)
 exe 'vert 2resize ' . ((&columns * 95 + 96) / 192)
 tabnext
@@ -119,16 +129,21 @@ edit ~/Documents/scripts/init_live
 arglocal
 %argdel
 $argadd ~/git.txt
-$argadd ~/Documents/scripts/init_live
-$argadd ~/Documents/scripts/arch_back/arch_backup.sh
-$argadd ~/Documents/scripts/arch_back/arch_restore.sh
-$argadd ~/Documents/scripts/arch_back/arch_backup_exc.txt
-$argadd ~/Documents/scripts/.scripts/du.sh
-$argadd ~/Documents/scripts/.scripts/copy_config.sh
-$argadd ~/Documents/scripts/arch_back/find_test.sh
-$argadd ~/Documents/scripts/arch_back/test_exc.txt
-2argu
-balt ~/Documents/scripts/arch_back/arch_restore.sh
+$argadd scripts/init_live
+$argadd scripts/arch_back/arch_backup.sh
+$argadd scripts/arch_back/arch_restore.sh
+$argadd scripts/arch_back/arch_backup_exc.txt
+$argadd scripts/.scripts/du.sh
+$argadd scripts/.scripts/du_exc.txt
+$argadd scripts/.scripts/copy_config.sh
+$argadd scripts/arch_back/find_test.sh
+$argadd scripts/arch_back/test_exc.txt
+1argu
+if bufexists(fnamemodify("~/Documents/scripts/init_live", ":p")) | buffer ~/Documents/scripts/init_live | else | edit ~/Documents/scripts/init_live | endif
+if &buftype ==# 'terminal'
+  silent file ~/Documents/scripts/init_live
+endif
+balt ~/Documents/scripts/.scripts/copy_config.sh
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -139,14 +154,34 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 23 - ((22 * winheight(0) + 28) / 56)
+let s:l = 79 - ((47 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 23
+keepjumps 79
+normal! 037|
+tabnext
+edit ~/git.txt
+argglobal
+balt ~/.config/tmux/tmux.conf
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 1 - ((0 * winheight(0) + 28) / 56)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 1
 normal! 0
 lcd ~/Documents
-tabnext 1
+tabnext 2
 set stal=1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
