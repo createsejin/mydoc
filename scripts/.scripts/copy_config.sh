@@ -12,21 +12,21 @@ check_file_exist "$main_com_zsh"
 check_main=$?
 if [ "$check_main" -eq 1 ]; then
   home="/home/bae"
-  echo "It's main_com system."
   echo "home=$home"
 else
   home="/mnt/root/home/bae"
-  echo "It's live_cd system."
   echo "home=$home"
 fi
 
-if [ "$1" = "root" ]; then
+if [ "$1" = "root" ] && [ "$check_main" -eq 1 ]; then
   sudo cp $home/Documents/root_configs/.zshrc /root/ 
   sudo cp $home/Documents/root_configs/.oh-my-zsh/themes/xiong-chiamiov-plus.zsh-theme \
     /root/.oh-my-zsh/themes
   sudo cp $home/Documents/configs/.config/tmux/tmux.conf /root/.config/tmux/
   sudo cp $home/.config/nvimt/init.vim /root/.config/nvimt/
   sudo cp $home/.config/nvim/init.vim /root/.config/nvim/
+else 
+  echo "This is not main_com. exit script"
 fi
 if [ "$1" = "tmux" ]; then
   cp $home/Documents/configs/.config/tmux/tmux.conf $home/.config/nvim/
