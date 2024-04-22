@@ -18,3 +18,8 @@ var/cache/pacman/pkg
 home/bae/Documents
 home/bae/Downloads
 home/bae/Projects
+# for testing
+home/bae/.bashrc
+home/bae/.gitconfig
+home/bae/.config
+home/bae/scripts

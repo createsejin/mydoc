@@ -23,5 +23,6 @@ else
 fi
 
 if [ -z "$1" ]; then
-  du -h -a -d 1 --exclude-from=$home/Documents/scripts/.scripts/du_exc.txt $sys_root/
+  du -h -a -d 1 --exclude-from=$home/Documents/scripts/arch_back/arch_backup_exc.txt \
+    $sys_root/
 fi

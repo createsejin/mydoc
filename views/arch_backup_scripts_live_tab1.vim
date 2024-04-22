@@ -10,9 +10,9 @@ $argadd /mnt/root/home/bae/Documents/scripts/arch_back/arch_backup_exc.txt
 $argadd /mnt/root/home/bae/Documents/scripts/arch_back/test/find_test.sh
 $argadd /mnt/root/home/bae/Documents/scripts/.scripts/copy_config.sh
 $argadd /mnt/root/home/bae/Documents/scripts/.scripts/du.sh
-if bufexists(fnamemodify("/mnt/root/home/bae/Documents/scripts/.scripts/git.sh", ":p")) | buffer /mnt/root/home/bae/Documents/scripts/.scripts/git.sh | else | edit /mnt/root/home/bae/Documents/scripts/.scripts/git.sh | endif
+if bufexists(fnamemodify("/mnt/root/home/bae/Documents/git.txt", ":p")) | buffer /mnt/root/home/bae/Documents/git.txt | else | edit /mnt/root/home/bae/Documents/git.txt | endif
 if &buftype ==# 'terminal'
-  silent file /mnt/root/home/bae/Documents/scripts/.scripts/git.sh
+  silent file /mnt/root/home/bae/Documents/git.txt
 endif
 setlocal fdm=manual
 setlocal fde=0
@@ -24,12 +24,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 8 - ((7 * winheight(0) + 28) / 56)
+let s:l = 1 - ((0 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 8
-normal! 014|
+keepjumps 1
+normal! 0
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
 nohlsearch

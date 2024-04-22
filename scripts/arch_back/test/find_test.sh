@@ -48,6 +48,10 @@ if [ "$1" = "restore002" ]; then
   cp -r move_test_bak/* move_test/
 fi
 
+# Exclude file location
+excdir="/mnt/sys_back/scripts"
+exclude_file="$excdir/arch_backup_exc.txt"
+
 exclude_dir() {
   path="$1"
   mkdir -p "$path"
@@ -64,9 +68,21 @@ exclude_dirs() {
   done < "$path"
 }
 
-# Exclude file location
-excdir="/mnt/sys_back/scripts"
-exclude_file="$excdir/arch_backup_exc.txt"
+exclude_dirs_test() {
+  local path=$1
+  while IFS= read -r line
+  do
+    if [[ ! "$line" =~ ^# ]] && [[ ! -z "$line" ]]; then
+      if [ -f "$line" ]; then
+        echo "$line is file."
+      elif [ -d "$line" ]; then
+        echo "$line is directory."
+      else
+        echo "$line is not file or directory."
+      fi
+    fi
+  done < "$path"
+}
 
 move_to_delete() {
   mkdir delete
@@ -74,13 +90,20 @@ move_to_delete() {
   exclude_dirs $exclude_file
 }
 
-# It's very very dangerous command!! be careful!!
+# This command is extremely dangerous!! Be careful of using this!!
 if [ "$1" = "test003" ]; then
   cd /mnt/test_root
-  move_to_delete
+  #move_to_delete
 fi
 
 if [ "$1" = "restore003" ]; then
   rm -rf --interactive=never /mnt/test_root/*
   cp -r /mnt/test_root_bak/* /mnt/test_root/
+fi
+
+test_exclude="/mnt/root/home/bae/Documents/scripts/arch_back/arch_backup_exc.txt"
+
+if [ "$1" = "test004" ]; then
+  cd /mnt/test_root
+  exclude_dirs_test $test_exclude
 fi
