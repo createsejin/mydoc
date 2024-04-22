@@ -13,11 +13,19 @@ check_main=$?
 if [ "$check_main" -eq 1 ]; then
   home="/home/bae"
   echo "home=$home"
+  sys_root=""
+  echo "sys_root=$sys_root/"
 else
   home="/mnt/root/home/bae"
   echo "home=$home"
+  sys_root="/mnt/root"
+  echo "sys_root=$sys_root/"
 fi
 
 if [ -z "$1" ]; then
-  du -h -a -d 1 --exclude-from=$home/Documents/scripts/.scripts/du_exc.txt /
+  du -h -a -d 1 --exclude-from=$home/Documents/scripts/.scripts/du_exc.txt $sys_root/
 fi
+#if [ -z "$1" ]; then
+#  du -h -a -d 1 --exclude-from=$home/Documents/scripts/arch_back/arch_backup_exc.txt \
+#    $sys_root/
+#fi

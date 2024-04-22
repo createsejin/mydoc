@@ -14,26 +14,30 @@ check_main=$?
 if [ "$check_main" -eq 1 ]; then
   home="/home/bae"
   echo "home=$home"
+  sys_root=""
+  echo "sys_root=$sys_root/"
 else
   home="/mnt/root/home/bae"
   echo "home=$home"
+  sys_root="/mnt/root"
+  echo "sys_root=$sys_root/"
 fi
 
 if [ "$1" = "root" ] && [ "$check_main" -eq 1 ]; then
-  sudo cp $home/Documents/root_configs/.zshrc /root/ 
+  sudo cp $home/Documents/root_configs/.zshrc $sys_root/root/ 
   sudo cp $home/Documents/root_configs/.oh-my-zsh/themes/xiong-chiamiov-plus.zsh-theme \
-    /root/.oh-my-zsh/themes
-  sudo cp $home/Documents/configs/.config/tmux/tmux.conf /root/.config/tmux/
-  sudo cp $home/.config/nvimt/init.vim /root/.config/nvimt/
-  sudo cp $home/.config/nvim/init.vim /root/.config/nvim/
+    $sys_root/root/.oh-my-zsh/themes
+  sudo cp $home/Documents/configs/.config/tmux/tmux.conf $sys_root/root/.config/tmux/
+  sudo cp $home/.config/nvimt/init.vim $sys_root/root/.config/nvimt/
+  sudo cp $home/.config/nvim/init.vim $sys_root/root/.config/nvim/
 elif [ "$1" = "root" ] && [ "$check_main" -eq 0 ]; then 
   echo "This is not main_com. exit script"
 fi
 if [ "$1" = "tmux" ]; then
   cp $home/Documents/configs/.config/tmux/tmux.conf $home/.config/nvim/
-fi
+f$sys_rooti
 if [ "$1" = "init" ]; then
-  sudo cp $home/Documents/scripts/init_live /
+  sudo cp $home/Documents/scripts/init_live $sys_root/
 fi
 
 # Exclude file location

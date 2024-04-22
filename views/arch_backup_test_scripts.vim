@@ -1,17 +1,17 @@
 let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-1 siso=-1
 arglocal
 %argdel
-$argadd /mnt/root/home/bae/git.txt
-$argadd /mnt/root/home/bae/Documents/scripts/init_live
 $argadd /mnt/root/home/bae/Documents/scripts/arch_back/arch_backup.sh
+$argadd /mnt/root/home/bae/Documents/scripts/arch_back/test/arch_backup_test.sh
 $argadd /mnt/root/home/bae/Documents/scripts/arch_back/arch_restore.sh
 $argadd /mnt/root/home/bae/Documents/scripts/arch_back/arch_backup_exc.txt
 $argadd /mnt/root/home/bae/Documents/scripts/arch_back/test/find_test.sh
 $argadd /mnt/root/home/bae/Documents/scripts/.scripts/copy_config.sh
 $argadd /mnt/root/home/bae/Documents/scripts/.scripts/du.sh
-if bufexists(fnamemodify("/mnt/root/home/bae/Documents/scripts/arch_back/arch_restore.sh", ":p")) | buffer /mnt/root/home/bae/Documents/scripts/arch_back/arch_restore.sh | else | edit /mnt/root/home/bae/Documents/scripts/arch_back/arch_restore.sh | endif
+$argadd /mnt/root/home/bae/Documents/scripts/.scripts/du_exc.txt
+if bufexists(fnamemodify("/mnt/root/home/bae/Documents/scripts/arch_back/test/arch_backup_test.sh", ":p")) | buffer /mnt/root/home/bae/Documents/scripts/arch_back/test/arch_backup_test.sh | else | edit /mnt/root/home/bae/Documents/scripts/arch_back/test/arch_backup_test.sh | endif
 if &buftype ==# 'terminal'
-  silent file /mnt/root/home/bae/Documents/scripts/arch_back/arch_restore.sh
+  silent file /mnt/root/home/bae/Documents/scripts/arch_back/test/arch_backup_test.sh
 endif
 setlocal fdm=manual
 setlocal fde=0
@@ -23,12 +23,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 44 - ((34 * winheight(0) + 28) / 56)
+let s:l = 54 - ((14 * winheight(0) + 13) / 27)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 44
-normal! 0
+keepjumps 54
+normal! 064|
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
 nohlsearch

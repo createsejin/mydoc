@@ -80,11 +80,11 @@ if [ "$1" = "4" ]; then
   cd
   rm .zshrc
   ln -s -r .config/nvim/.zshrc .zshrc
-  source ~/.zshrc
-  echo -e "[\033[32minit_live\033[0m] .zshrc sourced."
-
+  echo -e "[\033[32minit_live\033[0m] '.zshrc' linked."
   echo -e "[\033[32minit_live\033[0m] All jobs done. \u25A0"
-  echo -e "\nYou should install tmux plugins and nvim plugins inside respective programs."
-  echo "tmux -> '<prefix>I'"
-  echo "nvim -> ':PlugInstall'"
+
+  echo -e "[\033[32minit_live\033[0m] You should do 'source ~/.zshrc'"
+  echo -e "[\033[32minit_live\033[0m] You should install tmux plugins and nvim plugins inside respective programs."
+  echo -e "[\033[32minit_live\033[0m] tmux -> '<prefix>I'"
+  echo -e "[\033[32minit_live\033[0m] nvim -> ':PlugInstall'"
 fi

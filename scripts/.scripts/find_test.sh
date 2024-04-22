@@ -1,1 +1,1 @@
-../arch_back/find_test.sh
+../arch_back/test/find_test.sh

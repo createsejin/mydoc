@@ -26,7 +26,7 @@ if [ "$1" = "test001" ]; then
   while IFS= read -r exclude
   do 
     find . -name "$exclude" -prune -o -print0
-  done < $home/Documents/scripts/arch_back/test_exc.txt
+  done < $home/Documents/scripts/arch_back/test/test_exc.txt
 fi
 if [ "$1" = "test002" ]; then
   cd $home/Downloads/move_test

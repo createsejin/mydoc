@@ -7,11 +7,15 @@ mnt
 # Not temporary files
 tmp
 proc
+run
 sys
 dev
 
 # Not the cache for pacman
 var/cache/pacman/pkg
 
-# home contents
-home
+# Not home contents
+home/bae/Documents
+home/bae/Downloads
+home/bae/Projects
+home/bae/git.txt

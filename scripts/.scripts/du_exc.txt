@@ -1,10 +1,12 @@
-/home/Documents
-/home/Downloads
-/home/Projects
-/proc
-/run
+/etc/pacman.d/gnupg
 /mnt
 /tmp
+/proc
+/run
 /sys
 /dev
 /swapfile
+/home/Documents
+/home/Downloads
+/home/Projects
+/home/git.txt
