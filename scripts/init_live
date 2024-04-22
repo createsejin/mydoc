@@ -7,34 +7,34 @@ shopt -s dotglob
 
 if [ "$1" = "1" ]; then
   # mount sys_back
-  echo -e "[\033[32minit_live\033[0m] mount Files/sys_back partition"
+  echo -e "\033[32m[init_live]\033[0m mount Files/sys_back partition"
   mount --mkdir /dev/Files/sys_back /mnt/sys_back
-  echo -e "[\033[32minit_live\033[0m] mount Files/test_root partition"
+  echo -e "\033[32m[init_live]\033[0m mount Files/test_root partition"
   mount --mkdir /dev/Files/test_root /mnt/test_root
 
-  echo -e "[\033[32minit_live\033[0m] mount home partition"
+  echo -e "\033[32m[init_live]\033[0m mount home partition"
   mount /dev/Files/home /mnt/root/home
 
   setfont ter-u18b.psf.gz -m 8859-2
-  echo -e "[\033[32minit_live\033[0m] console font set."
+  echo -e "\033[32m[init_live]\033[0m console font set."
 
   iwctl station wlan0 connect SK_WiFiGIGAD61C_5G
-  echo -e "[\033[32minit_live\033[0m] wifi connected."
+  echo -e "\033[32m[init_live]\033[0m wifi connected."
 
-  echo -e "[\033[32minit_live\033[0m] Finding fastest mirror server lists."
-  echo -e "[\033[32minit_live\033[0m] This job take a lot of time. Wait for finish."
+  echo -e "\033[32m[init_live]\033[0m Finding fastest mirror server lists."
+  echo -e "\033[32m[init_live]\033[0m This job take a lot of time. Wait for finish."
   reflector -c "South Korea" -a 12 --sort rate \
   --save /etc/pacman.d/mirrorlist
-  echo -e "[\033[32minit_live\033[0m] Job finished."
+  echo -e "\033[32m[init_live]\033[0m Job finished."
 
   timedatectl set-ntp true
   timedatectl set-timezone Asia/Seoul
-  echo -e "[\033[32minit_live\033[0m] timezone set."
+  echo -e "\033[32m[init_live]\033[0m timezone set."
 
   pacman-key --init
   pacman-key --populate archlinux
   pacman -Sy neovim git zsh-syntax-highlighting zsh-autosuggestions bat xsel tree
-  echo -e "[\033[32minit_live\033[0m] neovim, git, zsh-syntax-highlighting,
+  echo -e "\033[32m[init_live]\033[0m neovim, git, zsh-syntax-highlighting,
   echo -e "zsh-autosuggestions, bat, xsel tree installed."
 fi
 if [ "$1" = "2" ]; then
@@ -42,49 +42,49 @@ if [ "$1" = "2" ]; then
   mkdir -p .config/nvim
   cd .config/nvim
   git clone https://github.com/createsejin/nvimt .
-  echo -e "[\033[32minit_live\033[0m] nvimt git cloned."
+  echo -e "\033[32m[init_live]\033[0m nvimt git cloned."
   cd
   mkdir -p .config/nvimt
   cp -r .config/nvim/* .config/nvimt/
-  echo -e "[\033[32minit_live\033[0m] nvim -> nvimt copied."
+  echo -e "\033[32m[init_live]\033[0m nvim -> nvimt copied."
 
   sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
          https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  echo -e "[\033[32minit_live\033[0m] vim-plug installed."
+  echo -e "\033[32m[init_live]\033[0m vim-plug installed."
 
   cd
   mkdir -p .config/tmux
   cd .config/tmux
   ln -s -r ../nvim/tmux.conf tmux.conf 
-  echo -e "[\033[32minit_live\033[0m] tmux.conf file linked."
+  echo -e "\033[32m[init_live]\033[0m tmux.conf file linked."
 
   cd
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-  echo -e "[\033[32minit_live\033[0m] tpm installed"
+  echo -e "\033[32m[init_live]\033[0m tpm installed"
 
   tmux source-file ~/.config/tmux/tmux.conf
-  echo -e "[\033[32minit_live\033[0m] tmux.conf sourced."
+  echo -e "\033[32m[init_live]\033[0m tmux.conf sourced."
 fi
 
 if [ "$1" = "3" ]; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  echo -e "[\033[32minit_live\033[0m] oh-my-zsh installed."
+  echo -e "\033[32m[init_live]\033[0m oh-my-zsh installed."
 fi
 if [ "$1" = "4" ]; then
   cd
   rm .oh-my-zsh/themes/xiong-chiamiov-plus.zsh-theme
   cd .oh-my-zsh/themes
   ln -s -r ../../.config/nvim/xiong-chiamiov-plus.zsh-theme xiong-chiamiov-plus.zsh-theme
-  echo -e "[\033[32minit_live\033[0m] my custom xiong-chiamiov-plus.zsh-theme linked."
+  echo -e "\033[32m[init_live]\033[0m my custom xiong-chiamiov-plus.zsh-theme linked."
 
   cd
   rm .zshrc
   ln -s -r .config/nvim/.zshrc .zshrc
   source ~/.zshrc
-  echo -e "[\033[32minit_live\033[0m] .zshrc sourced."
+  echo -e "\033[32m[init_live]\033[0m .zshrc sourced."
 
-  echo -e "[\033[32minit_live\033[0m] All jobs done. \u25A0"
+  echo -e "\033[32m[init_live]\033[0m All jobs done. \u25A0"
   echo -e "\nYou should install tmux plugins and nvim plugins inside respective programs."
-  echo -e "tmux -> <prefix>I"
-  echo -e "nvim -> :PlugInstall"
+  echo "tmux -> '<prefix>I'"
+  echo "nvim -> ':PlugInstall'"
 fi
