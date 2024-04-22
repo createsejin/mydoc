@@ -1,4 +1,5 @@
 #!/bin/bash
+shopt -s dotglob
 
 check_file_exist() {
   if [ -f "$1" ]; then
@@ -25,7 +26,7 @@ if [ "$1" = "root" ] && [ "$check_main" -eq 1 ]; then
   sudo cp $home/Documents/configs/.config/tmux/tmux.conf /root/.config/tmux/
   sudo cp $home/.config/nvimt/init.vim /root/.config/nvimt/
   sudo cp $home/.config/nvim/init.vim /root/.config/nvim/
-else 
+elif [ "$1" = "root" ] && [ "$check_main" -eq 0 ]; then 
   echo "This is not main_com. exit script"
 fi
 if [ "$1" = "tmux" ]; then
