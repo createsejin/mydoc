@@ -33,9 +33,10 @@ if [ "$1" = "root" ] && [ "$check_main" -eq 1 ]; then
 elif [ "$1" = "root" ] && [ "$check_main" -eq 0 ]; then 
   echo "This is not main_com. exit script"
 fi
+
 if [ "$1" = "tmux" ]; then
   cp $home/Documents/configs/.config/tmux/tmux.conf $home/.config/nvim/
-f$sys_rooti
+fi
 if [ "$1" = "init" ]; then
   sudo cp $home/Documents/scripts/init_live $sys_root/
 fi
@@ -58,7 +59,25 @@ if [ "$1" = "arch_back" ]; then
     echo "backup scripts copyed to /mnt/sysback/scripts"
   fi
 fi
+
+if [ "$1" = "arch_back_test" ]; then
+  check_file_exist "$exclude_file"
+  file_exist=$?
+  if [ $file_exist -eq 0 ]; then
+    echo "mount /dev/Files/sys_back to /mnt/sys_back please."
+    echo "file copy command aborted."
+    echo "you can mount using this scripts."
+    echo "use 'copy_config.sh -m'"
+  else
+    cd "$home/Documents/scripts/arch_back"
+    sudo cp arch_backup_exc.txt /mnt/sys_back/scripts
+    cd "$home/Documents/scripts/arch_back/test"
+    sudo cp arch_backup_test.sh arch_restore_test.sh '/mnt/sys_back/scripts/test'
+  fi
+fi
+
 if [ "$1" = "-m" ]; then
-  sudo mount /dev/Files/sys_back /mnt/sys_back
+  sudo mount --mkdir /dev/Files/sys_back /mnt/sys_back
   echo "/dev/Files/sys_back mounted to /mnt/sys_back"
 fi
+
