@@ -85,6 +85,6 @@ if [ "$1" = "4" ]; then
 
   echo -e "[\033[32minit_live\033[0m] All jobs done. \u25A0"
   echo -e "\nYou should install tmux plugins and nvim plugins inside respective programs."
-  echo "tmux -> '<prefix>I'"
-  echo "nvim -> ':PlugInstall'"
+  echo -e "tmux -> <prefix>I"
+  echo -e "nvim -> :PlugInstall"
 fi
