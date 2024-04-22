@@ -57,26 +57,26 @@ exclude_dir() {
   mkdir -p "$path"
   mv delete/"$path"/* "$path"
 }
+exclude_file() {
+  root="/mnt/test_root/"
+  re_file_path="$1"
+  ab_file_path="$root$re_file_path"
+  dir="$(dirname $ab_file_path)"
+  mkdir -p $dir
+  # TODO: complete script and test this function!
+}
 
 exclude_dirs() {
   local path=$1
   while IFS= read -r line
   do
     if [[ ! "$line" =~ ^# ]] && [[ ! -z "$line" ]]; then
-      exclude_dir "$line"
-    fi
-  done < "$path"
-}
-
-exclude_dirs_test() {
-  local path=$1
-  while IFS= read -r line
-  do
-    if [[ ! "$line" =~ ^# ]] && [[ ! -z "$line" ]]; then
       if [ -f "$line" ]; then
         echo "$line is file."
+        exclude_file "$line"
       elif [ -d "$line" ]; then
         echo "$line is directory."
+        #exclude_dir()
       else
         echo "$line is not file or directory."
       fi
@@ -101,9 +101,7 @@ if [ "$1" = "restore003" ]; then
   cp -r /mnt/test_root_bak/* /mnt/test_root/
 fi
 
-test_exclude="/mnt/root/home/bae/Documents/scripts/arch_back/arch_backup_exc.txt"
-
 if [ "$1" = "test004" ]; then
   cd /mnt/test_root
-  exclude_dirs_test $test_exclude
+  exclude_dirs $exclude_file
 fi
