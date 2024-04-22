@@ -48,3 +48,39 @@ if [ "$1" = "restore002" ]; then
   cp -r move_test_bak/* move_test/
 fi
 
+exclude_dir() {
+  path="$1"
+  mkdir -p "$path"
+  mv delete/"$path"/* "$path"
+}
+
+exclude_dirs() {
+  local path=$1
+  while IFS= read -r line
+  do
+    if [[ ! "$line" =~ ^# ]] && [[ ! -z "$line" ]]; then
+      exclude_dir "$line"
+    fi
+  done < "$path"
+}
+
+# Exclude file location
+excdir="/mnt/sys_back/scripts"
+exclude_file="$excdir/arch_backup_exc.txt"
+
+move_to_delete() {
+  mkdir delete
+  mv !(delete) delete
+  exclude_dirs $exclude_file
+}
+
+# It's very very dangerous command!! be careful!!
+if [ "$1" = "test003" ]; then
+  cd /mnt/test_root
+  move_to_delete
+fi
+
+if [ "$1" = "restore003" ]; then
+  rm -rf --interactive=never /mnt/test_root/*
+  cp -r /mnt/test_root_bak/* /mnt/test_root/
+fi

@@ -1,5 +1,7 @@
 #!/bin/bash
+
 shopt -s dotglob
+shopt -s extglob
 
 exclude_dir() {
   path="$1"
@@ -27,7 +29,6 @@ move_to_delete() {
   exclude_dirs $exc_file
 }
 
-
 # Backup source
 backdest="/mnt/sys_back/backup"
 
@@ -36,8 +37,8 @@ excdir="/mnt/sys_back/scripts"
 exclude_file="$excdir/arch_backup_exc.txt"
 
 # Labels for backup name
-distro=arch
-type=full
+distro="arch"
+type="full"
 
 # Check file name
 ls -l $backdest
@@ -59,7 +60,11 @@ backupfile_exist=$?
 
 if [ $backupfile_exist -eq 1 ]; then
   cd /mnt/test_root
-  move_to_delete $exclude_file
+  mkdir del
+  mv !(del) del
+
   echo "This job takes a lot of time. please wait for finish."
   pv "$backupfile" | pbzip2 -dc | bsdtar --acls --xattrs -xpzf - 
+else
+  echo "There is no backup_file. exit restore script"
 fi
