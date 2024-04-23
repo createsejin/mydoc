@@ -56,7 +56,11 @@ exclude_file="$excdir/arch_backup_exc.txt"
 exclude_dir() {
   path="$1"
   mkdir -p "$path"
-  mv delete/"$path"/* "$path"/
+  if [ "$(ls -A $path)" ]; then
+    mv delete/"$path"/* "$path"/
+  else
+    mv delete/"$path" .
+  fi
 }
 
 exclude_file() {
