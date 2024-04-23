@@ -14,12 +14,23 @@ dev
 # Not the cache for pacman
 var/cache/pacman/pkg
 
-# Not home contents
+# Not home contents and config files
 home/bae/Documents
 home/bae/Downloads
 home/bae/Projects
-# for testing
-home/bae/.bashrc
-home/bae/.gitconfig
+home/bae/.cargo
+home/bae/.rustup
+home/bae/.profile
 home/bae/.config
-home/bae/scripts
+home/bae/.tmux
+home/bae/.ssh
+home/bae/.zshrc
+home/bae/.zshenv
+home/bae/.zsh_history
+home/bae/.bashrc
+home/bae/.bash_profile
+home/bae/.bash_history
+home/bae/.histfile
+home/bae/.oh-my-zsh
+home/bae/.gitconfig
+home/bae/.gnupg

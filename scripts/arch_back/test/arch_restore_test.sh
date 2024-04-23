@@ -59,11 +59,11 @@ check_file_exist "$backupfile"
 backupfile_exist=$?
 
 if [ $backupfile_exist -eq 1 ]; then
+  echo "This job takes a lot of time. please wait for finish."
   cd /mnt/test_root
   mkdir del
   mv !(del) del
 
-  echo "This job takes a lot of time. please wait for finish."
   pv "$backupfile" | pbzip2 -dc | bsdtar --acls --xattrs -xpzf - 
 else
   echo "There is no backup_file. exit restore script"

@@ -1,6 +1,5 @@
 
 root@archiso /mnt/test_root # find_test.sh test003
-home=/mnt/root/home/bae
 mv: cannot stat 'delete//mnt/test_root/delete/etc/pacman.d/gnupg/*': No such file or directory
 mv: cannot stat 'delete//mnt/test_root/delete/mnt/*': No such file or directory
 mv: cannot stat 'delete//mnt/test_root/delete/tmp/*': No such file or directory
@@ -19,12 +18,12 @@ mv: cannot stat 'delete//mnt/test_root/delete/home/bae/.bashrc': No such file or
 
 
 root@archiso /mnt/test_root # find_test.sh test003
-home=/mnt/root/home/bae
 mv: cannot stat 'delete/tmp/*': No such file or directory
 mv: cannot stat 'delete/proc/*': No such file or directory
 mv: cannot stat 'delete/run/*': No such file or directory
 mv: cannot stat 'delete/sys/*': No such file or directory
 mv: cannot stat 'delete/dev/*': No such file or directory
 mv: cannot stat 'delete/home/bae/Projects/*': No such file or directory
+
 /mnt/test_root/home/bae/.bashrc is not file or directory.
 /mnt/test_root/home/bae/scripts is not file or directory.
