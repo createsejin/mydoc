@@ -94,8 +94,8 @@ exclude_dirs() {
       elif [ -d "$moved$line" ]; then
         exclude_dir "$line"
       else
-        # maybe a unlinked symbolic link
-        echo "$moved$line is not file or directory."
+        # This case maybe a unlinked symbolic link.
+        exclude_file "$line"
       fi
     fi
   done < "$exclude_file"
