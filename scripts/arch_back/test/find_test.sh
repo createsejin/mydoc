@@ -15,12 +15,11 @@ check_file_exist "$main_com_zsh"
 check_main=$?
 if [ "$check_main" -eq 1 ]; then
   home="/home/bae"
-  echo "home=$home"
 else
   home="/mnt/root/home/bae"
-  echo "home=$home"
 fi
 test_home="/mnt/test_root/home/bae"
+root="/mnt/test_root/"
 
 if [ "$1" = "test001" ]; then
   cd $home/Downloads
@@ -49,20 +48,6 @@ if [ "$1" = "restore002" ]; then
   cp -r move_test_bak/* move_test/
 fi
 
-# Exclude file location
-excdir="/mnt/sys_back/scripts"
-exclude_file="$excdir/arch_backup_exc.txt"
-
-exclude_dir() {
-  path="$1"
-  root="/mnt/test_root/"
-  moved="$root/delete/"
-  mkdir -p "$path"
-  if [ "$(ls -A $moved$path)" ]; then
-    mv delete/"$path"/* "$path"/
-  fi
-}
-
 test_ls() {
   path=$(pwd)
   if [ "$(ls -A $path)" ]; then
@@ -72,8 +57,20 @@ test_ls() {
   fi
 }
 
+# Exclude file location
+excdir="/mnt/sys_back/scripts"
+exclude_file="$excdir/arch_backup_exc.txt"
+
+exclude_dir() {
+  path="$1"
+  moved="$root/delete/"
+  mkdir -p "$path"
+  if [ "$(ls -A $moved$path)" ]; then
+    mv delete/"$path"/* "$path"/
+  fi
+}
+
 exclude_file() {
-  root="/mnt/test_root/"
   # exclude file path list
   path="$1"
   # absolute file path
@@ -84,7 +81,6 @@ exclude_file() {
 }
 
 exclude_dirs() {
-  root="/mnt/test_root/"
   moved="$root/delete/"
   while IFS= read -r line
   do
@@ -105,23 +101,7 @@ move_to_delete() {
   mkdir delete
   mv !(delete) delete
   exclude_dirs
-}
-
-is_dir() {
-  local path=$1
-  root="/mnt/test_root/"
-  while IFS= read -r line
-  do
-    if [[ ! "$line" =~ ^# ]] && [[ ! -z "$line" ]]; then
-      if [ -f "$root$line" ]; then
-        echo "$root$line is file"
-      elif [ -d "$root$line" ]; then
-        echo "$root$line is dir"
-      else
-        echo "$root$line is not file or directory."
-      fi
-    fi
-  done < "$path"
+  rm -rf delete
 }
 
 # This command is extremely dangerous!! Be careful of using this!!
@@ -133,12 +113,4 @@ fi
 if [ "$1" = "restore003" ]; then
   rm -rf --interactive=never /mnt/test_root/*
   cp -r /mnt/test_root_bak/* /mnt/test_root/
-fi
-
-if [ "$1" = "test004" ]; then
-  cd /mnt/test_root
-  is_dir $exclude_file
-fi
-if [ "$1" = "test005" ]; then
-  test_ls
 fi
