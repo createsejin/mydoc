@@ -20,6 +20,7 @@ else
   home="/mnt/root/home/bae"
   echo "home=$home"
 fi
+test_home="/mnt/test_root/home/bae"
 
 if [ "$1" = "test001" ]; then
   cd $home/Downloads
@@ -43,7 +44,7 @@ if [ "$1" = "test002" ]; then
   mv !(Projects) ../move/.test5
 fi
 if [ "$1" = "restore002" ]; then
-  cd $home/Downloads
+  cd $test_home/Downloads
   rm -rf --interactive=never move_test/*
   cp -r move_test_bak/* move_test/
 fi
@@ -55,45 +56,65 @@ exclude_file="$excdir/arch_backup_exc.txt"
 exclude_dir() {
   path="$1"
   mkdir -p "$path"
-  mv delete/"$path"/* "$path"
+  mv delete/"$path"/* "$path"/
 }
+
 exclude_file() {
   root="/mnt/test_root/"
-  re_file_path="$1"
-  ab_file_path="$root$re_file_path"
+  # exclude file path list
+  path="$1"
+  # absolute file path
+  ab_file_path="$root$path"
   dir="$(dirname $ab_file_path)"
   mkdir -p $dir
-  # TODO: complete script and test this function!
+  mv delete/"$path" $dir/
 }
 
 exclude_dirs() {
-  local path=$1
+  root="/mnt/test_root/"
+  moved="$root/delete/"
   while IFS= read -r line
   do
     if [[ ! "$line" =~ ^# ]] && [[ ! -z "$line" ]]; then
-      if [ -f "$line" ]; then
-        echo "$line is file."
+      if [ -f "$moved$line" ]; then
         exclude_file "$line"
-      elif [ -d "$line" ]; then
-        echo "$line is directory."
-        #exclude_dir()
+      elif [ -d "$moved$line" ]; then
+        exclude_dir "$line"
       else
-        echo "$line is not file or directory."
+        # maybe a unlinked symbolic link
+        echo "$moved$line is not file or directory."
       fi
     fi
-  done < "$path"
+  done < "$exclude_file"
 }
 
 move_to_delete() {
   mkdir delete
   mv !(delete) delete
-  exclude_dirs $exclude_file
+  exclude_dirs
+}
+
+exclude_dirs_test() {
+  local path=$1
+  root="/mnt/test_root/"
+  while IFS= read -r line
+  do
+    if [[ ! "$line" =~ ^# ]] && [[ ! -z "$line" ]]; then
+      if [ -f "$root$line" ]; then
+        echo "$root$line is file"
+      elif [ -d "$root$line" ]; then
+        echo "$root$line is dir"
+      else
+        echo "$root$line is not file or directory."
+      fi
+    fi
+  done < "$path"
 }
 
 # This command is extremely dangerous!! Be careful of using this!!
 if [ "$1" = "test003" ]; then
   cd /mnt/test_root
-  #move_to_delete
+  move_to_delete
 fi
 
 if [ "$1" = "restore003" ]; then
@@ -103,5 +124,5 @@ fi
 
 if [ "$1" = "test004" ]; then
   cd /mnt/test_root
-  exclude_dirs $exclude_file
+  exclude_dirs_test $exclude_file
 fi
