@@ -28,34 +28,3 @@ mv: cannot stat 'delete/dev/*': No such file or directory
 mv: cannot stat 'delete/home/bae/Projects/*': No such file or directory
 /mnt/test_root/home/bae/.bashrc is not file or directory.
 /mnt/test_root/home/bae/scripts is not file or directory.
-root@archiso /mnt/test_root # l
-total 44K
-drwxr-xr-x 12 root root 4.0K Apr 23 18:35 .
-drwxr-xr-x  1 root root  120 Apr 23 17:30 ..
-drwxr-xr-x 20 root root 4.0K Apr 23 18:35 delete
-drwxr-xr-x  2 root root 4.0K Apr 23 18:35 dev
-drwxr-xr-x  3 root root 4.0K Apr 23 18:35 etc
-drwxr-xr-x  3 root root 4.0K Apr 23 18:35 home
-drwxr-xr-x  3 root root 4.0K Apr 23 18:35 mnt
-drwxr-xr-x  2 root root 4.0K Apr 23 18:35 proc
-drwxr-xr-x  2 root root 4.0K Apr 23 18:35 run
-drwxr-xr-x  2 root root 4.0K Apr 23 18:35 sys
-drwxr-xr-x  2 root root 4.0K Apr 23 18:35 tmp
-drwxr-xr-x  3 root root 4.0K Apr 23 18:35 var
-root@archiso /mnt/test_root # cd home
-root@archiso /mnt/test_root/home # l
-total 12K
-drwxr-xr-x  3 root root 4.0K Apr 23 18:35 .
-drwxr-xr-x 12 root root 4.0K Apr 23 18:35 ..
-drwxr-xr-x  6 root root 4.0K Apr 23 18:35 bae
-root@archiso /mnt/test_root/home # cd bae
-root@archiso /mnt/test_root/home/bae # l
-total 28K
-drwxr-xr-x  6 root root 4.0K Apr 23 18:35 .
-drwxr-xr-x  3 root root 4.0K Apr 23 18:35 ..
-drwxr-xr-x  5 root root 4.0K Apr 23 18:35 .config
--rw-r--r--  1 root root   79 Apr 23 18:34 .gitconfig
-drwxr-xr-x 10 root root 4.0K Apr 23 18:35 Documents
-drwxr-xr-x  4 root root 4.0K Apr 23 18:35 Downloads
-drwxr-xr-x  2 root root 4.0K Apr 23 18:35 Projects
-root@archiso /mnt/test_root/home/bae #

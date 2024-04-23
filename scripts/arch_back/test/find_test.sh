@@ -55,11 +55,20 @@ exclude_file="$excdir/arch_backup_exc.txt"
 
 exclude_dir() {
   path="$1"
+  root="/mnt/test_root/"
+  moved="$root/delete/"
   mkdir -p "$path"
-  if [ "$(ls -A $path)" ]; then
+  if [ "$(ls -A $moved$path)" ]; then
     mv delete/"$path"/* "$path"/
+  fi
+}
+
+test_ls() {
+  path=$(pwd)
+  if [ "$(ls -A $path)" ]; then
+    echo "dir is not empty"
   else
-    mv delete/"$path" .
+    echo "dir is empty."
   fi
 }
 
@@ -98,7 +107,7 @@ move_to_delete() {
   exclude_dirs
 }
 
-exclude_dirs_test() {
+is_dir() {
   local path=$1
   root="/mnt/test_root/"
   while IFS= read -r line
@@ -128,5 +137,8 @@ fi
 
 if [ "$1" = "test004" ]; then
   cd /mnt/test_root
-  exclude_dirs_test $exclude_file
+  is_dir $exclude_file
+fi
+if [ "$1" = "test005" ]; then
+  test_ls
 fi
