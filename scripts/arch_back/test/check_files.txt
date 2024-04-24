@@ -1,4 +1,4 @@
-home/bae/git.txt -> overwrited
-home/bae/Downloads/test1, test2 -> preserved
+home/bae/Downloads/test1, test2, test3 -> preserved
 home/bae/Documents/* -> preserved
+init_live -> overwrited
 
