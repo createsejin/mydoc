@@ -56,7 +56,7 @@ if [ "$1" = "arch_back" ]; then
   else
     cd $home/Documents/scripts/arch_back
     sudo cp arch_backup_exc.txt arch_backup.sh arch_restore.sh /mnt/sys_back/scripts
-    echo "backup scripts copyed to /mnt/sysback/scripts"
+    echo "backup scripts copyed to /mnt/sysback/scripts/"
   fi
 fi
 
@@ -73,6 +73,7 @@ if [ "$1" = "arch_back_test" ]; then
     sudo cp arch_backup_exc.txt /mnt/sys_back/scripts
     cd "$home/Documents/scripts/arch_back/test"
     sudo cp arch_backup_test.sh arch_restore_test.sh '/mnt/sys_back/scripts/test'
+    echo "backup test scripts copyed to /mnt/sysback/scripts/test/"
   fi
 fi
 

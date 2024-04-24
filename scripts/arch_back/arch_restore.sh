@@ -1,46 +1,66 @@
 #!/bin/bash
+
 shopt -s dotglob
-
-exclude_dir() {
-  path="$1"
-  mkdir -p "$path"
-  mv delete/"$path"/* "$path"
-}
-
-exclude_dirs() {
-  local path=$1
-  while IFS= read -r line
-  do
-    if [[ ! "$line" =~ ^# ]] && [[ ! -z "$line" ]]; then
-      exclude_dir "$line"
-    fi
-  done < "$path"
-}
-
-move_to_delete() {
-  local exclude_path=$1
-  # It's very very dangerous command!! be careful!!
-  mkdir delete
-  mv * delete
-  cp delete/$exclude_path .
-  exc_file=$(basename $exclude_path)
-  exclude_dirs $exc_file
-}
-
+shopt -s extglob
 
 # Backup source
 backdest="/mnt/sys_back/backup"
+
+root="/mnt/root/"
 
 # Exclude file location
 excdir="/mnt/sys_back/scripts"
 exclude_file="$excdir/arch_backup_exc.txt"
 
+exclude_dir() {
+  path="$1"
+  moved="$root/delete/"
+  mkdir -p "$path"
+  if [ "$(ls -A $moved$path)" ]; then
+    mv delete/"$path"/* "$path"/
+  fi
+}
+
+exclude_file() {
+  # exclude file path list
+  path="$1"
+  # absolute file path
+  ab_file_path="$root$path"
+  dir="$(dirname $ab_file_path)"
+  mkdir -p $dir
+  mv delete/"$path" $dir/
+}
+
+exclude_dirs() {
+  moved="$root/delete/"
+  while IFS= read -r line
+  do
+    if [[ ! "$line" =~ ^# ]] && [[ ! -z "$line" ]]; then
+      if [ -f "$moved$line" ]; then
+        exclude_file "$line"
+      elif [ -d "$moved$line" ]; then
+        exclude_dir "$line"
+      else
+        # This case maybe a unlinked symbolic link.
+        exclude_file "$line"
+      fi
+    fi
+  done < "$exclude_file"
+}
+
+move_to_delete() {
+  mkdir delete
+  mv !(delete) delete
+  exclude_dirs
+  rm -rf delete
+}
+
 # Labels for backup name
-distro=arch
-type=full
+distro="arch"
+type="full"
 
 # Check file name
-ls -l /mnt/sys_back
+ls -l $backdest
 echo -n "input backup version name: "
 read version
 
@@ -58,8 +78,10 @@ check_file_exist "$backupfile"
 backupfile_exist=$?
 
 if [ $backupfile_exist -eq 1 ]; then
-  cd /mnt/root
-  move_to_delete $exclude_file
+  cd $root
   echo "This job takes a lot of time. please wait for finish."
+  move_to_delete
   pv "$backupfile" | pbzip2 -dc | bsdtar --acls --xattrs -xpzf - 
+else
+  echo "There is no backup_file. exit restore script"
 fi
