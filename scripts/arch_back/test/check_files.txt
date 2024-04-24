@@ -1,0 +1,4 @@
+home/bae/git.txt -> overwrited
+home/bae/Downloads/test1, test2 -> preserved
+home/bae/Documents/* -> preserved
+
