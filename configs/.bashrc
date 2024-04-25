@@ -217,3 +217,5 @@ function load_prompt () {
 load_prompt
 
 . "$HOME/.cargo/env"
+
+eval "$(starship init bash)"
