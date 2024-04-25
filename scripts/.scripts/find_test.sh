@@ -1,1 +1,0 @@
-../arch_back/test/find_test.sh

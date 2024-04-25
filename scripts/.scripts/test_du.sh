@@ -1,1 +1,0 @@
-../arch_back/test/test_du.sh
