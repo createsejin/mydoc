@@ -116,7 +116,6 @@ alias rm='rm -rf'
 alias cp='cp -r'
 alias rp='realpath'
 alias rpr='realpath --relative-to=$(pwd)'
-alias cds='cd ~/Documents/scripts/.scripts'
 alias clipc='cliphist wipe'
 
 alias vim=nvim
