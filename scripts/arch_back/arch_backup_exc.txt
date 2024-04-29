@@ -18,6 +18,9 @@ var/cache/pacman/pkg
 home/bae/Documents
 home/bae/Downloads
 home/bae/Projects
+home/bae/vcpkg
+home/bae/HyprV4
+home/bae/.mozilla
 home/bae/.cargo
 home/bae/.rustup
 home/bae/.profile

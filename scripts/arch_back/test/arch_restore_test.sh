@@ -10,7 +10,7 @@ root="/mnt/test_root/"
 
 # Exclude file location
 excdir="/mnt/sys_back/scripts"
-exclude_file="$excdir/arch_backup_exc.txt"
+exclude_path="$excdir/arch_backup_exc.txt"
 
 exclude_dir() {
   path="$1"
@@ -45,7 +45,7 @@ exclude_dirs() {
         exclude_file "$line"
       fi
     fi
-  done < "$exclude_file"
+  done < "$exclude_path"
 }
 
 move_to_delete() {
