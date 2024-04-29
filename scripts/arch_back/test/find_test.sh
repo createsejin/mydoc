@@ -59,7 +59,7 @@ test_ls() {
 
 # Exclude file location
 excdir="/mnt/sys_back/scripts"
-exclude_file="$excdir/arch_backup_exc.txt"
+exclude_path="$excdir/arch_backup_exc.txt"
 
 exclude_dir() {
   path="$1"
@@ -94,23 +94,48 @@ exclude_dirs() {
         exclude_file "$line"
       fi
     fi
-  done < "$exclude_file"
+  done < "$exclude_path"
 }
 
-move_to_delete() {
+exclude_dirs_home() {
+  moved="$root/home/bae/delete/"
+  home_prefix="home/bae/"
+  while IFS= read -r line
+  do
+    if [[ ! "$line" =~ ^# ]] && [[ ! -z "$line" ]] && [[ "$line" == "$home_prefix"* ]]; then
+      echo "$line"
+    fi
+  done < "$exclude_path"
+}
+
+move_to_delete_root() {
+  mkdir delete
+  mv !(delete|home|boot) delete
+  exclude_dirs
+  rm -rf delete
+}
+
+move_to_delete_home() {
+  cd home/bae
   mkdir delete
   mv !(delete) delete
-  exclude_dirs
+  
   rm -rf delete
 }
 
 # This command is extremely dangerous!! Be careful of using this!!
 if [ "$1" = "test003" ]; then
   cd /mnt/test_root
-  move_to_delete
+  move_to_delete_root
+  move_to_delete_home
 fi
 
 if [ "$1" = "restore003" ]; then
   rm -rf --interactive=never /mnt/test_root/*
   cp -r /mnt/test_root_bak/* /mnt/test_root/
 fi
+
+if [ "$1" = "test_home001" ]; then
+  exclude_dirs_home 
+fi
+
