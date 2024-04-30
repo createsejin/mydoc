@@ -65,7 +65,7 @@ ls -l $backdest
 echo -n "input backup version name: "
 read version
 
-backupfile="$backdest/$distro-$type-$version-test.tar.gz"
+backupfile="$backdest/$distro-$type-$version.tar.gz"
 
 check_file_exist() {
   if [ -f "$1" ]; then
