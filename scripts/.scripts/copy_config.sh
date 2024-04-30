@@ -23,15 +23,13 @@ else
   echo "sys_root=$sys_root/"
 fi
 
-if [ "$1" = "root" ] && [ "$check_main" -eq 1 ]; then
+if [ "$1" = "root" ]; then
   sudo cp $home/Documents/root_configs/.zshrc $sys_root/root/ 
   sudo cp $home/Documents/root_configs/.oh-my-zsh/themes/xiong-chiamiov-plus.zsh-theme \
     $sys_root/root/.oh-my-zsh/themes
   sudo cp $home/Documents/configs/.config/tmux/tmux.conf $sys_root/root/.config/tmux/
   sudo cp $home/.config/nvimt/init.vim $sys_root/root/.config/nvimt/
-  sudo cp $home/.config/nvim/init.vim $sys_root/root/.config/nvim/
-elif [ "$1" = "root" ] && [ "$check_main" -eq 0 ]; then 
-  echo "This is not main_com. exit script"
+  sudo cp -r $home/.config/nvim/* $sys_root/root/.config/nvim/
 fi
 
 if [ "$1" = "tmux" ]; then
