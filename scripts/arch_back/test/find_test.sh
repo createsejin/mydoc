@@ -120,6 +120,26 @@ move_to_delete_root() {
 move_to_delete_home() {
   cd $root
   cd home/bae
+exclude_dirs_home() {
+  moved="$root/home/bae/delete/"
+  home_prefix="home/bae/"
+  while IFS= read -r line
+  do
+    if [[ ! "$line" =~ ^# ]] && [[ ! -z "$line" ]] && [[ "$line" == "$home_prefix"* ]]; then
+      echo "$line"
+    fi
+  done < "$exclude_path"
+}
+
+move_to_delete_root() {
+  mkdir delete
+  mv !(delete|home|boot) delete
+  exclude_dirs
+  rm -rf delete
+}
+
+move_to_delete_home() {
+  cd home/bae
   mkdir delete
   mv !(delete) delete
   
