@@ -10,7 +10,7 @@ root="/mnt/root/"
 
 # Exclude file location
 excdir="/mnt/sys_back/scripts"
-exclude_file="$excdir/arch_backup_exc.txt"
+exclude_path="$excdir/arch_backup_exc.txt"
 
 exclude_dir() {
   path="$1"
@@ -35,17 +35,17 @@ exclude_dirs() {
   moved="$root/delete/"
   while IFS= read -r line
   do
-    if [[ ! "$line" =~ ^# ]] && [[ ! -z "$line" ]]; then
+    if [[ ! "$line" =~ ^# ]] && [[ ! -z "$line" ]] && [[ ! "$line" == "home" ]]; then
       if [ -f "$moved$line" ]; then
         exclude_file "$line"
       elif [ -d "$moved$line" ]; then
         exclude_dir "$line"
       else
-        # This case maybe a unlinked symbolic link.
+        # This case maybe a unlinked symbolic link or non exist file
         exclude_file "$line"
       fi
     fi
-  done < "$exclude_file"
+  done < "$exclude_path"
 }
 
 move_to_delete() {

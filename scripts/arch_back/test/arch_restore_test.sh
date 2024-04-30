@@ -10,7 +10,7 @@ root="/mnt/test_root"
 
 # Exclude file location
 excdir="/mnt/sys_back/scripts"
-exclude_file="$excdir/arch_backup_exc.txt"
+exclude_path="$excdir/arch_backup_exc.txt"
 
 exclude_dir() {
   path="$1"
@@ -41,7 +41,7 @@ exclude_dirs() {
       elif [ -d "$moved$line" ]; then
         exclude_dir "$line"
       else
-        # This case maybe a unlinked symbolic link.
+        # This case maybe a unlinked symbolic link or non exist file
         exclude_file "$line"
       fi
     fi
