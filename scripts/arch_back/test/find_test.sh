@@ -59,9 +59,9 @@ test_ls() {
 
 # Exclude file location
 excdir="/mnt/sys_back/scripts"
-exclude_path="$excdir/arch_backup_exc.txt"
+exclude_path="$excdir/test/arch_backup_exc_test.txt"
 
-exclude_dir() {
+exclude_dir_root() {
   path="$1"
   moved="$root/delete/"
   mkdir -p "$path"
@@ -70,7 +70,7 @@ exclude_dir() {
   fi
 }
 
-exclude_file() {
+exclude_file_root() {
   # exclude file path list
   path="$1"
   # absolute file path
@@ -80,18 +80,38 @@ exclude_file() {
   mv delete/"$path" $dir/
 }
 
-exclude_dirs() {
+exclude_dir_home() {
+  path="$1"
+  moved="$test_home/delete/"
+  mkdir -p "$test_home/$path"
+  cd $test_home
+  if [ "$(ls -A $moved$path)" ]; then
+    mv delete/"$path"/* "$path"/
+  fi
+}
+
+exclude_file_home() {
+  path="$1"
+  mv delete/"$path" .
+}
+
+exclude_dirs_root() {
   moved="$root/delete/"
   while IFS= read -r line
   do
-    if [[ ! "$line" =~ ^# ]] && [[ ! -z "$line" ]]; then
+    if [[ ! "$line" =~ ^# ]] && [[ ! -z "$line" ]] && \
+      [[ ! "$line" == "$home_prefix"* ]]; then
+      echo "exclude_dirs_root:"
       if [ -f "$moved$line" ]; then
-        exclude_file "$line"
+        echo "$moved$line is file"
+        exclude_file_root "$line"
       elif [ -d "$moved$line" ]; then
-        exclude_dir "$line"
+        echo "$moved$line is directory"
+        exclude_dir_root "$line"
       else
         # This case maybe a unlinked symbolic link.
-        exclude_file "$line"
+        echo "$moved$line is not file or directory"
+        exclude_file_root "$line"
       fi
     fi
   done < "$exclude_path"
@@ -102,9 +122,21 @@ exclude_dirs_home() {
   home_prefix="home/bae/"
   while IFS= read -r line
   do
-    if [[ ! "$line" =~ ^# ]] && [[ ! -z "$line" ]] && [[ "$line" == "$home_prefix"* ]]; then
+    if [[ ! "$line" =~ ^# ]] && [[ ! -z "$line" ]] && \
+      [[ "$line" == "$home_prefix"* ]]; then
       line=${line#"$home_prefix"}
-      echo "$line"
+      echo "exclude_dirs_home:"
+      if [ -f "$moved$line" ]; then
+        echo "$moved$line is file"
+        exclude_file_home "$line"
+      elif [ -d "$moved$line" ]; then
+        echo "$moved$line is directory"
+        exclude_dir_home "$line"
+      else
+        # This case maybe a unlinked symbolic link.
+        echo "$moved$line is not file or directory"
+        exclude_file_home "$line"
+      fi
     fi
   done < "$exclude_path"
 }
@@ -113,36 +145,17 @@ move_to_delete_root() {
   cd $root
   mkdir delete
   mv !(delete|home|boot) delete
-  exclude_dirs
+  rm -rf boot/*
+  exclude_dirs_root
   rm -rf delete
 }
 
 move_to_delete_home() {
   cd $root
-  cd home/bae
-exclude_dirs_home() {
-  moved="$root/home/bae/delete/"
-  home_prefix="home/bae/"
-  while IFS= read -r line
-  do
-    if [[ ! "$line" =~ ^# ]] && [[ ! -z "$line" ]] && [[ "$line" == "$home_prefix"* ]]; then
-      echo "$line"
-    fi
-  done < "$exclude_path"
-}
-
-move_to_delete_root() {
-  mkdir delete
-  mv !(delete|home|boot) delete
-  exclude_dirs
-  rm -rf delete
-}
-
-move_to_delete_home() {
   cd home/bae
   mkdir delete
   mv !(delete) delete
-  
+  exclude_dirs_home 
   rm -rf delete
 }
 
@@ -162,3 +175,12 @@ if [ "$1" = "test_home001" ]; then
   exclude_dirs_home 
 fi
 
+
+if [ "$1" = "test004" ]; then
+  while IFS= read -r line
+  do
+    if [[ ! "$line" =~ ^# ]] && [[ ! -z "$line" ]]; then
+      mkdir -p $line
+    fi
+  done < "$exclude_path"
+fi

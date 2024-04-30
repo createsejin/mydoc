@@ -50,7 +50,8 @@ exclude_dirs() {
 
 move_to_delete() {
   mkdir delete
-  mv !(delete) delete
+  mv !(delete|home|boot) delete
+  rm -rf boot/*
   exclude_dirs
   rm -rf delete
 }

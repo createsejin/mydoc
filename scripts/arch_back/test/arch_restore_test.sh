@@ -6,11 +6,11 @@ shopt -s extglob
 # Backup source
 backdest="/mnt/sys_back/backup"
 
-root="/mnt/test_root/"
+root="/mnt/test_fir_root"
 
 # Exclude file location
 excdir="/mnt/sys_back/scripts"
-exclude_path="$excdir/arch_backup_exc.txt"
+exclude_path="$excdir/test/arch_backup_exc_test.txt"
 
 exclude_dir() {
   path="$1"
@@ -35,7 +35,7 @@ exclude_dirs() {
   moved="$root/delete/"
   while IFS= read -r line
   do
-    if [[ ! "$line" =~ ^# ]] && [[ ! -z "$line" ]]; then
+    if [[ ! "$line" =~ ^# ]] && [[ ! -z "$line" ]] && [[ ! "$line" == "home" ]]; then
       if [ -f "$moved$line" ]; then
         exclude_file "$line"
       elif [ -d "$moved$line" ]; then
@@ -50,7 +50,8 @@ exclude_dirs() {
 
 move_to_delete() {
   mkdir delete
-  mv !(delete) delete
+  mv !(delete|home|boot) delete
+  rm -rf boot/*
   exclude_dirs
   rm -rf delete
 }
