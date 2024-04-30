@@ -167,7 +167,12 @@ if [ "$1" = "test003" ]; then
 fi
 
 if [ "$1" = "restore003" ]; then
-  rm -rf --interactive=never /mnt/test_root/*
+  cd /mnt/test_root
+  mkdir del
+  mv !(del|home|boot) del
+  rm -rf del
+  rm -rf boot/*
+  rm -rf home/*
   cp -r /mnt/test_root_bak/* /mnt/test_root/
 fi
 

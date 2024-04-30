@@ -14,6 +14,8 @@ check_file_exist() {
 # Backup destination
 backdest="/mnt/sys_back/backup"
 
+root="/mnt/test_root"
+
 # Labels for backup name
 distro="arch"
 type="full"
@@ -54,7 +56,7 @@ else
   # slow terminal, this can greatly speed up the backup process.
   # Use bsdtar because GNU tar will not preserve extended attributes.
   echo "This job takes a lot of time. please wait for finish."
-  cd /mnt/test_root
+  cd $root
   bsdtar --exclude-from="$exclude_file" \
     --acls --xattrs -cpaf - . | pv -s $(du -sb \
     --exclude-from="$exclude_file" . | awk '{print $1}') \

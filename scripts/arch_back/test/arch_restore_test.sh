@@ -6,11 +6,11 @@ shopt -s extglob
 # Backup source
 backdest="/mnt/sys_back/backup"
 
-root="/mnt/test_fir_root"
+root="/mnt/test_root"
 
 # Exclude file location
 excdir="/mnt/sys_back/scripts"
-exclude_path="$excdir/test/arch_backup_exc_test.txt"
+exclude_file="$excdir/arch_backup_exc.txt"
 
 exclude_dir() {
   path="$1"
