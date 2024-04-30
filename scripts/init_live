@@ -26,6 +26,9 @@ if [ "$1" = "1" ]; then
   rm -rf .ssh
   ln -s -r ../mnt/root/home/bae/.ssh .ssh
   echo -e "[\033[32minit_live\033[0m] .ssh linked."
+  cd
+  ln -s -r ../mnt/root/home/bae/Documents/sessions se
+  echo -e "[\033[32minit_live\033[0m] vim sessions linked."
 
   setfont ter-u18b.psf.gz -m 8859-2
   echo -e "[\033[32minit_live\033[0m] console font set."
