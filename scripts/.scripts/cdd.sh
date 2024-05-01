@@ -7,22 +7,29 @@ check_file_exist() {
     return 0
   fi
 }
-home="/data/data/com.termux/files/home"
+main_com_zsh="/home/bae/Documents/configs/.zshrc"
+check_file_exist "$main_com_zsh"
+check_main=$?
+if [ "$check_main" -eq 1 ]; then
+  home="/home/bae"
+else
+  home="/mnt/root/home/bae"
+fi
 
 cdd_func() {
   location="$1"
   cd "$location"
   ls -Al --color=auto
-  echo "cd $location" | termux-clipboard-set
 }
+
 # variables
 vim_st="$home/.local/state/nvim"
 vim_swap="$home/.local/state/nvim/swap"
 vim_view="$home/.local/state/nvim/view"
-se="$home/doc/sessions"
-doc="$home/doc"
-script="$home/doc/android/scripts/.scripts"
-obsidian="$home/storage/shared/ob-git"
+se="$home/Documents/sessions"
+doc="$home/Documents"
+script="$home/Documents/scripts/.scripts"
+obsidian="$home/Obsidian"
 
 if [ "$1" = "help" ]; then
   echo "vim-st: $vim_st"
@@ -32,7 +39,6 @@ if [ "$1" = "help" ]; then
   echo "d: $doc"
   echo "sc: $script"
   echo "ob: $obsidian"
-  echo "to move dir, press <leader>p in tmux"
 fi
 
 if [ "$1" = "vim-st" ]; then
@@ -56,4 +62,3 @@ fi
 if [ "$1" = "ob" ]; then
   cdd_func $obsidian
 fi
-
