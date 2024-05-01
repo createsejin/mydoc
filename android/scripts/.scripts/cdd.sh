@@ -12,7 +12,7 @@ home="/data/data/com.termux/files/home"
 cdd_func() {
   location="$1"
   cd "$location"
-  ls -Al --color=auto
+  ls -A --color=auto
 }
 # variables
 vim_st="$home/.local/state/nvim"
