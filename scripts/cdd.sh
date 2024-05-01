@@ -39,7 +39,7 @@ if [ "$1" = "help" ]; then
   echo "d: $doc"
   echo "sc: $script"
   echo "ob: $obsidian"
-  echo "to move dir, press Ctrl+p in tmux"
+  echo "to move dir, press <leader>p in tmux"
 fi
 
 if [ "$1" = "vim-st" ]; then
