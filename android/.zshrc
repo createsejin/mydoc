@@ -134,4 +134,4 @@ bindkey  "^[[F"   end-of-line
 bindkey  "^[[4~"   end-of-line
 bindkey  "^[[3~"  delete-char
 
-#export PATH="/home/bae/Documents/scripts/.scripts:$PATH"
+export PATH="/data/data/com.termux/files/home/doc/android/scripts/.scripts:$PATH"
