@@ -7,29 +7,21 @@ check_file_exist() {
     return 0
   fi
 }
-main_com_zsh="/home/bae/Documents/configs/.zshrc"
-check_file_exist "$main_com_zsh"
-check_main=$?
-if [ "$check_main" -eq 1 ]; then
-  home="/home/bae"
-else
-  home="/mnt/root/home/bae"
-fi
+home="/data/data/com.termux/files/home"
 
 cdd_func() {
   location="$1"
   cd "$location"
   ls -Al --color=auto
-  echo "cd $location" | wl-copy
 }
 # variables
 vim_st="$home/.local/state/nvim"
 vim_swap="$home/.local/state/nvim/swap"
 vim_view="$home/.local/state/nvim/view"
-se="$home/Documents/sessions"
-doc="$home/Documents"
-script="$home/Documents/scripts/.scripts"
-obsidian="$home/Obsidian"
+se="$home/doc/sessions"
+doc="$home/doc"
+script="$home/doc/android/scripts/.scripts"
+obsidian="$home/storage/shared/ob-git"
 
 if [ "$1" = "help" ]; then
   echo "vim-st: $vim_st"
@@ -63,3 +55,4 @@ fi
 if [ "$1" = "ob" ]; then
   cdd_func $obsidian
 fi
+
