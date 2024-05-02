@@ -92,6 +92,10 @@ sub_cmd="sc"
 location="$home/Documents/scripts/.scripts"
 handle_location "$sub_cmd" "$location" "$1" "$2"
 
+sub_cmd="asc"
+location="$home/Documents/android/scripts/.scripts"
+handle_location "$sub_cmd" "$location" "$1" "$2"
+
 sub_cmd="ob"
 location="$home/Obsidian"
 handle_location "$sub_cmd" "$location" "$1" "$2"
