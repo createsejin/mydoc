@@ -107,7 +107,7 @@ source $ZSH/oh-my-zsh.sh
 setopt GLOB_DOTS
 setopt EXTENDED_GLOB
 
-alias ls='ls --color=auto'
+alias ls='ls -A --color=auto'
 alias grep='grep --color=auto'
 alias du='du -h -a -d 1'
 alias rm='rm -rf'
