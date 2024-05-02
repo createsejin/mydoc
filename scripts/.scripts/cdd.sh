@@ -1,6 +1,6 @@
 #!/bin/bash
 
-check_file_exist() {
+function check_file_exist() {
   if [ -f "$1" ]; then
     return 1
   else
@@ -16,112 +16,98 @@ else
   home="/mnt/root/home/bae"
 fi
 
-cdd_func() {
+function cdd_func() {
   location="$1"
   cd "$location"
   ls -Al --color=auto
 }
 
-cdd_ls_func() {
+function cdd_ls_func() {
   location="$1"
   ls -Al --color=auto $location
 }
 
-cdd_and_cdv() {
-  sub_cmd="$1"
+function cdd_and_cdv() {
   location="$2"
-  if [ "$1" = "-d" ] && [ "$2" = "$sub_cmd" ]; then
+  if [ "$1" = "-d" ]; then
     cdd_func $location
   fi
-  if [ "$1" = "-v" ] && [ "$2" = "$sub_cmd" ]; then
+  if [ "$1" = "-v" ]; then
     cdd_ls_func $location
+  fi
+}
+
+function handle_location() {
+  local sub_cmd=$1
+  local location=$2
+  local sub_input=$3
+  local input=$4
+
+  if [ "$input" = "$sub_cmd" ]; then
+    cdd_and_cdv "$sub_input" "$location"
   fi
   if [[ "$location" == "$home"* ]]; then
     location="~${location#$home}"
     locations+=($location)
+  else
+    locations+=($location)
   fi
+  sub_cmds+=($sub_cmd)
 }
 
-# variables 
-#@#var
-vim="$home/.config/nvim"
-vimt="$home/.config/nvimt"
-vim_st="$home/.local/state/nvim"
-vim_swap="$home/.local/state/nvim/swap"
-vim_view="$home/.local/state/nvim/view"
-se="$home/Documents/sessions"
-doc="$home/Documents"
-script="$home/Documents/scripts/.scripts"
-obsidian="$home/Obsidian"
-
-help_msg() {
-  #@#help
-  echo "vim: $vim"
-  echo "vimt: $vimt"
-  echo "vim-st: $vim_st"
-  echo "vim-st: $vim_st"
-  echo "vim-swap: $vim_swap"
-  echo "vim-view: $vim_view"
-  echo "se: $se"
-  echo "d: $doc"
-  echo "sc: $script"
-  echo "ob: $obsidian"
-}
-
+locations=()
 declare -a locations
+sub_cmds=()
+declare -a sub_cmds
 
-if [ "$1" = "help" ]; then
-  help_msg
-fi
-if [ "$1" = "-v" ] && [ "$2" = "help" ]; then
-  help_msg
-fi
+sub_cmd="vim"
+location="$home/.config/nvim"
+handle_location "$sub_cmd" "$location" "$1" "$2"
 
-if [ "$1" = "vim" ]; then
-  cdd_func $vim
-fi
-if [ "$1" = "vimt" ]; then
-  cdd_func $vimt
-fi
-if [ "$1" = "vim-st" ]; then
-  cdd_func $vim_st
-fi
-if [ "$1" = "vim-swap" ]; then
-  cdd_func $vim_swap
-fi
+sub_cmd="vimt"
+location="$home/.config/nvimt"
+handle_location "$sub_cmd" "$location" "$1" "$2"
 
-location="$home/.local/state/nvim/view"
+sub_cmd="vim-st"
+location="$home/.local/state/nvim"
+handle_location "$sub_cmd" "$location" "$1" "$2"
+
+sub_cmd="vim-swap"
+location="$home/.local/state/nvim/swap"
+handle_location "$sub_cmd" "$location" "$1" "$2"
+
 sub_cmd="vim-view"
-if [ "$1" = "$sub_cmd" ]; then
-  cdd_func $location
-fi
-if [ "$1" = "-v" ] && [ "$2" = "$sub_cmd" ]; then
-  cdd_ls_func $location
-fi
-if [[ "$location" == "$home"* ]]; then
-  location="~${location#$home}"
-  locations+=($location)
-fi
+location="$home/.local/state/nvim/view"
+handle_location "$sub_cmd" "$location" "$1" "$2"
 
 sub_cmd="se"
 location="$home/Documents/sessions"
-if [ "$2" = "$sub_cmd" ]; then
-  cdd_and_cdv "$sub_cmd" "$location"
-fi
+handle_location "$sub_cmd" "$location" "$1" "$2"
 
-if [ "$1" = "d" ]; then
-  cdd_func $doc
-fi
-if [ "$1" = "sc" ]; then
-  cdd_func $script
-fi
-if [ "$1" = "ob" ]; then
-  cdd_func $obsidian
-fi
+sub_cmd="d"
+location="$home/Documents"
+handle_location "$sub_cmd" "$location" "$1" "$2"
 
-if [ "$1" = "test001" ]; then
-  for location in "${locations[@]}"
-  do
-    echo "$location"
-  done
+sub_cmd="sc"
+location="$home/Documents/scripts/.scripts"
+handle_location "$sub_cmd" "$location" "$1" "$2"
+
+sub_cmd="ob"
+location="$home/Obsidian"
+handle_location "$sub_cmd" "$location" "$1" "$2"
+#@#cdd
+
+function help_msg() {
+  #@#help
+  loc_len=${#locations[@]}
+  sub_len=${#sub_cmds[@]}
+  if [[ $loc_len == $sub_len ]]; then
+    for ((i=1; i<$loc_len+1; ++i)); do
+      printf "%10s: ${locations[i]}\n" "${sub_cmds[i]}"
+    done
+  fi
+}
+
+if [ "$2" = "help" ]; then
+  help_msg
 fi
