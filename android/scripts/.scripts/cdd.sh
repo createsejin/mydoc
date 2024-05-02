@@ -12,9 +12,10 @@ home="/data/data/com.termux/files/home"
 cdd_func() {
   location="$1"
   cd "$location"
-  ls -Al --color=auto
+  ls -A --color=auto
 }
 # variables
+#@#var
 vim_st="$home/.local/state/nvim"
 vim_swap="$home/.local/state/nvim/swap"
 vim_view="$home/.local/state/nvim/view"
@@ -24,6 +25,7 @@ script="$home/doc/android/scripts/.scripts"
 obsidian="$home/storage/shared/ob-git"
 
 if [ "$1" = "help" ]; then
+  #@#help
   echo "vim-st: $vim_st"
   echo "vim-swap: $vim_swap"
   echo "vim-view: $vim_view"
@@ -34,6 +36,7 @@ if [ "$1" = "help" ]; then
   echo "to move dir, press <leader>p in tmux"
 fi
 
+#@#if
 if [ "$1" = "vim-st" ]; then
   cdd_func $vim_st
 fi

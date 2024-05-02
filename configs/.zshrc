@@ -117,11 +117,13 @@ alias cp='cp -r'
 alias rp='realpath'
 alias rpr='realpath --relative-to=$(pwd)'
 alias clipc='cliphist wipe'
-alias cdd='. cdd.sh'
-
+alias cdd='. cdd.sh -d'
+alias cdv='cdd.sh -v'
 alias vim=nvim
+alias vims='nvim -S'
 alias vimt='nvim -u ~/.config/nvimt/init.vim'
 alias tx=tmux
+#@#ali
 
 export MANPAGER='nvim -u ~/.config/nvimt/init.vim +Man!'
 export QT_QPA_PLATFORM="wayland;xcb"

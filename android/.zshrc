@@ -115,7 +115,7 @@ alias cp='cp -r'
 alias rp='realpath'
 alias rpr='realpath --relative-to=$(pwd)'
 alias cdd='. cdd.sh'
-
+#@#ali
 alias vim=nvim
 alias tx=tmux
 
