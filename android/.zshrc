@@ -114,9 +114,11 @@ alias rm='rm -rf'
 alias cp='cp -r'
 alias rp='realpath'
 alias rpr='realpath --relative-to=$(pwd)'
-alias cdd='. cdd.sh'
+alias cdd='. cdd.sh -d'
+alias cdv='cdd.sh -v'
 #@#ali
 alias vim=nvim
+alias vims='nvim -S'
 alias tx=tmux
 
 export GLOB_PATTERN="**/*@(.sh|.inc|.bash|.command|.zsh|zshrc|zsh_*)"
