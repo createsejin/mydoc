@@ -8,3 +8,6 @@ if [ "$1" = "safe" ]; then
   echo "current_directory=$cur_dir"
   git config --global --add safe.directory $cur_dir
 fi
+if [ "$1" = "own" ]; then
+  sudo chown -R bae:bae .git/objects
+fi

@@ -107,7 +107,11 @@ source $ZSH/oh-my-zsh.sh
 setopt GLOB_DOTS
 setopt EXTENDED_GLOB
 
-alias ls='ls --color=auto'
+unalias l
+alias ls='eza --color=always --long --git --no-filesize --icons=always --no-time \
+  --no-user --no-permissions'
+alias l='eza -A --long --color=always --icons=always --git'
+alias cd='z'
 alias grep='grep --color=auto'
 alias du='du -h -a -d 1'
 alias poweroff='systemctl poweroff'
@@ -117,13 +121,23 @@ alias cp='cp -r'
 alias rp='realpath'
 alias rpr='realpath --relative-to=$(pwd)'
 alias clipc='cliphist wipe'
-alias cdd='. cdd.sh -d'
+#@#ali
+cdd() {
+  if [ $1 = "-a" ]; then
+    cddr -a $2 $3 $4
+  else
+    result=$(cddr $1 $2 $3 $4)
+    echo $result
+    # . /home/bae/Projects/cdd/cdd.sh $1 $2 $3 $4
+  fi
+}
+# alias cdd='. cdd.sh -d'
 alias cdv='cdd.sh -v'
 alias vim=nvim
-#@#ali
 alias vims='nvim -S'
 alias vimt='nvim -u ~/.config/nvimt/init.vim'
 alias tx=tmux
+alias tl=tldr
 
 export MANPAGER='nvim -u ~/.config/nvimt/init.vim +Man!'
 export QT_QPA_PLATFORM="wayland;xcb"
@@ -179,6 +193,32 @@ _fzf_compgen_dir() {
 }
 
 source ~/fzf-git.sh/fzf-git.sh
+
+export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
+export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+
+# Advanced customization of fzf options via _fzf_comprun function
+# - The first argument to the function is the name of the command.
+# - You should make sure to pass the rest of the arguments to fzf.
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+    export|unset) fzf --preview "eval 'echo $'{}"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
+    *)            fzf --preview "bat -n --color=always --line-range :500 {}" "$@" ;;
+  esac
+}
+
+# thefuck alias
+eval $(thefuck --alias)
+eval $(thefuck --alias fk)
+
+# Zoxide (better cd)
+eval "$(zoxide init zsh)"
+
 # Export all the known keymaps with prefix CTRL-g so it can be mapped in tmux
 export FZF_GIT_BINDKEYS=$(bindkey -p '^g')
 
