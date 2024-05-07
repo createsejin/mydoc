@@ -126,9 +126,9 @@ cdd() {
   if [ $1 = "-a" ]; then
     cddr -a $2 $3 $4
   else
-    result=$(cddr $1 $2 $3 $4)
-    echo $result
-    # . /home/bae/Projects/cdd/cdd.sh $1 $2 $3 $4
+    dir=$(cddr -cd $1 $2 $3)
+    echo "cd $dir"
+    . /home/bae/Projects/cdd/cdd.sh "$dir"
   fi
 }
 # alias cdd='. cdd.sh -d'
