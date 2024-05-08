@@ -33,7 +33,7 @@ if [ "$1" = "root" ]; then
 fi
 
 if [ "$1" = "tmux" ]; then
-  cp $home/Documents/configs/.config/tmux/tmux.conf $home/.config/nvim/
+  cp $home/Documents/configs/.config/tmux/tmux.conf $home/.config/nvimt/
 fi
 if [ "$1" = "init" ]; then
   sudo cp $home/Documents/scripts/init_live $sys_root/
