@@ -1,6 +1,6 @@
 #!/bin/bash
 
-filepath="/home/bae/Documents/packs/Pack009_2024-01-02_001.hc"
+filepath="/home/bae/Documents/packs/Pack009.hc"
 diskF=/dev/sda2
 diskP=/dev/sdb2
 diskS=/dev/sdc2
