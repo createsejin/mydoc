@@ -124,6 +124,8 @@ alias tx=tmux
 export GLOB_PATTERN="**/*@(.sh|.inc|.bash|.command|.zsh|zshrc|zsh_*)"
 export XDG_CONFIG_HOME="$HOME/.config"
 
+. "$HOME/.cargo/env"
+
 autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
