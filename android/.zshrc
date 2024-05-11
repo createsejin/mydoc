@@ -108,6 +108,7 @@ setopt GLOB_DOTS
 setopt EXTENDED_GLOB
 
 alias ls='ls -A --color=auto'
+alias cd='z'
 alias grep='grep --color=auto'
 alias du='du -h -a -d 1'
 alias rm='rm -rf'
