@@ -121,6 +121,7 @@ alias cp='cp -r'
 alias rp='realpath'
 alias rpr='realpath --relative-to=$(pwd)'
 alias clipc='cliphist wipe'
+alias pacman='pacman --color always'
 #@#ali
 cdd() {
   if [ $1 = "-a" ]; then
