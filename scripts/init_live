@@ -47,7 +47,7 @@ if [ "$1" = "1" ]; then
   cd
   mkdir -p .config/nvim
   cd .config/nvim
-  git clone git@github.com:createsejin/nvimt.git .
+  git clone https://github.com/createsejin/nvimt.git .
   echo -e "[\033[32minit_live\033[0m] nvimt git cloned."
 
   /mnt/root/home/bae/Documents/scripts/.scripts/git.sh name
