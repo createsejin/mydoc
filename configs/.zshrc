@@ -223,4 +223,4 @@ eval "$(zoxide init zsh)"
 # Export all the known keymaps with prefix CTRL-g so it can be mapped in tmux
 export FZF_GIT_BINDKEYS=$(bindkey -p '^g')
 
-export PATH="/home/bae/Documents/scripts/.scripts:$PATH"
+export PATH="/opt/android-ndk-r26d/toolchains/llvm/prebuilt/linux-x86_64/bin:/home/bae/Documents/scripts/.scripts:$PATH"
