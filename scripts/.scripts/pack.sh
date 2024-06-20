@@ -25,8 +25,8 @@ elif [ "$1" = "-m" ] && [ "$2" = "S" ]; then
   sudo veracrypt -t -k /mnt/pack009/Keyfiles/diskS --pim=0 --protect-hidden=no $diskS /mnt/S
 elif [ "$1" = "-m" ] && [ "$2" = "Q" ]; then
   sed -n 4p "/mnt/pack009/PnQ Key.txt" | wl-copy
-  echo "diskQ key copied to clipboard."
-  echo "You should clean up the clipboard after use."
+  echo "The Q disk key copied to clipboard."
+  echo "You should clean up the clipboard after using this."
 elif [ "$1" = "-m" ] && [ "$2" = "F" ]; then
   sudo veracrypt -t -k /mnt/pack009/Keyfiles/diskF --pim=0 --protect-hidden=no $diskF /mnt/F
 elif [ "$1" = "-m" ] && [ "$2" = "P" ]; then
