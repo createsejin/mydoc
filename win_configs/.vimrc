@@ -13,6 +13,9 @@ set scrolloff=5
 set incsearch
 set hlsearch
 
+set number
+set relativenumber
+
 highlight Visual guibg=grey guifg=black
 highlight Visual ctermbg=grey ctermfg=black
 highlight Cursor guibg=grey guifg=black

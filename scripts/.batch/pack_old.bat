@@ -13,7 +13,7 @@ if "%1" == "-m" (
   ) else if /i "%2" == "q" (
     powershell -command "Get-Content 'M:\PnQ Key.txt' | Select-Object -Index 3 | Set-Clipboard"
     echo The Q disk password is copied.
-    echo You should clean up the clipboard after using this: Using '.\pack.bat -c'.
+    echo You should clean up the clipboard after using this: Use '.\pack.bat -c'.
   ) else if /i "%2" == "rw" (
     %VERACRYPT% /quit /auto /volume "Pack009_2024-01-02_001.hc" /letter M /m rm /protectMemory /cache no
   ) else (
@@ -25,7 +25,7 @@ if "%1" == "-m" (
 ) else if /i "%1" == "-k" (
   powershell -command "Get-Content 'M:\session3.txt' | Select-Object -Index 0 | Set-Clipboard"
   echo The KeePass password is copied.
-  echo You should clean up the clipboard after using this: Using '.\pack.bat -c'.
+  echo You should clean up the clipboard after using this: Use '.\pack.bat -c'.
 ) else if "%1" == "-d" (
   if /i "%2" == "f" (
     %VERACRYPT% /q /d F
@@ -33,6 +33,8 @@ if "%1" == "-m" (
     %VERACRYPT% /q /d P
   ) else if /i "%2" == "s" (
     %VERACRYPT% /q /d S
+  ) else if /i "%2" == "q" (
+    manage-bde -lock Q:
   ) else if /i "%2" == "k" (
     %VERACRYPT% /q /d M
   ) else (
@@ -44,6 +46,7 @@ if "%1" == "-m" (
   echo.
   echo Before using following commands, You must mount key capsule.
   echo .\pack.bat -k      : copy KeePass passwd to clipboard
+  echo.
   echo .\pack.bat -m f    : mount F volume
   echo .\pack.bat -m p    : mount P volume
   echo .\pack.bat -m s    : mount S volume

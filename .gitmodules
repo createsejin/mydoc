@@ -1,0 +1,3 @@
+[submodule "configs/.config/nvimt"]
+	path = configs/.config/nvimt
+	url = https://github.com/createsejin/nvimt
