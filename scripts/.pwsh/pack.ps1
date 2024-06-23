@@ -27,6 +27,8 @@ if ($args[0] -ieq "m") {
   if ($args[1] -ieq "f") {
     if (-not (Test-Path $f_key_file)) {
       'Please mount key capsule first'
+    } elseif (Test-Path "F:\") {
+      "F disk already mounted."
     } else {
       Start-Process -FilePath "$veracrypt" -Wait -NoNewWindow `
         -ArgumentList "/quit /silent /auto /v \Device\Harddisk0\Partition2 /letter F /keyfile $f_key_file /tryemptypass /cache no"
@@ -34,6 +36,8 @@ if ($args[0] -ieq "m") {
   } elseif ($args[1] -ieq "p") {
     if (-not (Test-Path $p_key_file)) {
       'Please mount key capsule first'
+    } elseif (Test-Path "P:\") {
+      "P disk already mounted."
     } else {
       Start-Process -FilePath "$veracrypt" -Wait -NoNewWindow `
         -ArgumentList "/quit /silent /auto /v \Device\Harddisk1\Partition2 /letter P /keyfile $p_key_file /tryemptypass /cache no"
@@ -41,6 +45,8 @@ if ($args[0] -ieq "m") {
   } elseif ($args[1] -ieq "s") {
     if (-not (Test-Path $s_key_file)) {
       'Please mount key capsule first'
+    } elseif (Test-Path "S:\") {
+      "S disk already mounted."
     } else {
       Start-Process -FilePath "$veracrypt" -Wait -NoNewWindow `
         -ArgumentList "/quit /silent /auto /v \Device\Harddisk2\Partition2 /letter S /keyfile $s_key_file /tryemptypass /cache no"
@@ -50,6 +56,8 @@ if ($args[0] -ieq "m") {
       Get-Content $q_key_file | Select-Object -Index 3 | Set-Clipboard
       "The Q disk password is copied."
       "You should clean up the clipboard after using this: Use `"pack c`"."
+    } elseif (Test-Path "Q:\") {
+      "Q disk already unlocked."
     } else {
       'Please mount key capsule first'
     }
