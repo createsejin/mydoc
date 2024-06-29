@@ -100,3 +100,12 @@ function band_unzip {
     -ArgumentList "x -aos -o:`"$target_dir`" -y -cp:65001 -consolemode:utf8 `"$archive`""
 }
 Set-Alias -Name ban -Value band_unzip
+
+function which_func {
+  param(
+    [Parameter(Mandatory = $true)]
+    [string]$command
+  )
+  Get-Command -Name $command
+}
+Set-Alias -Name which -Value which_func
