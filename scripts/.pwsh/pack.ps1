@@ -8,12 +8,14 @@ $q_key_file = "M:\PnQ Key.txt"
 $kee_file = "M:\session3.txt"
 
 function help_msg {
+  #@#h
   'pack m           : mount key capsule readonly mode'
   'pack m rw        : mount key capsule read and write mode'
   'pack m f         : mount F disk'
   'pack m p         : mount P disk'
   'pack m s         : mount S disk'
   'pack m q         : copy Q disk passwd to clipboard'
+  'pack m all       : mount F, P, S, Q disk'
   'pack k           : copy KeePass passwd to clipboard'
   'pack c           : clear clipboard'
   'pack d           : dismount key capsule'
@@ -21,6 +23,7 @@ function help_msg {
   'pack d p         : dismount P disk'
   'pack d s         : dismount S disk'
   'pack d q         : lock Q disk'
+  'pack d all       : dismount M, F, P, S, and lock Q disk'
 }
 
 if ($args[0] -ieq "m") {
@@ -34,6 +37,9 @@ if ($args[0] -ieq "m") {
     else {
       Start-Process -FilePath "$veracrypt" -Wait -NoNewWindow `
         -ArgumentList "/quit /silent /auto /v \Device\Harddisk0\Partition2 /letter F /keyfile $f_key_file /tryemptypass /cache no"
+      if (Test-Path "F:\") {
+        "F disk successfully mounted."
+      }
     }
   }
   elseif ($args[1] -ieq "p") {
@@ -46,6 +52,9 @@ if ($args[0] -ieq "m") {
     else {
       Start-Process -FilePath "$veracrypt" -Wait -NoNewWindow `
         -ArgumentList "/quit /silent /auto /v \Device\Harddisk1\Partition2 /letter P /keyfile $p_key_file /tryemptypass /cache no"
+      if (Test-Path "P:\") {
+        "P disk successfully mounted."
+      }
     }
   }
   elseif ($args[1] -ieq "s") {
@@ -58,19 +67,66 @@ if ($args[0] -ieq "m") {
     else {
       Start-Process -FilePath "$veracrypt" -Wait -NoNewWindow `
         -ArgumentList "/quit /silent /auto /v \Device\Harddisk2\Partition2 /letter S /keyfile $s_key_file /tryemptypass /cache no"
+      if (Test-Path "S:\") {
+        "S disk successfully mounted."
+      }
     }
   }
   elseif ($args[1] -ieq "q") {
-    if (Test-Path -Path $q_key_file) {
-      Get-Content $q_key_file | Select-Object -Index 3 | Set-Clipboard
-      "The Q disk password is copied."
-      "You should clean up the clipboard after using this: Use `"pack c`"."
-    }
-    elseif (Test-Path "Q:\") {
-      "Q disk already unlocked."
-    }
-    else {
+    if (-not (Test-Path "M:\")) {
       'Please mount key capsule first'
+    } else {
+      if (Test-Path "Q:\") {
+        "Q disk already unlocked."
+      } else {
+        Get-Content $q_key_file | Select-Object -Index 3 | Set-Clipboard
+        "The Q disk password is copied."
+        Start-Process -FilePath "wt" -Wait -ArgumentList "pwsh -c manage-bde -unlock Q: -password" -Verb RunAs
+        if (Test-Path "Q:\") {
+          "Q disk successfully unlocked."
+        } else {
+          "Q disk unlocking is failed."
+        }
+        Set-Clipboard -Value $null
+        "clipboard cleared."
+        #@#q.un
+      }
+    }
+  }
+  elseif ($args[1] -ieq "all") {
+    if (-not (Test-Path "M:\")) {
+      'Please mount key capsule first'
+    } 
+    else {
+      if (Test-Path "F:\") {
+        "F disk already mounted."
+      }
+      else {
+        Start-Process -FilePath "$veracrypt" -Wait -NoNewWindow `
+          -ArgumentList "/quit /silent /auto /v \Device\Harddisk0\Partition2 /letter F /keyfile $f_key_file /tryemptypass /cache no"
+      }
+      if (Test-Path "P:\") {
+        "P disk already mounted."
+      }
+      else {
+        Start-Process -FilePath "$veracrypt" -Wait -NoNewWindow `
+          -ArgumentList "/quit /silent /auto /v \Device\Harddisk1\Partition2 /letter P /keyfile $p_key_file /tryemptypass /cache no"
+      }
+      if (Test-Path "S:\") {
+        "S disk already mounted."
+      }
+      else {
+        Start-Process -FilePath "$veracrypt" -Wait -NoNewWindow `
+          -ArgumentList "/quit /silent /auto /v \Device\Harddisk2\Partition2 /letter S /keyfile $s_key_file /tryemptypass /cache no"
+      }
+      if (Test-Path "Q:\") {
+        "Q disk already unlocked."
+      } 
+      else {
+        Get-Content $q_key_file | Select-Object -Index 3 | Set-Clipboard
+        "The Q disk password is copied."
+        "You should clean up the clipboard after using this: Use `"pack c`"."
+      }
     }
   }
   elseif ($args[1] -ieq "rw") {
@@ -99,6 +155,11 @@ elseif ($args[0] -ieq "d") {
     }
     else {
       Start-Process -FilePath "$veracrypt" -Wait -NoNewWindow -ArgumentList "/q /s /d F" 
+      if (-not (Test-Path "F:\")) {
+        'F disk is dismounted.'
+      } else {
+        'F disk is not dismounted.'
+      }
     }
   }
   elseif ($args[1] -ieq "p") {
@@ -107,6 +168,11 @@ elseif ($args[0] -ieq "d") {
     }
     else {
       Start-Process -FilePath "$veracrypt" -Wait -NoNewWindow -ArgumentList "/q /s /d P" 
+      if (-not (Test-Path "P:\")) {
+        'P disk is dismounted.'
+      } else {
+        'P disk is not dismounted.'
+      }
     }
   }
   elseif ($args[1] -ieq "s") {
@@ -115,6 +181,11 @@ elseif ($args[0] -ieq "d") {
     }
     else {
       Start-Process -FilePath "$veracrypt" -Wait -NoNewWindow -ArgumentList "/q /s /d S" 
+      if (-not (Test-Path "S:\")) {
+        'S disk is dismounted.'
+      } else {
+        'S disk is not dismounted.'
+      }
     }
   }
   elseif ($args[1] -ieq "q") {
@@ -122,7 +193,71 @@ elseif ($args[0] -ieq "d") {
       'The Q disk is already locked.'
     }
     else {
-      manage-bde -lock Q:
+      Start-Process -FilePath "wt" -Wait -ArgumentList "pwsh -c manage-bde -lock Q:" -Verb RunAs
+      if (-not (Test-Path "Q:\")) {
+        'Q disk is locked.'
+      } else {
+        'Q disk is not locked.'
+      }
+      #@#q.lock
+    }
+  }
+  elseif ($args[1] -ieq "all") {
+    if (-not (Test-Path "M:\")) {
+      'The key capsule is not mounted.'
+    }
+    else {
+      Start-Process -FilePath "$veracrypt" -Wait -NoNewWindow -ArgumentList "/q /s /d M"
+      if (-not (Test-Path "M:\")) {
+        'The key capsule is dismounted.'
+      } else {
+        'The key capsule is not dismounted.'
+      }
+    }
+    if (-not (Test-Path "F:\")) {
+      'The F disk is not mounted.'
+    }
+    else {
+      Start-Process -FilePath "$veracrypt" -Wait -NoNewWindow -ArgumentList "/q /s /d F" 
+      if (-not (Test-Path "F:\")) {
+        'F disk is dismounted.'
+      } else {
+        'F disk is not dismounted.'
+      }
+    }
+    if (-not (Test-Path "P:\")) {
+      'The P disk is not mounted.'
+    }
+    else {
+      Start-Process -FilePath "$veracrypt" -Wait -NoNewWindow -ArgumentList "/q /s /d P" 
+      if (-not (Test-Path "P:\")) {
+        'P disk is dismounted.'
+      } else {
+        'P disk is not dismounted.'
+      }
+    }
+    if (-not (Test-Path "S:\")) {
+      'The S disk is not mounted.'
+    }
+    else {
+      Start-Process -FilePath "$veracrypt" -Wait -NoNewWindow -ArgumentList "/q /s /d S" 
+      if (-not (Test-Path "S:\")) {
+        'S disk is dismounted.'
+      } else {
+        'S disk is not dismounted.'
+      }
+    }
+    if (-not (Test-Path "Q:\")) {
+      'The Q disk is already locked.'
+    }
+    else {
+      #@#q.lock.all
+      Start-Process -FilePath "wt" -Wait -ArgumentList "pwsh -c manage-bde -lock Q:" -Verb RunAs
+      if (-not (Test-Path "Q:\")) {
+        'Q disk is locked.'
+      } else {
+        'Q disk is not locked.'
+      }
     }
   }
   else {
