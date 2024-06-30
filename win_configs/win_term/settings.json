@@ -2,13 +2,17 @@
   "$help": "https://aka.ms/terminal-documentation",
   "$schema": "https://aka.ms/terminal-profiles-schema",
   "actions": [
-    { 
+    {
       "command": {
         "action": "copy",
-        "singleLine": false,
-        "dismissSelection": false
+        "dismissSelection": false,
+        "singleLine": false
       },
       "keys": "ctrl+shift+c"
+    },
+    {
+      "command": "expandSelectionToWord",
+      "keys": "w"
     },
     {
       "command": "paste",
@@ -45,10 +49,6 @@
       "keys": "ctrl+shift+m"
     },
     {
-      "command": "closePane",
-      "keys": "alt+q"
-    },
-    {
       "command": {
         "action": "moveFocus",
         "direction": "down"
@@ -58,9 +58,9 @@
     {
       "command": {
         "action": "moveFocus",
-        "direction": "left"
+        "direction": "down"
       },
-      "keys": "ctrl+h"
+      "keys": "ctrl+down"
     },
     {
       "command": {
@@ -72,9 +72,41 @@
     {
       "command": {
         "action": "moveFocus",
+        "direction": "right"
+      },
+      "keys": "ctrl+right"
+    },
+    {
+      "command": "closePane",
+      "keys": "alt+q"
+    },
+    {
+      "command": {
+        "action": "moveFocus",
+        "direction": "left"
+      },
+      "keys": "ctrl+h"
+    },
+    {
+      "command": {
+        "action": "moveFocus",
+        "direction": "left"
+      },
+      "keys": "ctrl+left"
+    },
+    {
+      "command": {
+        "action": "moveFocus",
         "direction": "up"
       },
       "keys": "ctrl+k"
+    },
+    {
+      "command": {
+        "action": "moveFocus",
+        "direction": "up"
+      },
+      "keys": "ctrl+up"
     },
     {
       "command": {
@@ -103,6 +135,18 @@
         "direction": "up"
       },
       "keys": "alt+shift+k"
+    },
+    {
+      "command": "togglePaneZoom",
+      "keys": "f2"
+    },
+    {
+      "command": "switchSelectionEndpoint",
+      "keys": "insert"
+    },
+    {
+      "command": "toggleBlockSelection",
+      "keys": "ctrl+v"
     }
   ],
   "copyFormatting": "none",
@@ -207,6 +251,7 @@
         "useAtlasEngine": true
       },
       {
+        "closeOnExit": "never",
         "cursorShape": "vintage",
         "font": {
           "face": "SauceCodePro Nerd Font"
