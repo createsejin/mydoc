@@ -110,3 +110,8 @@ function which_func {
   Get-Command -Name $command
 }
 Set-Alias -Name which -Value which_func
+
+function explorer_func {
+  Start-Process -FilePath "C:\Windows\explorer.exe" -ArgumentList "$pwd"
+}
+Set-Alias -Name ex -Value explorer_func
