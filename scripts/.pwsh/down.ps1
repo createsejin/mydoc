@@ -1,14 +1,18 @@
-$commander = "C:\Users\creat\Projects\the_cave\tests\downloader_test02\Commander\bin\Debug\net8.0\Commander.exe"
-$controller = "C:\Users\creat\Projects\the_cave\tests\downloader_test02\Controller\bin\Debug\net8.0\Controller.exe"
-$searcher = "C:\Users\creat\Projects\the_cave\tests\downloader_test02\Searcher\bin\Debug\net8.0\Searcher.exe"
+$commander_path = "C:\Users\creat\Projects\the_cave\downloader\Commander\bin\Debug\net8.0"
+$commander = "$commander_path\Commander.exe"
+$downloader_path = "C:\Users\creat\Projects\the_cave\downloader\Downloader\bin\Debug\net8.0"
+$downloader = "$downloader_path\Downloader.exe"
 
 if ($args[0] -eq "cmd") {
-  Start-Process -FilePath $commander
+  Start-Process -FilePath "pwsh" -Wait -ArgumentList "-NoExit", "-c", "$commander"
 } elseif ($args[0] -eq "ctrl") {
-  Start-Process -FilePath $controller
-} elseif (($args[0] -eq "sear") -or ($args[0] -eq "searcher")) {
-  Start-Process -FilePath $searcher
+  Start-Process -FilePath "pwsh" -Wait -ArgumentList "-NoExit", "-c", "$downloader"
+} elseif ($args[0] -eq "t001") {
+  wt --maximized -p "PowerShell" -d "$downloader_path" pwsh -NoExit -c "$downloader" `; `
+    sp -p "PowerShell" -V -s .67 -d "$commander_path" pwsh -NoExit -c "$commander" `; `
+    sp -p "PowerShell" -V -s .5 -d "$home" `; `
+    sp -p "PowerShell" -H -d "$home\mydoc" `; mf left
 } else {
-  Start-Process -FilePath $controller
-  Start-Process -FilePath $commander
+  wt --maximized -p "PowerShell" -d "$downloader_path" pwsh -NoExit -c "$downloader" `; `
+    sp -V -d "$commander_path" pwsh -NoExit -c "$commander"
 }

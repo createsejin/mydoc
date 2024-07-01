@@ -3,14 +3,6 @@
   "$schema": "https://aka.ms/terminal-profiles-schema",
   "actions": [
     {
-      "command": {
-        "action": "copy",
-        "dismissSelection": false,
-        "singleLine": false
-      },
-      "keys": "ctrl+shift+c"
-    },
-    {
       "command": "expandSelectionToWord",
       "keys": "w"
     },
@@ -19,8 +11,12 @@
       "keys": "ctrl+shift+v"
     },
     {
-      "command": "find",
-      "keys": "ctrl+shift+f"
+      "command": {
+        "action": "copy",
+        "dismissSelection": false,
+        "singleLine": false
+      },
+      "keys": "ctrl+shift+c"
     },
     {
       "command": {
@@ -31,22 +27,8 @@
       "keys": "alt+shift+d"
     },
     {
-      "command": {
-        "action": "splitPane",
-        "split": "right"
-      },
-      "keys": "alt+v"
-    },
-    {
-      "command": {
-        "action": "splitPane",
-        "split": "down"
-      },
-      "keys": "alt+h"
-    },
-    {
-      "command": "markMode",
-      "keys": "ctrl+shift+m"
+      "command": "find",
+      "keys": "ctrl+shift+f"
     },
     {
       "command": {
@@ -64,6 +46,20 @@
     },
     {
       "command": {
+        "action": "splitPane",
+        "split": "right"
+      },
+      "keys": "alt+v"
+    },
+    {
+      "command": {
+        "action": "splitPane",
+        "split": "down"
+      },
+      "keys": "alt+h"
+    },
+    {
+      "command": {
         "action": "moveFocus",
         "direction": "right"
       },
@@ -75,6 +71,10 @@
         "direction": "right"
       },
       "keys": "ctrl+right"
+    },
+    {
+      "command": "markMode",
+      "keys": "ctrl+shift+m"
     },
     {
       "command": "closePane",

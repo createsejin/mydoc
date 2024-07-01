@@ -1,5 +1,5 @@
 {
-  "files.autoSave": "onFocusChange",
+  "files.autoSave": "afterDelay",
   "editor.fontLigatures": true,
   "editor.fontFamily": "'SauceCodePro Nerd Font', Consolas, 'Courier New', monospace, dotum",
   "editor.fontVariations": false,

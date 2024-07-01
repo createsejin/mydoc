@@ -46,8 +46,8 @@ Set-Alias -Name rpath -Value Resolve-RelativePath
 
 # make symbolic link command Alias: ln <link_name> <target>
 function mk_sym_link([string]$target_path, [string]$link_name) {
-  Start-Process -FilePath "pwsh" -Verb RunAs -ArgumentList "-NoExit", `
-    "-Command", "cd '$PWD'; New-Item -ItemType SymbolicLink -Path '$link_name' -Target '$target_path'"
+  Start-Process -FilePath "wt" -Verb RunAs -ArgumentList "-d", "$pwd", "pwsh", "-NoExit", "-c", `
+    "New-Item -ItemType SymbolicLink -Path `"$link_name`" -Target `"$target_path`""
 }
 Set-Alias -Name ln -Value mk_sym_link
 
@@ -102,6 +102,7 @@ function band_unzip {
 }
 Set-Alias -Name ban -Value band_unzip
 
+# get command source path
 function which_func {
   param(
     [Parameter(Mandatory = $true)]
@@ -111,7 +112,24 @@ function which_func {
 }
 Set-Alias -Name which -Value which_func
 
+# execute windows file explorer current location
 function explorer_func {
   Start-Process -FilePath "C:\Windows\explorer.exe" -ArgumentList "$pwd"
 }
 Set-Alias -Name ex -Value explorer_func
+
+# clear shell
+Set-Alias -Name cl -Value clear
+
+# source $PROFILE
+function source_profile {
+  . $PROFILE
+}
+Set-Alias -Name so -Value source_profile
+
+# execute command on administrator powershell
+function execute_admin {
+  Start-Process -FilePath "wt" -Verb RunAs -Wait -ArgumentList "-d", "$pwd", "pwsh", `
+  "-NoExit", "-c $args" 
+}
+Set-Alias -Name sudo -Value execute_admin
