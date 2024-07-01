@@ -10,7 +10,7 @@ oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\catppuccin_frappe.omp.json"
 Import-Module Catppuccin
 
 # Set a flavor for easy access
-$Flavor = $Catppuccin['Mocha']
+# $Flavor = $Catppuccin['Mocha']
 
 # Alias ls, l invoke eza
 function ls_func {
@@ -34,7 +34,8 @@ Remove-Alias -Name cd
 Set-Alias -Name cd -Value z
 
 # path, rpath Alias setup
-Set-Alias -Name path -Value Resolve-Path
+Remove-Alias -Name rp -Force
+Set-Alias -Name rp -Value Resolve-Path
 function Resolve-RelativePath {
   param(
     [Parameter(Mandatory = $true, Position = 0)]
@@ -42,7 +43,7 @@ function Resolve-RelativePath {
   )
   Resolve-Path -Path $Path -Relative
 }
-Set-Alias -Name rpath -Value Resolve-RelativePath
+Set-Alias -Name rpr -Value Resolve-RelativePath
 
 # make symbolic link command Alias: ln <link_name> <target>
 function mk_sym_link([string]$target_path, [string]$link_name) {
@@ -130,6 +131,51 @@ Set-Alias -Name so -Value source_profile
 # execute command on administrator powershell
 function execute_admin {
   Start-Process -FilePath "wt" -Verb RunAs -Wait -ArgumentList "-d", "$pwd", "pwsh", `
-  "-NoExit", "-c $args" 
+    "-NoExit", "-c $args" 
 }
 Set-Alias -Name sudo -Value execute_admin
+
+# git command alias
+function gst_f {
+  git status
+}
+Set-Alias -Name gst -Value gst_f
+
+function gaa_f {
+  git add --all
+}
+Set-Alias -Name gaa -Value gaa_f
+
+Remove-Alias -Name gl -Force
+function gl_f {
+  git pull
+}
+Set-Alias -Name gl -Value gl_f
+
+Remove-Alias -Name gp -Force
+function gp_f {
+  git push
+}
+Set-Alias -Name gp -Value gp_f
+
+function gcam_f {
+  param(
+    [Parameter(Mandatory = $true, Position = 0)]
+    [string]$msg
+  )
+  git commit --all --message $msg 
+}
+Set-Alias -Name gcam -Value gcam_f
+
+function glod_f {
+  git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset"
+}
+Set-Alias -Name glod -Value glod_f
+function glols_f {
+  git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset" --stat
+}
+Set-Alias -Name glols -Value glols_f
+function glo_f {
+  git log --oneline --decorate
+}
+Set-Alias -Name glo -Value glo_f

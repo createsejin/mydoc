@@ -53,4 +53,8 @@
   "window.zoomLevel": 1,
   "editor.unicodeHighlight.nonBasicASCII": false,
   "vim.useSystemClipboard": true,
+  "powershell.powerShellAdditionalExePaths": {
+    "pwsh": "C:\\Program Files\\PowerShell\\7\\pwsh.exe"
+  },
+  "powershell.powerShellDefaultVersion": "pwsh",
 }
