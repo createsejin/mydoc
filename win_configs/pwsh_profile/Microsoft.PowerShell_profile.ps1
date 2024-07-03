@@ -47,7 +47,7 @@ Set-Alias -Name rpr -Value Resolve-RelativePath
 
 # make symbolic link command Alias: ln <link_name> <target>
 function mk_sym_link([string]$target_path, [string]$link_name) {
-  Start-Process -FilePath "wt" -Verb RunAs -ArgumentList "-d", "$pwd", "pwsh", "-NoExit", "-c", `
+  Start-Process -FilePath "wt" -Wait -Verb RunAs -ArgumentList "-d", "$pwd", "pwsh", "-NoExit", "-c", `
     "New-Item -ItemType SymbolicLink -Path `"$link_name`" -Target `"$target_path`""
 }
 Set-Alias -Name ln -Value mk_sym_link
