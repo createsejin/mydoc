@@ -57,4 +57,23 @@
     "pwsh": "C:\\Program Files\\PowerShell\\7\\pwsh.exe"
   },
   "powershell.powerShellDefaultVersion": "pwsh",
+  "terminal.integrated.profiles.windows": {
+    
+    "PowerShell": {
+      "source": "PowerShell",
+      "args": ["-NoExit", "-Command", "[Console]::OutputEncoding = [System.Text.Encoding]::UTF8; [Console]::InputEncoding = [System.Text.Encoding]::UTF8"],
+      "icon": "terminal-powershell"
+    },
+    "Command Prompt": {
+      "path": [
+        "${env:windir}\\Sysnative\\cmd.exe",
+        "${env:windir}\\System32\\cmd.exe"
+      ],
+      "args": [],
+      "icon": "terminal-cmd"
+    },
+    "Git Bash": {
+      "source": "Git Bash"
+    }
+  },
 }

@@ -45,6 +45,14 @@ function Resolve-RelativePath {
 }
 Set-Alias -Name rpr -Value Resolve-RelativePath
 
+# PowerShell parameter completion shim for the dotnet CLI
+Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
+  param($wordToComplete, $commandAst, $cursorPosition)
+  dotnet complete --position $cursorPosition "$commandAst" | ForEach-Object {
+    [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
+  }
+}
+
 # make symbolic link command Alias: ln <link_name> <target>
 function mk_sym_link([string]$target_path, [string]$link_name) {
   Start-Process -FilePath "wt" -Wait -Verb RunAs -ArgumentList "-d", "$pwd", "pwsh", "-NoExit", "-c", `
@@ -179,3 +187,4 @@ function glo_f {
   git log --oneline --decorate
 }
 Set-Alias -Name glo -Value glo_f
+
