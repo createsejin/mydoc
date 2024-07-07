@@ -1,7 +1,7 @@
 $commander_path = "C:\Users\creat\Projects\the_cave\downloader\Commander\bin\Debug\net8.0"
 $commander = "$commander_path\Commander.exe"
-$downloader_path = "C:\Users\creat\Projects\the_cave\downloader\Downloader\bin\Debug\net8.0"
-$downloader = "$downloader_path\Downloader.exe"
+$downloader_path = "C:\Users\creat\Projects\the_cave\downloader\Operator\bin\Debug\net8.0"
+$downloader = "$downloader_path\Operator.exe"
 
 if ($args[0] -eq "cmd") {
   Start-Process -FilePath "pwsh" -Wait -ArgumentList "-NoExit", "-c", "$commander"
