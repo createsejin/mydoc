@@ -188,3 +188,4 @@ function glo_f {
 }
 Set-Alias -Name glo -Value glo_f
 
+Set-Alias -Name dot -Value dotnet

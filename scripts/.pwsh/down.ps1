@@ -6,7 +6,7 @@ $downloader = "$downloader_path\Operator.exe"
 if ($args[0] -eq "cmd") {
   Start-Process -FilePath "pwsh" -Wait -ArgumentList "-NoExit", "-c", "$commander"
 }
-elseif ($args[0] -eq "ctrl") {
+elseif ($args[0] -eq "main") {
   Start-Process -FilePath "pwsh" -Wait -ArgumentList "-NoExit", "-c", "$downloader"
 }
 elseif ($args[0] -eq "t001") {
