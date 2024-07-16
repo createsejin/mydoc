@@ -270,4 +270,14 @@
     "command": "-toggleFindInSelection",
     "when": "editorFocus"
   },
+  {
+    "key": "ctrl+shift+k ctrl+shift+o",
+    "command": "workbench.action.copyEditorToNewWindow",
+    "when": "activeEditor"
+  },
+  {
+    "key": "ctrl+k o",
+    "command": "-workbench.action.copyEditorToNewWindow",
+    "when": "activeEditor"
+  },
 ]
