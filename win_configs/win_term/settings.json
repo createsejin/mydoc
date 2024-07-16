@@ -150,11 +150,11 @@
     },
     {
       "command": "scrollUp",
-      "keys": "ctrl+e"
+      "keys": "ctrl+y"
     },
     {
       "command": "scrollDown",
-      "keys": "ctrl+y"
+      "keys": "ctrl+e"
     },
     {
       "command": "scrollUpPage",
