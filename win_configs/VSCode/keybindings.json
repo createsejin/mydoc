@@ -280,4 +280,27 @@
     "command": "-workbench.action.copyEditorToNewWindow",
     "when": "activeEditor"
   },
+  {
+    "key": "ctrl+shift+e ctrl+shift+s",
+    "command": "solutionExplorer.focus"
+  },
+  {
+    "key": "ctrl+alt+g",
+    "command": "git-graph.view"
+  },
+  {
+    "key": "ctrl+shift+g",
+    "command": "workbench.view.scm",
+    "when": "workbench.scm.active"
+  },
+  {
+    "key": "ctrl+shift+g",
+    "command": "-workbench.view.scm",
+    "when": "workbench.scm.active"
+  },
+  {
+    "key": "ctrl+alt+g",
+    "command": "-workbench.action.terminal.sendSequence",
+    "when": "terminalFocus"
+  },
 ]
