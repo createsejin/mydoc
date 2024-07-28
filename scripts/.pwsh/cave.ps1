@@ -15,7 +15,13 @@ elseif ($args[0] -ieq "t001") {
     sp -p "PowerShell" -V -s .5 -d "$home" `; `
     sp -p "PowerShell" -H -d "$home\mydoc" `; mf left
 }
-else {
-  wt --maximized -p "PowerShell" -d "$downloader_path" pwsh -NoExit -c "$downloader" `; `
+elseif ($args[0] -ieq "-h") {
+  wt --pos 5360,0 --maximized -p "PowerShell" -d "$downloader_path" pwsh -NoExit `
+    -c "$downloader" --headless `; `
     sp -V -d "$commander_path" pwsh -NoExit -c "$commander"
+}
+else {
+  wt --pos 5360,0 --maximized -p "PowerShell" -d "$downloader_path" pwsh -NoExit -c "$downloader" `; `
+    sp -V -d "$commander_path" pwsh -NoExit -c "$commander"
+  #@#cave
 }

@@ -58,10 +58,8 @@
   },
   "powershell.powerShellDefaultVersion": "pwsh",
   "terminal.integrated.profiles.windows": {
-    
     "PowerShell": {
       "source": "PowerShell",
-      "args": ["-NoExit", "-Command", "[Console]::OutputEncoding = [System.Text.Encoding]::UTF8; [Console]::InputEncoding = [System.Text.Encoding]::UTF8"],
       "icon": "terminal-powershell"
     },
     "Command Prompt": {
@@ -74,6 +72,15 @@
     },
     "Git Bash": {
       "source": "Git Bash"
+    },
+    "Windows PowerShell": {
+      "path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
     }
   },
+  "window.customTitleBarVisibility": "windowed",
+  "window.commandCenter": false,
+  "workbench.editor.editorActionsLocation": "hidden",
+  "zenMode.showTabs": "none",
+  "maui.configuration.androidSdkPreferredPath": "C:\\Program Files (x86)\\Android\\android-sdk",
+  "maui.configuration.debugVerbosity": "detailed",
 }

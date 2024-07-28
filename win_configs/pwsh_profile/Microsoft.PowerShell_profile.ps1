@@ -9,9 +9,6 @@ oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\catppuccin_frappe.omp.json"
 # Import the module
 Import-Module Catppuccin
 
-# Set a flavor for easy access
-# $Flavor = $Catppuccin['Mocha']
-
 # Alias ls, l invoke eza
 function ls_func {
   eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions @args

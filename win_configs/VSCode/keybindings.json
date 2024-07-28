@@ -303,4 +303,50 @@
     "command": "-workbench.action.terminal.sendSequence",
     "when": "terminalFocus"
   },
+  {
+    "key": "f2",
+    "command": "toggleSearchEditorWholeWord",
+    "when": "inSearchEditor && searchInputBoxFocus"
+  },
+  {
+    "key": "alt+w",
+    "command": "-toggleSearchEditorWholeWord",
+    "when": "inSearchEditor && searchInputBoxFocus"
+  },
+  {
+    "key": "alt+w",
+    "command": "-workbench.action.terminal.toggleFindWholeWord",
+    "when": "terminalFindVisible && terminalHasBeenCreated || terminalFindVisible && terminalProcessSupported"
+  },
+  {
+    "key": "alt+w",
+    "command": "-toggleFindWholeWord",
+    "when": "editorFocus"
+  },
+  {
+    "key": "alt+w",
+    "command": "-toggleSearchWholeWord",
+    "when": "searchViewletFocus"
+  },
+  {
+    "key": "alt+t alt+y",
+    "command": "workbench.action.zenHideEditorTabs"
+  },
+  {
+    "key": "alt+t alt+t",
+    "command": "workbench.action.zenShowMultipleEditorTabs"
+  },
+  {
+    "key": "alt+w",
+    "command": "workbench.action.toggleAuxiliaryBar"
+  },
+  {
+    "key": "ctrl+alt+b",
+    "command": "-workbench.action.toggleAuxiliaryBar"
+  },
+  {
+    "key": "alt+s alt+s",
+    "command": "search.action.refreshSearchResults",
+    "when": "viewHasSearchPattern"
+  },
 ]
