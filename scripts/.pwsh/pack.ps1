@@ -10,7 +10,8 @@ $s_device = "\Device\Harddisk2\Partition2"
 $q_key_file = "M:\PnQ Key.txt"
 $kee_file = "M:\session3.txt"
 
-function help_msg { <#
+function help_msg {
+  <#
   h @#>
   'pack m           : mount key capsule readonly mode'
   'pack m rw        : mount key capsule read and write mode'
@@ -18,6 +19,7 @@ function help_msg { <#
   'pack m p         : mount P disk'
   'pack m s         : mount S disk'
   'pack m q         : copy Q disk passwd to clipboard'
+  'pack m q s       : mount Q, S disk'      
   'pack m all       : mount F, P, S, Q disk'
   'pack k           : copy KeePass passwd to clipboard'
   'pack c           : clear clipboard'
@@ -135,34 +137,52 @@ function keyCapsuleMount {
 }
 
 if ($args[0] -ieq "m") {
-  if ($args[1] -ieq "f") {
-    mount_vera_disk F $f_key_file $f_device
-  }
-  elseif ($args[1] -ieq "p") {
-    mount_vera_disk P $p_key_file $p_device
-  }
-  elseif ($args[1] -ieq "s") {
-    mount_vera_disk S $s_key_file $s_device
-  }
-  elseif ($args[1] -ieq "q") {
-    QdiskUnlock
-  }
-  elseif ($args[1] -ieq "all") {
-    if (-not (Test-Path "M:\")) {
-      'Please mount key capsule first'
-    } 
-    else {
-      mount_vera_disk F $f_key_file $f_device
-      mount_vera_disk P $p_key_file $p_device
-      mount_vera_disk S $s_key_file $s_device
-      QdiskUnlock
+  if ($args.Count -gt 2) {
+    foreach ($arg in $args[1..-1]) {
+      if ($arg -ieq "f") {
+        mount_vera_disk F $f_key_file $f_device
+      }
+      elseif ($arg -ieq "p") {
+        mount_vera_disk P $p_key_file $p_device
+      }
+      elseif ($arg -ieq "s") {
+        mount_vera_disk S $s_key_file $s_device
+      }
+      elseif ($arg -ieq "q") {
+        QdiskUnlock
+      }
     }
   }
-  elseif ($args[1] -ieq "rw") {
-    keyCapsuleMount $true
-  }
   else {
-    keyCapsuleMount $false
+    if ($args[1] -ieq "f") {
+      mount_vera_disk F $f_key_file $f_device
+    }
+    elseif ($args[1] -ieq "p") {
+      mount_vera_disk P $p_key_file $p_device
+    }
+    elseif ($args[1] -ieq "s") {
+      mount_vera_disk S $s_key_file $s_device
+    }
+    elseif ($args[1] -ieq "q") {
+      QdiskUnlock
+    }
+    elseif ($args[1] -ieq "all") {
+      if (-not (Test-Path "M:\")) {
+        'Please mount key capsule first'
+      } 
+      else {
+        mount_vera_disk F $f_key_file $f_device
+        mount_vera_disk P $p_key_file $p_device
+        mount_vera_disk S $s_key_file $s_device
+        QdiskUnlock
+      }
+    }
+    elseif ($args[1] -ieq "rw") {
+      keyCapsuleMount $true
+    }
+    else {
+      keyCapsuleMount $false
+    }
   }
 }
 elseif ($args[0] -ieq "d") {
