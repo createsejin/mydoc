@@ -117,7 +117,7 @@ alias rm='rm -rf'
 alias cp='cp -r'
 alias rp='realpath'
 alias rpr='realpath --relative-to=$(pwd)'
-#@#ali
+#ali @#
 cdd() {
   if [ $1 = "-a" ]; then
     cddr -a $2 $3 $4

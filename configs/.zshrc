@@ -122,7 +122,7 @@ alias rp='realpath'
 alias rpr='realpath --relative-to=$(pwd)'
 alias clipc='cliphist wipe'
 alias pacman='pacman --color always'
-#@#ali
+#ali @#
 cdd() {
   if [ $1 = "-a" ]; then
     cddr -a $2 $3 $4

@@ -103,10 +103,10 @@ handle_location "$sub_cmd" "$location" "$1" "$2"
 sub_cmd="ob"
 location="$home/Obsidian"
 handle_location "$sub_cmd" "$location" "$1" "$2"
-#@#cdd
+#cdd @#
 
 function help_msg() {
-  #@#help
+  #help @#
   loc_len=${#locations[@]}
   sub_len=${#sub_cmds[@]}
   if [[ $loc_len == $sub_len ]]; then

@@ -23,5 +23,6 @@ elseif ($args[0] -ieq "-h") {
 else {
   wt --pos 5360,0 --maximized -p "PowerShell" -d "$downloader_path" pwsh -NoExit -c "$downloader" `; `
     sp -V -d "$commander_path" pwsh -NoExit -c "$commander"
-  #@#cave
+  <#
+  cave @#>
 }

@@ -10,8 +10,8 @@ $s_device = "\Device\Harddisk2\Partition2"
 $q_key_file = "M:\PnQ Key.txt"
 $kee_file = "M:\session3.txt"
 
-function help_msg {
-  #@#h
+function help_msg { <#
+  h @#>
   'pack m           : mount key capsule readonly mode'
   'pack m rw        : mount key capsule read and write mode'
   'pack m f         : mount F disk'
@@ -88,8 +88,8 @@ function QdiskUnlock {
         "Q disk unlocking is failed."
       }
       Set-Clipboard -Value $null
-      "clipboard cleared."
-      #@#q.un
+      "clipboard cleared." <#
+      q.un @#>
     }
   }
 }
@@ -104,8 +104,8 @@ function QdiskLock {
     }
     else {
       'Q disk is not locked.'
-    }
-    #@#q.lock
+    } <#
+    q.lock @#>
   }
 }
 
