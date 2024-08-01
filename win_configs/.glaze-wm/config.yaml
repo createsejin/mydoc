@@ -136,6 +136,9 @@ window_rules:
     match_process_name: "BandiView"
   - command: "ignore"
     match_process_name: "PowerToys.Peek.UI"
+  - command: "set floating"
+    match_process_name: "Everything"
+    #WindowRules @#
 
   # Some applications (eg. Steam) have borders that extend past the normal border size.
   - command: "resize borders 0px -7px -7px -7px"
@@ -150,9 +153,9 @@ binding_modes:
       - command: "resize width +2%"
         bindings: ["L", "Right"]
       - command: "resize height +2%"
-        bindings: ["K", "Up"]
+        bindings: ["J", "Up"]
       - command: "resize height -2%"
-        bindings: ["J", "Down"]
+        bindings: ["K", "Down"]
       # Press enter/escape to return to default keybindings.
       - command: "binding mode none"
         bindings: ["Escape", "Enter"]
@@ -164,20 +167,19 @@ keybindings:
   - command: "focus right"
     bindings: ["Alt+L", "Alt+Right"]
   - command: "focus up"
-    bindings: ["Apps+K", "Alt+Up"]
+    bindings: ["OemQuestion+RShiftKey+K", "Alt+Up"]
   - command: "focus down"
-    bindings: ["Apps+J", "Alt+Down"]
+    bindings: ["OemQuestion+RShiftKey+J", "Alt+Down"]
 
   # Move focused window in a given direction.
   - command: "move left"
-    binding: "RMenu+RShiftKey+Left"
+    binding: "OemQuestion+RShiftKey+Left"
   - command: "move right"
-    binding: "RMenu+RShiftKey+Right"
+    binding: "OemQuestion+RShiftKey+Right"
   - command: "move up"
-    binding: "RMenu+RShiftKey+Up"
+    binding: "OemQuestion+RShiftKey+Up"
   - command: "move down"
-    binding: "RMenu+RShiftKey+Down"
-    #RMenuKeyUsed @#
+    binding: "OemQuestion+RShiftKey+Down"
 
   # Resize focused window by a percentage or pixel amount.
   - command: "resize width -2%"
@@ -185,27 +187,28 @@ keybindings:
   - command: "resize width +2%"
     bindings: ["RControlKey+Right", "HanjaMode+Right"]
   - command: "resize height +2%"
-    bindings: ["RControlKey+Up", "HanjaMode+Up"]
-  - command: "resize height -2%"
     bindings: ["RControlKey+Down", "HanjaMode+Down"]
+  - command: "resize height -2%"
+    bindings: ["RControlKey+Up", "HanjaMode+Up"]
 
   # As an alternative to the resize keybindings above, resize mode enables resizing via
   # HJKL or arrow keys. The binding mode is defined above with the name "resize".
   - command: "binding mode resize"
-    binding: "Alt+Shift+R"
+    binding: "OemQuestion+RShiftKey+S"
     #ResizeMode @-#
 
   # Change tiling direction. This determines where new tiling windows will be inserted.
   - command: "tiling direction toggle"
-    binding: "Apps+V"
+    binding: "OemQuestion+RShiftKey+V"
 
   # Change focus between floating / tiling windows.
   - command: "focus mode toggle"
-    binding: "Apps+Space"
+    binding: "OemQuestion+RShiftKey+Space"
 
   # Change the focused window to be floating / tiling.
   - command: "toggle floating"
-    binding: "Apps+F"
+    binding: "OemQuestion+RShiftKey+F"
+    #ToggleFloating @#
 
   # Change the focused window to be maximized / unmaximized.
   - command: "toggle maximized"
@@ -213,19 +216,19 @@ keybindings:
 
   # Minimize focused window.
   - command: "set minimized"
-    binding: "Apps+M"
+    binding: "OemQuestion+RShiftKey+M"
 
   # Close focused window.
   - command: "close"
-    binding: "Apps+Q"
+    binding: "OemQuestion+RShiftKey+Q"
 
   # Kill GlazeWM process safely.
   - command: "exit wm"
-    binding: "Apps+F4"
+    binding: "OemQuestion+RShiftKey+F4"
 
   # Re-evaluate configuration file.
   - command: "reload config"
-    binding: "Apps+R"
+    binding: "OemQuestion+RShiftKey+R"
 
   # Launch CMD terminal (alternatively `exec wt` or `exec %ProgramFiles%/Git/git-bash.exe`
   # to start Windows Terminal and Git Bash respectively.
@@ -247,7 +250,7 @@ keybindings:
 
   # Focus the workspace that last had focus.
   - command: "focus workspace recent"
-    binding: "Apps+RShiftKey+R"
+    binding: "OemQuestion+RShiftKey+T"
 
   # Focus the next/previous workspace defined in `workspaces` config.
   - command: "focus workspace next"
