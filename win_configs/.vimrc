@@ -2,7 +2,7 @@
 "   the same commands as the original .vimrc configuration.
 " You can find a list of commands here: https://jb.gg/h38q75
 " Find more examples here: https://jb.gg/share-ideavimrc
-set clipboard=unnamedplus
+set clipboard=unnamed
 
 syntax on
 
@@ -53,4 +53,8 @@ inoremap <C-E> <Esc>$a
 
 nnoremap <F3> :set hlsearch!<CR>
 
-
+" move panel
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l

@@ -51,6 +51,8 @@ Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
 }
 
 # make symbolic link command Alias: ln <link_name> <target>
+<#  
+MakeSymbolicLink @#>
 function mk_sym_link([string]$target_path, [string]$link_name) {
   Start-Process -FilePath "wt" -Wait -Verb RunAs -ArgumentList "-d", "$pwd", "pwsh", "-NoExit", "-c", `
     "New-Item -ItemType SymbolicLink -Path `"$link_name`" -Target `"$target_path`""
@@ -186,3 +188,9 @@ function glo_f {
 Set-Alias -Name glo -Value glo_f
 
 Set-Alias -Name dot -Value dotnet
+
+#f45873b3-b655-43a6-b217-97c00aa0db58 PowerToys CommandNotFound module
+Import-Module -Name Microsoft.WinGet.CommandNotFound
+#f45873b3-b655-43a6-b217-97c00aa0db58
+
+Set-Alias -Name glz -Value glazewm

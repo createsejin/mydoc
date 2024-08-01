@@ -1,5 +1,0 @@
-$pot_player = "C:\Program Files\DAUM\PotPlayer\PotPlayer64.exe"
-$dir = "S:\s\voice\RJ112499_마음이 없음 기계 인형의 사정 금지○ 문제 The reboot plan of Daisy\心無き機械人形の射精禁止拷問　The reboot plan of Daisy\音声\１．本編"
-$play2 = "$dir\２．ペニス放置拷問.mp3"
-$play3 = "$dir\３．ペニス集中拷問.mp3"
-Start-Process -FilePath "$pot_player" -ArgumentList "$play2"

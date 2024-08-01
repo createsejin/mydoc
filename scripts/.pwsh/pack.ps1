@@ -12,7 +12,7 @@ $kee_file = "M:\session3.txt"
 
 function help_msg {
   <#
-  h @#>
+  help msg @#>
   'pack m           : mount key capsule readonly mode'
   'pack m rw        : mount key capsule read and write mode'
   'pack m f         : mount F disk'
@@ -91,7 +91,7 @@ function QdiskUnlock {
       }
       Set-Clipboard -Value $null
       "clipboard cleared." <#
-      q.un @#>
+      Q unlock @-#>
     }
   }
 }
@@ -107,7 +107,7 @@ function QdiskLock {
     else {
       'Q disk is not locked.'
     } <#
-    q.lock @#>
+    Q.lock @-#>
   }
 }
 
