@@ -115,6 +115,15 @@ workspaces:
   - name: "every"
     display_name: "Everything"
     bind_to_monitor: 3
+  - name: "dotnet"
+    bind_to_monitor: 1
+    display_name: ".Net"
+  - name: "rust"
+    bind_to_monitor: 1
+    display_name: "Rust"
+  - name: "mydoc"
+    bind_to_monitor: 1
+    display_name: "mydoc"
     #Workspaces @#
 
 window_rules:
@@ -138,6 +147,8 @@ window_rules:
     match_process_name: "PowerToys.Peek.UI"
   - command: "set floating"
     match_process_name: "Everything"
+  - command: "set floating"
+    match_process_name: "KeePass"
     #WindowRules @#
 
   # Some applications (eg. Steam) have borders that extend past the normal border size.
@@ -234,19 +245,19 @@ keybindings:
   # Launch CMD terminal (alternatively `exec wt` or `exec %ProgramFiles%/Git/git-bash.exe`
   # to start Windows Terminal and Git Bash respectively.
   - command: "exec wt"
-    bindings: ["OemPeriod+OemQuestion+T", "HangulMode+OemQuestion+T"]
+    binding: "OemPeriod+OemQuestion+T"
   - command: "exec 'C:/Users/creat/AppData/Local/Obsidian/Obsidian.exe'"
-    bindings: ["OemPeriod+OemQuestion+O", "HangulMode+OemQuestion+O"]
+    binding: "OemPeriod+OemQuestion+O"
   - command: "exec code"
-    bindings: ["OemPeriod+OemQuestion+C", "HangulMode+OemQuestion+C"]
+    binding: "OemPeriod+OemQuestion+C"
   - command: "exec 'C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/devenv'"
-    bindings: ["OemPeriod+OemQuestion+V", "HangulMode+OemQuestion+V"]
+    binding: "OemPeriod+OemQuestion+V"
   - command: "exec 'C:/Program Files/Google/Chrome/Application/chrome.exe'"
-    bindings: ["OemPeriod+OemQuestion+W", "HangulMode+OemQuestion+W"]
+    binding: "OemPeriod+OemQuestion+W"
   - command: "exec 'C:/Windows/explorer.exe'" 
-    bindings: ["OemPeriod+OemQuestion+F", "HangulMode+OemQuestion+F"]
+    binding: "OemPeriod+OemQuestion+F"
   - command: "exec Everything" 
-    bindings: ["OemPeriod+OemQuestion+E", "HangulMode+OemQuestion+E"]
+    binding: "OemPeriod+OemQuestion+E"
     #Exec @#
 
   # Focus the workspace that last had focus.
@@ -292,6 +303,12 @@ keybindings:
     bindings: ["RMenu+F", "HangulMode+F"]
   - command: "focus workspace every"
     bindings: ["RMenu+E", "HangulMode+E"]
+  - command: "focus workspace dotnet"
+    bindings: ["RMenu+D", "HangulMode+D"]
+  - command: "focus workspace rust"
+    bindings: ["RMenu+R", "HangulMode+R"]
+  - command: "focus workspace mydoc"
+    bindings: ["RMenu+M", "HangulMode+M"]
     #FocusWorkspace @#
 
   # Move focused workspace to a monitor in a given direction.
@@ -337,4 +354,10 @@ keybindings:
     bindings: ["RMenu+RShiftKey+F", "HangulMode+RShiftKey+F"]
   - commands: ["move to workspace every", "focus workspace every"]
     bindings: ["RMenu+RShiftKey+E", "HangulMode+RShiftKey+E"]
+  - commands: ["move to workspace dotnet", "focus workspace dotnet"]
+    bindings: ["RMenu+RShiftKey+D", "HangulMode+RShiftKey+D"]
+  - commands: ["move to workspace rust", "focus workspace rust"]
+    bindings: ["RMenu+RShiftKey+R", "HangulMode+RShiftKey+R"]
+  - commands: ["move to workspace mydoc", "focus workspace mydoc"]
+    bindings: ["RMenu+RShiftKey+M", "HangulMode+RShiftKey+M"]
     #MoveToWorkspce @#

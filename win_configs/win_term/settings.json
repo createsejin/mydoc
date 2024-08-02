@@ -55,14 +55,14 @@
         "action": "splitPane",
         "split": "right"
       },
-      "keys": "alt+shift+v"
+      "keys": "alt+v"
     },
     {
       "command": {
         "action": "splitPane",
         "split": "down"
       },
-      "keys": "alt+shift+h"
+      "keys": "alt+h"
     },
     {
       "command": {
