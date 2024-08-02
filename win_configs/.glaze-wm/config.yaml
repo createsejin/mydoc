@@ -163,13 +163,14 @@ binding_modes:
 keybindings:
   # Shift focus in a given direction.
   - command: "focus left"
-    bindings: ["Alt+H", "Alt+Left"]
+    bindings: ["Alt+H", "Tab+H", "Shift+Left"]
   - command: "focus right"
-    bindings: ["Alt+L", "Alt+Right"]
+    bindings: ["Alt+L", "Tab+L", "Shift+Right"]
   - command: "focus up"
-    bindings: ["OemQuestion+RShiftKey+K", "Alt+Up"]
+    bindings: ["Tab+K", "Shift+Up"]
   - command: "focus down"
-    bindings: ["OemQuestion+RShiftKey+J", "Alt+Down"]
+    bindings: ["Tab+J", "Shift+Down"]
+    #MoveFocus @#
 
   # Move focused window in a given direction.
   - command: "move left"
@@ -233,19 +234,19 @@ keybindings:
   # Launch CMD terminal (alternatively `exec wt` or `exec %ProgramFiles%/Git/git-bash.exe`
   # to start Windows Terminal and Git Bash respectively.
   - command: "exec wt"
-    bindings: ["RMenu+OemQuestion+T", "HangulMode+OemQuestion+T"]
-  - command: "exec C:/Users/creat/AppData/Local/Obsidian/Obsidian.exe"
-    bindings: ["RMenu+OemQuestion+O", "HangulMode+OemQuestion+O"]
+    bindings: ["OemPeriod+OemQuestion+T", "HangulMode+OemQuestion+T"]
+  - command: "exec 'C:/Users/creat/AppData/Local/Obsidian/Obsidian.exe'"
+    bindings: ["OemPeriod+OemQuestion+O", "HangulMode+OemQuestion+O"]
   - command: "exec code"
-    bindings: ["RMenu+OemQuestion+C", "HangulMode+OemQuestion+C"]
-  - command: "exec devenv"
-    bindings: ["RMenu+OemQuestion+V", "HangulMode+OemQuestion+V"]
-  - command: "exec %ProgramFiles%/Google/Chrome/Application/chrome.exe"
-    bindings: ["RMenu+OemQuestion+W", "HangulMode+OemQuestion+W"]
-  - command: "exec C:/Windows/explorer.exe" 
-    bindings: ["RMenu+OemQuestion+F", "HangulMode+OemQuestion+F"]
+    bindings: ["OemPeriod+OemQuestion+C", "HangulMode+OemQuestion+C"]
+  - command: "exec 'C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/devenv'"
+    bindings: ["OemPeriod+OemQuestion+V", "HangulMode+OemQuestion+V"]
+  - command: "exec 'C:/Program Files/Google/Chrome/Application/chrome.exe'"
+    bindings: ["OemPeriod+OemQuestion+W", "HangulMode+OemQuestion+W"]
+  - command: "exec 'C:/Windows/explorer.exe'" 
+    bindings: ["OemPeriod+OemQuestion+F", "HangulMode+OemQuestion+F"]
   - command: "exec Everything" 
-    bindings: ["RMenu+OemQuestion+E", "HangulMode+OemQuestion+E"]
+    bindings: ["OemPeriod+OemQuestion+E", "HangulMode+OemQuestion+E"]
     #Exec @#
 
   # Focus the workspace that last had focus.
