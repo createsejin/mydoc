@@ -16,13 +16,17 @@ elseif ($args[0] -ieq "t001") {
     sp -p "PowerShell" -H -d "$home\mydoc" `; mf left
 }
 elseif ($args[0] -ieq "-h") {
-  wt --pos 5360,0 --maximized -p "PowerShell" -d "$downloader_path" pwsh -NoExit `
+  wt --pos 5360,0 --maximized --title "TheCave" -p "PowerShell" -d "$downloader_path" pwsh -NoExit `
     -c "$downloader" --headless `; `
-    sp -V -d "$commander_path" pwsh -NoExit -c "$commander"
+    sp -V --title "TheCave" -d "$downloader_path" pwsh -NoExit -c Write-Output "execute downloader" `; `
+    sp -H --title "TheCave" -d "$downloader_path" pwsh -NoExit -c Write-Output "execute unzipper" `; `
+    mf left `; sp -V --title "TheCave" -d "$commander_path" pwsh -NoExit -c "$commander"
 }
 else {
-  wt --pos 5360,0 --maximized -p "PowerShell" -d "$downloader_path" pwsh -NoExit -c "$downloader" `; `
-    sp -V -d "$commander_path" pwsh -NoExit -c "$commander"
+  wt --pos 5360,0 --maximized --title "TheCave" -p "PowerShell" -d "$downloader_path" pwsh -NoExit -c "$downloader" `; `
+    sp -V --title "TheCave" -d "$downloader_path" pwsh -NoExit -c Write-Output "execute downloader" `; `
+    sp -H --title "TheCave" -d "$downloader_path" pwsh -NoExit -c Write-Output "execute unzipper" `; `
+    mf left `; sp -H --size .1 --title "TheCave" -d "$commander_path" pwsh -NoExit -c "$commander"
   <#
   cave @#>
 }

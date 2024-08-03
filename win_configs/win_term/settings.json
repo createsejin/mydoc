@@ -62,7 +62,7 @@
         "action": "splitPane",
         "split": "down"
       },
-      "keys": "alt+h"
+      "keys": "alt+b"
     },
     {
       "command": {

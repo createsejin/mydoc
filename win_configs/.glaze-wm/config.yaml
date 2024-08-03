@@ -100,12 +100,6 @@ workspaces:
   - name: "ob"
     display_name: "Obsidian"
     bind_to_monitor: 3
-  - name: "vsc"
-    bind_to_monitor: 1
-    display_name: "Visual Studio Code"
-  - name: "vs"
-    bind_to_monitor: 1
-    display_name: "Visual Studio 2022"
   - name: "chrome"
     display_name: "Chrome Web Browser"
     bind_to_monitor: 2
@@ -124,6 +118,9 @@ workspaces:
   - name: "mydoc"
     bind_to_monitor: 1
     display_name: "mydoc"
+  - name: "cave"
+    bind_to_monitor: 3
+    display_name: "TheCave"
     #Workspaces @#
 
 window_rules:
@@ -149,6 +146,14 @@ window_rules:
     match_process_name: "Everything"
   - command: "set floating"
     match_process_name: "KeePass"
+  - command: "set floating"
+    match_process_name: "Bandizip"
+  - command: "move to workspace cave"
+    match_title: "TheCave"
+  - command: "set floating"
+    match_title: "data:, - Chrome"
+  - command: "set floating"
+    match_title: "Search | Anime-Sharing Community - Chrome"
     #WindowRules @#
 
   # Some applications (eg. Steam) have borders that extend past the normal border size.
@@ -174,20 +179,20 @@ binding_modes:
 keybindings:
   # Shift focus in a given direction.
   - command: "focus left"
-    bindings: ["Alt+H", "Tab+H", "Shift+Left"]
+    bindings: ["Alt+H", "Tab+H"]
   - command: "focus right"
-    bindings: ["Alt+L", "Tab+L", "Shift+Right"]
+    bindings: ["Alt+L", "Tab+L"]
   - command: "focus up"
-    bindings: ["Tab+K", "Shift+Up"]
+    binding: "Tab+K"
   - command: "focus down"
-    bindings: ["Tab+J", "Shift+Down"]
+    binding: "Tab+J"
     #MoveFocus @#
 
   # Move focused window in a given direction.
   - command: "move left"
-    binding: "OemQuestion+RShiftKey+Left"
+    binding: "Alt+Shift+J"
   - command: "move right"
-    binding: "OemQuestion+RShiftKey+Right"
+    binding: "Alt+Shift+K"
   - command: "move up"
     binding: "OemQuestion+RShiftKey+Up"
   - command: "move down"
@@ -257,7 +262,7 @@ keybindings:
   - command: "exec 'C:/Windows/explorer.exe'" 
     binding: "OemPeriod+OemQuestion+F"
   - command: "exec Everything" 
-    binding: "OemPeriod+OemQuestion+E"
+    binding: "OemPeriod+OemQuestion+Y"
     #Exec @#
 
   # Focus the workspace that last had focus.
@@ -289,37 +294,39 @@ keybindings:
     bindings: ["RMenu+8", "HangulMode+8"]
   - command: "focus workspace 9"
     bindings: ["RMenu+9", "HangulMode+9"]
+  - command: "focus workspace 0"
+    bindings: ["RMenu+0", "HangulMode+0"]
   - command: "focus workspace t"
     bindings: ["RMenu+T", "HangulMode+T"]
   - command: "focus workspace ob"
     bindings: ["RMenu+O", "HangulMode+O"]
-  - command: "focus workspace vsc"
-    bindings: ["RMenu+C", "HangulMode+C"]
-  - command: "focus workspace vs"
-    bindings: ["RMenu+V", "HangulMode+V"]
   - command: "focus workspace chrome"
     bindings: ["RMenu+W", "HangulMode+W"]
   - command: "focus workspace file"
     bindings: ["RMenu+F", "HangulMode+F"]
   - command: "focus workspace every"
-    bindings: ["RMenu+E", "HangulMode+E"]
+    bindings: ["RMenu+Y", "HangulMode+Y"]
+    # 주의!! 절대로 "RMenu+E", "HangulMode+E"는 설정하지 말 것!! 해당키 사용시 Alt 고정되는 버그 생김.
+    #FocusWorkspace @#
   - command: "focus workspace dotnet"
     bindings: ["RMenu+D", "HangulMode+D"]
   - command: "focus workspace rust"
     bindings: ["RMenu+R", "HangulMode+R"]
   - command: "focus workspace mydoc"
     bindings: ["RMenu+M", "HangulMode+M"]
-    #FocusWorkspace @#
+  - command: "focus workspace cave"
+    bindings: ["RMenu+C", "HangulMode+C"]
 
   # Move focused workspace to a monitor in a given direction.
   - command: "move workspace left"
     binding: "Alt+Shift+H"
   - command: "move workspace right"
-    binding: "Alt+Shift+L"
+    binding: "RMenu+OemQuestion+L"
   - command: "move workspace up"
-    binding: "Alt+Shift+K"
+    binding: "RMenu+OemQuestion+K"
   - command: "move workspace down"
     binding: "Alt+Shift+J"
+    #WorkspaceMove @#
 
   # Move focused window to a workspace defined in `workspaces` config.
   - commands: ["move to workspace 1", "focus workspace 1"]
@@ -340,24 +347,26 @@ keybindings:
     bindings: ["RMenu+RShiftKey+8", "HangulMode+RShiftKey+8"]
   - commands: ["move to workspace 9", "focus workspace 9"]
     bindings: ["RMenu+RShiftKey+9", "HangulMode+RShiftKey+9"]
+  - commands: ["move to workspace 0", "focus workspace 0"]
+    bindings: ["RMenu+RShiftKey+0", "HangulMode+RShiftKey+0"]
   - commands: ["move to workspace t", "focus workspace t"]
     bindings: ["RMenu+RShiftKey+T", "HangulMode+RShiftKey+T"]
   - commands: ["move to workspace ob", "focus workspace ob"]
     bindings: ["RMenu+RShiftKey+O", "HangulMode+RShiftKey+O"]
-  - commands: ["move to workspace vsc", "focus workspace vsc"]
-    bindings: ["RMenu+RShiftKey+C", "HangulMode+RShiftKey+C"]
-  - commands: ["move to workspace vs", "focus workspace vs"]
-    bindings: ["RMenu+RShiftKey+V", "HangulMode+RShiftKey+V"]
   - commands: ["move to workspace chrome", "focus workspace chrome"]
     bindings: ["RMenu+RShiftKey+W", "HangulMode+RShiftKey+W"]
   - commands: ["move to workspace file", "focus workspace file"]
     bindings: ["RMenu+RShiftKey+F", "HangulMode+RShiftKey+F"]
   - commands: ["move to workspace every", "focus workspace every"]
-    bindings: ["RMenu+RShiftKey+E", "HangulMode+RShiftKey+E"]
+    bindings: ["RMenu+RShiftKey+Y", "HangulMode+RShiftKey+Y"]
+    # 주의!! 절대로 "RMenu+E", "HangulMode+E" 포함하는 키는 설정하지 말 것!! 
+    # 해당키 사용시 Alt 고정되는 버그 생김.
+    #MoveToWorkspce @#
   - commands: ["move to workspace dotnet", "focus workspace dotnet"]
     bindings: ["RMenu+RShiftKey+D", "HangulMode+RShiftKey+D"]
   - commands: ["move to workspace rust", "focus workspace rust"]
     bindings: ["RMenu+RShiftKey+R", "HangulMode+RShiftKey+R"]
   - commands: ["move to workspace mydoc", "focus workspace mydoc"]
     bindings: ["RMenu+RShiftKey+M", "HangulMode+RShiftKey+M"]
-    #MoveToWorkspce @#
+  - commands: ["move to workspace cave", "focus workspace cave"]
+    bindings: ["RMenu+RShiftKey+C", "HangulMode+RShiftKey+C"]
