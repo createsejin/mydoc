@@ -79,7 +79,6 @@
   },
   "window.customTitleBarVisibility": "windowed",
   "window.commandCenter": false,
-  "workbench.editor.editorActionsLocation": "hidden",
   "maui.configuration.androidSdkPreferredPath": "C:\\Program Files (x86)\\Android\\android-sdk",
   "maui.configuration.debugVerbosity": "detailed",
 }

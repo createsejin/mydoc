@@ -78,7 +78,7 @@ function vim_func {
 }
 Set-Alias -Name vim -Value vim_func
 
-# unzip compressed archive by bandizip
+# unzip compressed archive by bandizi p
 function band_unzip {
   param(
     [Parameter(Mandatory = $true)]

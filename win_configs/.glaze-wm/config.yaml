@@ -79,14 +79,8 @@ bar:
 
 workspaces:
   - name: "1"
-    display_name: "Left"
-    bind_to_monitor: 2
   - name: "2"
-    display_name: "Main"
-    bind_to_monitor: 1
   - name: "3"
-    display_name: "Right"
-    bind_to_monitor: 3
   - name: "4"
   - name: "5"
   - name: "6"
@@ -105,9 +99,6 @@ workspaces:
     bind_to_monitor: 2
   - name: "file"
     display_name: "File Explorer"
-    bind_to_monitor: 3
-  - name: "every"
-    display_name: "Everything"
     bind_to_monitor: 3
   - name: "dotnet"
     bind_to_monitor: 1
@@ -142,7 +133,7 @@ window_rules:
     match_process_name: "BandiView"
   - command: "ignore"
     match_process_name: "PowerToys.Peek.UI"
-  - command: "set floating"
+  - command: "ignore"
     match_process_name: "Everything"
   - command: "set floating"
     match_process_name: "KeePass"
@@ -179,13 +170,13 @@ binding_modes:
 keybindings:
   # Shift focus in a given direction.
   - command: "focus left"
-    bindings: ["Alt+H", "Tab+H"]
+    binding: "Alt+H"
   - command: "focus right"
-    bindings: ["Alt+L", "Tab+L"]
+    binding: "Alt+L"
   - command: "focus up"
-    binding: "Tab+K"
+    binding: "RControlKey+RShiftKey+K"
   - command: "focus down"
-    binding: "Tab+J"
+    binding: "RControlKey+RShiftKey+J"
     #MoveFocus @#
 
   # Move focused window in a given direction.
@@ -250,19 +241,19 @@ keybindings:
   # Launch CMD terminal (alternatively `exec wt` or `exec %ProgramFiles%/Git/git-bash.exe`
   # to start Windows Terminal and Git Bash respectively.
   - command: "exec wt"
-    binding: "OemPeriod+OemQuestion+T"
+    binding: "Shift+Tab+T"
   - command: "exec 'C:/Users/creat/AppData/Local/Obsidian/Obsidian.exe'"
-    binding: "OemPeriod+OemQuestion+O"
+    binding: "Shift+Tab+O"
   - command: "exec code"
-    binding: "OemPeriod+OemQuestion+C"
+    binding: "Shift+Tab+C"
   - command: "exec 'C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/devenv'"
-    binding: "OemPeriod+OemQuestion+V"
+    binding: "Shift+Tab+V"
   - command: "exec 'C:/Program Files/Google/Chrome/Application/chrome.exe'"
-    binding: "OemPeriod+OemQuestion+W"
+    binding: "Shift+Tab+W"
   - command: "exec 'C:/Windows/explorer.exe'" 
-    binding: "OemPeriod+OemQuestion+F"
+    binding: "Shift+Tab+F"
   - command: "exec Everything" 
-    binding: "OemPeriod+OemQuestion+Y"
+    binding: "Shift+Tab+E"
     #Exec @#
 
   # Focus the workspace that last had focus.
@@ -275,57 +266,53 @@ keybindings:
   - command: "focus workspace prev"
     binding: "Alt+P"
 
-  # Change focus to a workspace defined in `workspaces` config.
   - command: "focus workspace 1"
-    bindings: ["RMenu+1", "HangulMode+1"]
+    bindings: ["Tab+1", "CapsLock+1"]
   - command: "focus workspace 2"
-    bindings: ["RMenu+2", "HangulMode+2"]
+    bindings: ["Tab+2", "CapsLock+2"]
   - command: "focus workspace 3"
-    bindings: ["RMenu+3", "HangulMode+3"]
+    bindings: ["Tab+3", "CapsLock+3"]
   - command: "focus workspace 4"
-    bindings: ["RMenu+4", "HangulMode+4"]
+    bindings: ["Tab+4", "CapsLock+4"]
   - command: "focus workspace 5"
-    bindings: ["RMenu+5", "HangulMode+5"]
+    bindings: ["Tab+5", "CapsLock+5"]
   - command: "focus workspace 6"
-    bindings: ["RMenu+6", "HangulMode+6"]
+    bindings: ["Tab+6", "CapsLock+6"]
   - command: "focus workspace 7"
-    bindings: ["RMenu+7", "HangulMode+7"]
+    bindings: ["Tab+7", "CapsLock+7"]
   - command: "focus workspace 8"
-    bindings: ["RMenu+8", "HangulMode+8"]
+    bindings: ["Tab+8", "CapsLock+8"]
   - command: "focus workspace 9"
-    bindings: ["RMenu+9", "HangulMode+9"]
+    bindings: ["Tab+9", "CapsLock+9"]
   - command: "focus workspace 0"
-    bindings: ["RMenu+0", "HangulMode+0"]
+    bindings: ["Tab+0", "CapsLock+0"]
   - command: "focus workspace t"
-    bindings: ["RMenu+T", "HangulMode+T"]
+    bindings: ["Tab+T", "CapsLock+T"]
   - command: "focus workspace ob"
-    bindings: ["RMenu+O", "HangulMode+O"]
+    bindings: ["Tab+O", "CapsLock+O"]
   - command: "focus workspace chrome"
-    bindings: ["RMenu+W", "HangulMode+W"]
+    bindings: ["Tab+W", "CapsLock+W"]
   - command: "focus workspace file"
-    bindings: ["RMenu+F", "HangulMode+F"]
-  - command: "focus workspace every"
-    bindings: ["RMenu+Y", "HangulMode+Y"]
-    # 주의!! 절대로 "RMenu+E", "HangulMode+E"는 설정하지 말 것!! 해당키 사용시 Alt 고정되는 버그 생김.
+    bindings: ["Tab+F", "CapsLock+F"]
     #FocusWorkspace @#
   - command: "focus workspace dotnet"
-    bindings: ["RMenu+D", "HangulMode+D"]
+    bindings: ["Tab+D", "CapsLock+D"]
   - command: "focus workspace rust"
-    bindings: ["RMenu+R", "HangulMode+R"]
+    bindings: ["Tab+R", "CapsLock+R"]
   - command: "focus workspace mydoc"
-    bindings: ["RMenu+M", "HangulMode+M"]
+    bindings: ["Tab+M", "CapsLock+M"]
   - command: "focus workspace cave"
-    bindings: ["RMenu+C", "HangulMode+C"]
+    bindings: ["Tab+C", "CapsLock+C"]
 
   # Move focused workspace to a monitor in a given direction.
   - command: "move workspace left"
     binding: "Alt+Shift+H"
   - command: "move workspace right"
-    binding: "RMenu+OemQuestion+L"
+    binding: "Alt+Shift+L"
   - command: "move workspace up"
     binding: "RMenu+OemQuestion+K"
   - command: "move workspace down"
-    binding: "Alt+Shift+J"
+    binding: "RMenu+OemQuestion+J"
     #WorkspaceMove @#
 
   # Move focused window to a workspace defined in `workspaces` config.
@@ -357,10 +344,6 @@ keybindings:
     bindings: ["RMenu+RShiftKey+W", "HangulMode+RShiftKey+W"]
   - commands: ["move to workspace file", "focus workspace file"]
     bindings: ["RMenu+RShiftKey+F", "HangulMode+RShiftKey+F"]
-  - commands: ["move to workspace every", "focus workspace every"]
-    bindings: ["RMenu+RShiftKey+Y", "HangulMode+RShiftKey+Y"]
-    # 주의!! 절대로 "RMenu+E", "HangulMode+E" 포함하는 키는 설정하지 말 것!! 
-    # 해당키 사용시 Alt 고정되는 버그 생김.
     #MoveToWorkspce @#
   - commands: ["move to workspace dotnet", "focus workspace dotnet"]
     bindings: ["RMenu+RShiftKey+D", "HangulMode+RShiftKey+D"]

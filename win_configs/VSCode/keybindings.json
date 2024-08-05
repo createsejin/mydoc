@@ -349,4 +349,22 @@
     "command": "search.action.refreshSearchResults",
     "when": "viewHasSearchPattern"
   },
+  {
+    "key": "ctrl+shift+r ctrl+shift+r",
+    "command": "workbench.action.openRecent"
+  },
+  {
+    "key": "ctrl+r",
+    "command": "-workbench.action.openRecent"
+  },
+  {
+    "key": "ctrl+shift+o ctrl+shift+o",
+    "command": "workbench.action.files.openFile",
+    "when": "true"
+  },
+  {
+    "key": "ctrl+o",
+    "command": "-workbench.action.files.openFile",
+    "when": "true"
+  },
 ]
