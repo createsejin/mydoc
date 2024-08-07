@@ -112,7 +112,7 @@ workspaces:
   - name: "cave"
     bind_to_monitor: 3
     display_name: "TheCave"
-    #Workspaces @#
+    #Workspaces @#glaze
 
 window_rules:
   # Task Manager requires admin privileges to manage and should be ignored unless running
@@ -135,7 +135,7 @@ window_rules:
     match_process_name: "PowerToys.Peek.UI"
   - command: "ignore"
     match_process_name: "Everything"
-  - command: "set floating"
+  - command: "ignore"
     match_process_name: "KeePass"
   - command: "set floating"
     match_process_name: "Bandizip"
@@ -145,7 +145,7 @@ window_rules:
     match_title: "data:, - Chrome"
   - command: "set floating"
     match_title: "Search | Anime-Sharing Community - Chrome"
-    #WindowRules @#
+    #WindowRules @#glaze
 
   # Some applications (eg. Steam) have borders that extend past the normal border size.
   - command: "resize borders 0px -7px -7px -7px"
@@ -177,17 +177,18 @@ keybindings:
     binding: "RControlKey+RShiftKey+K"
   - command: "focus down"
     binding: "RControlKey+RShiftKey+J"
-    #MoveFocus @#
+    #MoveFocus @#glaze
 
   # Move focused window in a given direction.
   - command: "move left"
-    binding: "Alt+Shift+J"
+    binding: "OemQuotes+RShiftKey+A"
   - command: "move right"
-    binding: "Alt+Shift+K"
+    binding: "OemQuotes+RShiftKey+D"
   - command: "move up"
-    binding: "OemQuestion+RShiftKey+Up"
+    binding: "OemQuotes+RShiftKey+W"
   - command: "move down"
-    binding: "OemQuestion+RShiftKey+Down"
+    binding: "OemQuotes+RShiftKey+S"
+    #MoveFocusedWindow @#glaze.move
 
   # Resize focused window by a percentage or pixel amount.
   - command: "resize width -2%"
@@ -202,7 +203,7 @@ keybindings:
   # As an alternative to the resize keybindings above, resize mode enables resizing via
   # HJKL or arrow keys. The binding mode is defined above with the name "resize".
   - command: "binding mode resize"
-    binding: "OemQuestion+RShiftKey+S"
+    binding: "OemQuestion+RShiftKey+E"
     #ResizeMode @-#
 
   # Change tiling direction. This determines where new tiling windows will be inserted.
@@ -216,7 +217,7 @@ keybindings:
   # Change the focused window to be floating / tiling.
   - command: "toggle floating"
     binding: "OemQuestion+RShiftKey+F"
-    #ToggleFloating @#
+    #ToggleFloating @#glaze
 
   # Change the focused window to be maximized / unmaximized.
   - command: "toggle maximized"
@@ -254,7 +255,9 @@ keybindings:
     binding: "Shift+Tab+F"
   - command: "exec Everything" 
     binding: "Shift+Tab+E"
-    #Exec @#
+  - command: "exec 'C:/Program Files/KeePass Password Safe 2/KeePass.exe'"
+    binding: "Shift+Tab+K"
+    #Exec @#glaze
 
   # Focus the workspace that last had focus.
   - command: "focus workspace recent"
@@ -294,7 +297,7 @@ keybindings:
     bindings: ["Tab+W", "CapsLock+W"]
   - command: "focus workspace file"
     bindings: ["Tab+F", "CapsLock+F"]
-    #FocusWorkspace @#
+    #FocusWorkspace @#glaze
   - command: "focus workspace dotnet"
     bindings: ["Tab+D", "CapsLock+D"]
   - command: "focus workspace rust"
@@ -306,14 +309,14 @@ keybindings:
 
   # Move focused workspace to a monitor in a given direction.
   - command: "move workspace left"
-    binding: "Alt+Shift+H"
+    binding: "OemQuestion+RShiftKey+A"
   - command: "move workspace right"
-    binding: "Alt+Shift+L"
+    binding: "OemQuestion+RShiftKey+D"
   - command: "move workspace up"
-    binding: "RMenu+OemQuestion+K"
+    binding: "OemQuestion+RShiftKey+W"
   - command: "move workspace down"
-    binding: "RMenu+OemQuestion+J"
-    #WorkspaceMove @#
+    binding: "OemQuestion+RShiftKey+S"
+    #WorkspaceMove @#glaze.move
 
   # Move focused window to a workspace defined in `workspaces` config.
   - commands: ["move to workspace 1", "focus workspace 1"]
@@ -344,7 +347,7 @@ keybindings:
     bindings: ["RMenu+RShiftKey+W", "HangulMode+RShiftKey+W"]
   - commands: ["move to workspace file", "focus workspace file"]
     bindings: ["RMenu+RShiftKey+F", "HangulMode+RShiftKey+F"]
-    #MoveToWorkspce @#
+    #MoveToWorkspce @#glaze
   - commands: ["move to workspace dotnet", "focus workspace dotnet"]
     bindings: ["RMenu+RShiftKey+D", "HangulMode+RShiftKey+D"]
   - commands: ["move to workspace rust", "focus workspace rust"]

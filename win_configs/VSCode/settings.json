@@ -81,4 +81,5 @@
   "window.commandCenter": false,
   "maui.configuration.androidSdkPreferredPath": "C:\\Program Files (x86)\\Android\\android-sdk",
   "maui.configuration.debugVerbosity": "detailed",
+  "editor.minimap.autohide": true,
 }
