@@ -95,10 +95,10 @@ workspaces:
     display_name: "Obsidian"
     bind_to_monitor: 3
   - name: "chrome"
-    display_name: "Chrome Web Browser"
+    display_name: "Chrome"
     bind_to_monitor: 2
   - name: "file"
-    display_name: "File Explorer"
+    display_name: "Explorer"
     bind_to_monitor: 3
   - name: "dotnet"
     bind_to_monitor: 1
@@ -181,13 +181,13 @@ keybindings:
 
   # Move focused window in a given direction.
   - command: "move left"
-    binding: "OemQuotes+RShiftKey+A"
+    binding: "Oemcomma+RShiftKey+A"
   - command: "move right"
-    binding: "OemQuotes+RShiftKey+D"
+    binding: "Oemcomma+RShiftKey+D"
   - command: "move up"
-    binding: "OemQuotes+RShiftKey+W"
+    binding: "Oemcomma+RShiftKey+W"
   - command: "move down"
-    binding: "OemQuotes+RShiftKey+S"
+    binding: "Oemcomma+RShiftKey+S"
     #MoveFocusedWindow @#glaze.move
 
   # Resize focused window by a percentage or pixel amount.

@@ -29,7 +29,7 @@ else {
   wt --pos 5360,0 --maximized --title "TheCave" -p "PowerShell" `
     -d "$operator_path" pwsh -NoExit -c "$operator" `; `
     sp -V --size .44 -p "PowerShell" --title "TheCave" -d "$operator_path" `
-    pwsh -NoExit -c Write-Output "execute unzipper" `; `
+    pwsh -NoExit -c "Write-Output execute unzipper RJ219750 모인 아기리 RJ01222474 핑서" `; `
     mf left `; sp -H --size .13 --title "TheCave" -d "$commander_path" `
     pwsh -NoExit -c "$commander"
   <#
