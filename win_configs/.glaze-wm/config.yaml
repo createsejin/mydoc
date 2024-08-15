@@ -145,6 +145,8 @@ window_rules:
     match_title: "data:, - Chrome"
   - command: "set floating"
     match_title: "Search | Anime-Sharing Community - Chrome"
+  - command: "set floating"
+    match_process_name: "SnippingTool"
     #WindowRules @#glaze
 
   # Some applications (eg. Steam) have borders that extend past the normal border size.
@@ -181,13 +183,13 @@ keybindings:
 
   # Move focused window in a given direction.
   - command: "move left"
-    binding: "Oemcomma+RShiftKey+A"
+    binding: "OemPeriod+RShiftKey+A"
   - command: "move right"
-    binding: "Oemcomma+RShiftKey+D"
+    binding: "OemPeriod+RShiftKey+D"
   - command: "move up"
-    binding: "Oemcomma+RShiftKey+W"
+    binding: "OemPeriod+RShiftKey+W"
   - command: "move down"
-    binding: "Oemcomma+RShiftKey+S"
+    binding: "OemPeriod+RShiftKey+S"
     #MoveFocusedWindow @#glaze.move
 
   # Resize focused window by a percentage or pixel amount.
@@ -289,6 +291,7 @@ keybindings:
     bindings: ["Tab+9", "CapsLock+9"]
   - command: "focus workspace 0"
     bindings: ["Tab+0", "CapsLock+0"]
+
   - command: "focus workspace t"
     bindings: ["Tab+T", "CapsLock+T"]
   - command: "focus workspace ob"
@@ -339,6 +342,7 @@ keybindings:
     bindings: ["RMenu+RShiftKey+9", "HangulMode+RShiftKey+9"]
   - commands: ["move to workspace 0", "focus workspace 0"]
     bindings: ["RMenu+RShiftKey+0", "HangulMode+RShiftKey+0"]
+
   - commands: ["move to workspace t", "focus workspace t"]
     bindings: ["RMenu+RShiftKey+T", "HangulMode+RShiftKey+T"]
   - commands: ["move to workspace ob", "focus workspace ob"]

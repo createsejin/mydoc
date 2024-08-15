@@ -1,0 +1,372 @@
+general:
+  # Commands to run when the WM has started (e.g. to run a script or launch
+  # another application). Here we are running a batch script to start Zebar.
+  startup_commands: ["shell-exec %userprofile%/.glzr/zebar/start.bat"]
+
+  # Whether to automatically focus windows underneath the cursor.
+  focus_follows_cursor: false
+
+  # Whether to switch back and forth between the previously focused
+  # workspace when focusing the current workspace.
+  toggle_workspace_on_refocus: true
+
+  cursor_jump:
+    # Whether to automatically move the cursor on the specified trigger.
+    enabled: true
+
+    # Trigger for cursor jump:
+    # - 'monitor_focus': Jump when focus changes between monitors.
+    # - 'window_focus': Jump when focus changes between windows.
+    trigger: "monitor_focus"
+
+gaps:
+  # Gap between adjacent windows.
+  inner_gap: "0px"
+
+  # Gap between windows and the screen edge.
+  outer_gap:
+    top: "30px"
+    right: "0px"
+    bottom: "0px"
+    left: "0px"
+
+window_effects:
+  # Visual effects to apply to the focused window.
+  focused_window:
+    # Highlight the window with a colored border.
+    # ** Exclusive to Windows 11 due to API limitations.
+    border:
+      enabled: true
+      color: "#0018E8"
+
+  # Visual effects to apply to non-focused windows.
+  other_windows:
+    border:
+      enabled: false
+      color: "#a1a1a1"
+
+window_behavior:
+  # New windows are created in this state whenever possible.
+  # Allowed values: 'tiling', 'floating'.
+  initial_state: "tiling"
+
+  # Sets the default options for when a new window is created. This also
+  # changes the defaults for when the state change commands, like
+  # `set-floating`, are used without any flags.
+  state_defaults:
+    floating:
+      # Whether to center floating windows by default.
+      centered: true
+
+      # Whether to show floating windows as always on top.
+      shown_on_top: false
+
+    fullscreen:
+      # Maximize the window if possible. If the window doesn't have a
+      # maximize button, then it'll be fullscreen'ed normally instead.
+      maximized: false
+
+      # Whether to show fullscreen windows as always on top.
+      shown_on_top: false
+
+workspaces:
+  - name: "1"
+  - name: "2"
+  - name: "3"
+  - name: "4"
+  - name: "5"
+  - name: "6"
+  - name: "7"
+  - name: "8"
+  - name: "9"
+  - name: "0"
+  - name: "t"
+    display_name: "Terminal"
+    bind_to_monitor: 2
+  - name: "ob"
+    display_name: "Obsidian"
+    bind_to_monitor: 2
+  - name: "chrome"
+    display_name: "Chrome"
+    bind_to_monitor: 0
+  - name: "file"
+    display_name: "Explorer"
+    bind_to_monitor: 2
+  - name: "dotnet"
+    display_name: ".Net"
+    bind_to_monitor: 1
+  - name: "rust"
+    display_name: "Rust"
+    bind_to_monitor: 1
+  - name: "mydoc"
+    display_name: "mydoc"
+    bind_to_monitor: 1
+  - name: "cave"
+    display_name: "TheCave"
+    bind_to_monitor: 2
+    #Workspaces @#rglaze
+
+window_rules:
+  - commands: ["ignore"]
+    match:
+      # Ignores any Zebar windows.
+      - window_process: { equals: "zebar" }
+      - window_process: { equals: "/Taskmgr|ScreenClippingHost/" }
+      - window_process: { equals: "Everything" }
+      - window_process: { equals: "KeePass" }
+
+      # Ignores picture-in-picture windows for browsers.
+      - window_title: { regex: "[Pp]icture.in.[Pp]icture" }
+        window_class: { regex: "Chrome_WidgetWin_1|MozillaDialogClass" }
+
+      # Ignore rules for various 3rd-party apps.
+      - window_process: { equals: "PowerToys.PowerAccent" }
+      - window_process: { equals: "PowerToys.Peek.UI" }
+      - window_process: { equals: "BandiView" }
+      - window_process: { equals: "Lively" }
+        window_class: { regex: "HwndWrapper*" }
+
+  - commands: ["set-floating"]
+    match:
+      - window_class: { equals: "#32770" }
+      - window_process: { equals: "Bandizip" }
+      - window_process: { equals: "SnippingTool" }
+
+  - commands: ["move --workspace cave"]
+    match:
+      - window_title: { equals: "TheCave" }
+    #WindowRules @#rglaze
+
+binding_modes:
+  # When enabled, the focused window can be resized via arrow keys or HJKL.
+  - name: "resize"
+    keybindings:
+      - commands: ["resize --width -2%"]
+        bindings: ["h", "left"]
+      - commands: ["resize --width +2%"]
+        bindings: ["l", "right"]
+      - commands: ["resize --height +2%"]
+        bindings: ["k", "up"]
+      - commands: ["resize --height -2%"]
+        bindings: ["j", "down"]
+      # Press enter/escape to return to default keybindings.
+      - commands: ["wm-disable-binding-mode --name resize"]
+        bindings: ["escape", "enter"]
+
+  # When enabled, all keybindings are disabled except for alt+shift+p which
+  # returns to default keybindings.
+  - name: "pause"
+    keybindings:
+      - commands: ["wm-disable-binding-mode --name pause"]
+        bindings: ["oem_question+rshift+p"]
+
+keybindings:
+  # Shift focus in a given direction.
+  - commands: ["focus --direction left"]
+    bindings: ["alt+h", "alt+left"]
+  - commands: ["focus --direction right"]
+    bindings: ["alt+l", "alt+right"]
+  - commands: ["focus --direction up"]
+    bindings: ["oem_question+rshift+k", "oem_question+rshift+up"]
+  - commands: ["focus --direction down"]
+    bindings: ["oem_question+rshift+j", "oem_question+rshift+down"]
+    #MoveFocus @#rglaze
+
+  # Move focused window in a given direction.
+  - commands: ["move --direction left"]
+    bindings: ["oem_period+rshift+a"]
+  - commands: ["move --direction right"]
+    bindings: ["oem_period+rshift+d"]
+  - commands: ["move --direction up"]
+    bindings: ["oem_period+rshift+w"]
+  - commands: ["move --direction down"]
+    bindings: ["oem_period+rshift+s"]
+    #MoveFocusedWindow @#rglaze.move
+
+  # Resize focused window by a percentage or pixel amount.
+  - commands: ["resize --width -2%"]
+    bindings: ["rshift+oem_pipe+left"]
+  - commands: ["resize --width +2%"]
+    bindings: ["rshift+oem_pipe+right"]
+  - commands: ["resize --height +2%"]
+    bindings: ["rshift+oem_pipe+down"]
+  - commands: ["resize --height -2%"]
+    bindings: ["rshift+oem_pipe+up"]
+
+  # As an alternative to the resize keybindings above, resize mode enables
+  # resizing via arrow keys or HJKL. The binding mode is defined above with
+  # the name 'resize'.
+  - commands: ["wm-enable-binding-mode --name resize"]
+    bindings: ["oem_question+rshift+e"]
+
+  # Disables all keybindings until alt+shift+p is pressed again.
+  - commands: ["wm-enable-binding-mode --name pause"]
+    bindings: ["oem_question+rshift+p"]
+
+  # Change tiling direction. This determines where new tiling windows will
+  # be inserted.
+  - commands: ["toggle-tiling-direction"]
+    bindings: ["oem_question+rshift+v"]
+
+  # Change focus from tiling windows -> floating -> fullscreen.
+  - commands: ["wm-cycle-focus"]
+    bindings: ["alt+space"]
+    #ToggleFloating @#rglaze
+
+  # Change the focused window to be floating.
+  - commands: ["toggle-floating --centered"]
+    bindings: ["oem_question+rshift+f"]
+
+  # Change the focused window to be tiling.
+  - commands: ["toggle-tiling"]
+    bindings: ["oem_question+rshift+g"]
+
+  # Change the focused window to be fullscreen.
+  - commands: ["toggle-fullscreen"]
+    bindings: ["alt+x"]
+
+  # Minimize focused window.
+  - commands: ["toggle-minimized"]
+    bindings: ["oem_question+rshift+m"]
+
+  # Close focused window.
+  - commands: ["close"]
+    bindings: ["oem_question+rshift+q"]
+
+  # Kill GlazeWM process safely.
+  - commands: ["wm-exit"]
+    bindings: ["oem_question+rshift+f4"]
+
+  # Re-evaluate configuration file.
+  - commands: ["wm-reload-config"]
+    bindings: ["oem_question+rshift+r"]
+
+  # Redraw all windows.
+  - commands: ["wm-redraw"]
+    bindings: ["oem_question+rshift+o"]
+
+  # Launch CMD terminal. Alternatively, use `shell-exec wt` or
+  # `shell-exec %ProgramFiles%/Git/git-bash.exe` to start Windows
+  # Terminal and Git Bash respectively.
+  - commands: ["shell-exec wt"]
+    bindings: ["shift+tab+t"]
+  - commands: ["shell-exec C:/Users/creat/AppData/Local/Obsidian/Obsidian.exe"]
+    bindings: ["shift+tab+o"]
+  - commands: ["shell-exec code"]
+    bindings: ["shift+tab+c"]
+  - commands:
+      [
+        "shell-exec C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/devenv.exe",
+      ]
+    bindings: ["shift+tab+v"]
+  - commands:
+      ["shell-exec C:/Program Files/Google/Chrome/Application/chrome.exe"]
+    bindings: ["shift+tab+w"]
+  - commands: ["shell-exec C:/Windows/explorer.exe"]
+    bindings: ["shift+tab+f"]
+  - commands: ["shell-exec Everything"]
+    bindings: ["shift+tab+e"]
+  - commands:
+      ["shell-exec C:/Program Files/KeePass Password Safe 2/KeePass.exe"]
+    bindings: ["shift+tab+k"]
+    #Exec @#rglaze
+
+  # Focus the next/previous workspace defined in `workspaces` config.
+  - commands: ["focus --next-workspace"]
+    bindings: ["alt+n"]
+  - commands: ["focus --prev-workspace"]
+    bindings: ["alt+p"]
+
+  # Focus the workspace that last had focus.
+  - commands: ["focus --recent-workspace"]
+    bindings: ["oem_question+rshift+i"]
+
+  # Change focus to a workspace defined in `workspaces` config.
+  - commands: ["focus --workspace 1"]
+    bindings: ["alt+1", "tab+1", "caps_lock+1"]
+  - commands: ["focus --workspace 2"]
+    bindings: ["alt+2", "tab+2", "caps_lock+2"]
+  - commands: ["focus --workspace 3"]
+    bindings: ["alt+3", "tab+3", "caps_lock+3"]
+  - commands: ["focus --workspace 4"]
+    bindings: ["alt+4", "tab+4", "caps_lock+4"]
+  - commands: ["focus --workspace 5"]
+    bindings: ["alt+5", "tab+5", "caps_lock+5"]
+  - commands: ["focus --workspace 6"]
+    bindings: ["alt+6", "tab+6", "caps_lock+6"]
+  - commands: ["focus --workspace 7"]
+    bindings: ["alt+7", "tab+7", "caps_lock+7"]
+  - commands: ["focus --workspace 8"]
+    bindings: ["alt+8", "tab+8", "caps_lock+8"]
+  - commands: ["focus --workspace 9"]
+    bindings: ["alt+9", "tab+9", "caps_lock+9"]
+  - commands: ["focus --workspace 0"]
+    bindings: ["alt+0", "tab+0", "caps_lock+0"]
+  - commands: ["focus --workspace t"]
+    bindings: ["tab+t", "caps_lock+t"]
+  - commands: ["focus --workspace ob"]
+    bindings: ["tab+o", "caps_lock+o"]
+  - commands: ["focus --workspace chrome"]
+    bindings: ["tab+w", "caps_lock+w"]
+  - commands: ["focus --workspace file"]
+    bindings: ["tab+f", "caps_lock+f"]
+  - commands: ["focus --workspace dotnet"]
+    bindings: ["tab+d", "caps_lock+d"]
+  - commands: ["focus --workspace rust"]
+    bindings: ["tab+r", "caps_lock+r"]
+  - commands: ["focus --workspace mydoc"]
+    bindings: ["tab+m", "caps_lock+m"]
+  - commands: ["focus --workspace cave"]
+    bindings: ["tab+c", "caps_lock+c"]
+    #FocusWorkspace @#rglaze
+
+  # Move the focused window's parent workspace to a monitor in a given
+  # direction.
+  - commands: ["move-workspace --direction left"]
+    bindings: ["oem_question+rshift+a"]
+  - commands: ["move-workspace --direction right"]
+    bindings: ["oem_question+rshift+d"]
+  - commands: ["move-workspace --direction up"]
+    bindings: ["oem_question+rshift+w"]
+  - commands: ["move-workspace --direction down"]
+    bindings: ["oem_question+rshift+s"]
+    #WorkspaceMove @#rglaze.move
+
+  # Move focused window to a workspace defined in `workspaces` config.
+  - commands: ["move --workspace 1", "focus --workspace 1"]
+    bindings: ["rshift+oem_pipe+1"]
+  - commands: ["move --workspace 2", "focus --workspace 2"]
+    bindings: ["rshift+oem_pipe+2"]
+  - commands: ["move --workspace 3", "focus --workspace 3"]
+    bindings: ["rshift+oem_pipe+3"]
+  - commands: ["move --workspace 4", "focus --workspace 4"]
+    bindings: ["rshift+oem_pipe+4"]
+  - commands: ["move --workspace 5", "focus --workspace 5"]
+    bindings: ["rshift+oem_pipe+5"]
+  - commands: ["move --workspace 6", "focus --workspace 6"]
+    bindings: ["rshift+oem_pipe+6"]
+  - commands: ["move --workspace 7", "focus --workspace 7"]
+    bindings: ["rshift+oem_pipe+7"]
+  - commands: ["move --workspace 8", "focus --workspace 8"]
+    bindings: ["rshift+oem_pipe+8"]
+  - commands: ["move --workspace 9", "focus --workspace 9"]
+    bindings: ["rshift+oem_pipe+9"]
+  - commands: ["move --workspace 0", "focus --workspace 0"]
+    bindings: ["rshift+oem_pipe+0"]
+  - commands: ["move --workspace t", "focus --workspace t"]
+    bindings: ["rshift+oem_pipe+t"]
+  - commands: ["move --workspace ob", "focus --workspace ob"]
+    bindings: ["rshift+oem_pipe+o"]
+  - commands: ["move --workspace chrome", "focus --workspace chrome"]
+    bindings: ["rshift+oem_pipe+w"]
+  - commands: ["move --workspace file", "focus --workspace file"]
+    bindings: ["rshift+oem_pipe+f"]
+    #MoveToWorkspce @#rglaze
+  - commands: ["move --workspace dotnet", "focus --workspace dotnet"]
+    bindings: ["rshift+oem_pipe+d"]
+  - commands: ["move --workspace rust", "focus --workspace rust"]
+    bindings: ["rshift+oem_pipe+r"]
+  - commands: ["move --workspace mydoc", "focus --workspace mydoc"]
+    bindings: ["rshift+oem_pipe+m"]
+  - commands: ["move --workspace cave", "focus --workspace cave"]
+    bindings: ["rshift+oem_pipe+c"]
