@@ -53,11 +53,18 @@ Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
 # make symbolic link command Alias: ln <link_name> <target>
 <#  
 MakeSymbolicLink @#>
-function mk_sym_link([string]$target_path, [string]$link_name) {
-  Start-Process -FilePath "wt" -Wait -Verb RunAs -ArgumentList "-d", "$pwd", "pwsh", "-NoExit", "-c", `
-    "New-Item -ItemType SymbolicLink -Path `"$link_name`" -Target `"$target_path`""
+function mk_sym_link_old([string]$target_path, [string]$link_name) {
+  $command = '-p PowerShell New-Item -ItemType SymbolicLink -Path "config.yaml" -Target "C:\Program Files\OpenTelemetry Collector\config.yaml"' -f $link_name, $target_path
+  Start-Process -FilePath "wt" -WorkingDirectory "$pwd" -Wait -Verb RunAs -ArgumentList $command
 }
-Set-Alias -Name ln -Value mk_sym_link
+function MakeSymbolicLink {
+  param (
+    [string]$target_path,
+    [string]$link_name
+  )
+  New-Item -ItemType SymbolicLink -Path $link_name -Target $target_path
+}
+Set-Alias -Name ln -Value MakeSymbolicLink
 
 # set-path to access to the windows environment path setting
 Set-Alias -Name set-path -Value "C:\Users\creat\mydoc\scripts\Path.lnk"
