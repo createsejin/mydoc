@@ -3,6 +3,7 @@
 " You can find a list of commands here: https://jb.gg/h38q75
 " Find more examples here: https://jb.gg/share-ideavimrc
 
+set clipboard=unnamed
 
 "" -- Suggested options --
 " Show a few lines of context around the cursor. Note that this makes the
@@ -27,6 +28,7 @@ nnoremap <C-l> <C-w>l
 Plug 'machakann/vim-highlightedyank'
 " Commentary plugin
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
 
 " for ideaVim restore english keyboard layout when switch to normal
 set keep-english-in-normal-and-restore-in-insert
