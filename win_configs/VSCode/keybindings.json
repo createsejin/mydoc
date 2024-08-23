@@ -366,5 +366,5 @@
     "key": "ctrl+o",
     "command": "-workbench.action.files.openFile",
     "when": "true"
-  },
+  }
 ]
