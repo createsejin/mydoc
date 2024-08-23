@@ -37,7 +37,7 @@ window_effects:
     # ** Exclusive to Windows 11 due to API limitations.
     border:
       enabled: true
-      color: "#0018E8"
+      color: "#b377dd"
 
   # Visual effects to apply to non-focused windows.
   other_windows:
@@ -104,6 +104,9 @@ workspaces:
   - name: "cave"
     display_name: "TheCave"
     bind_to_monitor: 2
+  - name: "whiteboard"
+    display_name: "WhiteBoard"
+    bind_to_monitor: 1
     #Workspaces @#rglaze
 
 window_rules:
@@ -131,10 +134,16 @@ window_rules:
       - window_class: { equals: "#32770" }
       - window_process: { equals: "Bandizip" }
       - window_process: { equals: "SnippingTool" }
+      - window_process: { equals: "voicemeeter_x64" }
+      - window_process: { equals: "Galaxy Buds" }
+      - window_process: { equals: "rider64"}
 
   - commands: ["move --workspace cave"]
     match:
       - window_title: { equals: "TheCave" }
+  - commands: ["set-tiling"]
+    match:
+      - window_title: { equals: "TheCaveLogger" }
     #WindowRules @#rglaze
 
 binding_modes:
@@ -269,6 +278,8 @@ keybindings:
   - commands:
       ["shell-exec C:/Program Files/KeePass Password Safe 2/KeePass.exe"]
     bindings: ["shift+tab+k"]
+  - commands: ["shell-exec C:/Program Files/JetBrains/JetBrains Rider 2024.2.1/bin/rider64.exe"]
+    bindings: ["shift+tab+r"]
     #Exec @#rglaze
 
   # Focus the next/previous workspace defined in `workspaces` config.
@@ -318,6 +329,8 @@ keybindings:
     bindings: ["tab+m", "caps_lock+m"]
   - commands: ["focus --workspace cave"]
     bindings: ["tab+c", "caps_lock+c"]
+  - commands: ["focus --workspace whiteboard"]
+    bindings: ["tab+b", "caps_lock+b"]
     #FocusWorkspace @#rglaze
 
   # Move the focused window's parent workspace to a monitor in a given
@@ -370,3 +383,5 @@ keybindings:
     bindings: ["rshift+oem_pipe+m"]
   - commands: ["move --workspace cave", "focus --workspace cave"]
     bindings: ["rshift+oem_pipe+c"]
+  - commands: ["move --workspace whiteboard", "focus --workspace whiteboard"]
+    bindings: ["rshift+oem_pipe+b"]
