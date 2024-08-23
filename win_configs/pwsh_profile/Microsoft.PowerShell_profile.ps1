@@ -52,7 +52,7 @@ Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
 
 # make symbolic link command Alias: ln <link_name> <target>
 <#  
-MakeSymbolicLink @#>
+MakeSymbolicLink @#pwsh #>
 function mk_sym_link_old([string]$target_path, [string]$link_name) {
   $command = '-p PowerShell New-Item -ItemType SymbolicLink -Path "config.yaml" -Target "C:\Program Files\OpenTelemetry Collector\config.yaml"' -f $link_name, $target_path
   Start-Process -FilePath "wt" -WorkingDirectory "$pwd" -Wait -Verb RunAs -ArgumentList $command
@@ -203,3 +203,9 @@ Import-Module -Name Microsoft.WinGet.CommandNotFound
 Set-Alias -Name glz -Value glazewm
 
 $env:RUST_BACKTRACE=1
+
+function RestartZebar {
+  Stop-Process -Name "zebar"
+  C:\Users\creat\.glzr\zebar\start.bat
+}
+Set-Alias -Name reze -Value RestartZebar
