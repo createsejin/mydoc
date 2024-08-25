@@ -129,6 +129,8 @@ window_rules:
       - window_process: { equals: "Lively" }
         window_class: { regex: "HwndWrapper*" }
 
+      - window_process: { equals: "PotPlayer64"}
+
   - commands: ["set-floating"]
     match:
       - window_class: { equals: "#32770" }
