@@ -1,6 +1,6 @@
 {
   "files.autoSave": "afterDelay",
-  "editor.fontLigatures": true,
+    "editor.fontLigatures": true,
   "editor.fontFamily": "'SauceCodePro Nerd Font', Consolas, 'Courier New', monospace, dotum",
   "editor.fontVariations": false,
   "editor.fontWeight": "374",
@@ -55,7 +55,7 @@
   "vim.useSystemClipboard": true,
   "powershell.powerShellAdditionalExePaths": {
     "pwsh": "C:\\Program Files\\PowerShell\\7\\pwsh.exe"
-  },
+        },
   "powershell.powerShellDefaultVersion": "pwsh",
   "terminal.integrated.profiles.windows": {
     "PowerShell": {
@@ -72,7 +72,7 @@
     },
     "Git Bash": {
       "source": "Git Bash"
-    },
+        },
     "Windows PowerShell": {
       "path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
     }

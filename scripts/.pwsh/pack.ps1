@@ -1,5 +1,6 @@
 $veracrypt = "C:\Program Files\VeraCrypt\VeraCrypt.exe"
 $work_dir = "G:\내 드라이브\1.창고\정보\Packs"
+$work_dir_eng = "G:\My Drive\1.창고\정보\Packs"
 $pack009 = "Pack009_2024-01-02_001.hc"
 $f_key_file = "M:\Keyfiles\diskF"
 $f_device = "\Device\Harddisk0\Partition2"
@@ -117,12 +118,24 @@ function keyCapsuleMount {
   )
   if (Test-Path "G:\") {
     if ($rw) {
-      Start-Process -FilePath "$veracrypt" -Wait -NoNewWindow -WorkingDirectory $work_dir `
-        -ArgumentList "/quit /auto /volume $pack009 /letter M /m rm /protectMemory /cache no"
+      if (Test-Path $work_dir) {
+        Start-Process -FilePath "$veracrypt" -Wait -NoNewWindow -WorkingDirectory $work_dir `
+          -ArgumentList "/quit /auto /volume $pack009 /letter M /m rm /protectMemory /cache no"
+      }
+      else {
+        Start-Process -FilePath "$veracrypt" -Wait -NoNewWindow -WorkingDirectory $work_dir_eng `
+          -ArgumentList "/quit /auto /volume $pack009 /letter M /m rm /protectMemory /cache no"
+      }
     }
     else {
-      Start-Process -FilePath "$veracrypt" -Wait -NoNewWindow -WorkingDirectory $work_dir `
-        -ArgumentList "/quit /auto /volume $pack009 /letter M /mountoption ro /m rm /protectMemory /cache no" 
+      if (Test-Path $work_dir) {
+        Start-Process -FilePath "$veracrypt" -Wait -NoNewWindow -WorkingDirectory $work_dir `
+          -ArgumentList "/quit /auto /volume $pack009 /letter M /mountoption ro /m rm /protectMemory /cache no" 
+      } 
+      else {
+        Start-Process -FilePath "$veracrypt" -Wait -NoNewWindow -WorkingDirectory $work_dir_eng `
+          -ArgumentList "/quit /auto /volume $pack009 /letter M /mountoption ro /m rm /protectMemory /cache no" 
+      }
     }
     if (Test-Path "M:\") {
       'Key Capsule successfully mounted.'
