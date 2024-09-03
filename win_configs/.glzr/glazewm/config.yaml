@@ -280,8 +280,10 @@ keybindings:
   - commands:
       ["shell-exec C:/Program Files/KeePass Password Safe 2/KeePass.exe"]
     bindings: ["shift+tab+k"]
-  - commands: ["shell-exec C:/Program Files/JetBrains/JetBrains Rider 2024.2.1/bin/rider64.exe"]
-    bindings: ["shift+tab+r"]
+  - commands: ["shell-exec C:/Program Files/WindowsApps/Microsoft.ScreenSketch_11.2407.3.0_x64__8wekyb3d8bbwe/SnippingTool/SnippingTool.exe"]
+    bindings: ["shift+tab+s"]
+  - commands: ["shell-exec C:/Users/creat/OneDrive/문서/AutoHotkey/NumpadRightClick.exe"]
+    bindings: ["shift+tab+0"]
     #Exec @#rglaze
 
   # Focus the next/previous workspace defined in `workspaces` config.
