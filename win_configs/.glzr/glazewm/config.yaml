@@ -258,10 +258,10 @@ keybindings:
 
   # Launch CMD terminal. Alternatively, use `shell-exec wt` or
   # `shell-exec %ProgramFiles%/Git/git-bash.exe` to start Windows
-  # Terminal and Git Bash respectively.
+  # Terminal and Git Bash respectively. 
   - commands: ["shell-exec wt"]
     bindings: ["shift+tab+t"]
-  - commands: ["shell-exec C:/Users/creat/AppData/Local/Obsidian/Obsidian.exe"]
+  - commands: ["shell-exec C:/Users/creat/AppData/Local/Programs/Obsidian/Obsidian.exe"]
     bindings: ["shift+tab+o"]
   - commands: ["shell-exec code"]
     bindings: ["shift+tab+c"]

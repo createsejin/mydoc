@@ -1,1 +1,8 @@
-mydoc.code-workspace
+{
+	"folders": [
+		{
+			"path": "."
+		}
+  ],
+  "settings": {}
+}
