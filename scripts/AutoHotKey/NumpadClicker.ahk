@@ -5,7 +5,7 @@ NumpadClear:: ; left click
     SendInput "{LButton}"
   }
 
-NumpadEnter:: ; right click
+$NumpadEnter:: ; right click
   {
     if (GetKeyState("NumLock", "T")) {
       SendInput "{NumpadEnter}"
@@ -36,7 +36,8 @@ NumpadDel:: ; drag end
     MouseClick "left",,,1,,"U"
   }
 
-NumpadAdd:: ; double click
+  ; you should use $ prefix for preventing triggering SendInput call itself
+$NumpadAdd:: ; double click
   {
     if (GetKeyState("NumLock", "T")) {
       SendInput "{NumpadAdd}"
@@ -45,7 +46,7 @@ NumpadAdd:: ; double click
     }
   }
 
-NumpadSub:: ; triple click
+$NumpadSub:: ; triple click
   {
     if (GetKeyState("Numlock", "T")) {
       SendInput "{NumpadSub}"
@@ -56,10 +57,13 @@ NumpadSub:: ; triple click
 
 NumpadRight:: ; go to scroll bar
   {
+    CoordMode "Mouse", "Screen"
     WinGetClientPos &x, &y, &width, &height, "A"
-    scroll_y := x + width - 7
+    scroll_x := x + width - 7
     MouseGetPos &xpos, &ypos
-    MouseMove scroll_y, ypos
+    MouseMove scroll_x, ypos
+    DllCall("SetCursorPos", "int", scroll_x, "int", ypos)
+    ; MoveToScrollBar @#auto
   }
 
 NumpadHome:: ; Ctrl+C 
@@ -75,12 +79,52 @@ NumpadPgUp:: ; Ctrl+V
     SendInput "^v"
   }
 
-NumpadMult:: ; send Delete key
+$NumpadMult:: ; send Delete key
   {
-    SendInput "{Delete}"
+    if (GetKeyState("NumLock", "T")) {
+      SendInput "{NumpadMult}"
+    } else {
+      SendInput "{Delete}"
+    }
   }
 
 NumpadMult & Backspace:: ; shift+Delete
   {
     SendInput "{Shift}+{Delete}"
+  }
+
+NumpadEnd::
+  {
+    MouseClick "WD",,,2
+  }
+NumpadPgDn::
+  {
+    MouseClick "WU",,,2
+  }
+NumpadDown::
+  {
+    SendInput "{Home}"
+  }
+
+$NumpadLeft::
+  {
+    CoordMode "Mouse", "Screen"
+
+    if (WinGetProcessName("A") == "explorer.exe") {
+      SendInput "{Backspace}"
+    } else if (WinGetProcessName("A") == "chrome.exe") {
+      MouseGetPos &origin_x, &origin_y
+      WinGetClientPos &x, &y, &width, &height, "A"
+      btn_x := x + 28
+      btn_y := y + 82
+      ; GoToBack @#auto
+      DllCall("SetCursorPos", "int", btn_x, "int", btn_y)
+      MouseClick "left",,, 1
+      DllCall("SetCursorPos", "int", origin_x, "int", origin_y)
+    }
+  }
+
+NumpadDiv::
+  {
+    SendInput "{F5}"
   }
