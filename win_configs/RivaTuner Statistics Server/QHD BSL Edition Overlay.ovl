@@ -552,7 +552,7 @@ Size=90
 TextColor=00FFFFFF
 [Layer36]
 Name=
-Text=<G=RAM usage,0,0,1,0,32768,8>
+Text=<G=RAM usage,0,0,1,0,65536,8>
 PositionX=119
 PositionY=112
 ExtentX=38
