@@ -51,7 +51,9 @@ $NumpadSub:: ; triple click
     if (GetKeyState("Numlock", "T")) {
       SendInput "{NumpadSub}"
     } else {
-      MouseClick "left",,, 3
+      SendInput "{Ctrl down}"
+      MouseClick "left",,, 1
+      SendInput "{Ctrl up}"
     }
   }
 
