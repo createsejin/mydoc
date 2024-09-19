@@ -117,6 +117,9 @@ window_rules:
       - window_process: { equals: "/Taskmgr|ScreenClippingHost/" }
       - window_process: { equals: "Everything" }
       - window_process: { equals: "KeePass" }
+      - window_process: { equals: "FolderSizeExplorer" }
+      - window_process: { equals: "NetFile" }
+      - window_process: { equals: "NetTransfer" }
 
       # Ignores picture-in-picture windows for browsers.
       - window_title: { regex: "[Pp]icture.in.[Pp]icture" }
