@@ -114,6 +114,8 @@ $NumpadLeft::
 
     if (WinGetProcessName("A") == "explorer.exe") {
       SendInput "{Backspace}"
+    } else if (WinGetProcessName("A") == "Files.exe") {
+      SendInput "{Backspace}"
     } else if (WinGetProcessName("A") == "chrome.exe") {
       MouseGetPos &origin_x, &origin_y
       WinGetClientPos &x, &y, &width, &height, "A"

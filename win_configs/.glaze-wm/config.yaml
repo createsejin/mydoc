@@ -112,7 +112,7 @@ workspaces:
   - name: "cave"
     bind_to_monitor: 3
     display_name: "TheCave"
-    #Workspaces @#glaze
+    #Workspaces @-#glaze
 
 window_rules:
   # Task Manager requires admin privileges to manage and should be ignored unless running
@@ -147,7 +147,7 @@ window_rules:
     match_title: "Search | Anime-Sharing Community - Chrome"
   - command: "set floating"
     match_process_name: "SnippingTool"
-    #WindowRules @#glaze
+    #WindowRules @-#glaze
 
   # Some applications (eg. Steam) have borders that extend past the normal border size.
   - command: "resize borders 0px -7px -7px -7px"
@@ -179,7 +179,7 @@ keybindings:
     binding: "RControlKey+RShiftKey+K"
   - command: "focus down"
     binding: "RControlKey+RShiftKey+J"
-    #MoveFocus @#glaze
+    #MoveFocus @-#glaze
 
   # Move focused window in a given direction.
   - command: "move left"
@@ -190,7 +190,7 @@ keybindings:
     binding: "OemPeriod+RShiftKey+W"
   - command: "move down"
     binding: "OemPeriod+RShiftKey+S"
-    #MoveFocusedWindow @#glaze.move
+    #MoveFocusedWindow @-#glaze.move
 
   # Resize focused window by a percentage or pixel amount.
   - command: "resize width -2%"
@@ -219,7 +219,7 @@ keybindings:
   # Change the focused window to be floating / tiling.
   - command: "toggle floating"
     binding: "OemQuestion+RShiftKey+F"
-    #ToggleFloating @#glaze
+    #ToggleFloating @-#glaze
 
   # Change the focused window to be maximized / unmaximized.
   - command: "toggle maximized"
@@ -259,7 +259,7 @@ keybindings:
     binding: "Shift+Tab+E"
   - command: "exec 'C:/Program Files/KeePass Password Safe 2/KeePass.exe'"
     binding: "Shift+Tab+K"
-    #Exec @#glaze
+    #Exec @-#glaze
 
   # Focus the workspace that last had focus.
   - command: "focus workspace recent"
@@ -300,7 +300,7 @@ keybindings:
     bindings: ["Tab+W", "CapsLock+W"]
   - command: "focus workspace file"
     bindings: ["Tab+F", "CapsLock+F"]
-    #FocusWorkspace @#glaze
+    #FocusWorkspace @-#glaze
   - command: "focus workspace dotnet"
     bindings: ["Tab+D", "CapsLock+D"]
   - command: "focus workspace rust"
@@ -319,7 +319,7 @@ keybindings:
     binding: "OemQuestion+RShiftKey+W"
   - command: "move workspace down"
     binding: "OemQuestion+RShiftKey+S"
-    #WorkspaceMove @#glaze.move
+    #WorkspaceMove @-#glaze.move
 
   # Move focused window to a workspace defined in `workspaces` config.
   - commands: ["move to workspace 1", "focus workspace 1"]
@@ -351,7 +351,7 @@ keybindings:
     bindings: ["RMenu+RShiftKey+W", "HangulMode+RShiftKey+W"]
   - commands: ["move to workspace file", "focus workspace file"]
     bindings: ["RMenu+RShiftKey+F", "HangulMode+RShiftKey+F"]
-    #MoveToWorkspce @#glaze
+    #MoveToWorkspce @-#glaze
   - commands: ["move to workspace dotnet", "focus workspace dotnet"]
     bindings: ["RMenu+RShiftKey+D", "HangulMode+RShiftKey+D"]
   - commands: ["move to workspace rust", "focus workspace rust"]

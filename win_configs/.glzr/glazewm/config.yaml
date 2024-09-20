@@ -107,7 +107,7 @@ workspaces:
   - name: "whiteboard"
     display_name: "WhiteBoard"
     bind_to_monitor: 1
-    #Workspaces @#rglaze
+    #Workspaces @#glaze
 
 window_rules:
   - commands: ["ignore"]
@@ -149,7 +149,7 @@ window_rules:
   - commands: ["set-tiling"]
     match:
       - window_title: { equals: "TheCaveLogger" }
-    #WindowRules @#rglaze
+    #WindowRules @#glaze
 
 binding_modes:
   # When enabled, the focused window can be resized via arrow keys or HJKL.
@@ -184,7 +184,7 @@ keybindings:
     bindings: ["oem_question+rshift+k", "oem_question+rshift+up"]
   - commands: ["focus --direction down"]
     bindings: ["oem_question+rshift+j", "oem_question+rshift+down"]
-    #MoveFocus @#rglaze
+    #MoveFocus @#glaze
 
   # Move focused window in a given direction.
   - commands: ["move --direction left"]
@@ -195,7 +195,7 @@ keybindings:
     bindings: ["oem_period+rshift+w"]
   - commands: ["move --direction down"]
     bindings: ["oem_period+rshift+s"]
-    #MoveFocusedWindow @#rglaze.move
+    #MoveFocusedWindow @#glaze.move
 
   # Resize focused window by a percentage or pixel amount.
   - commands: ["resize --width -2%"]
@@ -225,7 +225,7 @@ keybindings:
   # Change focus from tiling windows -> floating -> fullscreen.
   - commands: ["wm-cycle-focus"]
     bindings: ["alt+space"]
-    #ToggleFloating @#rglaze
+    #ToggleFloating @#glaze
 
   # Change the focused window to be floating.
   - commands: ["toggle-floating --centered"]
@@ -276,7 +276,7 @@ keybindings:
   - commands:
       ["shell-exec C:/Program Files/Google/Chrome/Application/chrome.exe"]
     bindings: ["shift+tab+w"]
-  - commands: ["shell-exec C:/Windows/explorer.exe"]
+  - commands: ["shell-exec C:/Users/creat/AppData/Local/Microsoft/WindowsApps/FilesPreview_1y0xx7n9077q4/files.exe"]
     bindings: ["shift+tab+f"]
   - commands: ["shell-exec Everything"]
     bindings: ["shift+tab+e"]
@@ -287,7 +287,7 @@ keybindings:
     bindings: ["shift+tab+s"]
   - commands: ["shell-exec C:/Users/creat/OneDrive/문서/AutoHotkey/NumpadRightClick.exe"]
     bindings: ["shift+tab+0"]
-    #Exec @#rglaze
+    #Exec @#glaze
 
   # Focus the next/previous workspace defined in `workspaces` config.
   - commands: ["focus --next-workspace"]
@@ -338,7 +338,7 @@ keybindings:
     bindings: ["tab+c", "caps_lock+c"]
   - commands: ["focus --workspace whiteboard"]
     bindings: ["tab+b", "caps_lock+b"]
-    #FocusWorkspace @#rglaze
+    #FocusWorkspace @#glaze
 
   # Move the focused window's parent workspace to a monitor in a given
   # direction.
@@ -350,7 +350,7 @@ keybindings:
     bindings: ["oem_question+rshift+w"]
   - commands: ["move-workspace --direction down"]
     bindings: ["oem_question+rshift+s"]
-    #WorkspaceMove @#rglaze.move
+    #WorkspaceMove @#glaze.move
 
   # Move focused window to a workspace defined in `workspaces` config.
   - commands: ["move --workspace 1", "focus --workspace 1"]
@@ -381,7 +381,7 @@ keybindings:
     bindings: ["rshift+oem_pipe+w"]
   - commands: ["move --workspace file", "focus --workspace file"]
     bindings: ["rshift+oem_pipe+f"]
-    #MoveToWorkspce @#rglaze
+    #MoveToWorkspce @#glaze
   - commands: ["move --workspace dotnet", "focus --workspace dotnet"]
     bindings: ["rshift+oem_pipe+d"]
   - commands: ["move --workspace rust", "focus --workspace rust"]
