@@ -154,7 +154,7 @@ $NumpadLeft::
     CoordMode "Mouse", "Screen"
 
     if (WinGetProcessName("A") == "chrome.exe" or WinGetProcessName("A") == "whale.exe" 
-      or WinGetProcessName("A") == "explorer.exe") {
+    or WinGetProcessName("A") == "explorer.exe") {
       SendInput "{Alt down}"
       SendInput "{Left down}"
       SendInput "{Left up}"
@@ -171,7 +171,7 @@ $NumpadLeft::
 NumpadLeft & NumLock::
   {
     if (WinGetProcessName("A") == "chrome.exe" or WinGetProcessName("A") == "whale.exe" 
-      or WinGetProcessName("A") == "explorer.exe") {
+    or WinGetProcessName("A") == "explorer.exe") {
       SendInput "{Alt down}"
       SendInput "{Right down}"
       SendInput "{Right up}"
@@ -200,7 +200,15 @@ $NumpadDiv::
     if (GetKeyState("NumLock", "T")) {
       SendInput "{NumpadDiv}"
     } else {
-      SendInput "{F5}"
+      SendInput "{Ctrl down}"
+      SendInput "w"
+      SendInput "{Ctrl up}"
+      ; close tab @#auto
     }
+  }
+
+NumpadDiv & NumLock::
+  {
+    SendInput "{F5}"
     ; refresh @#auto
   }
