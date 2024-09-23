@@ -2,11 +2,12 @@
 
 NumLock::SC02B
 Pause::NumLock
-; Remapping @#auto
+; Remap NumLock @#auto
 
-NumpadClear:: ; left click
+*NumpadClear:: ; left click
   {
     SendInput "{LButton}"
+    ; left click @#auto
   }
 
 $NumpadEnter:: ; right click
@@ -15,30 +16,56 @@ $NumpadEnter:: ; right click
       SendInput "{NumpadEnter}"
     } else {
       SendInput "{RButton}"
+      ; right click @#auto
     }
   }
 
   global Numpad0_count := 0 ; counting Numpad0 pressed for detacting double Numpad0 pressing
-NumpadIns:: 
+  check_counter() 
   {
     global Numpad0_count
-
-    if (GetKeyState("NumpadIns", "P"))
-    { ; whenever press Numpad0, add counter
-      Numpad0_count += 1
+    if (Numpad0_count == 2) {
+      if (GetKeyState("NumLock", "P")) {
+        SendInput "{End}"
+        ; end @#auto
+      } else {
+        SendInput "{Home}"
+        ; home @#auto
+      }
     }
+    Numpad0_count := 0
+  }
+NumpadIns::
+  {
+    SendInput "{Ctrl down}"
+    ; Ctrl @#auto
+  }
+NumpadIns Up::
+  {
+    SendInput "{Ctrl up}"
+    global Numpad0_count
+    Numpad0_count += 1
+    SetTimer check_counter, -50
+    ; Numpad0 @#auto
+  }
 
-    if (Numpad0_count < 2) { ; only down one left mouse button
+  global is_NumDel_pressed := False
+*NumpadDel:: 
+  {
+    global is_NumDel_pressed
+    if (!is_NumDel_pressed)
+    {
+      is_NumDel_pressed := True
       MouseClick "left",,,1,,"D"
-    } else { ; when doble Numpad0 press detact, ignore press down left mouse button and reset counter
-      Numpad0_count := 0
       ; drag start @#auto
     }
   }
-
-NumpadDel:: ; drag end
+*NumpadDel Up:: 
   {
+    global is_NumDel_pressed
     MouseClick "left",,,1,,"U"
+    is_NumDel_pressed := False
+    ; drag end @#auto
   }
 
   ; you should use $ prefix for preventing triggering SendInput call itself
@@ -57,10 +84,8 @@ $NumpadSub::
     if (GetKeyState("Numlock", "T")) {
       SendInput "{NumpadSub}"
     } else {
-      SendInput "{Ctrl down}"
-      MouseClick "left",,, 1
-      SendInput "{Ctrl up}"
-      ; control click @#auto
+      MouseClick "left",,, 3
+      ; triple click @#auto
     }
   }
 
@@ -86,6 +111,7 @@ NumpadUp:: ; Ctrl+X
 NumpadPgUp:: ; Ctrl+V
   {
     SendInput "^v"
+    ; copy and paste
   }
 
 $NumpadMult:: ; send Delete key
@@ -94,6 +120,7 @@ $NumpadMult:: ; send Delete key
       SendInput "{NumpadMult}"
     } else {
       SendInput "{Delete}"
+      ; Delete @#auto
     }
   }
 NumpadMult & NumLock:: 
@@ -102,35 +129,37 @@ NumpadMult & NumLock::
     ; shift+Delete @#auto
   }
 
-NumpadEnd::
+*NumpadEnd::
+  {
+    SendInput "{Shift down}"
+    ; Shift @#auto
+  }
+*NumpadEnd Up::
+  {
+    SendInput "{Shift up}"
+  }
+NumpadDown::
   {
     MouseClick "WD",,,2
+    ; wheel down @#auto
   }
 NumpadPgDn::
   {
     MouseClick "WU",,,2
-  }
-NumpadDown::
-  {
-    SendInput "{Home}"
-  }
-NumpadDown & NumLock::
-  {
-    SendInput "{End}"
+    ; wheel up @#auto
   }
 
 $NumpadLeft::
   {
     CoordMode "Mouse", "Screen"
 
-    if (WinGetProcessName("A") == "explorer.exe") {
-      SendInput "{Backspace}"
-    } else if (WinGetProcessName("A") == "chrome.exe") {
+    if (WinGetProcessName("A") == "chrome.exe" or WinGetProcessName("A") == "whale.exe" 
+      or WinGetProcessName("A") == "explorer.exe") {
       SendInput "{Alt down}"
       SendInput "{Left down}"
       SendInput "{Left up}"
       SendInput "{Alt up}"
-    } else if (WinGetProcessName("A") == "whale.exe") {
+    } else {
       SendInput "{Alt down}"
       SendInput "{Left down}"
       SendInput "{Left up}"
@@ -141,12 +170,13 @@ $NumpadLeft::
 
 NumpadLeft & NumLock::
   {
-    if (WinGetProcessName("A") == "chrome.exe" or WinGetProcessName("A") == "whale.exe") {
+    if (WinGetProcessName("A") == "chrome.exe" or WinGetProcessName("A") == "whale.exe" 
+      or WinGetProcessName("A") == "explorer.exe") {
       SendInput "{Alt down}"
       SendInput "{Right down}"
       SendInput "{Right up}"
       SendInput "{Alt up}"
-    } else if (WinGetProcessName("A") == "explorer.exe") {
+    } else {
       SendInput "{Alt down}"
       SendInput "{Right down}"
       SendInput "{Right up}"
@@ -165,8 +195,12 @@ NumpadClear & NumLock::
     }
   }
 
-NumpadDiv::
+$NumpadDiv::
   {
-    SendInput "{F5}"
+    if (GetKeyState("NumLock", "T")) {
+      SendInput "{NumpadDiv}"
+    } else {
+      SendInput "{F5}"
+    }
     ; refresh @#auto
   }
