@@ -143,10 +143,20 @@ NumpadDown::
     MouseClick "WD",,,2
     ; wheel down @#auto
   }
+~NumpadDown & NumLock::
+  {
+    SendInput "{PgDn}"
+    ; pageDown @#auto
+  }
 NumpadPgDn::
   {
     MouseClick "WU",,,2
     ; wheel up @#auto
+  }
+~NumpadPgDn & NumLock::
+  {
+    SendInput "{PgUp}"
+    ; pageUp @#auto
   }
 
 $NumpadLeft::
