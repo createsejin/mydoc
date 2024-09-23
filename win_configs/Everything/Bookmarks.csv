@@ -1,4 +1,4 @@
 Name,Case,Whole Word,Path,Diacritic,Regex,Sort,Descending,Filter,Search,Index,File List,Host,Link Type,Macro,Key,View
-"Collections front",0,0,0,0,0,"Run Count",1,"EVERYTHING","parent:D:\vam_resources\Collections\Collections",0,"","",1,,,0
-"dupe Dependencies",0,0,0,0,0,"Run Count",1,"EVERYTHING","ext:var dupe: D:\vam_resources\Dependency",0,"","",1,,,0
-"@#vam",0,0,0,0,0,"Name",0,"EVERYTHING","@#vam",0,"","",1,,,0
+"Collections front",0,0,0,0,0,"Name",0,"EVERYTHING","parent:D:\vam_resources\Collections\Collections",0,"","",1,,,0
+"dupe Dependencies",0,0,0,0,0,"Date Created",1,"EVERYTHING","ext:var dupe: D:\vam_resources\Dependency",0,"","",1,,,0
+"@#vam",0,0,0,0,0,"Name",0,"EVERYTHING","@#vam !H: !C:\Users\bae",0,"","",1,,,0

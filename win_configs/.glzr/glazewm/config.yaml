@@ -276,8 +276,6 @@ keybindings:
   - commands:
       ["shell-exec C:/Program Files/Google/Chrome/Application/chrome.exe"]
     bindings: ["shift+tab+w"]
-  - commands: ["shell-exec C:/Users/creat/AppData/Local/Microsoft/WindowsApps/FilesPreview_1y0xx7n9077q4/files.exe"]
-    bindings: ["shift+tab+f"]
   - commands: ["shell-exec Everything"]
     bindings: ["shift+tab+e"]
   - commands:

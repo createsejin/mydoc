@@ -1,5 +1,9 @@
 ﻿#Requires AutoHotkey v2.0
 
+NumLock::SC02B
+Pause::NumLock
+; Remapping @#auto
+
 NumpadClear:: ; left click
   {
     SendInput "{LButton}"
@@ -15,7 +19,7 @@ $NumpadEnter:: ; right click
   }
 
   global Numpad0_count := 0 ; counting Numpad0 pressed for detacting double Numpad0 pressing
-NumpadIns:: ; drag start
+NumpadIns:: 
   {
     global Numpad0_count
 
@@ -28,6 +32,7 @@ NumpadIns:: ; drag start
       MouseClick "left",,,1,,"D"
     } else { ; when doble Numpad0 press detact, ignore press down left mouse button and reset counter
       Numpad0_count := 0
+      ; drag start @#auto
     }
   }
 
@@ -37,16 +42,17 @@ NumpadDel:: ; drag end
   }
 
   ; you should use $ prefix for preventing triggering SendInput call itself
-$NumpadAdd:: ; double click
+$NumpadAdd:: 
   {
     if (GetKeyState("NumLock", "T")) {
       SendInput "{NumpadAdd}"
     } else {
       MouseClick "left",,, 2
+      ; double click @#auto
     }
   }
 
-$NumpadSub:: ; triple click
+$NumpadSub:: 
   {
     if (GetKeyState("Numlock", "T")) {
       SendInput "{NumpadSub}"
@@ -54,6 +60,7 @@ $NumpadSub:: ; triple click
       SendInput "{Ctrl down}"
       MouseClick "left",,, 1
       SendInput "{Ctrl up}"
+      ; control click @#auto
     }
   }
 
@@ -89,10 +96,10 @@ $NumpadMult:: ; send Delete key
       SendInput "{Delete}"
     }
   }
-
-NumpadMult & Backspace:: ; shift+Delete
+NumpadMult & NumLock:: 
   {
     SendInput "{Shift}+{Delete}"
+    ; shift+Delete @#auto
   }
 
 NumpadEnd::
@@ -107,6 +114,10 @@ NumpadDown::
   {
     SendInput "{Home}"
   }
+NumpadDown & NumLock::
+  {
+    SendInput "{End}"
+  }
 
 $NumpadLeft::
   {
@@ -114,21 +125,48 @@ $NumpadLeft::
 
     if (WinGetProcessName("A") == "explorer.exe") {
       SendInput "{Backspace}"
-    } else if (WinGetProcessName("A") == "Files.exe") {
-      SendInput "{Backspace}"
     } else if (WinGetProcessName("A") == "chrome.exe") {
-      MouseGetPos &origin_x, &origin_y
-      WinGetClientPos &x, &y, &width, &height, "A"
-      btn_x := x + 28
-      btn_y := y + 82
-      ; GoToBack @#auto
-      DllCall("SetCursorPos", "int", btn_x, "int", btn_y)
-      MouseClick "left",,, 1
-      DllCall("SetCursorPos", "int", origin_x, "int", origin_y)
+      SendInput "{Alt down}"
+      SendInput "{Left down}"
+      SendInput "{Left up}"
+      SendInput "{Alt up}"
+    } else if (WinGetProcessName("A") == "whale.exe") {
+      SendInput "{Alt down}"
+      SendInput "{Left down}"
+      SendInput "{Left up}"
+      SendInput "{Alt up}"
+      ; go back @#auto
+    }
+  }
+
+NumpadLeft & NumLock::
+  {
+    if (WinGetProcessName("A") == "chrome.exe" or WinGetProcessName("A") == "whale.exe") {
+      SendInput "{Alt down}"
+      SendInput "{Right down}"
+      SendInput "{Right up}"
+      SendInput "{Alt up}"
+    } else if (WinGetProcessName("A") == "explorer.exe") {
+      SendInput "{Alt down}"
+      SendInput "{Right down}"
+      SendInput "{Right up}"
+      SendInput "{Alt up}"
+      ; go forward @#auto
+    }
+  }
+NumpadClear & NumLock::
+  {
+    if (WinGetProcessName("A") == "explorer.exe") {
+      SendInput "{Alt down}"
+      SendInput "{Up down}"
+      SendInput "{Up up}"
+      SendInput "{Alt up}"
+      ; go to parent folder @#auto
     }
   }
 
 NumpadDiv::
   {
     SendInput "{F5}"
+    ; refresh @#auto
   }
