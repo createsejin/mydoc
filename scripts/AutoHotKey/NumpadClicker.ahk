@@ -100,18 +100,18 @@ NumpadRight:: ; go to scroll bar
     ; MoveToScrollBar @#auto
   }
 
-NumpadHome:: ; Ctrl+C 
+NumpadUp:: ; Ctrl+C 
   {
     SendInput "^c"
   }
-NumpadUp:: ; Ctrl+X
+NumpadUp & NumLock:: ; Ctrl+X
   {
     SendInput "^x"
   }
 NumpadPgUp:: ; Ctrl+V
   {
     SendInput "^v"
-    ; copy and paste
+    ; copy and paste @#auto
   }
 
 $NumpadMult:: ; send Delete key
@@ -129,12 +129,12 @@ NumpadMult & NumLock::
     ; shift+Delete @#auto
   }
 
-*NumpadEnd::
+NumpadEnd::
   {
     SendInput "{Shift down}"
     ; Shift @#auto
   }
-*NumpadEnd Up::
+NumpadEnd Up::
   {
     SendInput "{Shift up}"
   }
