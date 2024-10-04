@@ -120,6 +120,7 @@ window_rules:
       - window_process: { equals: "FolderSizeExplorer" }
       - window_process: { equals: "NetFile" }
       - window_process: { equals: "NetTransfer" }
+      - window_process: { equals: "gta5" }
 
       # Ignores picture-in-picture windows for browsers.
       - window_title: { regex: "[Pp]icture.in.[Pp]icture" }
@@ -263,28 +264,28 @@ keybindings:
   # `shell-exec %ProgramFiles%/Git/git-bash.exe` to start Windows
   # Terminal and Git Bash respectively. 
   - commands: ["shell-exec wt"]
-    bindings: ["shift+tab+t"]
+    bindings: ["shift+insert+t"]
   - commands: ["shell-exec C:/Users/creat/AppData/Local/Programs/Obsidian/Obsidian.exe"]
-    bindings: ["shift+tab+o"]
+    bindings: ["shift+insert+o"]
   - commands: ["shell-exec code"]
-    bindings: ["shift+tab+c"]
+    bindings: ["shift+insert+c"]
   - commands:
       [
         "shell-exec C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/devenv.exe",
       ]
-    bindings: ["shift+tab+v"]
+    bindings: ["shift+insert+v"]
   - commands:
       ["shell-exec C:/Program Files/Google/Chrome/Application/chrome.exe"]
-    bindings: ["shift+tab+w"]
+    bindings: ["shift+insert+w"]
   - commands: ["shell-exec Everything"]
-    bindings: ["shift+tab+e"]
+    bindings: ["shift+insert+e"]
   - commands:
       ["shell-exec C:/Program Files/KeePass Password Safe 2/KeePass.exe"]
-    bindings: ["shift+tab+k"]
+    bindings: ["shift+insert+k"]
   - commands: ["shell-exec C:/Program Files/WindowsApps/Microsoft.ScreenSketch_11.2407.3.0_x64__8wekyb3d8bbwe/SnippingTool/SnippingTool.exe"]
-    bindings: ["shift+tab+s"]
+    bindings: ["shift+insert+s"]
   - commands: ["shell-exec C:/Users/creat/OneDrive/문서/AutoHotkey/NumpadRightClick.exe"]
-    bindings: ["shift+tab+0"]
+    bindings: ["shift+insert+0"]
     #Exec @#glaze
 
   # Focus the next/previous workspace defined in `workspaces` config.
@@ -299,43 +300,43 @@ keybindings:
 
   # Change focus to a workspace defined in `workspaces` config.
   - commands: ["focus --workspace 1"]
-    bindings: ["alt+1", "tab+1", "caps_lock+1"]
+    bindings: ["insert+1"]
   - commands: ["focus --workspace 2"]
-    bindings: ["alt+2", "tab+2", "caps_lock+2"]
+    bindings: ["insert+2"]
   - commands: ["focus --workspace 3"]
-    bindings: ["alt+3", "tab+3", "caps_lock+3"]
+    bindings: ["insert+3"]
   - commands: ["focus --workspace 4"]
-    bindings: ["alt+4", "tab+4", "caps_lock+4"]
+    bindings: ["insert+4"]
   - commands: ["focus --workspace 5"]
-    bindings: ["alt+5", "tab+5", "caps_lock+5"]
+    bindings: ["insert+5"]
   - commands: ["focus --workspace 6"]
-    bindings: ["alt+6", "tab+6", "caps_lock+6"]
+    bindings: ["insert+6"]
   - commands: ["focus --workspace 7"]
-    bindings: ["alt+7", "tab+7", "caps_lock+7"]
+    bindings: ["insert+7"]
   - commands: ["focus --workspace 8"]
-    bindings: ["alt+8", "tab+8", "caps_lock+8"]
+    bindings: ["insert+8"]
   - commands: ["focus --workspace 9"]
-    bindings: ["alt+9", "tab+9", "caps_lock+9"]
+    bindings: ["insert+9"]
   - commands: ["focus --workspace 0"]
-    bindings: ["alt+0", "tab+0", "caps_lock+0"]
+    bindings: ["insert+0"]
   - commands: ["focus --workspace t"]
-    bindings: ["tab+t", "caps_lock+t"]
+    bindings: ["insert+t"]
   - commands: ["focus --workspace ob"]
-    bindings: ["tab+o", "caps_lock+o"]
+    bindings: ["insert+o"]
   - commands: ["focus --workspace chrome"]
-    bindings: ["tab+w", "caps_lock+w"]
+    bindings: ["insert+w"]
   - commands: ["focus --workspace file"]
-    bindings: ["tab+f", "caps_lock+f"]
+    bindings: ["insert+f"]
   - commands: ["focus --workspace dotnet"]
-    bindings: ["tab+d", "caps_lock+d"]
+    bindings: ["insert+d"]
   - commands: ["focus --workspace rust"]
-    bindings: ["tab+r", "caps_lock+r"]
+    bindings: ["insert+r"]
   - commands: ["focus --workspace mydoc"]
-    bindings: ["tab+m", "caps_lock+m"]
+    bindings: ["insert+m"]
   - commands: ["focus --workspace cave"]
-    bindings: ["tab+c", "caps_lock+c"]
+    bindings: ["insert+c"]
   - commands: ["focus --workspace whiteboard"]
-    bindings: ["tab+b", "caps_lock+b"]
+    bindings: ["insert+b"]
     #FocusWorkspace @#glaze
 
   # Move the focused window's parent workspace to a monitor in a given
