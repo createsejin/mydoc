@@ -23,6 +23,18 @@ NumpadDiv & NumLock::
     ; /+N refresh @#auto
 }
 
+NumpadDiv & BackSpace::
+{
+    if (WinGetProcessName("A") == "chrome.exe" or WinGetProcessName("A") == "whale.exe") {
+        SendInput "{Ctrl down}"
+        SendInput "{Shift down}"
+        SendInput "t"
+        SendInput "{Ctrl up}"
+        SendInput "{Shift up}"
+        ; /+B reopen tab @#auto
+    }
+}
+
 $NumpadMult:: ; send Delete key
 {
     if (GetKeyState("NumLock", "T")) {
@@ -120,18 +132,6 @@ NumpadPgUp & BackSpace::
     }
 }
 
-NumpadPgup & NumLock::
-{
-    if (WinGetProcessName("A") == "chrome.exe" or WinGetProcessName("A") == "whale.exe") {
-        SendInput "{Ctrl down}"
-        SendInput "{Shift down}"
-        SendInput "t"
-        SendInput "{Ctrl up}"
-        SendInput "{Shift up}"
-        ; 9+N reopen tab @#auto
-    }
-}
-
 *NumpadLeft::
 {
     SendInput "{Ctrl down}"
@@ -170,6 +170,13 @@ $NumpadAdd::
         ; + double click @#auto
     }
 }
+NumpadAdd & NumLock::
+{
+  SendInput "{Ctrl down}"
+  SendInput "a"
+  SendInput "{Ctrl up}"
+  ; +N select all @#auto
+}
 
 $NumpadSub::
 {
@@ -188,7 +195,7 @@ NumpadSub & NumLock::
     SendInput "^v"
     SendInput "{Enter}"
     SendInput "^x"
-    ; -+N RJ title tweak @#auto
+    ; -N RJ title tweak @#auto
 }
 
 NumpadEnd::
