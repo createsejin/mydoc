@@ -20,10 +20,10 @@ $NumpadDiv::
 NumpadDiv & NumLock::
 {
     SendInput "{F5}"
-    ; /+N refresh @#auto
+    ; /N refresh @#auto
 }
 
-NumpadDiv & BackSpace::
+NumpadDiv & NumpadSub::
 {
     if (WinGetProcessName("A") == "chrome.exe" or WinGetProcessName("A") == "whale.exe") {
         SendInput "{Ctrl down}"
@@ -31,7 +31,7 @@ NumpadDiv & BackSpace::
         SendInput "t"
         SendInput "{Ctrl up}"
         SendInput "{Shift up}"
-        ; /+B reopen tab @#auto
+        ; /- reopen tab @#auto
     }
 }
 
@@ -47,7 +47,7 @@ $NumpadMult:: ; send Delete key
 NumpadMult & NumLock::
 {
     SendInput "{Shift}+{Delete}"
-    ; *+N shift+Delete @#auto
+    ; *N shift+Delete @#auto
 }
 
 NumpadHome::
@@ -66,7 +66,7 @@ NumpadHome::
         ; 7 go back @#auto
     }
 }
-NumpadHome & Backspace::
+NumpadHome & NumpadSub::
 {
     if (WinGetProcessName("A") == "chrome.exe" or WinGetProcessName("A") == "whale.exe"
         or WinGetProcessName("A") == "explorer.exe") {
@@ -79,7 +79,7 @@ NumpadHome & Backspace::
         SendInput "{Right down}"
         SendInput "{Right up}"
         SendInput "{Alt up}"
-        ; 7+B go forward @#auto
+        ; 7- go forward @#auto
     }
 }
 
@@ -104,31 +104,18 @@ NumpadUp & NumLock:: ; Ctrl+X
     SendInput "^x"
     ; 8+N cut @#auto
 }
-NumpadUp & BackSpace::
-{
-    SendInput "{F2}"
-    MouseClick "left", , , 2
-    SendInput "^c"
-    SendInput "^a"
-    SendInput "RJ"
-    SendInput "^v"
-    SendInput "^a"
-    SendInput "^c"
-    SendInput "{Enter}"
-    ; 8+B RJ tweak @#auto
-}
 NumpadPgUp:: ; Ctrl+V
 {
     SendInput "^v"
     ; 9 paste @#auto
 }
-NumpadPgUp & BackSpace::
+NumpadPgUp & NumpadSub::
 {
     if (WinGetProcessName("A") == "chrome.exe" or WinGetProcessName("A") == "whale.exe") {
         SendInput "{Ctrl down}"
         SendInput "{PgDn}"
         SendInput "{Ctrl up}"
-        ; 9+B next tab @#auto
+        ; 9- next tab @#auto
     }
 }
 
@@ -176,26 +163,6 @@ NumpadAdd & NumLock::
   SendInput "a"
   SendInput "{Ctrl up}"
   ; +N select all @#auto
-}
-
-$NumpadSub::
-{
-    if (GetKeyState("Numlock", "T")) {
-        SendInput "{NumpadSub}"
-    } else {
-        MouseClick "left", , , 3
-        ; - triple click @#auto
-    }
-}
-NumpadSub & NumLock::
-{
-    SendInput "{F2}"
-    SendInput "{Right}"
-    SendInput "{Space}"
-    SendInput "^v"
-    SendInput "{Enter}"
-    SendInput "^x"
-    ; -N RJ title tweak @#auto
 }
 
 NumpadEnd::
