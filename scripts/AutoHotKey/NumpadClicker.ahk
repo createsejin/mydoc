@@ -53,7 +53,7 @@ NumpadMult & NumLock::
 NumpadHome::
 {
     if (WinGetProcessName("A") == "chrome.exe" or WinGetProcessName("A") == "whale.exe"
-        or WinGetProcessName("A") == "explorer.exe") {
+    or WinGetProcessName("A") == "explorer.exe") {
         SendInput "{Alt down}"
         SendInput "{Left down}"
         SendInput "{Left up}"
@@ -69,7 +69,7 @@ NumpadHome::
 NumpadHome & Backspace::
 {
     if (WinGetProcessName("A") == "chrome.exe" or WinGetProcessName("A") == "whale.exe"
-        or WinGetProcessName("A") == "explorer.exe") {
+    or WinGetProcessName("A") == "explorer.exe") {
         SendInput "{Alt down}"
         SendInput "{Right down}"
         SendInput "{Right up}"
@@ -172,10 +172,10 @@ $NumpadAdd::
 }
 NumpadAdd & NumLock::
 {
-  SendInput "{Ctrl down}"
-  SendInput "a"
-  SendInput "{Ctrl up}"
-  ; +N select all @#auto
+    SendInput "{Ctrl down}"
+    SendInput "a"
+    SendInput "{Ctrl up}"
+    ; +N select all @#auto
 }
 
 $NumpadSub::
@@ -259,6 +259,16 @@ check_counter() {
         ; 00 MoveToScrollBar @#auto
     }
     Numpad0_count := 0
+}
+
+^+,::
+{
+    CoordMode "Mouse", "Screen"
+    WinGetClientPos &x, &y, &width, &height, "A"
+    scroll_x := x + width - 7
+    MouseGetPos &xpos, &ypos
+    MouseMove scroll_x, ypos
+    DllCall("SetCursorPos", "int", scroll_x, "int", ypos)
 }
 
 NumpadIns & NumLock::
