@@ -38,7 +38,7 @@ window/bar:
     color: rgb(255 255 255 / 90%);
     font-family: "Segoe UI";
     font-size: 12px;
-    padding: 4px 20px;
+    padding: 0px 20px;
     border-bottom: 1px solid rgb(255 255 255 / 5%);;
     background: linear-gradient(rgb(0 0 0 / 80%), rgb(5 2 20 / 75%));
 
