@@ -203,9 +203,3 @@ Import-Module -Name Microsoft.WinGet.CommandNotFound
 Set-Alias -Name glz -Value glazewm
 
 $env:RUST_BACKTRACE=1
-
-function RestartZebar {
-  Stop-Process -Name "zebar"
-  C:\Users\creat\.glzr\zebar\start.bat
-}
-Set-Alias -Name reze -Value RestartZebar
