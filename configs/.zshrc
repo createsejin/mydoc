@@ -216,3 +216,5 @@ eval "$(zoxide init zsh)"
 export FZF_GIT_BINDKEYS=$(bindkey -p '^g')
 
 export PATH="/opt/android-ndk-r26d/toolchains/llvm/prebuilt/linux-x86_64/bin:/home/bae/Documents/scripts/.scripts:$PATH"
+
+export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
