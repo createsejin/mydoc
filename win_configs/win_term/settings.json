@@ -70,15 +70,6 @@
                 "action": "moveFocus",
                 "direction": "down"
             },
-            "id": "User.moveFocus.F747588A",
-            "keys": "ctrl+j"
-        },
-        {
-            "command": 
-            {
-                "action": "moveFocus",
-                "direction": "down"
-            },
             "keys": "ctrl+down"
         },
         {
@@ -110,15 +101,6 @@
                 "action": "moveFocus",
                 "direction": "right"
             },
-            "id": "User.moveFocus.87C324ED",
-            "keys": "ctrl+l"
-        },
-        {
-            "command": 
-            {
-                "action": "moveFocus",
-                "direction": "right"
-            },
             "keys": "ctrl+right"
         },
         {
@@ -132,25 +114,7 @@
                 "action": "moveFocus",
                 "direction": "left"
             },
-            "id": "User.moveFocus.2A0DA8E0",
-            "keys": "ctrl+h"
-        },
-        {
-            "command": 
-            {
-                "action": "moveFocus",
-                "direction": "left"
-            },
             "keys": "ctrl+left"
-        },
-        {
-            "command": 
-            {
-                "action": "moveFocus",
-                "direction": "up"
-            },
-            "id": "User.moveFocus.6CD791B",
-            "keys": "ctrl+k"
         },
         {
             "command": 
