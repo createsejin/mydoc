@@ -145,8 +145,6 @@ export QT_QPA_PLATFORM="wayland;xcb"
 export GLOB_PATTERN="**/*@(.sh|.inc|.bash|.command|.zsh|zshrc|zsh_*)"
 export XDG_CONFIG_HOME="$HOME/.config"
 
-. "$HOME/.cargo/env"
-
 autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
@@ -193,8 +191,6 @@ _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
 }
 
-source ~/fzf-git.sh/fzf-git.sh
-
 export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
 
@@ -212,10 +208,6 @@ _fzf_comprun() {
     *)            fzf --preview "bat -n --color=always --line-range :500 {}" "$@" ;;
   esac
 }
-
-# thefuck alias
-eval $(thefuck --alias)
-eval $(thefuck --alias fk)
 
 # Zoxide (better cd)
 eval "$(zoxide init zsh)"
