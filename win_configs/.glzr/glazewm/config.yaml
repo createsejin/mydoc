@@ -363,7 +363,7 @@ keybindings:
   - commands: ["focus --workspace t"]
     bindings: ["insert+t"]
   - commands: ["focus --workspace ob"]
-    bindings: ["insert+o"]
+    bindings: ["insert+q"]
   - commands: ["focus --workspace chrome"]
     bindings: ["insert+w"]
   - commands: ["focus --workspace file"]
