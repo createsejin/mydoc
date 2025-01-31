@@ -218,3 +218,6 @@ export FZF_GIT_BINDKEYS=$(bindkey -p '^g')
 export PATH="/opt/android-ndk-r26d/toolchains/llvm/prebuilt/linux-x86_64/bin:/home/bae/Documents/scripts/.scripts:$PATH"
 
 export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
