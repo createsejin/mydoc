@@ -148,6 +148,9 @@ workspaces:
   - name: "whiteboard"
     display_name: "WhiteBoard"
     bind_to_monitor: 1
+  - name: "sound"
+    display_name: "Sound"
+    bind_to_monitor: 2
     #Workspaces @#glaze
 
 window_rules:
@@ -191,6 +194,9 @@ window_rules:
   - commands: ["set-tiling"]
     match:
       - window_title: { equals: "TheCaveLogger" }
+  - commands: ["move --workspace sound"]
+    match:
+      - window_process: { equals: "voicemeeter_x64" }
     #WindowRules @#glaze
 
 binding_modes:
@@ -378,6 +384,8 @@ keybindings:
     bindings: ["insert+c"]
   - commands: ["focus --workspace whiteboard"]
     bindings: ["insert+b"]
+  - commands: ["focus --workspace sound"]
+    bindings: ["insert+u"]
     #FocusWorkspace @#glaze
 
   # Move the focused window's parent workspace to a monitor in a given
@@ -421,7 +429,6 @@ keybindings:
     bindings: ["rshift+oem_pipe+w"]
   - commands: ["move --workspace file", "focus --workspace file"]
     bindings: ["rshift+oem_pipe+f"]
-    #MoveToWorkspce @#glaze
   - commands: ["move --workspace dotnet", "focus --workspace dotnet"]
     bindings: ["rshift+oem_pipe+d"]
   - commands: ["move --workspace rust", "focus --workspace rust"]
@@ -432,3 +439,6 @@ keybindings:
     bindings: ["rshift+oem_pipe+c"]
   - commands: ["move --workspace whiteboard", "focus --workspace whiteboard"]
     bindings: ["rshift+oem_pipe+b"]
+  - commands: ["move --workspace sound", "focus --workspace sound"]
+    bindings: ["rshift+oem_pipe+u"]
+    #MoveToWorkspce @#glaze
