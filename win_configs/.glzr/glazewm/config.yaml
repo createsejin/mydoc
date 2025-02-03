@@ -127,24 +127,27 @@ workspaces:
   - name: "ob"
     display_name: "Obsidian"
     bind_to_monitor: 2
-  - name: "chrome"
-    display_name: "Chrome"
+  - name: "web1"
+    display_name: "Web1"
     bind_to_monitor: 0
+  - name: "web2"
+    display_name: "Web2"
+    bind_to_monitor: 1
+  - name: "web3"
+    display_name: "Web3"
+    bind_to_monitor: 2
   - name: "file"
     display_name: "Explorer"
     bind_to_monitor: 2
-  - name: "dotnet"
-    display_name: ".Net"
+  - name: "main1"
+    display_name: "main1"
     bind_to_monitor: 1
-  - name: "rust"
-    display_name: "Rust"
+  - name: "main2"
+    display_name: "main2"
     bind_to_monitor: 1
   - name: "mydoc"
     display_name: "mydoc"
     bind_to_monitor: 1
-  - name: "cave"
-    display_name: "TheCave"
-    bind_to_monitor: 2
   - name: "whiteboard"
     display_name: "WhiteBoard"
     bind_to_monitor: 1
@@ -369,19 +372,21 @@ keybindings:
   - commands: ["focus --workspace t"]
     bindings: ["insert+t"]
   - commands: ["focus --workspace ob"]
+    bindings: ["insert+z"]
+  - commands: ["focus --workspace web1"]
     bindings: ["insert+q"]
-  - commands: ["focus --workspace chrome"]
+  - commands: ["focus --workspace web2"]
     bindings: ["insert+w"]
+  - commands: ["focus --workspace web3"]
+    bindings: ["insert+e"]
   - commands: ["focus --workspace file"]
     bindings: ["insert+f"]
-  - commands: ["focus --workspace dotnet"]
-    bindings: ["insert+d"]
-  - commands: ["focus --workspace rust"]
-    bindings: ["insert+r"]
+  - commands: ["focus --workspace main1"]
+    bindings: ["insert+a"]
+  - commands: ["focus --workspace main2"]
+    bindings: ["insert+s"]
   - commands: ["focus --workspace mydoc"]
     bindings: ["insert+m"]
-  - commands: ["focus --workspace cave"]
-    bindings: ["insert+c"]
   - commands: ["focus --workspace whiteboard"]
     bindings: ["insert+b"]
   - commands: ["focus --workspace sound"]
@@ -423,16 +428,20 @@ keybindings:
     bindings: ["rshift+oem_pipe+0"]
   - commands: ["move --workspace t", "focus --workspace t"]
     bindings: ["rshift+oem_pipe+t"]
+  - commands: ["move --workspace main1", "focus --workspace main1"]
+    bindings: ["rshift+oem_pipe+a"]
+  - commands: ["move --workspace main2", "focus --workspace main2"]
+    bindings: ["rshift+oem_pipe+s"]
   - commands: ["move --workspace ob", "focus --workspace ob"]
-    bindings: ["rshift+oem_pipe+o"]
-  - commands: ["move --workspace chrome", "focus --workspace chrome"]
+    bindings: ["rshift+oem_pipe+z"]
+  - commands: ["move --workspace web1", "focus --workspace web1"]
+    bindings: ["rshift+oem_pipe+q"]
+  - commands: ["move --workspace web2", "focus --workspace web2"]
     bindings: ["rshift+oem_pipe+w"]
+  - commands: ["move --workspace web3", "focus --workspace web3"]
+    bindings: ["rshift+oem_pipe+e"]
   - commands: ["move --workspace file", "focus --workspace file"]
     bindings: ["rshift+oem_pipe+f"]
-  - commands: ["move --workspace dotnet", "focus --workspace dotnet"]
-    bindings: ["rshift+oem_pipe+d"]
-  - commands: ["move --workspace rust", "focus --workspace rust"]
-    bindings: ["rshift+oem_pipe+r"]
   - commands: ["move --workspace mydoc", "focus --workspace mydoc"]
     bindings: ["rshift+oem_pipe+m"]
   - commands: ["move --workspace cave", "focus --workspace cave"]
