@@ -4,6 +4,16 @@
     "actions": 
     [
         {
+            "command": "expandSelectionToWord",
+            "id": "User.expandSelectionToWord",
+            "keys": "w"
+        },
+        {
+            "command": "paste",
+            "id": "User.paste",
+            "keys": "ctrl+shift+v"
+        },
+        {
             "command": 
             {
                 "action": "copy",
@@ -14,27 +24,17 @@
             "keys": "ctrl+shift+c"
         },
         {
-            "command": "paste",
-            "id": "User.paste",
-            "keys": "ctrl+shift+v"
-        },
-        {
-            "command": "expandSelectionToWord",
-            "id": "User.expandSelectionToWord",
-            "keys": "w"
-        },
-        {
-            "command": "find",
-            "id": "User.find",
-            "keys": "ctrl+shift+f"
-        },
-        {
             "command": 
             {
                 "action": "scrollDown"
             },
             "id": "User.scrollDown.0",
             "keys": "ctrl+shift+e"
+        },
+        {
+            "command": "find",
+            "id": "User.find",
+            "keys": "ctrl+shift+f"
         },
         {
             "command": 
@@ -74,11 +74,6 @@
             "keys": "ctrl+down"
         },
         {
-            "command": "markMode",
-            "id": "User.markMode",
-            "keys": "ctrl+shift+m"
-        },
-        {
             "command": 
             {
                 "action": "splitPane",
@@ -86,6 +81,11 @@
             },
             "id": "User.splitPane.864CD510",
             "keys": "alt+v"
+        },
+        {
+            "command": "markMode",
+            "id": "User.markMode",
+            "keys": "ctrl+shift+m"
         },
         {
             "command": 
@@ -342,6 +342,18 @@
                 "guid": "{beac9161-3882-5358-827c-79bb643ba92e}",
                 "hidden": false,
                 "name": "Developer PowerShell for VS 2019",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{3a66db4d-3a5a-56eb-93f2-c22b489f6209}",
+                "hidden": false,
+                "name": "Developer Command Prompt for VS 2022",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{37b1f7f4-c135-5236-8b4f-5bb7a692618b}",
+                "hidden": false,
+                "name": "Developer PowerShell for VS 2022",
                 "source": "Windows.Terminal.VisualStudio"
             }
         ]
