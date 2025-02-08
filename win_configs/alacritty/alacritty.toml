@@ -15,6 +15,11 @@ normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
 size = 10.7
 builtin_box_drawing = true
 
+[window]
+padding = { x = 4, y = 2 }
+decorations = "None"
+dynamic_padding = true
+
 [cursor]
 style = { shape = "Block", blinking = "On" }
 vi_mode_style = { shape = "Block", blinking = "On" }

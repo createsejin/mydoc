@@ -143,11 +143,11 @@ function source_profile {
 Set-Alias -Name so -Value source_profile
 
 # execute command on administrator powershell
-function execute_admin {
-  Start-Process -FilePath "wt" -Verb RunAs -Wait -ArgumentList "-d", "$pwd", "pwsh", `
-    "-NoExit", "-c $args" 
-}
-Set-Alias -Name sudo -Value execute_admin
+# function execute_admin {
+#   Start-Process -FilePath "wt" -Verb RunAs -Wait -ArgumentList "-d", "$pwd", "pwsh", `
+#     "-NoExit", "-c $args" 
+# }
+# Set-Alias -Name sudo -Value execute_admin
 
 # git command alias
 function gst_f {
