@@ -219,6 +219,33 @@
         "list": 
         [
             {
+                "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -ucrt64",
+                "cursorShape": "vintage",
+                "font": 
+                {
+                    "face": "JetBrainsMono Nerd Font",
+                    "size": 10.7
+                },
+                "guid": "{17da3cac-b318-431e-8a3e-7fcdefe6d114}",
+                "icon": "C:/msys64/ucrt64.ico",
+                "name": "UCRT64 / MSYS2",
+                "startingDirectory": "C:/msys64/home/%USERNAME%"
+            },
+            {
+                "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -msys",
+                "cursorShape": "vintage",
+                "font": 
+                {
+                    "face": "JetBrainsMono Nerd Font",
+                    "size": 10.7
+                },
+                "guid": "{71160544-14d8-4194-af25-d05feeac7233}",
+                "hidden": true,
+                "icon": "C:/msys64/msys2.ico",
+                "name": "MSYS / MSYS2",
+                "startingDirectory": "C:/msys64/home/%USERNAME%"
+            },
+            {
                 "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
                 "font": 
                 {

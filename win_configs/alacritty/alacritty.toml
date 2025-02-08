@@ -1,0 +1,25 @@
+[env]
+TERM = "xterm-256color"
+
+[general]
+import = [
+  # "C:/Users/creat/AppData/Roaming/alacritty/catppuccin/catppuccin-latte.toml"
+  "C:/Users/creat/AppData/Roaming/alacritty/catppuccin/catppuccin-frappe.toml"
+  # "C:/Users/creat/AppData/Roaming/alacritty/catppuccin/catppuccin-macchiato.toml"
+  # "C:/Users/creat/AppData/Roaming/alacritty/catppuccin/catppuccin-mocha.toml/c/Users/creat/.cargo/bin"
+]
+working_directory = "C:/msys64/home/creat"
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+size = 10.7
+builtin_box_drawing = true
+
+[cursor]
+style = { shape = "Block", blinking = "On" }
+vi_mode_style = { shape = "Block", blinking = "On" }
+
+[terminal]
+shell = "C:/msys64/msys2_shell.cmd -defterm -here -no-start -ucrt64"
+
+#alacritty@#ala

@@ -237,9 +237,9 @@ keybindings:
   - commands: ["focus --direction right"]
     bindings: ["alt+l"]
   - commands: ["focus --direction up"]
-    bindings: ["oem_question+rshift+k", "oem_question+rshift+up"]
+    bindings: ["alt+k"]
   - commands: ["focus --direction down"]
-    bindings: ["oem_question+rshift+j", "oem_question+rshift+down"]
+    bindings: ["alt+j"]
     #MoveFocus @#glaze
 
   # Move focused window in a given direction.
@@ -348,6 +348,8 @@ keybindings:
         "shell-exec C:/Users/creat/OneDrive/문서/AutoHotkey/NumpadRightClick.exe",
       ]
     bindings: ["shift+insert+0"]
+  - commands: ["shell-exec C:/Program Files/Alacritty/alacritty.exe"]
+    bindings: ["shift+insert+a"]
     #Exec @#glaze
 
   # Focus the next/previous workspace defined in `workspaces` config.
