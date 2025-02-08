@@ -90,20 +90,20 @@
         {
             "command": 
             {
-                "action": "splitPane",
-                "split": "down"
-            },
-            "id": "User.splitPane.D5151347",
-            "keys": "alt+b"
-        },
-        {
-            "command": 
-            {
                 "action": "moveFocus",
                 "direction": "right"
             },
             "id": "User.moveFocus.87C324ED",
             "keys": "ctrl+right"
+        },
+        {
+            "command": 
+            {
+                "action": "splitPane",
+                "split": "down"
+            },
+            "id": "User.splitPane.D5151347",
+            "keys": "alt+b"
         },
         {
             "command": "closePane",
@@ -334,19 +334,19 @@
             },
             {
                 "guid": "{feeb4ec0-632f-5564-8bc3-d422a9caa109}",
-                "hidden": false,
+                "hidden": true,
                 "name": "Developer Command Prompt for VS 2019",
                 "source": "Windows.Terminal.VisualStudio"
             },
             {
                 "guid": "{beac9161-3882-5358-827c-79bb643ba92e}",
-                "hidden": false,
+                "hidden": true,
                 "name": "Developer PowerShell for VS 2019",
                 "source": "Windows.Terminal.VisualStudio"
             },
             {
                 "guid": "{3a66db4d-3a5a-56eb-93f2-c22b489f6209}",
-                "hidden": false,
+                "hidden": true,
                 "name": "Developer Command Prompt for VS 2022",
                 "source": "Windows.Terminal.VisualStudio"
             },
