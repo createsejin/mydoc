@@ -122,7 +122,7 @@ alias rp='realpath'
 alias rpr='realpath --relative-to=$(pwd)'
 alias clipc='cliphist wipe'
 alias pacman='pacman --color always'
-#ali @#
+#alias@#zsh.linux
 cdd() {
   if [ $1 = "-a" ]; then
     cddr -a $2 $3 $4
@@ -216,6 +216,7 @@ eval "$(zoxide init zsh)"
 export FZF_GIT_BINDKEYS=$(bindkey -p '^g')
 
 export PATH="/opt/android-ndk-r26d/toolchains/llvm/prebuilt/linux-x86_64/bin:/home/bae/Documents/scripts/.scripts:$PATH"
+#PATH @#zsh.linux
 
 export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!

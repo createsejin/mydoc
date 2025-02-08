@@ -125,6 +125,7 @@ alias clipc='cliphist wipe'
 alias pacman='pacman --color always'
 alias vim=nvim
 alias tx=tmux
+#alias@#zsh.msys
 
 export GLOB_PATTERN="**/*@(.sh|.inc|.bash|.command|.zsh|zshrc|zsh_*)"
 
@@ -201,4 +202,6 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 export PATH="/c/Users/creat/AppData/Local/Programs/Microsoft VS Code/bin\
-  :/c/Program files/nodejs:/c/Users/creat/AppData/Roaming/npm:/c/Users/creat/.cargo/bin:$PATH"
+  :/c/Program files/nodejs:/c/Users/creat/AppData/Roaming/npm:\
+  /c/Users/creat/.cargo/bin:$PATH"
+#PATH @#zsh.msys

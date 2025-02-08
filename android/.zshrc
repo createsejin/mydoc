@@ -117,7 +117,7 @@ alias rp='realpath'
 alias rpr='realpath --relative-to=$(pwd)'
 alias cdd='. cdd.sh -d'
 alias cdv='cdd.sh -v'
-#ali @#
+#alias@#zsh.android
 alias vim=nvim
 alias vims='nvim -S'
 alias tx=tmux
@@ -143,3 +143,4 @@ bindkey  "^[[4~"   end-of-line
 bindkey  "^[[3~"  delete-char
 
 export PATH="/data/data/com.termux/files/home/doc/android/scripts/.scripts:$PATH"
+#PATH @#zsh.android
