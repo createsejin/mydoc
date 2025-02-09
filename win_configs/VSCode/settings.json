@@ -1,9 +1,8 @@
 {
-  "files.autoSave": "afterDelay",
-    "editor.fontLigatures": true,
-  "editor.fontFamily": "'SauceCodePro Nerd Font', Consolas, 'Courier New', monospace, dotum",
-  "editor.fontVariations": false,
-  "editor.fontWeight": "374",
+  "editor.fontLigatures": true,
+  "editor.fontFamily": "'JetBrainsMono Nerd Font', Consolas, 'Courier New', monospace, dotum",
+  "editor.fontVariations": true,
+  "editor.fontWeight": "400",
   "git.autofetch": true,
   "github.copilot.advanced": {},
   "github.copilot.enable": {
@@ -34,28 +33,24 @@
   "editor.tabSize": 2,
   "editor.indentSize": "tabSize",
   "vim.autoSwitchInputMethod.enable": true,
-  "vim.autoSwitchInputMethod.defaultIM": "1033",
-  "vim.autoSwitchInputMethod.obtainIMCmd": "C:\\tools\\im-select.exe",
-  "vim.autoSwitchInputMethod.switchIMCmd": "C:\\tools\\im-select.exe {im}",
   "vim.vimrc.enable": true,
-  "vim.vimrc.path": "C:\\Users\\creat\\.ideavimrc",
-  "workbench.colorTheme": "Catppuccin Macchiato",
-  "workbench.iconTheme": "catppuccin-macchiato",
+  "vim.vimrc.path": "$HOME\\.ideavimrc",
+  "workbench.iconTheme": "catppuccin-frappe",
   "catppuccin.italicKeywords": false,
   "catppuccin.italicComments": false,
   "vim.smartRelativeLine": true,
   "terminal.integrated.fontSize": 13,
-  "terminal.integrated.fontFamily": "'SauceCodePro Nerd Font', Consolas, 'Courier New', monospace, dotum",
+  "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font', Consolas, 'Courier New', monospace, dotum",
   "terminal.integrated.gpuAcceleration": "on",
   "terminal.integrated.defaultProfile.windows": "PowerShell",
   "terminal.external.windowsExec": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
   "terminal.integrated.cursorBlinking": true,
-  "window.zoomLevel": 1,
   "editor.unicodeHighlight.nonBasicASCII": false,
   "vim.useSystemClipboard": true,
+  "vim.leader": "<space>",
   "powershell.powerShellAdditionalExePaths": {
     "pwsh": "C:\\Program Files\\PowerShell\\7\\pwsh.exe"
-        },
+  },
   "powershell.powerShellDefaultVersion": "pwsh",
   "terminal.integrated.profiles.windows": {
     "PowerShell": {
@@ -72,9 +67,16 @@
     },
     "Git Bash": {
       "source": "Git Bash"
-        },
+    },
     "Windows PowerShell": {
       "path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+    },
+    "MSYS2 UCRT": {
+      "path": "cmd.exe",
+      "args": [
+        "/c",
+        "C:\\msys64\\msys2_shell.cmd -defterm -here -no-start -ucrt64"
+      ]
     }
   },
   "window.customTitleBarVisibility": "windowed",
@@ -82,4 +84,21 @@
   "maui.configuration.androidSdkPreferredPath": "C:\\Program Files (x86)\\Android\\android-sdk",
   "maui.configuration.debugVerbosity": "detailed",
   "editor.minimap.autohide": true,
+  "window.zoomLevel": 1.15,
+  "redhat.telemetry.enabled": false,
+  "vscode-ahk-plus.compilePath": "C:\\Program Files\\AutoHotkey\\Compiler\\Ahk2Exe.exe",
+  "vscode-ahk-plus.documentPath": "C:\\Program Files\\AutoHotkey\\v2\\AutoHotkey.chm",
+  "vscode-ahk-plus.executePath": "C:\\Program Files\\AutoHotkey\\v2\\AutoHotkey64.exe",
+  "AHK++.v1.formatter": {
+    "allowedNumberOfEmptyLines": 1,
+    "preserveIndent": true
+  },
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "remote.autoForwardPortsSource": "hybrid",
+  "rust-analyzer.check.command": "clippy",
+  "C_Cpp.default.compilerPath": "C:/msys64/ucrt64/bin/gcc.exe",
+  "workbench.colorTheme": "Catppuccin Frappé",
 }
