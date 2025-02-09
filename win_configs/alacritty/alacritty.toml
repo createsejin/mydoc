@@ -17,7 +17,7 @@ builtin_box_drawing = true
 
 [window]
 padding = { x = 4, y = 2 }
-decorations = "None"
+decorations = "full"
 dynamic_padding = true
 
 [cursor]

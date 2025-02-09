@@ -100,7 +100,9 @@
             "command": 
             {
                 "action": "splitPane",
-                "split": "down"
+                "split": "down",
+                "comments": 
+                  "splitPane @#wt"
             },
             "id": "User.splitPane.D5151347",
             "keys": "alt+b"
