@@ -148,6 +148,7 @@ workspaces:
   - name: "main3"
     display_name: "main3"
     bind_to_monitor: 1
+    #Workspaces @#glaze
   - name: "mydoc"
     display_name: "mydoc"
     bind_to_monitor: 1
@@ -157,7 +158,6 @@ workspaces:
   - name: "sound"
     display_name: "Sound"
     bind_to_monitor: 2
-    #Workspaces @#glaze
 
 window_rules:
   - commands: ["ignore"]
@@ -196,9 +196,9 @@ window_rules:
       - window_process: { equals: "studio64" }
         window_class: { regex: "SunAwtDialog" }
 
-  - commands: ["move --workspace cave"]
-    match:
-      - window_title: { equals: "TheCave" }
+  # - commands: ["move --workspace cave"?]
+  #   match:
+  #     - window_title: { equals: "TheCave" }
   - commands: ["set-tiling"]
     match:
       - window_title: { equals: "TheCaveLogger" }
@@ -253,6 +253,17 @@ keybindings:
     bindings: ["oem_period+rshift+s"]
     #MoveFocusedWindow @#glaze.move
 
+  # Move the focused window's parent workspace to a monitor in a given direction.
+  - commands: ["move-workspace --direction left"]
+    bindings: ["oem_question+rshift+a"]
+  - commands: ["move-workspace --direction right"]
+    bindings: ["oem_question+rshift+d"]
+  - commands: ["move-workspace --direction up"]
+    bindings: ["oem_question+rshift+w"]
+  - commands: ["move-workspace --direction down"]
+    bindings: ["oem_question+rshift+s"]
+    #WorkspaceMove @#glaze.move
+
   # Resize focused window by a percentage or pixel amount.
   - commands: ["resize --width -2%"]
     bindings: ["rshift+oem_pipe+left"]
@@ -262,6 +273,7 @@ keybindings:
     bindings: ["rshift+oem_pipe+down"]
   - commands: ["resize --height -2%"]
     bindings: ["rshift+oem_pipe+up"]
+    #ResizeWindow@#glaze
 
   # As an alternative to the resize keybindings above, resize mode enables
   # resizing via arrow keys or HJKL. The binding mode is defined above with
@@ -276,16 +288,16 @@ keybindings:
   # Change tiling direction. This determines where new tiling windows will
   # be inserted.
   - commands: ["toggle-tiling-direction"]
-    bindings: ["oem_question+rshift+v"]
+    bindings: ["alt+z"]
 
   # Change focus from tiling windows -> floating -> fullscreen.
   - commands: ["wm-cycle-focus"]
     bindings: ["alt+space"]
-    #ToggleFloating @#glaze
 
   # Change the focused window to be floating.
   - commands: ["toggle-floating --centered"]
     bindings: ["oem_question+rshift+f"]
+    #toggle-floating @#glaze
 
   # Change the focused window to be tiling.
   - commands: ["toggle-tiling"]
@@ -293,7 +305,8 @@ keybindings:
 
   # Change the focused window to be fullscreen.
   - commands: ["toggle-fullscreen"]
-    bindings: ["alt+x"]
+    bindings: ["oem_question+rshift+x"]
+    #toggle-fullscreen@#glaze
 
   # Minimize focused window.
   - commands: ["toggle-minimized"]
@@ -401,25 +414,13 @@ keybindings:
     bindings: ["insert+s"]
   - commands: ["focus --workspace main3"]
     bindings: ["insert+d"]
+    #FocusWorkspace @#glaze
   - commands: ["focus --workspace mydoc"]
     bindings: ["insert+m"]
   - commands: ["focus --workspace whiteboard"]
     bindings: ["insert+b"]
   - commands: ["focus --workspace sound"]
     bindings: ["insert+u"]
-    #FocusWorkspace @#glaze
-
-  # Move the focused window's parent workspace to a monitor in a given
-  # direction.
-  - commands: ["move-workspace --direction left"]
-    bindings: ["oem_question+rshift+a"]
-  - commands: ["move-workspace --direction right"]
-    bindings: ["oem_question+rshift+d"]
-  - commands: ["move-workspace --direction up"]
-    bindings: ["oem_question+rshift+w"]
-  - commands: ["move-workspace --direction down"]
-    bindings: ["oem_question+rshift+s"]
-    #WorkspaceMove @#glaze.move
 
   # Move focused window to a workspace defined in `workspaces` config.
   - commands: ["move --workspace 1", "focus --workspace 1"]
@@ -462,8 +463,6 @@ keybindings:
     bindings: ["rshift+oem_pipe+f"]
   - commands: ["move --workspace mydoc", "focus --workspace mydoc"]
     bindings: ["rshift+oem_pipe+m"]
-  - commands: ["move --workspace cave", "focus --workspace cave"]
-    bindings: ["rshift+oem_pipe+c"]
   - commands: ["move --workspace whiteboard", "focus --workspace whiteboard"]
     bindings: ["rshift+oem_pipe+b"]
   - commands: ["move --workspace sound", "focus --workspace sound"]
