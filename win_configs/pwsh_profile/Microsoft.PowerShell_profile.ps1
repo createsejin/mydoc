@@ -9,6 +9,17 @@ oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\catppuccin_frappe.omp.json"
 # Import the module
 Import-Module Catppuccin
 
+# Set a flavor for easy access
+# $Flavor = $Catppuccin['Frappe']
+
+# Print a summary of the flavor's colors
+# Returns Null, calls Write-Host internally.
+# $Flavor.Table()
+
+# Print blocks of the flavor's colors
+# Returns a string
+# Write-Host $Flavor.Blocks()
+
 # Alias ls, l invoke eza
 function ls_func {
   eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions @args
@@ -51,8 +62,6 @@ Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
 }
 
 # make symbolic link command Alias: ln <link_name> <target>
-<#  
-MakeSymbolicLink @#pwsh #>
 function mk_sym_link_old([string]$target_path, [string]$link_name) {
   $command = '-p PowerShell New-Item -ItemType SymbolicLink -Path "config.yaml" -Target "C:\Program Files\OpenTelemetry Collector\config.yaml"' -f $link_name, $target_path
   Start-Process -FilePath "wt" -WorkingDirectory "$pwd" -Wait -Verb RunAs -ArgumentList $command
@@ -63,6 +72,7 @@ function MakeSymbolicLink {
     [string]$link_name
   )
   New-Item -ItemType SymbolicLink -Path $link_name -Target $target_path
+  #MakeSymbolicLink@#pwsh
 }
 Set-Alias -Name ln -Value MakeSymbolicLink
 
@@ -105,11 +115,11 @@ function band_unzip {
       -ArgumentList "x -aos -y -cp:65001 -target:name -consolemode:utf8 `"$archive`""
     return
   }
-  elseif (($target_dir -ne $null) -and -not (Test-Path $target_dir)) {
+  elseif (($null -ne $target_dir) -and -not (Test-Path $target_dir)) {
     Write-Output "Target directory '$target_dir' does not exist. Creating..."
     New-Item -ItemType Directory -Path $target_dir -Force | Out-Null
   }
-  elseif (($target_dir -ne $null) -and (Test-Path $target_dir)) {
+  elseif (($null -ne $target_dir) -and (Test-Path $target_dir)) {
     Write-Output "Archive extracting to `"$target_dir`""
   }
   Start-Process -FilePath "$bz" -Wait -NoNewWindow -WorkingDirectory (Get-Location).Path `
@@ -201,5 +211,18 @@ Import-Module -Name Microsoft.WinGet.CommandNotFound
 #f45873b3-b655-43a6-b217-97c00aa0db58
 
 Set-Alias -Name glz -Value glazewm
+#glazeWM@#pwsh
+
+function selectString {
+  param (
+    [string]$pattern
+  )
+  $input | Select-String -Pattern $pattern 
+  # $input은 grep에 파이프로 받은 값으로, 이 값을 다시 파이핑하여 Select-String에 넘긴다.
+}
+Set-Alias -Name grep -Value selectString
+#grep@#pwsh
 
 $env:RUST_BACKTRACE=1
+$env:VCPKG_ROOT = "C:\Users\creat\vcpkg"
+$env:PATH = "$env:VCPKG_ROOT;$env:PATH"

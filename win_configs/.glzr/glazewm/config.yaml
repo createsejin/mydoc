@@ -171,6 +171,8 @@ window_rules:
       - window_process: { equals: "NetFile" }
       - window_process: { equals: "NetTransfer" }
       - window_process: { equals: "gta5" }
+      - window_process: { equals: "VaM" }
+      #Ignore@#glaze
 
       # Ignores picture-in-picture windows for browsers.
       - window_title: { regex: "[Pp]icture.in.[Pp]icture" }
@@ -195,6 +197,13 @@ window_rules:
       - window_process: { equals: "rider64" }
       - window_process: { equals: "studio64" }
         window_class: { regex: "SunAwtDialog" }
+      - window_process: { equals: "Taskmgr" }
+      - window_process: { equals: "setup" }
+        window_class: { regex: "HwndWrapper*" }
+      - window_process: { equals: "perfmon" }
+      - window_process: { equals: "AutoHotkeyUX" }
+      - window_title: { equals: "Galaxy Buds" }
+      #SetFloating@#glaze
 
   # - commands: ["move --workspace cave"?]
   #   match:
@@ -297,7 +306,7 @@ keybindings:
   # Change the focused window to be floating.
   - commands: ["toggle-floating --centered"]
     bindings: ["oem_question+rshift+f"]
-    #toggle-floating @#glaze
+    #ToggleFloating @#glaze
 
   # Change the focused window to be tiling.
   - commands: ["toggle-tiling"]
@@ -306,7 +315,7 @@ keybindings:
   # Change the focused window to be fullscreen.
   - commands: ["toggle-fullscreen"]
     bindings: ["oem_question+rshift+x"]
-    #toggle-fullscreen@#glaze
+    #ToggleFullscreen@#glaze
 
   # Minimize focused window.
   - commands: ["toggle-minimized"]
@@ -353,17 +362,23 @@ keybindings:
     bindings: ["shift+insert+k"]
   - commands:
       [
-        "shell-exec C:/Program Files/WindowsApps/Microsoft.ScreenSketch_11.2407.3.0_x64__8wekyb3d8bbwe/SnippingTool/SnippingTool.exe",
+        "shell-exec C:/Program Files/WindowsApps/Microsoft.ScreenSketch_11.2409.25.0_x64__8wekyb3d8bbwe/SnippingTool/SnippingTool.exe",
       ]
-    bindings: ["shift+insert+s"]
+    bindings: ["shift+insert+g"]
   - commands:
       [
-        "shell-exec C:/Users/creat/OneDrive/문서/AutoHotkey/NumpadRightClick.exe",
+        "shell-exec alacritty --config-file C:\\Users\\creat\\mydoc\\win_configs\\alacritty\\alacritty.pwsh.toml",
+      ]
+    #AlacrittyPwsh@#glaze
+    bindings: ["shift+insert+z"]
+  - commands: [
+      "shell-exec C:/Users/creat/OneDrive/문서/AutoHotkey/NumpadRightClick.exe",
       ]
     bindings: ["shift+insert+0"]
   - commands: ["shell-exec C:/Program Files/Alacritty/alacritty.exe"]
     bindings: ["shift+insert+a"]
-    #Exec @#glaze
+    #AlacrittyMsys2@#glaze
+    #ExecProgram@#glaze
 
   # Focus the next/previous workspace defined in `workspaces` config.
   - commands: ["focus --next-workspace"]

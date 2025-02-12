@@ -12,8 +12,7 @@ $q_key_file = "M:\PnQ Key.txt"
 $kee_file = "M:\session3.txt"
 
 function help_msg {
-  <#
-  help msg @#>
+  #help msg @#pack
   'pack m           : mount key capsule readonly mode'
   'pack m rw        : mount key capsule read and write mode'
   'pack m f         : mount F disk'

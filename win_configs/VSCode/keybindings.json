@@ -511,5 +511,10 @@
   {
     "key": "alt+e",
     "command": "workbench.action.focusActiveEditorGroup"
+  },
+  {
+    "key": "alt+v",
+    "command": "workbench.action.terminal.split",
+    "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
   }
 ]

@@ -203,8 +203,8 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 export PATH="/c/Users/creat/AppData/Local/Programs/Microsoft VS Code/bin:$PATH"
-export PATH="/c/Program files/PowerShell/7:$PATH"
-export PATH=":/c/Program files/nodejs:/c/Users/creat/AppData/Roaming/npm:/c/Users/creat/.cargo/bin:$PATH"
+export PATH="/c/Program files/PowerShell/7:/c/Program files/PuTTY:/c/Users/creat/vcpkg:$PATH"
+export PATH="/c/Program files/nodejs:/c/Users/creat/AppData/Roaming/npm:/c/Users/creat/.cargo/bin:$PATH"
 #PATH @#zsh.msys
 
 export MSYS="winsymlinks:nativestrict"

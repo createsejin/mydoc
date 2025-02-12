@@ -18,17 +18,29 @@ set hlsearch
 set number
 set relativenumber
 
-highlight Visual guibg=grey guifg=black
-highlight Visual ctermbg=grey ctermfg=black
-highlight Cursor guibg=grey guifg=black
-highlight Cursor ctermbg=grey ctermfg=black
+" highlight Visual guibg=grey guifg=black
+" highlight Visual ctermbg=grey ctermfg=black
+" highlight Cursor guibg=grey guifg=black
+" highlight Cursor ctermbg=grey ctermfg=black
 
-set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-		  \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
-		  \,sm:block-blinkwait175-blinkoff150-blinkon175
+" set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+" 		  \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+" 		  \,sm:block-blinkwait175-blinkoff150-blinkon175
 
 " Don't use Ex mode, use Q for formatting.
 map Q gq
+
+" move panel
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+"So I can move around in insert
+inoremap <C-k> <C-o>gk
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
+inoremap <C-j> <C-o>gj
 
 " --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
 
@@ -36,7 +48,7 @@ map Q gq
 Plug 'machakann/vim-highlightedyank'
 " Commentary plugin
 Plug 'tpope/vim-commentary'
-
+Plug 'tpope/vim-surround'
 
 "" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
 "" Map \r to the Reformat Code action
@@ -53,8 +65,3 @@ inoremap <C-E> <Esc>$a
 
 nnoremap <F3> :set hlsearch!<CR>
 
-" move panel
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
