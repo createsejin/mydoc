@@ -1,0 +1,1 @@
+runas /user:Main\administrator "C:\Program Files\Alacritty\alacritty.exe --config-file \"C:\\Users\\creat\\mydoc\\win_configs\\alacritty\\alacritty.pwsh.admin.toml\""

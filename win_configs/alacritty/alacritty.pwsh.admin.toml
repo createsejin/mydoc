@@ -1,0 +1,38 @@
+[env]
+TERM = "xterm-256color"
+
+[general]
+import = [
+  # "C:/Users/creat/AppData/Roaming/alacritty/catppuccin/catppuccin-latte.toml"
+  "C:/Users/creat/AppData/Roaming/alacritty/catppuccin/catppuccin-frappe.toml",
+  # "C:/Users/creat/AppData/Roaming/alacritty/catppuccin/catppuccin-macchiato.toml"
+  # "C:/Users/creat/AppData/Roaming/alacritty/catppuccin/catppuccin-mocha.toml/c/Users/creat/.cargo/bin"
+]
+working_directory = "C:/Users/Administrator"
+
+[font]
+# normal = { family = "Console", style = "Regular" }
+#FontFamily@#ala.pwsh.admin
+size = 10.7
+#FontSize@#ala.pwsh.admin
+builtin_box_drawing = true
+
+[window]
+padding = { x = 4, y = 2 }
+decorations = "full"
+dynamic_padding = true
+
+[cursor]
+style = { shape = "Block", blinking = "On" }
+vi_mode_style = { shape = "Block", blinking = "On" }
+
+[terminal]
+shell = "C:/Program Files/PowerShell/7/pwsh.exe"
+
+[keyboard]
+bindings = [
+  # to unset default keybinding
+  { key = "Insert", mods = "Shift", action = "None" },
+  { key = "M", mods = "Shift|Control", mode = "~Search", action = "ToggleViMode" }
+  #KeyBindings@#ala.pwsh.admin
+]

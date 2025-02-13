@@ -203,6 +203,7 @@ window_rules:
       - window_process: { equals: "perfmon" }
       - window_process: { equals: "AutoHotkeyUX" }
       - window_title: { equals: "Galaxy Buds" }
+      - window_process: { equals: "Ahk2Exe" }
       #SetFloating@#glaze
 
   # - commands: ["move --workspace cave"?]
@@ -373,6 +374,12 @@ keybindings:
       ]
     #AlacrittyPwsh@#glaze
     bindings: ["shift+insert+z"]
+  - commands:
+      [
+        "shell-exec alacritty_admin"
+      ]
+    #AlacrittyPwshAdmin@#glaze
+    bindings: ["shift+insert+p"]
   - commands: [
       "shell-exec C:/Users/creat/OneDrive/문서/AutoHotkey/NumpadRightClick.exe",
       ]
