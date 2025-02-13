@@ -153,12 +153,12 @@ function source_profile {
 Set-Alias -Name so -Value source_profile
 
 # execute command on administrator powershell
-$alacritty_toml = "C:\\Users\\creat\\mydoc\\win_configs\\alacritty\\alacritty.pwsh.toml"
+# $alacritty_toml = "C:\\Users\\creat\\mydoc\\win_configs\\alacritty\\alacritty.pwsh.admin.toml"
 function execute_admin {
-  # Start-Process -FilePath "wt" -Verb RunAs -Wait -ArgumentList "-d", "$pwd", "pwsh", `
-  #   "-NoExit", "-c $args" 
-  Start-Process -FilePath "alacritty" -Verb RunAs -Wait -ArgumentList "--config-file","$alacritty_toml", `
-    "--working-directory","$pwd","--command","`"$args`"","--hold"
+  Start-Process -FilePath "wt" -Verb RunAs -Wait -ArgumentList "-d", "$pwd", "pwsh", `
+    "-NoExit", "-c $args" 
+  # Write-Output "`"$args`""
+  # Start-Process -FilePath "alacritty" -Wait -WorkingDirectory $pwd "--config-file","$alacritty_toml","--command","`"$args`"","--hold" -Verb RunAs
 }
 Set-Alias -Name sudo -Value execute_admin
 #Sudo@#pwsh
@@ -226,6 +226,8 @@ function selectString {
 }
 Set-Alias -Name grep -Value selectString
 #grep@#pwsh
+
+Set-Alias -Name trash -Value Remove-Itemsafely 
 
 $env:RUST_BACKTRACE=1
 $env:VCPKG_ROOT="$HOME\vcpkg"
