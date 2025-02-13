@@ -62,10 +62,10 @@ Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
 }
 
 # make symbolic link command Alias: ln <link_name> <target>
-function mk_sym_link_old([string]$target_path, [string]$link_name) {
-  $command = '-p PowerShell New-Item -ItemType SymbolicLink -Path "config.yaml" -Target "C:\Program Files\OpenTelemetry Collector\config.yaml"' -f $link_name, $target_path
-  Start-Process -FilePath "wt" -WorkingDirectory "$pwd" -Wait -Verb RunAs -ArgumentList $command
-}
+# function mk_sym_link_old([string]$target_path, [string]$link_name) {
+#   $command = '-p PowerShell New-Item -ItemType SymbolicLink -Path "config.yaml" -Target "C:\Program Files\OpenTelemetry Collector\config.yaml"' -f $link_name, $target_path
+#   Start-Process -FilePath "wt" -WorkingDirectory "$pwd" -Wait -Verb RunAs -ArgumentList $command
+# }
 function MakeSymbolicLink {
   param (
     [string]$target_path,
@@ -153,11 +153,15 @@ function source_profile {
 Set-Alias -Name so -Value source_profile
 
 # execute command on administrator powershell
-# function execute_admin {
-#   Start-Process -FilePath "wt" -Verb RunAs -Wait -ArgumentList "-d", "$pwd", "pwsh", `
-#     "-NoExit", "-c $args" 
-# }
-# Set-Alias -Name sudo -Value execute_admin
+$alacritty_toml = "C:\\Users\\creat\\mydoc\\win_configs\\alacritty\\alacritty.pwsh.toml"
+function execute_admin {
+  # Start-Process -FilePath "wt" -Verb RunAs -Wait -ArgumentList "-d", "$pwd", "pwsh", `
+  #   "-NoExit", "-c $args" 
+  Start-Process -FilePath "alacritty" -Verb RunAs -Wait -ArgumentList "--config-file","$alacritty_toml", `
+    "--working-directory","$pwd","--command","`"$args`"","--hold"
+}
+Set-Alias -Name sudo -Value execute_admin
+#Sudo@#pwsh
 
 # git command alias
 function gst_f {
