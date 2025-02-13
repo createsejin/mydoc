@@ -10,6 +10,7 @@ $s_key_file = "M:\Keyfiles\diskS"
 $s_device = "\Device\Harddisk2\Partition2"
 $q_key_file = "M:\PnQ Key.txt"
 $kee_file = "M:\session3.txt"
+$alacritty_toml = "C:\\Users\\creat\\mydoc\\win_configs\\alacritty\\alacritty.pwsh.toml"
 
 function help_msg {
   #help msg @#pack
@@ -82,7 +83,13 @@ function QdiskUnlock {
     else {
       Get-Content $q_key_file | Select-Object -Index 3 | Set-Clipboard
       "The Q disk password is copied."
-      Start-Process -FilePath "wt" -Wait -ArgumentList "pwsh -c manage-bde -unlock Q: -password" -Verb RunAs
+      # unlock by pwsh with wt
+      # Start-Process -FilePath "wt" -Wait -ArgumentList "pwsh -c manage-bde -unlock Q: -password" -Verb RunAs
+      # unlock by pwsh with alacritty
+      Start-Process -FilePath "alacritty" -Wait `
+        -ArgumentList "--config-file","$alacritty_toml", `
+        "--command","`"manage-bde -unlock Q: -password`"" -Verb RunAs
+      #UnlockQdiskByAla@#pack
       if (Test-Path "Q:\") {
         "Q disk successfully unlocked."
       }
@@ -90,8 +97,7 @@ function QdiskUnlock {
         "Q disk unlocking is failed."
       }
       Set-Clipboard -Value $null
-      "clipboard cleared." <#
-      Q unlock @-#>
+      "clipboard cleared."
     }
   }
 }
@@ -100,14 +106,18 @@ function QdiskLock {
     'The Q disk is already locked.'
   }
   else {
-    Start-Process -FilePath "wt" -Wait -ArgumentList "pwsh -c manage-bde -lock Q:" -Verb RunAs
+    # lock by pwsh with wt
+    # Start-Process -FilePath "wt" -Wait -ArgumentList "pwsh -c manage-bde -lock Q:" -Verb RunAs
+    # lock by pwsh with alacritty
+    Start-Process -FilePath "alacritty" -Wait `
+      -ArgumentList "--config-file","$alacritty_toml","--command","`"manage-bde -lock Q:" -Verb RunAs
+    #LockQdiskByAla@#pack
     if (-not (Test-Path "Q:\")) {
       'Q disk is locked.'
     }
     else {
       'Q disk is not locked.'
-    } <#
-    Q.lock @-#>
+    } 
   }
 }
 
