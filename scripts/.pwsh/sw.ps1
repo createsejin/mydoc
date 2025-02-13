@@ -27,7 +27,7 @@ function mklink {
     [string]$json_name
   )
   if (Test-Path "$location\$json_name") {
-    Remove-Item "$json_name"
+    Remove-Item "$location\$json_name"
   }
   New-Item -ItemType SymbolicLink -Path $json_name -Target $profile_
   #mklinkFunc@#sw
@@ -35,7 +35,7 @@ function mklink {
 
 function rm_and_cp ([string]$location, [string]$profile_, [string]$json_name) {
   if (Test-Path "$location\$json_name") {
-    Remove-Item "$json_name"
+    Remove-Item "$location\$json_name"
   }
   Copy-Item -Path "$profile_" -Destination "$location\$json_name"
   #rm_and_cpFunc@#sw

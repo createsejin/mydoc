@@ -224,5 +224,5 @@ Set-Alias -Name grep -Value selectString
 #grep@#pwsh
 
 $env:RUST_BACKTRACE=1
-$env:VCPKG_ROOT = "C:\Users\creat\vcpkg"
+$env:VCPKG_ROOT="$HOME\vcpkg"
 $env:PATH = "$env:VCPKG_ROOT;$env:PATH"

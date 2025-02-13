@@ -8,7 +8,7 @@ import = [
   # "C:/Users/creat/AppData/Roaming/alacritty/catppuccin/catppuccin-macchiato.toml"
   # "C:/Users/creat/AppData/Roaming/alacritty/catppuccin/catppuccin-mocha.toml/c/Users/creat/.cargo/bin"
 ]
-working_directory = "C:/msys64/home/creat"
+working_directory = "C:/Users/creat"
 
 [font]
 normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
