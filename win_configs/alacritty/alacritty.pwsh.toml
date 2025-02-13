@@ -33,5 +33,6 @@ shell = "C:/Program Files/PowerShell/7/pwsh.exe"
 bindings = [
   # to unset default keybinding
   { key = "Insert", mods = "Shift", action = "None" },
+  { key = "M", mods = "Shift|Control", mode = "~Search", action = "ToggleViMode" }
   #KeyBindings@#ala.pwsh
 ]
