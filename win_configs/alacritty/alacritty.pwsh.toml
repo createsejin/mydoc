@@ -4,7 +4,7 @@ TERM = "xterm-256color"
 [general]
 import = [
   # "C:/Users/creat/AppData/Roaming/alacritty/catppuccin/catppuccin-latte.toml"
-  "C:/Users/creat/AppData/Roaming/alacritty/catppuccin/catppuccin-frappe.toml"
+  "C:/Users/creat/AppData/Roaming/alacritty/catppuccin/catppuccin-frappe.toml",
   # "C:/Users/creat/AppData/Roaming/alacritty/catppuccin/catppuccin-macchiato.toml"
   # "C:/Users/creat/AppData/Roaming/alacritty/catppuccin/catppuccin-mocha.toml/c/Users/creat/.cargo/bin"
 ]
@@ -12,7 +12,9 @@ working_directory = "C:/Users/creat"
 
 [font]
 normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+#FontFamily@#ala.pwsh
 size = 10.7
+#FontSize@#ala.pwsh
 builtin_box_drawing = true
 
 [window]
@@ -27,4 +29,9 @@ vi_mode_style = { shape = "Block", blinking = "On" }
 [terminal]
 shell = "C:/Program Files/PowerShell/7/pwsh.exe"
 
-#alacritty@#ala
+[keyboard]
+bindings = [
+  # to unset default keybinding
+  { key = "Insert", mods = "Shift", action = "None" },
+  #KeyBindings@#ala.pwsh
+]
