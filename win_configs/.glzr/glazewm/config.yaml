@@ -357,6 +357,8 @@ keybindings:
     bindings: ["shift+insert+w"]
   - commands: ["shell-exec Everything"]
     bindings: ["shift+insert+e"]
+  - commands: ["shell-exec C:/Windows/explorer.exe"]
+    bindings: ["shift+insert+f"]
   - commands:
       ["shell-exec C:/Program Files/KeePass Password Safe 2/KeePass.exe"]
     bindings: ["shift+insert+k"]
