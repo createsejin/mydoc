@@ -4,9 +4,9 @@ TERM = "xterm-256color"
 [general]
 import = [
   # "C:/Users/creat/AppData/Roaming/alacritty/catppuccin/catppuccin-latte.toml"
-  "C:/Users/creat/AppData/Roaming/alacritty/catppuccin/catppuccin-frappe.toml",
-  # "C:/Users/creat/AppData/Roaming/alacritty/catppuccin/catppuccin-macchiato.toml"
-  # "C:/Users/creat/AppData/Roaming/alacritty/catppuccin/catppuccin-mocha.toml/c/Users/creat/.cargo/bin"
+  # "C:/Users/creat/AppData/Roaming/alacritty/catppuccin/catppuccin-frappe.toml",
+  "C:/Users/creat/AppData/Roaming/alacritty/catppuccin/catppuccin-macchiato.toml"
+  # "C:/Users/creat/AppData/Roaming/alacritty/catppuccin/catppuccin-mocha.toml"
 ]
 working_directory = "C:/Users/creat"
 
