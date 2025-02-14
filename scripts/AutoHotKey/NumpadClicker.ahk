@@ -307,14 +307,12 @@ global is_NumDel_pressed := False
 
 AlacrittyMoveFocus(key) {
     if WinExist("ahk_exe alacritty.exe") && WinGetProcessName("A") == "alacritty.exe" {
-        ; OutputDebug "ctrl+h pressed."
         SendInput "{Alt down}"
         SendInput key
         SendInput "{Alt up}"
         ;AlacrittyMoveFocus@#auto
     }
 }
-
 ^h:: {
     AlacrittyMoveFocus("h")
 }

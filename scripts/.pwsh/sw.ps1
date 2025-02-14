@@ -15,7 +15,7 @@ $settings_json = "settings.json"
 # switch vam prefs.json for work or play
 $play_prefs = "D:\vam_resources\prefs.json.play"
 $work_prefs = "D:\vam_resources\prefs.json.work"
-$prefs_location = "C:\Users\creat\vam"
+$prefs_location = "C:\Users\creat\vam4"
 #VamProfileLocation@#sw
 $prefs_json = "prefs.json"
 

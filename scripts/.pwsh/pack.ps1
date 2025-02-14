@@ -1,6 +1,7 @@
 $veracrypt = "C:\Program Files\VeraCrypt\VeraCrypt.exe"
-$work_dir = "G:\내 드라이브\1.창고\정보\Packs"
-$work_dir_eng = "G:\My Drive\1.창고\정보\Packs"
+# The location of your pack files
+$work_dir = "G:\내 드라이브\1.창고\정보\Packs" # if your OS language is set in Korean
+$work_dir_eng = "G:\My Drive\1.창고\정보\Packs" # if your OS language is set in English
 $pack009 = "Pack009_2024-01-02_001.hc"
 $f_key_file = "M:\Keyfiles\diskF"
 $f_device = "\Device\Harddisk0\Partition2"
@@ -121,9 +122,9 @@ function QdiskLock {
   }
 }
 
-function keyCapsuleMount {
+function keyCapsuleMount { # M disk를 마운팅하는 function. KeyCapsule은 M disk를 의미한다.
   param (
-    [bool]$rw
+    [bool]$rw # M disk를 읽기/쓰기 모드로 mount 할것인가의 bool
   )
   if (Test-Path "G:\") {
     if ($rw) {

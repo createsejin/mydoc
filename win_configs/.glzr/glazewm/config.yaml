@@ -172,6 +172,7 @@ window_rules:
       - window_process: { equals: "NetTransfer" }
       - window_process: { equals: "gta5" }
       - window_process: { equals: "VaM" }
+      - window_process: { equals: "varManager" }
       #Ignore@#glaze
 
       # Ignores picture-in-picture windows for browsers.
@@ -195,6 +196,7 @@ window_rules:
       - window_process: { equals: "voicemeeter_x64" }
       - window_process: { equals: "Galaxy Buds" }
       - window_process: { equals: "rider64" }
+      - window_process: { equals: "FreeFileSync_x64" }
       - window_process: { equals: "studio64" }
         window_class: { regex: "SunAwtDialog" }
       - window_process: { equals: "Taskmgr" }
@@ -204,6 +206,7 @@ window_rules:
       - window_process: { equals: "AutoHotkeyUX" }
       - window_title: { equals: "Galaxy Buds" }
       - window_process: { equals: "Ahk2Exe" }
+      - window_process: { equals: "Eraser" }
       #SetFloating@#glaze
 
   # - commands: ["move --workspace cave"?]
@@ -374,12 +377,6 @@ keybindings:
       ]
     #AlacrittyPwsh@#glaze
     bindings: ["shift+insert+z"]
-  - commands:
-      [
-        "shell-exec alacritty_admin"
-      ]
-    #AlacrittyPwshAdmin@#glaze
-    bindings: ["shift+insert+p"]
   - commands: [
       "shell-exec C:/Users/creat/OneDrive/문서/AutoHotkey/NumpadRightClick.exe",
       ]
