@@ -1,8 +1,7 @@
 {
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions": 
-    [
+    "actions": [
         {
             "command": "paste",
             "id": "User.paste"
@@ -20,8 +19,7 @@
             "id": "User.scrollDownPage"
         },
         {
-            "command": 
-            {
+            "command": {
                 "action": "copy",
                 "dismissSelection": false,
                 "singleLine": false
@@ -33,8 +31,7 @@
             "id": "User.scrollToTop"
         },
         {
-            "command": 
-            {
+            "command": {
                 "action": "splitPane",
                 "split": "auto",
                 "splitMode": "duplicate"
@@ -46,48 +43,42 @@
             "id": "User.find"
         },
         {
-            "command": 
-            {
+            "command": {
                 "action": "splitPane",
                 "split": "down"
             },
             "id": "User.splitPane.D5151347"
         },
         {
-            "command": 
-            {
+            "command": {
                 "action": "swapPane",
                 "direction": "left"
             },
             "id": "User.swapPane.2A0DA8E0"
         },
         {
-            "command": 
-            {
+            "command": {
                 "action": "splitPane",
                 "split": "right"
             },
             "id": "User.splitPane.864CD510"
         },
         {
-            "command": 
-            {
+            "command": {
                 "action": "swapPane",
                 "direction": "down"
             },
             "id": "User.swapPane.F747588A"
         },
         {
-            "command": 
-            {
+            "command": {
                 "action": "swapPane",
                 "direction": "up"
             },
             "id": "User.swapPane.6CD791B"
         },
         {
-            "command": 
-            {
+            "command": {
                 "action": "moveFocus",
                 "direction": "down"
             },
@@ -98,8 +89,7 @@
             "id": "User.markMode"
         },
         {
-            "command": 
-            {
+            "command": {
                 "action": "moveFocus",
                 "direction": "right"
             },
@@ -110,16 +100,14 @@
             "id": "User.closePane"
         },
         {
-            "command": 
-            {
+            "command": {
                 "action": "moveFocus",
                 "direction": "left"
             },
             "id": "User.moveFocus.2A0DA8E0"
         },
         {
-            "command": 
-            {
+            "command": {
                 "action": "moveFocus",
                 "direction": "up"
             },
@@ -130,8 +118,7 @@
             "id": "User.switchSelectionEndpoint"
         },
         {
-            "command": 
-            {
+            "command": {
                 "action": "swapPane",
                 "direction": "right"
             },
@@ -142,15 +129,13 @@
             "id": "User.togglePaneZoom"
         },
         {
-            "command": 
-            {
+            "command": {
                 "action": "scrollUp"
             },
             "id": "User.scrollUp.0"
         },
         {
-            "command": 
-            {
+            "command": {
                 "action": "scrollDown"
             },
             "id": "User.scrollDown.0"
@@ -171,8 +156,7 @@
     "initialCols": 210,
     "initialPosition": "5360,0",
     "initialRows": 40,
-    "keybindings": 
-    [
+    "keybindings": [
         {
             "id": "User.swapPane.2A0DA8E0",
             "keys": "alt+shift+h"
@@ -295,31 +279,25 @@
         }
     ],
     "launchMode": "maximized",
-    "newTabMenu": 
-    [
+    "newTabMenu": [
         {
             "type": "remainingProfiles"
         }
     ],
-    "profiles": 
-    {
-        "defaults": 
-        {
+    "profiles": {
+        "defaults": {
             "colorScheme": "Catppuccin Mocha",
-            "font": 
-            {
+            "font": {
                 "face": "JetBrainsMono Nerd Font"
             },
             "opacity": 79,
             "useAcrylic": true
         },
-        "list": 
-        [
+        "list": [
             {
                 "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -ucrt64",
                 "cursorShape": "vintage",
-                "font": 
-                {
+                "font": {
                     "face": "JetBrainsMono Nerd Font",
                     "size": 10.7
                 },
@@ -331,8 +309,7 @@
             {
                 "commandline": "C:/msys64/msys2_shell.cmd -defterm -here -no-start -msys",
                 "cursorShape": "vintage",
-                "font": 
-                {
+                "font": {
                     "face": "JetBrainsMono Nerd Font",
                     "size": 10.7
                 },
@@ -344,8 +321,7 @@
             },
             {
                 "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-                "font": 
-                {
+                "font": {
                     "face": "JetBrains Mono"
                 },
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
@@ -354,8 +330,7 @@
             },
             {
                 "commandline": "%SystemRoot%\\System32\\cmd.exe",
-                "font": 
-                {
+                "font": {
                     "face": "D2Coding ligature"
                 },
                 "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
@@ -363,8 +338,7 @@
                 "name": "\uba85\ub839 \ud504\ub86c\ud504\ud2b8"
             },
             {
-                "font": 
-                {
+                "font": {
                     "face": "D2Coding ligature"
                 },
                 "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
@@ -373,8 +347,7 @@
                 "source": "Windows.Terminal.Azure"
             },
             {
-                "font": 
-                {
+                "font": {
                     "face": "Source Code Pro"
                 },
                 "guid": "{5f1a0e18-40ec-593e-ab09-9f4666cb39ec}",
@@ -385,8 +358,7 @@
                 "useAcrylic": false
             },
             {
-                "font": 
-                {
+                "font": {
                     "face": "D2Coding ligature"
                 },
                 "guid": "{5c76107d-28d7-5beb-a16d-3aadac7d0e69}",
@@ -395,8 +367,7 @@
                 "source": "Windows.Terminal.VisualStudio"
             },
             {
-                "font": 
-                {
+                "font": {
                     "face": "D2Coding ligature"
                 },
                 "guid": "{16208362-94fc-5b1f-a491-5b2624d5ab56}",
@@ -406,8 +377,7 @@
             },
             {
                 "closeOnExit": "never",
-                "font": 
-                {
+                "font": {
                     "face": "SauceCodePro Nerd Font"
                 },
                 "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
@@ -419,8 +389,7 @@
                 "commandline": "C:\\Program Files\\sqlite3\\sqlite3.exe -header -separator \" | \"",
                 "cursorHeight": 20,
                 "cursorShape": "vintage",
-                "font": 
-                {
+                "font": {
                     "face": "JetBrains Mono"
                 },
                 "guid": "{8eee47d3-908d-42a3-9ed0-69ad6c7c1414}",
@@ -434,8 +403,7 @@
             {
                 "closeOnExit": "never",
                 "cursorShape": "vintage",
-                "font": 
-                {
+                "font": {
                     "face": "JetBrainsMono Nerd Font",
                     "size": 10.8
                 },
@@ -480,11 +448,22 @@
                 "hidden": false,
                 "name": "Developer PowerShell for VS 2022",
                 "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "commandline": "%WINDIR%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -ExecutionPolicy ByPass -NoExit -Command \"& 'C:\\Users\\creat\\anaconda3\\shell\\condabin\\conda-hook.ps1' ; conda activate 'C:\\Users\\creat\\anaconda3' \"",
+                "name": "Anaconda PowerShell Prompt (anaconda3)",
+                "icon": "C:\\Users\\creat\\anaconda3\\Menu\\anaconda_powershell_prompt.ico",
+                "startingDirectory": "C:\\Users\\creat"
+            },
+            {
+                "commandline": "%WINDIR%\\System32\\cmd.exe \"/K\" C:\\Users\\creat\\anaconda3\\Scripts\\activate.bat C:\\Users\\creat\\anaconda3",
+                "name": "Anaconda Prompt (anaconda3)",
+                "icon": "C:\\Users\\creat\\anaconda3\\Menu\\anaconda_prompt.ico",
+                "startingDirectory": "C:\\Users\\creat"
             }
         ]
     },
-    "schemes": 
-    [
+    "schemes": [
         {
             "background": "#000000",
             "black": "#0C0C0C",
@@ -556,24 +535,20 @@
         }
     ],
     "startOnUserLogin": false,
-    "themes": 
-    [
+    "themes": [
         {
             "name": "Catppuccin Mocha",
-            "tab": 
-            {
+            "tab": {
                 "background": "#1E1E2EFF",
                 "iconStyle": "default",
                 "showCloseButton": "always",
                 "unfocusedBackground": null
             },
-            "tabRow": 
-            {
+            "tabRow": {
                 "background": "#181825FF",
                 "unfocusedBackground": "#11111BFF"
             },
-            "window": 
-            {
+            "window": {
                 "applicationTheme": "dark",
                 "experimental.rainbowFrame": false,
                 "frame": null,
