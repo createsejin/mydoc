@@ -229,6 +229,10 @@ Set-Alias -Name grep -Value selectString
 
 Set-Alias -Name trash -Value Remove-Itemsafely 
 
+Set-Alias -Name conda -Value "C:\Users\creat\anaconda3\_conda.exe"
+#conda@#pwsh
+
 $env:RUST_BACKTRACE=1
 $env:VCPKG_ROOT="$HOME\vcpkg"
 $env:PATH = "$env:VCPKG_ROOT;$env:PATH"
+#env:PATH@#pwsh
