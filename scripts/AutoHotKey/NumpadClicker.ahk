@@ -311,17 +311,21 @@ AlacrittyMoveFocus(key) {
         SendInput key
         SendInput "{Alt up}"
         ;AlacrittyMoveFocus@#auto
+    } else {
+        SendInput "{Ctrl down}"
+        SendInput key
+        SendInput "{Ctrl up}"
     }
 }
-^h:: {
+$^h:: {
     AlacrittyMoveFocus("h")
 }
-^l:: {
+$^l:: {
     AlacrittyMoveFocus("l")
 }
-^j:: {
+$^j:: {
     AlacrittyMoveFocus("j")
 }
-^k:: {
+$^k:: {
     AlacrittyMoveFocus("k")
 }
