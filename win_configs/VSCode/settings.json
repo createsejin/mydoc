@@ -1,8 +1,7 @@
 {
   "editor.fontLigatures": true,
   "editor.fontFamily": "'JetBrainsMono Nerd Font', Consolas, 'Courier New', monospace, dotum",
-  "comment": 
-    "fontFamily@#code",
+  "comment": "fontFamily@#code",
   "editor.fontVariations": true,
   "editor.fontWeight": "400",
   "git.autofetch": true,
@@ -28,12 +27,17 @@
   },
   "vim.normalModeKeyBindings": [
     {
-      "before": ["<leader>", "g", "g" ],
-      "commands": [ "workbench.view.scm" ]
+      "before": [
+        "<leader>",
+        "g",
+        "g"
+      ],
+      "commands": [
+        "workbench.view.scm"
+      ]
     }
   ],
-  "comments": 
-    "vimNormalKeyBind@#code",
+  "comments": "vimNormalKeyBind@#code",
   "cmake.pinnedCommands": [
     "workbench.action.tasks.configureTaskRunner",
     "workbench.action.tasks.runTask"
@@ -113,5 +117,8 @@
   "workbench.colorTheme": "Catppuccin Frappé",
   "terminal.integrated.splitCwd": "workspaceRoot",
   "comments": 
-    "termial split@#code"
+    "termial split@#code",
+  "pythonIndent.useTabOnHangingIndent": true,
+  "pythonIndent.trimLinesWithOnlyWhitespace": true,
+  "pythonIndent.keepHangingBracketOnLine": true
 }
