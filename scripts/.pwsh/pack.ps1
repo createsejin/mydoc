@@ -201,10 +201,11 @@ if ($args[0] -ieq "m") {
   # unlock(mount) sub command
   if ($args.Count -gt 2) {
     # Examine that the number of arguments exceeds two. 
-    foreach ($arg in $args[1..-1]) {
+    foreach ($arg in $args[2..-1]) {
       # unlock two or more devices
       # use case: pack m sq -> unlock S and Q disks
-      if ($arg -ieq "f") {
+      if ($arg -ieq "m") { }
+      elseif ($arg -ieq "f") { 
         mount_vera_disk F $f_key_file $f_device
       }
       elseif ($arg -ieq "p") {
