@@ -1,0 +1,230 @@
+Modern CSV Tutorial 
+Welcome to Modern CSV! Here's a tutorial to get you started. 
+A file with example data has been opened up. If you close this window, it will close that file, and vice versa. 
+If you want to restore the file, click the Restore File button below or use the Restore Tutorial to Default command and reload it. 
+
+
+The Basics 
+Command Launcher 
+Type ctrl+l or ctrl+shift+p and type in the command you want. 
+This also acts as a search for which commands exist and what their keyboard shortcuts are. 
+
+Practice 
+See which commands exist for removing duplicate rows. 
+
+File Metadata 
+Hit ctrl+k, ctrl+d or open the launcher, type meta, and hit enter. 
+The File Metadata pane will open on the right side and show you useful information about the file and settings. 
+If you want to reload the file with different parameters, set them under Load Parameters and hit Reload File. 
+If you want to save the file with different parameters, set them under Save Parameters and hit Save File. 
+
+Practice 
+Check out this file's metadata. 
+
+Preferences 
+The Preferences command opens the Preferences window. 
+It contains 3 tabs: Settings, Keyboard Shortcuts, and File Extensions Options. 
+Under Settings, you can set things like the theme, font, and number of header rows. 
+Under Keyboard Shortcuts, you can customize your own shortcut for virtually any command in Modern CSV. 
+Under File Extension Options, you can set parameters for different file types based on their file extensions. 
+Be sure to click the Apply or OK buttons to commit the changes. 
+
+Multiple files 
+Drag and drop files or folders anywhere in the program. They'll show up in the side bar. 
+Type ctrl+p or ctrl+t and type the name of a file you want to open. If it's in the sidebar, it'll show up. 
+ctrl+PgUp and ctrl+PgDn switches tabs. 
+ctrl+w closes the current tab. 
+
+Editing cells 
+Just select a cell and start typing. It'll overwrite what's already in there. 
+You can do it with multiple cells. 
+To edit a cell without overwriting, select it and type ctrl+e or f2. This one does not work with multiple cells. 
+To stop editing, hit esc or ctrl+e. 
+To stop editing and navigate away from the cell, hit enter, tab, shift+tab, or alt+i\j\k\l. 
+
+Moving cells, rows, and columns 
+alt+arrow moves cells around. 
+alt+shift+arrow moves entire rows or columns. 
+shift+click on selected cells allows you to drag them. 
+shift+click on row/column labels allows you to drag them. 
+
+Practice 
+Swap the Birthdate and Income columns. 
+
+Inserting rows and columns 
+alt+r inserts rows above the selected cells. 
+alt+c inserts columns left of the selected cells. 
+ctrl+enter inserts rows below the selected cells. 
+ctrl+k, ctrl+enter inserts columns right of the selected cells. 
+
+
+Practice 
+Insert a row above somewhere in the file and add a new entry (yourself, perhaps?). 
+
+Deleting cells, rows, and columns 
+The Delete and Backspace keys delete selected cells. 
+ctrl+shift+k deletes selected rows. 
+ctrl+shift+l deletes selected columns. 
+
+
+Practice 
+Pick a row. Delete the first name. 
+Then, delete the whole row. 
+Then, delete the Income column. 
+Hit ctrl+z three times to restore everything. 
+
+Selecting multiple cells, rows, columns, and tables 
+Left-click and drag the mouse to select multiple cells. 
+Or shift+arrow. 
+ctrl+shift+arrow selects to the end of a block. 
+ctrl+shift+r selects an entire row. 
+ctrl+shift+c selects an entire column. 
+ctrl+a selects the entire table. 
+
+Practice 
+Select a random name in the First Name column. 
+Use shift+left to select it and the last name. 
+Use ctrl+k, ctrl+down to select every cell to the end. 
+Hit escape and select the entire row. 
+Hit escape again and select this entire column. 
+Select the entire table. 
+
+Find/replace 
+ctrl+f brings up the find window. 
+ctrl+h brings up the replace window. 
+esc closes the find and replace windows. 
+
+Practice 
+Select the entire Birthdate column (ctrl+shift+c). Move down 1. Replace the T with a space. 
+
+Headers 
+Not every CSV has a single row for data headers, but some do. 
+You get to decide how many header rows or columns you want. 
+Right-click on the last row or column you want to be a header. 
+Toward the bottom of the right-click menu, there are commands that start with Set Header.... Pick one. 
+Those same commands are in the command launcher. 
+You can also set them in the File Metadata window. 
+You can also use the Set Number of Header [Rows|Columns] commands in the command launcher. 
+You can freeze headers with the Toggle Freeze Header [Rows|Columns|Rows and Columns] commands. 
+That way, they're always visible. 
+You can also make them stick out with the Highlight Header [Rows|Columns] command (set by default). 
+
+Practice 
+Change the number of header rows to 3. Then, set go back to 1. 
+
+Sorting 
+You can sort by columns or rows, either ascending or descending. 
+Double-click on the row or column label to sort ascending. Double click again to sort descending. 
+Just select the column or row you'd like to sort, open the command launcher, and type sort. 
+The sorting commands will show up. 
+It will not sort the data in the headers. 
+With the Case Sensitive Sorting setting, you can do case-insensitive sorting. 
+
+Practice 
+Sort by income. 
+
+Editor pane 
+If you want to view or edit a large cell or one with newlines or tabs, you can use the editor pane. 
+It's at the bottom and will show the contents of the main selected cell. 
+ctrl+k, ctrl+e opens and closes it. 
+Edit cells just as you would otherwise (just start typing or use ctrl+e). 
+When editing, the keys that normally navigate cells (arrows, tab, enter) will apply to the editor pane. 
+You can change that with the Let Editor Pane Consume Navigation Keystrokes setting. 
+alt+i/j/k/l will still navigate away. 
+
+Contacting Us 
+Find a bug? Use the Report a Bug command. 
+Want a new feature? Use the Request a Feature command. 
+Want to take a survey? Use the Take a Survey command. 
+Have a question? Complement? Criticism? Etc.? Use the General Feedback/Questions command. 
+Whatever it is, we'd love to hear from you! 
+
+This tutorial 
+This tutorial will only show the first time you open the program. 
+However, you can pull it up any time with the Open Tutorial command. 
+The Restore Tutorial to Default State command will put it back in its original form. You can also use the Restore Tutorial button below. 
+
+
+Premium Features 
+Filtering 
+You can add filters to rows or columns. 
+The Add Filter command prompts you for the row or column, then the phrase or phrases to allow. 
+The Filter Selected [Row|Column] command will only ask for the phrases. 
+The Filter Selected [Row|Column] with Selected Cell Contents will not ask for anything. 
+The View/Edit Filter(s) command shows you the filters that exist and allows you to change them. 
+The Remove Individual Filter(s) command prompts you to pick one or more filters to remove. 
+The Remove All Filters command removes all filters. 
+
+Practice 
+Filter the Income column for only values between 50,000 and 70,000. Undo with ctrl+z. 
+
+Hiding Rows and Columns 
+You can hide rows and columns with the following commands: 
+Hide Selected [Row(s)|Column(s)] 
+Hide Empty [Row(s)|Column(s)] (The headers don't have to be empty) 
+They can be shown again with the following commands: 
+Show Selected [Row(s)|Column(s)] (You have to select before and after the hidden rows/columns 
+Show Empty [Row(s)|Column(s)] 
+Show All Hidden [Row(s)|Column(s)] 
+
+Practice 
+Hide the First Name column and show it again. 
+
+Joining and splitting cells 
+Join cells with the Join Selected Cells Horizontally or Join Selected Cells Vertically commands. 
+It'll ask you for a separator (characters to place between cells). Hit enter if none. 
+Split cells with the Split Selected Cells Horizontally or Split Selected Cells Vertically commands. 
+It'll ask how you want to split them: by delimiter or by index. 
+It'll insert new rows or columns as needed to accomodate the new cells. 
+
+
+Practice 
+Select the entire Birthdate column (ctrl+shift+c). Move down 1. Split by delimiter T (or space if you replaced T with space before). 
+Keep the current cells selected and also select the newly created cells on the right (shift+right). Join them with separator T or space. Then, select and remove the extra column left over (ctrl+shift+l). 
+
+Series 
+The Fill Selected Cells With Series command allows you can populate a bunch of cells with a series of numbers or text. 
+For instance, if you want numbers starting from 5 and incrementing by 3, just type 5 3. 
+Further instructions appear when you call the command. 
+You can call it with ctrl+alt+n. 
+The Prepend Cell Contents and Append Cell Contents commands also give you an option of using series. 
+
+Practice 
+The ID column starts at 0. Make it start at 1. 
+
+File system actions 
+The following commands are self explanatory: 
+Delete File 
+Rename File 
+Duplicate File (it will prompt you for a name for the duplicate). 
+Show File in File System 
+Open Terminal to File's Directory 
+
+
+Premium Business Features 
+Statistics, Column Analysis, Unique Values, and Pivot Table 
+These three features have their own tabs in the File Info window next to the File Metadata tab. 
+The Statistics tab shows basic statistics of the columns, like mean, variance, min, max, etc. 
+The Column Attributes tab shows information about min and max cell size, number of empty cells, and data types. 
+The Unique Values tab shows each value found in a column along with the number of times it appears. 
+The Pivot Table tab allows you to aggregate data. You can have as many variables as you want in the left header and top header. You can also have as many data variables as you want. It can show sum, mean, median, count, variance, and standard deviation. 
+
+
+Practice 
+Find the mean and median incomes. 
+Using the Column Attributes - Selected Columns command, find out the minimum and maximum field length for the names columns. 
+Using the Unique Values - Selected Column command, check out the histogram of last names. Filter in the most common one. 
+Using the Pivot Table - Selected Columns command, figure out the mean income by last name. 
+
+Column Lookup 
+You can copy data from one place to another as long as the two places have a column in common. This column is known as the key. A typical example is an ID number. The two places may be in the same file or different files. 
+You can copy as many columns as you like. These are called the value columns. 
+The data that's already there is the source and the place where it's being copied to is the destination. 
+
+Practice 
+Somewhere to the right of the data, make a new ID column. Populate at least a few rows with random integers between 1 and 100. The Random Integers in Selected Cells command can help with that. 
+Call the Column Lookup command. Follow the instructions to copy the Last Name and Birthdate entries adjacent to the new ID column. 
+
+This tutorial only covers a fraction of Modern CSV's capabilities. 
+You can learn more from our documentation at https://www.moderncsv.com/documentation/. 
+Explore around and let us know what other capabilities you'd like to see from it!

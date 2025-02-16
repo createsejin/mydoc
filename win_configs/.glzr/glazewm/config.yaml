@@ -210,6 +210,8 @@ window_rules:
       - window_process: { equals: "Eraser" }
       - window_title: { equals: "Virtual Desktop Streamer" }
       - window_title: { equals: "계산기" }
+      - window_process: { equals: "Modern CSV" }
+        window_class: { equals: "Qt663QWindowIcon" }
       #SetFloating@#glaze
 
   # - commands: ["move --workspace cave"?]
@@ -221,6 +223,7 @@ window_rules:
   - commands: ["move --workspace sound"]
     match:
       - window_process: { equals: "voicemeeter_x64" }
+
     #WindowRules @#glaze
 
 binding_modes:
@@ -390,6 +393,9 @@ keybindings:
     
   - commands: ["shell-exec C:/Users/creat/mydoc/scripts/AutoHotKey/WindowSpy.exe"]
     bindings: ["shift+insert+p"]
+    
+  - commands: ["shell-exec C:/Program Files/Modern CSV/Modern CSV.exe"]
+    bindings: ["shift+insert+i"]
     #ExecProgram@#glaze
 
   # Focus the next/previous workspace defined in `workspaces` config.
