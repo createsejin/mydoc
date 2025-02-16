@@ -200,16 +200,25 @@ NumpadSub & NumLock::
 
 global keyUpCount := 0
 global numpadEnd_down := false
+global wheel_down := false
 global numpadPgDn_down := false
+global wheel_up := false
 global numlock_down := false
-;1,3GlobalVars@#auto
+;1,3GlobalVars@#auto.1,3
 *NumpadEnd::
 {
   global numpadEnd_down
+  global numpadPgDn_down
+  global wheel_down
   global keyUpCount
   if (!numpadEnd_down) {
     keyUpCount += 1
     numpadEnd_down := true
+  }
+  if (keyUpCount == 1 and !numpadPgDn_down) {
+    MouseClick "WD", , , 2
+    ;1 wheelDown@#auto
+    wheel_down := true
   }
 }
 *NumpadEnd Up::
@@ -217,19 +226,27 @@ global numlock_down := false
   global numpadEnd_down
   global keyUpCount
   global numlock_down
+  global wheel_down
+  global wheel_up
+
   if (keyUpCount == 2) {
     SendInput "{Alt down}"
     SendInput "z"
     SendInput "{Alt up}"
-  } else if (!numlock_down and keyUpCount == 1) {
-    MouseClick "WD", , , 2
-  }
+    ;1+3 Alt+z@#auto
+    if (wheel_down) {
+      MouseClick "WU", , , 2
+      wheel_down := false
+    } else if (wheel_up) {
+      MouseClick "WD", , , 2
+      wheel_up := false
+    }
+  } 
   keyUpCount := 0
   numpadEnd_down := false
   if (numlock_down) {
     numlock_down := false
   }
-  ;NumEndKey@#auto
 }
 
 ~NumpadEnd & NumLock::
@@ -237,7 +254,7 @@ global numlock_down := false
   global numlock_down
   numlock_down := true
     SendInput "{PgDn}"
-    ; 1+N pageDown @#auto
+    ; 1+N pageDown @#auto.1,3
 }
 
 NumpadDown::
@@ -256,10 +273,17 @@ NumpadDown & NumLock::
 *NumpadPgDn::
 {
   global numpadPgDn_down
+  global numpadEnd_down
+  global wheel_up
   global keyUpCount
   if (!numpadPgDn_down) {
     keyUpCount += 1
     numpadPgDn_down := true
+  }
+  if (keyUpCount == 1 and !numpadEnd_down) {
+    MouseClick "WU", , , 2
+    ;3 wheelUp@#auto
+    wheel_up := true
   }
 }
 *NumpadPgDn Up::
@@ -267,19 +291,27 @@ NumpadDown & NumLock::
   global numpadPgDn_down
   global keyUpCount
   global numlock_down
+  global wheel_down
+  global wheel_up
+  
   if (keyUpCount == 2) {
     SendInput "{Alt down}"
     SendInput "z"
     SendInput "{Alt up}"
-  } else if (!numlock_down and keyUpCount == 1) {
-    MouseClick "WU", , , 2
-  }
+    ;1+3 Alt+z@#auto
+    if (wheel_down) {
+      MouseClick "WU", , , 2
+      wheel_down := false
+    } else if (wheel_up) {
+      MouseClick "WD", , , 2
+      wheel_up := false
+    }
+  } 
   keyUpCount := 0
   numpadPgDn_down := false
   if (numlock_down) {
     numlock_down := false
   }
-  ;NumPgDnKey@#auto
 }
 
 ~NumpadPgDn & NumLock::
@@ -287,7 +319,7 @@ NumpadDown & NumLock::
   global numlock_down
   numlock_down := true
     SendInput "{PgUp}"
-    ; 3+N pageUp @#auto
+    ; 3+N pageUp @#auto.1,3
 }
 
 $NumpadEnter:: ; right click
