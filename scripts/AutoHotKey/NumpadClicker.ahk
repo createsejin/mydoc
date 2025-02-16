@@ -4,7 +4,7 @@ NumLock::SC02B
 Pause::NumLock
 CapsLock::Insert
 Insert::CapsLock
-; Remap NumLock @#auto
+;RemapNumLock@#auto
 
 $NumpadDiv::
 {
@@ -14,7 +14,7 @@ $NumpadDiv::
         SendInput "{Ctrl down}"
         SendInput "w"
         SendInput "{Ctrl up}"
-        ; / close tab @#auto
+        ;/ CloseTab@#auto
     }
 }
 NumpadDiv & NumLock::
@@ -47,7 +47,7 @@ $NumpadMult:: ; send Delete key
 NumpadMult & NumLock::
 {
     SendInput "{Shift}+{Delete}"
-    ; *+N shift+Delete @#auto
+    ; *+N PermanentDelete @#auto
 }
 
 NumpadHome::
