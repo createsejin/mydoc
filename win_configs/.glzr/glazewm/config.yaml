@@ -387,6 +387,9 @@ keybindings:
   - commands: ["shell-exec C:/Program Files/Alacritty/alacritty.exe"]
     bindings: ["shift+insert+a"]
     #AlacrittyMsys2@#glaze
+    
+  - commands: ["shell-exec C:/Users/creat/mydoc/scripts/AutoHotKey/WindowSpy.exe"]
+    bindings: ["shift+insert+p"]
     #ExecProgram@#glaze
 
   # Focus the next/previous workspace defined in `workspaces` config.
