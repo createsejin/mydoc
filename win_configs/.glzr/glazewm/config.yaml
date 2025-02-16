@@ -204,9 +204,12 @@ window_rules:
         window_class: { regex: "HwndWrapper*" }
       - window_process: { equals: "perfmon" }
       - window_process: { equals: "AutoHotkeyUX" }
+      - window_title: { equals: "Window Spy for AHKv2" }
       - window_title: { equals: "Galaxy Buds" }
       - window_process: { equals: "Ahk2Exe" }
       - window_process: { equals: "Eraser" }
+      - window_title: { equals: "Virtual Desktop Streamer" }
+      - window_title: { equals: "계산기" }
       #SetFloating@#glaze
 
   # - commands: ["move --workspace cave"?]
