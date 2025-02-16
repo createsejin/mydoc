@@ -120,5 +120,10 @@
     "termial split@#code",
   "pythonIndent.useTabOnHangingIndent": true,
   "pythonIndent.trimLinesWithOnlyWhitespace": true,
-  "pythonIndent.keepHangingBracketOnLine": true
+  "pythonIndent.keepHangingBracketOnLine": true,
+  "AHK++.v2.formatter": {
+    "indentString": "  ",
+    "maxPreserveNewlines": 2,
+    "wrapLineLength": 120
+  }
 }
