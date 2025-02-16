@@ -198,13 +198,44 @@ NumpadSub & NumLock::
     ; -N RJ title tweak @#auto
 }
 
-NumpadEnd::
+global keyUpCount := 0
+global numpadEnd_down := false
+global numpadPgDn_down := false
+global numlock_down := false
+;1,3GlobalVars@#auto
+*NumpadEnd::
 {
-    MouseClick "WD", , , 2
-    ; 1 wheel down @#auto
+  global numpadEnd_down
+  global keyUpCount
+  if (!numpadEnd_down) {
+    keyUpCount += 1
+    numpadEnd_down := true
+  }
 }
+*NumpadEnd Up::
+{
+  global numpadEnd_down
+  global keyUpCount
+  global numlock_down
+  if (keyUpCount == 2) {
+    SendInput "{Alt down}"
+    SendInput "z"
+    SendInput "{Alt up}"
+  } else if (!numlock_down and keyUpCount == 1) {
+    MouseClick "WD", , , 2
+  }
+  keyUpCount := 0
+  numpadEnd_down := false
+  if (numlock_down) {
+    numlock_down := false
+  }
+  ;NumEndKey@#auto
+}
+
 ~NumpadEnd & NumLock::
 {
+  global numlock_down
+  numlock_down := true
     SendInput "{PgDn}"
     ; 1+N pageDown @#auto
 }
@@ -216,17 +247,45 @@ NumpadDown::
 }
 NumpadDown & NumLock::
 {
+  global numlock_down
+  numlock_down := true
     SendInput "{End}"
     ; 2+N End @#auto
 }
 
-NumpadPgDn::
+*NumpadPgDn::
 {
-    MouseClick "WU", , , 2
-    ; 3 wheel up @#auto
+  global numpadPgDn_down
+  global keyUpCount
+  if (!numpadPgDn_down) {
+    keyUpCount += 1
+    numpadPgDn_down := true
+  }
 }
+*NumpadPgDn Up::
+{
+  global numpadPgDn_down
+  global keyUpCount
+  global numlock_down
+  if (keyUpCount == 2) {
+    SendInput "{Alt down}"
+    SendInput "z"
+    SendInput "{Alt up}"
+  } else if (!numlock_down and keyUpCount == 1) {
+    MouseClick "WU", , , 2
+  }
+  keyUpCount := 0
+  numpadPgDn_down := false
+  if (numlock_down) {
+    numlock_down := false
+  }
+  ;NumPgDnKey@#auto
+}
+
 ~NumpadPgDn & NumLock::
 {
+  global numlock_down
+  numlock_down := true
     SendInput "{PgUp}"
     ; 3+N pageUp @#auto
 }
