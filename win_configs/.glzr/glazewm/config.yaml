@@ -158,6 +158,9 @@ workspaces:
   - name: "sound"
     display_name: "Sound"
     bind_to_monitor: 2
+  - name : "vam"
+    display_name: "Vam"
+    bind_to_monitor: 1
 
 window_rules:
   - commands: ["ignore"]
@@ -223,6 +226,9 @@ window_rules:
   - commands: ["move --workspace sound"]
     match:
       - window_process: { equals: "voicemeeter_x64" }
+  - commands: ["move --workspace vam"]
+    match:
+      - window_process: { equals: "VaM" }
 
     #WindowRules @#glaze
 
@@ -454,6 +460,8 @@ keybindings:
     bindings: ["insert+b"]
   - commands: ["focus --workspace sound"]
     bindings: ["insert+u"]
+  - commands: ["focus --workspace vam"]
+    bindings: ["insert+v"]
 
   # Move focused window to a workspace defined in `workspaces` config.
   - commands: ["move --workspace 1", "focus --workspace 1"]
@@ -500,4 +508,6 @@ keybindings:
     bindings: ["rshift+oem_pipe+b"]
   - commands: ["move --workspace sound", "focus --workspace sound"]
     bindings: ["rshift+oem_pipe+u"]
+  - commands: ["move --workspace vam", "focus --workspace vam"]
+    bindings: ["rshift+oem_pipe+v"]
     #MoveToWorkspce @#glaze

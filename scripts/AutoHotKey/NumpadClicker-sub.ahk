@@ -4,7 +4,7 @@ NumLock::SC02B
 Pause::NumLock
 CapsLock::Insert
 Insert::CapsLock
-; Remap NumLock @#auto
+; Remap NumLock @#sub.auto
 
 $NumpadDiv::
 {
@@ -14,13 +14,13 @@ $NumpadDiv::
         SendInput "{Ctrl down}"
         SendInput "w"
         SendInput "{Ctrl up}"
-        ; / close tab @#auto
+        ; / close tab @#sub.auto
     }
 }
 NumpadDiv & NumLock::
 {
     SendInput "{F5}"
-    ; /N refresh @#auto
+    ; /N refresh @#sub.auto
 }
 
 NumpadDiv & NumpadSub::
@@ -31,7 +31,7 @@ NumpadDiv & NumpadSub::
         SendInput "t"
         SendInput "{Ctrl up}"
         SendInput "{Shift up}"
-        ; /- reopen tab @#auto
+        ; /- reopen tab @#sub.auto
     }
 }
 
@@ -41,13 +41,13 @@ $NumpadMult:: ; send Delete key
         SendInput "{NumpadMult}"
     } else {
         SendInput "{Delete}"
-        ; * Delete @#auto
+        ; * Delete @#sub.auto
     }
 }
 NumpadMult & NumLock::
 {
     SendInput "{Shift}+{Delete}"
-    ; *N shift+Delete @#auto
+    ; *N shift+Delete @#sub.auto
 }
 
 NumpadHome::
@@ -63,7 +63,7 @@ NumpadHome::
         SendInput "{Left down}"
         SendInput "{Left up}"
         SendInput "{Alt up}"
-        ; 7 go back @#auto
+        ; 7 go back @#sub.auto
     }
 }
 NumpadHome & NumpadSub::
@@ -79,7 +79,7 @@ NumpadHome & NumpadSub::
         SendInput "{Right down}"
         SendInput "{Right up}"
         SendInput "{Alt up}"
-        ; 7- go forward @#auto
+        ; 7- go forward @#sub.auto
     }
 }
 
@@ -90,24 +90,24 @@ NumpadHome & NumLock::
         SendInput "{Up down}"
         SendInput "{Up up}"
         SendInput "{Alt up}"
-        ; 7+N go to parent folder @#auto
+        ; 7+N go to parent folder @#sub.auto
     }
 }
 
 NumpadUp:: ; Ctrl+C
 {
     SendInput "^c"
-    ; 8 copy @#auto
+    ; 8 copy @#sub.auto
 }
 NumpadUp & NumLock:: ; Ctrl+X
 {
     SendInput "^x"
-    ; 8+N cut @#auto
+    ; 8+N cut @#sub.auto
 }
 NumpadPgUp:: ; Ctrl+V
 {
     SendInput "^v"
-    ; 9 paste @#auto
+    ; 9 paste @#sub.auto
 }
 NumpadPgUp & NumpadSub::
 {
@@ -115,36 +115,36 @@ NumpadPgUp & NumpadSub::
         SendInput "{Ctrl down}"
         SendInput "{PgDn}"
         SendInput "{Ctrl up}"
-        ; 9- next tab @#auto
+        ; 9- next tab @#sub.auto
     }
 }
 
 *NumpadLeft::
 {
     SendInput "{Ctrl down}"
-    ; 4 Ctrl @#auto
+    ; 4 Ctrl @#sub.auto
 }
 *NumpadLeft Up::
 {
     SendInput "{Ctrl up}"
-    ; 4 Ctrl Up @#auto
+    ; 4 Ctrl Up @#sub.auto
 }
 
 *NumpadClear:: ; left click
 {
     SendInput "{LButton}"
-    ; 5 left click @#auto
+    ; 5 left click @#sub.auto
 }
 
 *NumpadRight::
 {
     SendInput "{Shift down}"
-    ; 6 Shift @#auto
+    ; 6 Shift @#sub.auto
 }
 *NumpadRight Up::
 {
     SendInput "{Shift up}"
-    ; 6 Shift up @#auto
+    ; 6 Shift up @#sub.auto
 }
 
 ; you should use $ prefix for preventing triggering SendInput call itself
@@ -154,7 +154,7 @@ $NumpadAdd::
         SendInput "{NumpadAdd}"
     } else {
         MouseClick "left", , , 2
-        ; + double click @#auto
+        ; + double click @#sub.auto
     }
 }
 NumpadAdd & NumLock::
@@ -162,40 +162,40 @@ NumpadAdd & NumLock::
   SendInput "{Ctrl down}"
   SendInput "a"
   SendInput "{Ctrl up}"
-  ; +N select all @#auto
+  ; +N select all @#sub.auto
 }
 
 NumpadEnd::
 {
     MouseClick "WD", , , 2
-    ; 1 wheel down @#auto
+    ; 1 wheel down @#sub.auto
 }
 ~NumpadEnd & NumLock::
 {
     SendInput "{PgDn}"
-    ; 1+N pageDown @#auto
+    ; 1+N pageDown @#sub.auto
 }
 
 NumpadDown::
 {
     SendInput "{Home}"
-    ; 2 Home @#auto
+    ; 2 Home @#sub.auto
 }
 NumpadDown & NumLock::
 {
     SendInput "{End}"
-    ; 2+N End @#auto
+    ; 2+N End @#sub.auto
 }
 
 NumpadPgDn::
 {
     MouseClick "WU", , , 2
-    ; 3 wheel up @#auto
+    ; 3 wheel up @#sub.auto
 }
 ~NumpadPgDn & NumLock::
 {
     SendInput "{PgUp}"
-    ; 3+N pageUp @#auto
+    ; 3+N pageUp @#sub.auto
 }
 
 $NumpadEnter:: ; right click
@@ -204,7 +204,7 @@ $NumpadEnter:: ; right click
         SendInput "{NumpadEnter}"
     } else {
         SendInput "{RButton}"
-        ; En right click @#auto
+        ; En right click @#sub.auto
     }
 }
 
@@ -218,7 +218,7 @@ check_counter() {
         MouseGetPos &xpos, &ypos
         MouseMove scroll_x, ypos
         DllCall("SetCursorPos", "int", scroll_x, "int", ypos)
-        ; 0 MoveToScrollBar @#auto
+        ; 0 MoveToScrollBar @#sub.auto
     } else if (Numpad0_count == 2) {
     }
     Numpad0_count := 0
@@ -228,7 +228,7 @@ NumpadIns & NumLock::
 {
     if WinExist("ahk_exe Everything.exe") {
         WinActivate("ahk_exe Everything.exe")
-        ; 0+N Everything @#auto
+        ; 0+N Everything @#sub.auto
     }
 }
 
@@ -237,7 +237,7 @@ NumpadIns Up::
     global Numpad0_count
     Numpad0_count += 1
     SetTimer check_counter, -50
-    ; 0 Numpad0 @#auto
+    ; 0 Numpad0 @#sub.auto
 }
 
 global is_NumDel_pressed := False
@@ -247,7 +247,7 @@ global is_NumDel_pressed := False
     if (!is_NumDel_pressed) {
         is_NumDel_pressed := True
         MouseClick "left", , , 1, , "D"
-        ; . drag start @#auto
+        ; . drag start @#sub.auto
     }
 }
 *NumpadDel Up::
@@ -255,5 +255,5 @@ global is_NumDel_pressed := False
     global is_NumDel_pressed
     MouseClick "left", , , 1, , "U"
     is_NumDel_pressed := False
-    ; . drag end @#auto
+    ; . drag end @#sub.auto
 }
