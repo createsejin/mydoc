@@ -97,7 +97,7 @@
   "window.commandCenter": false,
   "maui.configuration.androidSdkPreferredPath": "C:\\Program Files (x86)\\Android\\android-sdk",
   "maui.configuration.debugVerbosity": "detailed",
-  "editor.minimap.autohide": true,
+  "editor.minimap.autohide": "mouseover",
   "window.zoomLevel": 1.15,
   "redhat.telemetry.enabled": false,
   "vscode-ahk-plus.compilePath": "C:\\Program Files\\AutoHotkey\\Compiler\\Ahk2Exe.exe",
@@ -125,5 +125,14 @@
     "indentString": "  ",
     "maxPreserveNewlines": 2,
     "wrapLineLength": 120
+  },
+  "chat.instructionsFilesLocations": {
+    ".github/instructions": true,
+    "C:\\Users\\creat\\AppData\\Local\\Temp\\postman-http-request-post-response.instructions.md": true,
+    "C:\\Users\\creat\\AppData\\Local\\Temp\\postman-http-request-pre-request.instructions.md": true,
+    "C:\\Users\\creat\\AppData\\Local\\Temp\\postman-collections-post-response.instructions.md": true,
+    "C:\\Users\\creat\\AppData\\Local\\Temp\\postman-collections-pre-request.instructions.md": true,
+    "C:\\Users\\creat\\AppData\\Local\\Temp\\postman-folder-post-response.instructions.md": true,
+    "C:\\Users\\creat\\AppData\\Local\\Temp\\postman-folder-pre-request.instructions.md": true
   }
 }

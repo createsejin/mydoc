@@ -148,7 +148,6 @@ workspaces:
   - name: "main3"
     display_name: "main3"
     bind_to_monitor: 1
-    #Workspaces @#glaze
   - name: "mydoc"
     display_name: "mydoc"
     bind_to_monitor: 1
@@ -161,6 +160,10 @@ workspaces:
   - name : "vam"
     display_name: "Vam"
     bind_to_monitor: 1
+  - name : "risu"
+    display_name: "RisuAI"
+    bind_to_monitor: 1
+    #Workspaces @#glaze
 
 window_rules:
   - commands: ["ignore"]
@@ -190,6 +193,7 @@ window_rules:
         window_class: { regex: 'HwndWrapper\[PowerToys\.PowerAccent.*?\]' }
 
       - window_process: { equals: "PotPlayer64" }
+      - window_title: { equals: "Virtual Desktop Streamer" }
 
   - commands: ["set-floating"]
     match:
@@ -206,20 +210,19 @@ window_rules:
       - window_process: { equals: "setup" }
         window_class: { regex: "HwndWrapper*" }
       - window_process: { equals: "perfmon" }
+      - window_process: { equals: "FreeFileSync_x64" }
       - window_process: { equals: "AutoHotkeyUX" }
       - window_title: { equals: "Window Spy for AHKv2" }
       - window_title: { equals: "Galaxy Buds" }
       - window_process: { equals: "Ahk2Exe" }
       - window_process: { equals: "Eraser" }
-      - window_title: { equals: "Virtual Desktop Streamer" }
+      - window_process: { equals: "notepad++" }
       - window_title: { equals: "계산기" }
       - window_process: { equals: "Modern CSV" }
         window_class: { equals: "Qt663QWindowIcon" }
+      - window_process: { equals: "MEGAsync" }
       #SetFloating@#glaze
 
-  # - commands: ["move --workspace cave"?]
-  #   match:
-  #     - window_title: { equals: "TheCave" }
   - commands: ["set-tiling"]
     match:
       - window_title: { equals: "TheCaveLogger" }
@@ -229,7 +232,10 @@ window_rules:
   - commands: ["move --workspace vam"]
     match:
       - window_process: { equals: "VaM" }
-
+  - commands: ["move --workspace risu"]
+    match:
+      - window_process: { equals: "RisuAI" }
+    #WorkspaceMoveRule@#glaze
     #WindowRules @#glaze
 
 binding_modes:
@@ -402,6 +408,10 @@ keybindings:
     
   - commands: ["shell-exec C:/Program Files/Modern CSV/Modern CSV.exe"]
     bindings: ["shift+insert+i"]
+
+  - commands: ["shell-exec C:/Program Files/RisuAI/RisuAI.exe"]
+    bindings: ["shift+insert+r"]
+
     #ExecProgram@#glaze
 
   # Focus the next/previous workspace defined in `workspaces` config.
@@ -453,7 +463,6 @@ keybindings:
     bindings: ["insert+s"]
   - commands: ["focus --workspace main3"]
     bindings: ["insert+d"]
-    #FocusWorkspace @#glaze
   - commands: ["focus --workspace mydoc"]
     bindings: ["insert+m"]
   - commands: ["focus --workspace whiteboard"]
@@ -462,6 +471,9 @@ keybindings:
     bindings: ["insert+u"]
   - commands: ["focus --workspace vam"]
     bindings: ["insert+v"]
+  - commands: ["focus --workspace risu"]
+    bindings: ["insert+r"]
+    #FocusWorkspace @#glaze
 
   # Move focused window to a workspace defined in `workspaces` config.
   - commands: ["move --workspace 1", "focus --workspace 1"]
@@ -510,4 +522,6 @@ keybindings:
     bindings: ["rshift+oem_pipe+u"]
   - commands: ["move --workspace vam", "focus --workspace vam"]
     bindings: ["rshift+oem_pipe+v"]
+  - commands: ["move --workspace risu", "focus --workspace risu"]
+    bindings: ["rshift+oem_pipe+r"]
     #MoveToWorkspce @#glaze

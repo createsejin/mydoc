@@ -132,6 +132,33 @@ NumpadPgUp & BackSpace::
   }
 }
 
+; RisuAI asset image 자동 숫자 adder 단축키
+NumpadPgup & NumLock:: ; Yuriko.maid.incoming_kiss.1를 복사한뒤, 새 asset을 선택해 이 단축키를 누르면
+; Yuriko.maid.incoming_kiss.2로 만들어준다.
+{
+  clipboardText := A_Clipboard ; 현재 카피된 클립보드의 내용을 변수에 담는다.
+  ; .1로 끝나는 텍스트가 매치된경우
+  ; 첫번째 캡쳐그룹은 keyword, 두번째 캡쳐그룹은 number를 나타낸다.
+  if RegExMatch(clipboardText, "(.*)\.(\d+)$", &Match)
+  {
+    keyword := Match[1]
+    numberStr := Match[2]
+
+    ; 캡쳐한 숫자에서 +1을 해준다.
+    newNumber := Integer(numberStr) + 1
+
+    ; 기존의 keyword와 새로 +1된 숫자를 하나의 텍스트로 합친다.
+    newFileName := keyword . "." . newNumber
+    A_Clipboard := newFileName ; clipboard에 새로 만들어진 텍스트를 넣어준다.
+
+    OutputDebug newFileName ; for debugging
+    Sleep 50 ; Ctrl+V 하기 전 clipboad update할 시간을 잠시 준다.
+    SendInput "^v"
+    SendInput "{Enter}"
+    ;9+N assetAdder@#auto
+  }
+}
+
 *NumpadLeft::
 {
   SendInput "{Ctrl down}"
@@ -332,6 +359,13 @@ $NumpadEnter:: ; right click
   }
 }
 
+NumpadEnter & BackSpace::
+{
+  OutputDebug "press"
+  SendInput "{Enter}"
+  ;En+B Enter@#auto
+}
+
 global Numpad0_count := 0 ; counting Numpad0 pressed for detacting double Numpad0 pressing
 check_counter() {
   global Numpad0_count
@@ -347,7 +381,7 @@ check_counter() {
     MouseGetPos &xpos, &ypos
     MouseMove scroll_x, ypos
     DllCall("SetCursorPos", "int", scroll_x, "int", ypos)
-    ; 00 MoveToScrollBar @#auto
+    ;00 MoveToScrollBar @#auto
   }
   Numpad0_count := 0
 }
@@ -360,6 +394,7 @@ check_counter() {
   MouseGetPos &xpos, &ypos
   MouseMove scroll_x, ypos
   DllCall("SetCursorPos", "int", scroll_x, "int", ypos)
+  ;MoveToScrollBarByKey @#auto
 }
 
 NumpadIns & NumLock::
@@ -419,4 +454,22 @@ $^j:: {
 }
 $^k:: {
   AlacrittyMoveFocus("k")
+}
+
+;F2 VeraCryptTabTab@#auto
+F2:: {
+  if WinGetProcessName("A") == "VeraCrypt.exe" {
+    SendInput "{Tab}"
+    SendInput "{Tab}"
+    SendInput "{Tab}"
+    SendInput "{Tab}"
+    SendInput "{Space}"
+
+    SendInput "{Shift down}"
+    SendInput "{Tab}"
+    SendInput "{Tab}"
+    SendInput "{Tab}"
+    SendInput "{Tab}"
+    SendInput "{Shift up}"
+  }
 }

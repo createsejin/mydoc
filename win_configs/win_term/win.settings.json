@@ -460,6 +460,18 @@
                 "name": "Anaconda Prompt (anaconda3)",
                 "icon": "C:\\Users\\creat\\anaconda3\\Menu\\anaconda_prompt.ico",
                 "startingDirectory": "C:\\Users\\creat"
+            },
+            {
+                "commandline": "%WINDIR%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -ExecutionPolicy ByPass -NoExit -Command \"& 'C:\\pinokio\\bin\\miniconda\\shell\\condabin\\conda-hook.ps1' ; conda activate 'C:\\pinokio\\bin\\miniconda' \"",
+                "name": "Anaconda PowerShell Prompt (miniconda)",
+                "icon": "C:\\pinokio\\bin\\miniconda\\Menu\\anaconda_powershell_prompt.ico",
+                "startingDirectory": "C:\\Users\\creat"
+            },
+            {
+                "commandline": "%WINDIR%\\System32\\cmd.exe \"/K\" C:\\pinokio\\bin\\miniconda\\Scripts\\activate.bat C:\\pinokio\\bin\\miniconda",
+                "name": "Anaconda Prompt (miniconda)",
+                "icon": "C:\\pinokio\\bin\\miniconda\\Menu\\anaconda_prompt.ico",
+                "startingDirectory": "C:\\Users\\creat"
             }
         ]
     },

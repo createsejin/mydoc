@@ -339,7 +339,7 @@ Size=85
 TextColor=000080FF
 [Layer15]
 Name=
-Text=32GB RAM
+Text=64GB RAM
 PositionX=18
 PositionY=40
 ExtentX=38
@@ -361,7 +361,7 @@ Size=85
 TextColor=00FF8080
 [Layer17]
 Name=
-Text=560.94
+Text=572.60
 PositionX=18
 PositionY=58
 ExtentX=38
