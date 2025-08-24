@@ -193,6 +193,7 @@ window_rules:
         window_class: { regex: 'HwndWrapper\[PowerToys\.PowerAccent.*?\]' }
 
       - window_process: { equals: "PotPlayer64" }
+      - window_process: { equals: "gimp-3" }
       - window_title: { equals: "Virtual Desktop Streamer" }
 
   - commands: ["set-floating"]

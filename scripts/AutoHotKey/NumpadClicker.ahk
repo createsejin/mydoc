@@ -1,5 +1,8 @@
 ﻿#Requires AutoHotkey v2.0
 
+; asset number auto adder에 사용되는 정규식.
+global asset_regex := "^(Yuriko\.maid\.)(.*)\.(\d+)$"
+
 NumLock::SC02B
 Pause::NumLock
 CapsLock::Insert
@@ -94,11 +97,22 @@ NumpadHome & NumLock::
   }
 }
 
+global g_baseText := "" ; asset 형식의 텍스트의 경우 별도로 저장하는 글로벌 변수
 NumpadUp:: ; Ctrl+C
 {
+  global g_baseText
+  global asset_regex
   SendInput "^c"
+  Sleep 50 ; copy가 일어난 후 clipboard update를 위해 일정시간 기다린다.
+  clipboardText := A_Clipboard ; 현재 카피된 클립보드의 내용을 변수에 담는다.
+  ; 만약 copy된 텍스트가 asset 형식이라면,
+  if RegExMatch(clipboardText, asset_regex, &Match) {
+    ; 해당 텍스트를 글로벌 변수 g_baseText에 저장한다.
+    g_baseText := clipboardText
+  }
   ; 8 copy @#auto
 }
+
 NumpadUp & NumLock:: ; Ctrl+X
 {
   SendInput "^x"
@@ -136,25 +150,29 @@ NumpadPgUp & BackSpace::
 NumpadPgup & NumLock:: ; Yuriko.maid.incoming_kiss.1를 복사한뒤, 새 asset을 선택해 이 단축키를 누르면
 ; Yuriko.maid.incoming_kiss.2로 만들어준다.
 {
-  clipboardText := A_Clipboard ; 현재 카피된 클립보드의 내용을 변수에 담는다.
-  ; .1로 끝나는 텍스트가 매치된경우
-  ; 첫번째 캡쳐그룹은 keyword, 두번째 캡쳐그룹은 number를 나타낸다.
-  if RegExMatch(clipboardText, "(.*)\.(\d+)$", &Match)
-  {
-    keyword := Match[1]
-    numberStr := Match[2]
+  ; 이전에 저장한 g_baseText를 불러온다.
+  global g_baseText
+  global asset_regex
+  clipboardText := g_baseText
+  ; g_baseText가 asset_regex 텍스트로 매치된경우
+  ; 첫번째 캡쳐그룹은 character prefix, 두번째 캡쳐그룹은 keyword, 세번째는 number를 나타낸다.
+  if RegExMatch(clipboardText, asset_regex, &Match) {
+    prefix := Match[1] ; Yuriko.maid.
+    keyword := Match[2] ; smile
+    numberStr := Match[3] ; 2
 
     ; 캡쳐한 숫자에서 +1을 해준다.
     newNumber := Integer(numberStr) + 1
 
     ; 기존의 keyword와 새로 +1된 숫자를 하나의 텍스트로 합친다.
-    newFileName := keyword . "." . newNumber
+    newFileName := prefix . keyword . "." . newNumber
+    g_baseText := newFileName ; g_baseText에 새로 만들어진 텍스트를 업데이트 해준다.
     A_Clipboard := newFileName ; clipboard에 새로 만들어진 텍스트를 넣어준다.
 
-    OutputDebug newFileName ; for debugging
+    ; OutputDebug newFileName ; for debugging
     Sleep 50 ; Ctrl+V 하기 전 clipboad update할 시간을 잠시 준다.
-    SendInput "^v"
-    SendInput "{Enter}"
+    SendInput "^v" ; paste 실행
+    SendInput "{Enter}" ; Enter
     ;9+N assetAdder@#auto
   }
 }
@@ -457,7 +475,7 @@ $^k:: {
 }
 
 ;F2 VeraCryptTabTab@#auto
-F2:: {
+$F2:: {
   if WinGetProcessName("A") == "VeraCrypt.exe" {
     SendInput "{Tab}"
     SendInput "{Tab}"
@@ -471,5 +489,41 @@ F2:: {
     SendInput "{Tab}"
     SendInput "{Tab}"
     SendInput "{Shift up}"
+  } else {
+    SendInput "{F2}"
   }
 }
+
+; 초기 script loading시 마이크를 off 시킨다.
+SoundSetMute(true, , "마이크(MP300)")
+
+Volume_Mute:: { ;를 누르면 마이크가 켜진다.
+  SoundSetMute(false, , "마이크(MP300)")
+}
+
+Volume_Mute up:: { ;를 떼면 마이크가 꺼진다.
+  SoundSetMute(true, , "마이크(MP300)")
+  ;PushToTalk@#auto
+}
+
+device_listing() { ; device 목록 출력
+  default_device := SoundGetName()
+  OutputDebug "default device is " default_device
+
+  device := 1
+  device_num := 1
+  loop {
+    try {
+      device := SoundGetName(, device_num)
+      OutputDebug "device" device_num " is " device
+      device_num++
+    } catch TargetError {
+      OutputDebug "all deivce scanned"
+      break
+    }
+  }
+
+  mp300 := SoundGetName(, "스피커(MP300)")
+  OutputDebug "\nmp300 = " mp300
+}
+;SetMute@#auto
