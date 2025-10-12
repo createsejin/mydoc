@@ -134,5 +134,8 @@
     "C:\\Users\\creat\\AppData\\Local\\Temp\\postman-collections-pre-request.instructions.md": true,
     "C:\\Users\\creat\\AppData\\Local\\Temp\\postman-folder-post-response.instructions.md": true,
     "C:\\Users\\creat\\AppData\\Local\\Temp\\postman-folder-pre-request.instructions.md": true
-  }
+  },
+  "postman.mcp.notifications.postmanMCP": false,
+  "accessibility.signalOptions.volume": 0,
+  "python.defaultInterpreterPath": "c:\\msys64\\ucrt64\\bin\\python.exe"
 }

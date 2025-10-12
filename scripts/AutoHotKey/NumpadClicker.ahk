@@ -1,4 +1,5 @@
 ﻿#Requires AutoHotkey v2.0
+#SingleInstance Force ; 스크립트가 한번만 실행되도록 보장한다.
 
 ; asset number auto adder에 사용되는 정규식.
 global asset_regex := "^(Yuriko\.maid\.)(.*)\.(\d+)$"
@@ -489,21 +490,92 @@ $F2:: {
     SendInput "{Tab}"
     SendInput "{Tab}"
     SendInput "{Shift up}"
+    SendInput "{vk15sc138}"
   } else {
     SendInput "{F2}"
   }
 }
 
-; 초기 script loading시 마이크를 off 시킨다.
-SoundSetMute(true, , "마이크(MP300)")
-
-Volume_Mute:: { ;를 누르면 마이크가 켜진다.
-  SoundSetMute(false, , "마이크(MP300)")
+SafeSoundMute(MuteState, DeviceName) {
+  ; 해당 device를 찾지 못하더라도 그냥 실행 흐름을 넘겨주는 함수다.
+  try {
+    SoundSetMute(MuteState, , DeviceName)
+    return true
+  } catch {
+    ; device를 찾지 못할시 false를 return하고 함수가 종료된다.
+    return false
+  }
 }
 
-Volume_Mute up:: { ;를 떼면 마이크가 꺼진다.
-  SoundSetMute(true, , "마이크(MP300)")
+global micName := "마이크(MP300)" ; 내 마이크의 device name이다.
+global pushToTalk := true ; push to talk 기능 toggle flag
+
+; 초기 script loading시 마이크를 off 시킨다.
+SafeSoundMute(true, micName)
+
+Volume_Mute:: ; 마이크의 Push to talk mode와 Always on mode를 토글하는 기능
+{
+  global micName
+  global pushToTalk
+
+  ; pushToTalk 상태를 반전한다.
+  pushToTalk := !pushToTalk
+
+  if pushToTalk {
+    ; push to talk mode에서는 먼저 마이크를 Mute 시킨다.
+    SafeSoundMute(true, micName)
+    ShowOverlay("Mic Push to Talk mode")
+  } else {
+    ; always on mode에서는 마이크를 다시 On 시킨다.
+    SafeSoundMute(false, micName)
+    ShowOverlay("Mic Always On mode")
+  }
+  ;MicModeToggle@#auto
+}
+
+F3:: { ;를 누르면 마이크가 켜진다.
+  global pushToTalk
+  ; push to talk mode에서만 아래 기능이 동작한다.
+  if pushToTalk {
+    SafeSoundMute(false, "마이크(MP300)")
+  }
+}
+
+F3 up:: { ;를 떼면 마이크가 꺼진다.
+  global pushToTalk
+  if pushToTalk {
+    SafeSoundMute(true, "마이크(MP300)")
+  }
   ;PushToTalk@#auto
+}
+
+global g_overlayGui := Gui()
+
+ShowOverlay(text) {
+  global g_overlayGui
+
+  ; 만약 이전에 표시된 오버레이가 아직 있다면 먼저 제거
+  if IsObject(g_overlayGui)
+    g_overlayGui.Destroy()
+
+  ; 1. 새로운 Gui 객체 생성
+  g_overlayGui := Gui()
+  g_overlayGui.Opt("+AlwaysOnTop -Caption +ToolWindow") ; 항상 위에, 제목 표시줄 없음, 작업 표시줄에 안 나옴
+  g_overlayGui.BackColor := "EEAA99" ; (선택사항) 배경색 설정
+  g_overlayGui.SetFont("s32 bold", "맑은 고딕") ; 폰트 크기, 굵게, 글꼴 설정
+
+  ; 2. 텍스트 컨트롤 추가
+  g_overlayGui.Add("Text", "cWhite", text) ; 흰색 글씨로 텍스트 추가
+
+  ; 3. 배경을 투명하게 만듦 (글자만 보이게)
+  g_overlayGui.BackColor := "EEAA99" ; 0(투명) ~ 255(불투명)
+  WinSetTransColor("EEAA99", g_overlayGui)
+
+  ; 4. Gui의 크기를 텍스트에 맞게 조절
+  g_overlayGui.Show("AutoSize Center NA") ; 자동 크기, 화면 중앙, 활성화 안 함
+
+  ; 5. 2초 후에 Gui를 파괴(제거)하는 타이머 설정
+  SetTimer(() => g_overlayGui.Destroy(), -1500)
 }
 
 device_listing() { ; device 목록 출력
@@ -526,4 +598,4 @@ device_listing() { ; device 목록 출력
   mp300 := SoundGetName(, "스피커(MP300)")
   OutputDebug "\nmp300 = " mp300
 }
-;SetMute@#auto
+;deviceListing@#auto

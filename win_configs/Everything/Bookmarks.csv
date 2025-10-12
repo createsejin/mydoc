@@ -1,4 +1,5 @@
 Name,Case,Whole Word,Path,Diacritic,Regex,Sort,Descending,Filter,Search,Index,File List,Host,Link Type,Macro,Key,View
 "@#vam",0,0,0,0,0,"Name",0,"EVERYTHING","@#vam !H: !C:\Users\bae",0,"","",1,,,0
-"unwrap",0,0,0,0,0,"Name",0,"EVERYTHING","Q:\s\voice\(1)unwrap ext:zip|ext:exe|ext:rar",0,"","",1,,,0
+"unwrap",0,0,0,0,0,"Size",1,"EVERYTHING","Q:\s\voice\(1)unwrap ext:zip|ext:exe|ext:rar",0,"","",1,,,0
 "vam custom",0,0,0,0,0,"Date Created",1,"EVERYTHING","D:\vam_resources\vam !D:\vam_resources\vam\Saves\PluginData\JayJayWon\BrowserAssist dc:>=2024-10-16T",0,"","",1,,,0
+"Yuriko pics",0,0,0,0,0,"Name",0,"EVERYTHING","""Q:\s\NAI\Project-Yuriko"" pic: !""Q:\s\NAI\Project-Yuriko\.output"" !""Q:\s\NAI\Project-Yuriko\main_img""",0,"","",1,,,0
