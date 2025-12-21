@@ -121,6 +121,9 @@ workspaces:
   - name: "8"
   - name: "9"
   - name: "0"
+  - name: "background"
+    display_name: "Background"
+    bind_to_monitor: 1
   - name: "t"
     display_name: "Terminal"
     bind_to_monitor: 2
@@ -151,8 +154,8 @@ workspaces:
   - name: "mydoc"
     display_name: "mydoc"
     bind_to_monitor: 1
-  - name: "whiteboard"
-    display_name: "WhiteBoard"
+  - name: "VarManager"
+    display_name: "VarManager"
     bind_to_monitor: 1
   - name: "sound"
     display_name: "Sound"
@@ -162,6 +165,12 @@ workspaces:
     bind_to_monitor: 1
   - name : "risu"
     display_name: "RisuAI"
+    bind_to_monitor: 1
+  - name : "discord"
+    display_name: "Discord"
+    bind_to_monitor: 0
+  - name : "gta5"
+    display_name: "GTA5"
     bind_to_monitor: 1
     #Workspaces @#glaze
 
@@ -176,9 +185,9 @@ window_rules:
       - window_process: { equals: "FolderSizeExplorer" }
       - window_process: { equals: "NetFile" }
       - window_process: { equals: "NetTransfer" }
-      - window_process: { equals: "gta5" }
-      - window_process: { equals: "VaM" }
-      - window_process: { equals: "varManager" }
+      # - window_process: { equals: "gta5" }
+      # - window_process: { equals: "VaM" }
+      # - window_process: { equals: "varManager" }
       #Ignore@#glaze
 
       # Ignores picture-in-picture windows for browsers.
@@ -222,6 +231,8 @@ window_rules:
       - window_process: { equals: "Modern CSV" }
         window_class: { equals: "Qt663QWindowIcon" }
       - window_process: { equals: "MEGAsync" }
+      - window_process: { equals: "varManager" }
+      - window_process: { equals: "SocialClubHelper" }
       #SetFloating@#glaze
 
   - commands: ["set-tiling"]
@@ -236,6 +247,12 @@ window_rules:
   - commands: ["move --workspace risu"]
     match:
       - window_process: { equals: "RisuAI" }
+  - commands: ["move --workspace discord"]
+    match:
+      - window_process: { equals: "Discord" }
+  - commands: ["move --workspace gta5"]
+    match:
+      - window_process: { equals: "GTA5_Enhanced" }
     #WorkspaceMoveRule@#glaze
     #WindowRules @#glaze
 
@@ -385,11 +402,11 @@ keybindings:
   - commands:
       ["shell-exec C:/Program Files/KeePass Password Safe 2/KeePass.exe"]
     bindings: ["shift+insert+k"]
-  - commands:
-      [
-        "shell-exec C:/Program Files/WindowsApps/Microsoft.ScreenSketch_11.2409.25.0_x64__8wekyb3d8bbwe/SnippingTool/SnippingTool.exe",
-      ]
-    bindings: ["shift+insert+g"]
+  # - commands:
+  #     [
+  #       "shell-exec C:/Program Files/WindowsApps/Microsoft.ScreenSketch_11.2409.25.0_x64__8wekyb3d8bbwe/SnippingTool/SnippingTool.exe",
+  #     ]
+  #   bindings: ["shift+insert+g"]
   - commands:
       [
         "shell-exec alacritty --config-file C:\\Users\\creat\\mydoc\\win_configs\\alacritty\\alacritty.pwsh.toml",
@@ -446,6 +463,8 @@ keybindings:
     bindings: ["insert+9"]
   - commands: ["focus --workspace 0"]
     bindings: ["insert+0"]
+  - commands: ["focus --workspace background"]
+    bindings: ["insert+c"]
   - commands: ["focus --workspace t"]
     bindings: ["insert+t"]
   - commands: ["focus --workspace ob"]
@@ -463,10 +482,12 @@ keybindings:
   - commands: ["focus --workspace main2"]
     bindings: ["insert+s"]
   - commands: ["focus --workspace main3"]
+    bindings: ["insert+x"]
+  - commands: ["focus --workspace discord"]
     bindings: ["insert+d"]
   - commands: ["focus --workspace mydoc"]
     bindings: ["insert+m"]
-  - commands: ["focus --workspace whiteboard"]
+  - commands: ["focus --workspace VarManager"]
     bindings: ["insert+b"]
   - commands: ["focus --workspace sound"]
     bindings: ["insert+u"]
@@ -474,6 +495,8 @@ keybindings:
     bindings: ["insert+v"]
   - commands: ["focus --workspace risu"]
     bindings: ["insert+r"]
+  - commands: ["focus --workspace gta5"]
+    bindings: ["insert+g"]
     #FocusWorkspace @#glaze
 
   # Move focused window to a workspace defined in `workspaces` config.
@@ -497,6 +520,8 @@ keybindings:
     bindings: ["rshift+oem_pipe+9"]
   - commands: ["move --workspace 0", "focus --workspace 0"]
     bindings: ["rshift+oem_pipe+0"]
+  - commands: ["move --workspace background", "focus --workspace background"]
+    bindings: ["rshift+oem_pipe+c"]
   - commands: ["move --workspace t", "focus --workspace t"]
     bindings: ["rshift+oem_pipe+t"]
   - commands: ["move --workspace main1", "focus --workspace main1"]
@@ -504,6 +529,8 @@ keybindings:
   - commands: ["move --workspace main2", "focus --workspace main2"]
     bindings: ["rshift+oem_pipe+s"]
   - commands: ["move --workspace main3", "focus --workspace main3"]
+    bindings: ["rshift+oem_pipe+x"]
+  - commands: ["move --workspace discord", "focus --workspace discord"]
     bindings: ["rshift+oem_pipe+d"]
   - commands: ["move --workspace ob", "focus --workspace ob"]
     bindings: ["rshift+oem_pipe+z"]
@@ -517,7 +544,7 @@ keybindings:
     bindings: ["rshift+oem_pipe+f"]
   - commands: ["move --workspace mydoc", "focus --workspace mydoc"]
     bindings: ["rshift+oem_pipe+m"]
-  - commands: ["move --workspace whiteboard", "focus --workspace whiteboard"]
+  - commands: ["move --workspace VarManager", "focus --workspace VarManager"]
     bindings: ["rshift+oem_pipe+b"]
   - commands: ["move --workspace sound", "focus --workspace sound"]
     bindings: ["rshift+oem_pipe+u"]
@@ -525,4 +552,6 @@ keybindings:
     bindings: ["rshift+oem_pipe+v"]
   - commands: ["move --workspace risu", "focus --workspace risu"]
     bindings: ["rshift+oem_pipe+r"]
+  - commands: ["move --workspace gta5", "focus --workspace gta5"]
+    bindings: ["rshift+oem_pipe+g"]
     #MoveToWorkspce @#glaze

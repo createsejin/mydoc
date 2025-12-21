@@ -389,10 +389,18 @@ global Numpad0_count := 0 ; counting Numpad0 pressed for detacting double Numpad
 check_counter() {
   global Numpad0_count
   if (Numpad0_count == 1) {
-    SendInput "{Ctrl down}"
-    SendInput "z"
-    SendInput "{Ctrl up}"
-    ; 0 Ctrl+Z @#auto
+    if GetKeyState("NumpadDel", "P") {
+      SendInput "{Ctrl down}"
+      SendInput "c"
+      SendInput "c"
+      SendInput "{Ctrl up}"
+      ;0+. Ctrl+CC @#auto
+    } else {
+      SendInput "{Ctrl down}"
+      SendInput "z"
+      SendInput "{Ctrl up}"
+      ;0 Ctrl+Z @#auto
+    }
   } else if (Numpad0_count == 2) {
     CoordMode "Mouse", "Screen"
     WinGetClientPos &x, &y, &width, &height, "A"
@@ -532,19 +540,51 @@ Volume_Mute:: ; 마이크의 Push to talk mode와 Always on mode를 토글하는
   }
   ;MicModeToggle@#auto
 }
-
-F3:: { ;를 누르면 마이크가 켜진다.
+global MuteMic := false ; mic를 off 시킬지 여부를 저장하는 변수
+Volume_Down::
+{
+  global micName
+  global MuteMic
   global pushToTalk
-  ; push to talk mode에서만 아래 기능이 동작한다.
+
   if pushToTalk {
-    SafeSoundMute(false, "마이크(MP300)")
+    return
+  }
+
+  MuteMic := !MuteMic
+
+  if MuteMic {
+    if SafeSoundMute(true, micName) {
+      ShowOverlay("Mic off")
+    }
+  } else {
+    if SafeSoundMute(false, micName) {
+      ShowOverlay("Mic on")
+      ;MuteMic@#auto
+    }
   }
 }
 
-F3 up:: { ;를 떼면 마이크가 꺼진다.
+$F3:: { ;를 누르면 마이크가 켜진다.
+  global pushToTalk
+  ; push to talk mode에서만 아래 기능이 동작한다.
+  if pushToTalk {
+    if !SafeSoundMute(false, "마이크(MP300)") {
+      SendInput "{F3 down}"
+    }
+  } else {
+    SendInput "{F3 down}"
+  }
+}
+
+$F3 up:: { ;를 떼면 마이크가 꺼진다.
   global pushToTalk
   if pushToTalk {
-    SafeSoundMute(true, "마이크(MP300)")
+    if !SafeSoundMute(true, "마이크(MP300)") {
+      SendInput "{F3 up}"
+    }
+  } else {
+    SendInput "{F3 up}"
   }
   ;PushToTalk@#auto
 }

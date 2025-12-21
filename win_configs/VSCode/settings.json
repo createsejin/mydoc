@@ -5,7 +5,6 @@
   "editor.fontVariations": true,
   "editor.fontWeight": "400",
   "git.autofetch": true,
-  "github.copilot.advanced": {},
   "github.copilot.enable": {
     "*": false,
     "plaintext": false,
@@ -44,7 +43,6 @@
   ],
   "editor.detectIndentation": false,
   "editor.insertSpaces": true,
-  "editor.tabSize": 2,
   "editor.indentSize": "tabSize",
   "vim.autoSwitchInputMethod.enable": true,
   "vim.vimrc.enable": true,
@@ -134,8 +132,10 @@
     "C:\\Users\\creat\\AppData\\Local\\Temp\\postman-collections-pre-request.instructions.md": true,
     "C:\\Users\\creat\\AppData\\Local\\Temp\\postman-folder-post-response.instructions.md": true,
     "C:\\Users\\creat\\AppData\\Local\\Temp\\postman-folder-pre-request.instructions.md": true
-  },
+},
   "postman.mcp.notifications.postmanMCP": false,
   "accessibility.signalOptions.volume": 0,
-  "python.defaultInterpreterPath": "c:\\msys64\\ucrt64\\bin\\python.exe"
+  "python.defaultInterpreterPath": "c:\\msys64\\ucrt64\\bin\\python.exe",
+"github.copilot.nextEditSuggestions.enabled": true,
+"diffEditor.ignoreTrimWhitespace": true
 }
