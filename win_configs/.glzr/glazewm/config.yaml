@@ -185,6 +185,7 @@ window_rules:
       - window_process: { equals: "FolderSizeExplorer" }
       - window_process: { equals: "NetFile" }
       - window_process: { equals: "NetTransfer" }
+      - window_process: { equals: "cod23-cod" }
       # - window_process: { equals: "gta5" }
       # - window_process: { equals: "VaM" }
       # - window_process: { equals: "varManager" }
@@ -427,7 +428,7 @@ keybindings:
   - commands: ["shell-exec C:/Program Files/Modern CSV/Modern CSV.exe"]
     bindings: ["shift+insert+i"]
 
-  - commands: ["shell-exec C:/Program Files/RisuAI/RisuAI.exe"]
+  - commands: ["shell-exec C:/Users/creat/AppData/Local/RisuAI/RisuAI.exe"]
     bindings: ["shift+insert+r"]
 
     #ExecProgram@#glaze
