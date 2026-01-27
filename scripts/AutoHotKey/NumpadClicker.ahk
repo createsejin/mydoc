@@ -4,6 +4,32 @@
 ; asset number auto adder에 사용되는 정규식.
 global asset_regex := "^(Yuriko\.maid\.)(.*)\.(\d+)$"
 
+CheckCurrentComMode() {
+  filePath := A_ScriptDir "\current_com.txt"
+
+  try {
+    fileText := FileRead(filePath)
+
+    cleanText := Trim(fileText, " `t`n`r")
+
+    if (cleanText == "Main") {
+      OutputDebug "Main"
+      return 1
+    } else if (cleanText == "Sub") {
+      OutputDebug "Sub"
+      return 2
+      ;CheckCurrentComMode@#auto
+    } else {
+      OutputDebug "Mode: " cleanText
+      return 0
+    }
+  } catch as err {
+    ShowOverlay("Error: current_com.txt not found")
+    OutputDebug "File Read Error: " err.Message
+  }
+}
+global current_com := CheckCurrentComMode()
+
 NumLock::SC02B
 Pause::NumLock
 CapsLock::Insert
@@ -24,7 +50,7 @@ $NumpadDiv::
 NumpadDiv & NumLock::
 {
   SendInput "{F5}"
-  ; /+N refresh @#auto
+  ;/+N refresh @#auto
 }
 
 NumpadDiv & BackSpace::
@@ -35,7 +61,7 @@ NumpadDiv & BackSpace::
     SendInput "t"
     SendInput "{Ctrl up}"
     SendInput "{Shift up}"
-    ; /+B reopen tab @#auto
+    ;/+B reopen tab @#auto
   }
 }
 
@@ -45,13 +71,13 @@ $NumpadMult:: ; send Delete key
     SendInput "{NumpadMult}"
   } else {
     SendInput "{Delete}"
-    ; * Delete @#auto
+    ;* Delete @#auto
   }
 }
 NumpadMult & NumLock::
 {
   SendInput "{Shift}+{Delete}"
-  ; *+N PermanentDelete @#auto
+  ;*+N PermanentDelete @#auto
 }
 
 NumpadHome::
@@ -67,7 +93,7 @@ NumpadHome::
     SendInput "{Left down}"
     SendInput "{Left up}"
     SendInput "{Alt up}"
-    ; 7 go back @#auto
+    ;7 go back @#auto
   }
 }
 NumpadHome & Backspace::
@@ -83,7 +109,7 @@ NumpadHome & Backspace::
     SendInput "{Right down}"
     SendInput "{Right up}"
     SendInput "{Alt up}"
-    ; 7+B go forward @#auto
+    ;7+B go forward @#auto
   }
 }
 
@@ -94,7 +120,7 @@ NumpadHome & NumLock::
     SendInput "{Up down}"
     SendInput "{Up up}"
     SendInput "{Alt up}"
-    ; 7+N go to parent folder @#auto
+    ;7+N go to parent folder @#auto
   }
 }
 
@@ -111,13 +137,13 @@ NumpadUp:: ; Ctrl+C
     ; 해당 텍스트를 글로벌 변수 g_baseText에 저장한다.
     g_baseText := clipboardText
   }
-  ; 8 copy @#auto
+  ;8 copy @#auto
 }
 
 NumpadUp & NumLock:: ; Ctrl+X
 {
   SendInput "^x"
-  ; 8+N cut @#auto
+  ;8+N cut @#auto
 }
 NumpadUp & BackSpace::
 {
@@ -130,12 +156,12 @@ NumpadUp & BackSpace::
   SendInput "^a"
   SendInput "^c"
   SendInput "{Enter}"
-  ; 8+B RJ tweak @#auto
+  ;8+B RJ tweak @#auto
 }
 NumpadPgUp:: ; Ctrl+V
 {
   SendInput "^v"
-  ; 9 paste @#auto
+  ;9 paste @#auto
 }
 NumpadPgUp & BackSpace::
 {
@@ -143,7 +169,7 @@ NumpadPgUp & BackSpace::
     SendInput "{Ctrl down}"
     SendInput "{PgDn}"
     SendInput "{Ctrl up}"
-    ; 9+B next tab @#auto
+    ;9+B next tab @#auto
   }
 }
 
@@ -181,29 +207,29 @@ NumpadPgup & NumLock:: ; Yuriko.maid.incoming_kiss.1를 복사한뒤, 새 asset�
 *NumpadLeft::
 {
   SendInput "{Ctrl down}"
-  ; 4 Ctrl @#auto
+  ;4 Ctrl @#auto
 }
 *NumpadLeft Up::
 {
   SendInput "{Ctrl up}"
-  ; 4 Ctrl Up @#auto
+  ;4 Ctrl Up @#auto
 }
 
 *NumpadClear:: ; left click
 {
   SendInput "{LButton}"
-  ; 5 left click @#auto
+  ;5 left click @#auto
 }
 
 *NumpadRight::
 {
   SendInput "{Shift down}"
-  ; 6 Shift @#auto
+  ;6 Shift @#auto
 }
 *NumpadRight Up::
 {
   SendInput "{Shift up}"
-  ; 6 Shift up @#auto
+  ;6 Shift up @#auto
 }
 
 ; you should use $ prefix for preventing triggering SendInput call itself
@@ -213,7 +239,7 @@ $NumpadAdd::
     SendInput "{NumpadAdd}"
   } else {
     MouseClick "left", , , 2
-    ; + double click @#auto
+    ;+ double click @#auto
   }
 }
 NumpadAdd & NumLock::
@@ -221,7 +247,7 @@ NumpadAdd & NumLock::
   SendInput "{Ctrl down}"
   SendInput "a"
   SendInput "{Ctrl up}"
-  ; +N select all @#auto
+  ;+N select all @#auto
 }
 
 $NumpadSub::
@@ -230,7 +256,7 @@ $NumpadSub::
     SendInput "{NumpadSub}"
   } else {
     MouseClick "left", , , 3
-    ; - triple click @#auto
+    ;- triple click @#auto
   }
 }
 NumpadSub & NumLock::
@@ -241,7 +267,7 @@ NumpadSub & NumLock::
   SendInput "^v"
   SendInput "{Enter}"
   SendInput "^x"
-  ; -N RJ title tweak @#auto
+  ;-N RJ title tweak @#auto
 }
 
 global keyUpCount := 0
@@ -300,20 +326,20 @@ global numlock_down := false
   global numlock_down
   numlock_down := true
   SendInput "{PgDn}"
-  ; 1+N pageDown @#auto.1,3
+  ;1+N pageDown @#auto.1,3
 }
 
 NumpadDown::
 {
   SendInput "{Home}"
-  ; 2 Home @#auto
+  ;2 Home @#auto
 }
 NumpadDown & NumLock::
 {
   global numlock_down
   numlock_down := true
   SendInput "{End}"
-  ; 2+N End @#auto
+  ;2+N End @#auto
 }
 
 *NumpadPgDn::
@@ -365,7 +391,7 @@ NumpadDown & NumLock::
   global numlock_down
   numlock_down := true
   SendInput "{PgUp}"
-  ; 3+N pageUp @#auto.1,3
+  ;3+N pageUp @#auto.1,3
 }
 
 $NumpadEnter:: ; right click
@@ -374,7 +400,7 @@ $NumpadEnter:: ; right click
     SendInput "{NumpadEnter}"
   } else {
     SendInput "{RButton}"
-    ; En right click @#auto
+    ;En right click @#auto
   }
 }
 
@@ -388,6 +414,7 @@ NumpadEnter & BackSpace::
 global Numpad0_count := 0 ; counting Numpad0 pressed for detacting double Numpad0 pressing
 check_counter() {
   global Numpad0_count
+  global current_com ; check current computer weather Main com or Sub com
   if (Numpad0_count == 1) {
     if GetKeyState("NumpadDel", "P") {
       SendInput "{Ctrl down}"
@@ -396,21 +423,31 @@ check_counter() {
       SendInput "{Ctrl up}"
       ;0+. Ctrl+CC @#auto
     } else {
-      SendInput "{Ctrl down}"
-      SendInput "z"
-      SendInput "{Ctrl up}"
+      if (current_com == 2) { ; if current computer is the Sub com
+        MoveCursorToScrollBar() ; then Numpad0 key execute MoveCursorToScrollBar
+      } else if (current_com == 1) { ; if current computer is the Main com
+        SendInput "{Ctrl down}" ; the Numpad0 key execute Ctrl+z
+        SendInput "z"
+        SendInput "{Ctrl up}"
+      } else {
+        OutputDebug "something wrong!"
+      }
       ;0 Ctrl+Z @#auto
     }
   } else if (Numpad0_count == 2) {
-    CoordMode "Mouse", "Screen"
-    WinGetClientPos &x, &y, &width, &height, "A"
-    scroll_x := x + width - 7
-    MouseGetPos &xpos, &ypos
-    MouseMove scroll_x, ypos
-    DllCall("SetCursorPos", "int", scroll_x, "int", ypos)
+    MoveCursorToScrollBar()
     ;00 MoveToScrollBar @#auto
   }
   Numpad0_count := 0
+}
+
+MoveCursorToScrollBar() {
+  CoordMode "Mouse", "Screen"
+  WinGetClientPos &x, &y, &width, &height, "A"
+  scroll_x := x + width - 7
+  MouseGetPos &xpos, &ypos
+  MouseMove scroll_x, ypos
+  DllCall("SetCursorPos", "int", scroll_x, "int", ypos)
 }
 
 ^+,::
@@ -428,7 +465,7 @@ NumpadIns & NumLock::
 {
   if WinExist("ahk_exe Everything.exe") {
     WinActivate("ahk_exe Everything.exe")
-    ; 0+N Everything @#auto
+    ;0+N Everything @#auto
   }
 }
 
@@ -437,7 +474,7 @@ NumpadIns Up::
   global Numpad0_count
   Numpad0_count += 1
   SetTimer check_counter, -50
-  ; 0 Numpad0 @#auto
+  ;0 Numpad0 @#auto
 }
 
 global is_NumDel_pressed := False
@@ -447,7 +484,7 @@ global is_NumDel_pressed := False
   if (!is_NumDel_pressed) {
     is_NumDel_pressed := True
     MouseClick "left", , , 1, , "D"
-    ; . drag start @#auto
+    ;. drag start @#auto
   }
 }
 *NumpadDel Up::
@@ -455,7 +492,7 @@ global is_NumDel_pressed := False
   global is_NumDel_pressed
   MouseClick "left", , , 1, , "U"
   is_NumDel_pressed := False
-  ; . drag end @#auto
+  ;. drag end @#auto
 }
 
 AlacrittyMoveFocus(key) {
@@ -639,3 +676,8 @@ device_listing() { ; device 목록 출력
   OutputDebug "\nmp300 = " mp300
 }
 ;deviceListing@#auto
+
+F5:: { ; for testing
+  value := current_com
+  OutputDebug "value:=" value
+}
