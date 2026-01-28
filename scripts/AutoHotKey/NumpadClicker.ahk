@@ -215,10 +215,21 @@ NumpadPgup & NumLock:: ; Yuriko.maid.incoming_kiss.1를 복사한뒤, 새 asset�
   ;4 Ctrl Up @#auto
 }
 
+global is_NumpadClear_pressed := false
 *NumpadClear:: ; left click
 {
-  SendInput "{LButton}"
-  ;5 left click @#auto
+  global is_NumpadClear_pressed
+  if (!is_NumpadClear_pressed) {
+    is_NumpadClear_pressed := true
+    SendInput "{LButton down}"
+  }
+  ;5 leftClick@#auto
+}
+
+*NumpadClear Up:: {
+  global is_NumpadClear_pressed
+  SendInput "{LButton up}"
+  is_NumpadClear_pressed := false
 }
 
 *NumpadRight::
@@ -236,12 +247,13 @@ NumpadPgup & NumLock:: ; Yuriko.maid.incoming_kiss.1를 복사한뒤, 새 asset�
 $NumpadAdd::
 {
   if (GetKeyState("NumLock", "T")) {
-    SendInput "{NumpadAdd}"
+    SendInput "{NumpadAdd up}"
   } else {
     MouseClick "left", , , 2
     ;+ double click @#auto
   }
 }
+
 NumpadAdd & NumLock::
 {
   SendInput "{Ctrl down}"
@@ -331,7 +343,11 @@ global numlock_down := false
 
 NumpadDown::
 {
-  SendInput "{Home}"
+  if (WinGetProcessName("A") == "Fusion360.exe") {
+    SendInput "{Escape}"
+  } else {
+    SendInput "{Home}"
+  }
   ;2 Home @#auto
 }
 NumpadDown & NumLock::
@@ -483,16 +499,15 @@ global is_NumDel_pressed := False
   global is_NumDel_pressed
   if (!is_NumDel_pressed) {
     is_NumDel_pressed := True
-    MouseClick "left", , , 1, , "D"
-    ;. drag start @#auto
+    SendInput "{MButton down}"
+    ;. MiddleClick@#auto
   }
 }
 *NumpadDel Up::
 {
   global is_NumDel_pressed
-  MouseClick "left", , , 1, , "U"
+  SendInput "{MButton up}"
   is_NumDel_pressed := False
-  ;. drag end @#auto
 }
 
 AlacrittyMoveFocus(key) {
@@ -676,8 +691,3 @@ device_listing() { ; device 목록 출력
   OutputDebug "\nmp300 = " mp300
 }
 ;deviceListing@#auto
-
-F5:: { ; for testing
-  value := current_com
-  OutputDebug "value:=" value
-}
